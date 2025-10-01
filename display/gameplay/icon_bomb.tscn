@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://bcgmcfkio8x5g" path="res://display/gameplay/icon_pieces.gd" id="1_ld1mn"]
 [ext_resource type="Texture2D" uid="uid://cnipwulhy0kh3" path="res://assets/graphics/system/bomb.png" id="2_5mhqw"]
 
-[node name="IconHeart" type="Control" node_paths=PackedStringArray("sprite_icon")]
+[node name="IconBomb" type="Control" node_paths=PackedStringArray("sprite_icon")]
 custom_minimum_size = Vector2(24, 0)
 layout_mode = 3
 anchors_preset = 0
