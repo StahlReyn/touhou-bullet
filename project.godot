@@ -10,20 +10,18 @@ config_version=5
 
 [application]
 
-config/name="touhou-bullet"
-run/main_scene="res://scenes/main/menu.tscn"
+config/name="Touhou Bullet Base"
+config/description="Base for bullet hell in touhou style"
+run/main_scene="uid://cymswu7x3ujdg"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon_temp.png"
 
 [autoload]
 
-GameUtils="*res://globals/game_utils.gd"
-SceneHandler="*res://globals/scene_handler.gd"
 GameVariables="*res://globals/game_variables.gd"
 AudioManager="*res://globals/audio_manager.gd"
-BulletUtils="*res://globals/bullet_utils.gd"
-SaveManager="*res://globals/save_manager.gd"
-EnemyUtils="*res://globals/enemy_utils.gd"
+SceneManager="*res://globals/scene_manager.gd"
+MathUtils="*res://globals/math_utils.gd"
 
 [debug]
 

@@ -1,0 +1,3 @@
+[gd_scene format=3 uid="uid://caqu7tfsa7qtg"]
+
+[node name="Gameview" type="Node2D" groups=["game_view"]]
