@@ -57,4 +57,4 @@ func option_quit():
 	get_tree().quit()
 
 func _on_screen_wipe_closed() -> void:
-	SceneHandler.goto_scene(SceneHandler.scene_game)
+	SceneManager.goto_scene(SceneManager.scene_game)
