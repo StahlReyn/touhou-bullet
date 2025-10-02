@@ -7,6 +7,7 @@ signal changing_scene
 #@export var default_stage : StageData
 @onready var popup : PopUps = $PopUps
 @onready var game_hud : Control = $Gamehud
+@onready var game_view : Node2D = $Gameview
 
 @onready var noise = FastNoiseLite.new()
 var cur_shake_strength = 0
@@ -18,6 +19,7 @@ func _ready() -> void:
 	# as previous is considered freed, breaking stuff
 	SceneManager.current_scene = self
 	# PLACEHOLDER - there's no continuous stage yet so it's fine to reset
+	GameVariables.game_view = game_view
 	GameVariables.reset_variables()
 	#start_stage.emit(default_stage)
 	

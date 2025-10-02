@@ -18,10 +18,11 @@ config/icon="res://icon_temp.png"
 
 [autoload]
 
-GameVariables="*res://globals/game_variables.gd"
+MathUtils="*res://globals/math_utils.gd"
 AudioManager="*res://globals/audio_manager.gd"
 SceneManager="*res://globals/scene_manager.gd"
-MathUtils="*res://globals/math_utils.gd"
+GameVariables="*res://globals/game_variables.gd"
+GameUtils="*res://globals/game_utils.gd"
 
 [debug]
 

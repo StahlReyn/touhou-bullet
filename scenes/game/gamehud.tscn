@@ -1,6 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://dks2tixhdliu5"]
+[gd_scene load_steps=10 format=3 uid="uid://dks2tixhdliu5"]
 
 [ext_resource type="Texture2D" uid="uid://txpwpvakeqnd" path="res://assets/graphics/system/hud-test.png" id="1_tk2q4"]
+[ext_resource type="Script" uid="uid://bxsd5mskhsnfv" path="res://scenes/game/debug-label.gd" id="3_j2xfo"]
 [ext_resource type="FontFile" uid="uid://bb1qlsmay1voc" path="res://assets/fonts/RusselSquareOpti.otf" id="4_uix07"]
 [ext_resource type="LabelSettings" uid="uid://bkay61kan2hfv" path="res://assets/resources/label_settings/label_score.tres" id="4_w0ro3"]
 [ext_resource type="Texture2D" uid="uid://blnrhius0cbnv" path="res://assets/graphics/system/divider_stat.png" id="5_121qb"]
@@ -39,6 +40,7 @@ offset_bottom = 241.0
 text = "DEBUG TEXT
 "
 label_settings = SubResource("LabelSettings_opysw")
+script = ExtResource("3_j2xfo")
 metadata/_edit_lock_ = true
 
 [node name="Stats" type="VBoxContainer" parent="."]

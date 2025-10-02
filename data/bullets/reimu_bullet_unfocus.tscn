@@ -1,0 +1,34 @@
+[gd_scene load_steps=6 format=3 uid="uid://bsberf207gxya"]
+
+[ext_resource type="Script" uid="uid://iecthdath73v" path="res://scripts/entity/bullet.gd" id="1_y1bkf"]
+[ext_resource type="Texture2D" uid="uid://brl5jngelp8c4" path="res://assets/graphics/bullets/bullet_small.png" id="2_oijvw"]
+[ext_resource type="Script" uid="uid://bstinry81mj0w" path="res://scripts/behavior/behavior_movement_constant_velocity.gd" id="3_oijvw"]
+[ext_resource type="Script" uid="uid://u8kkirqsbt30" path="res://scripts/behavior/behavior_despawn_edge.gd" id="4_l8pgy"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_l8pgy"]
+
+[node name="ReimuBulletUnfocus" type="Area2D" node_paths=PackedStringArray("behaviors")]
+script = ExtResource("1_y1bkf")
+behaviors = [NodePath("BehaviorMovementConstantVelocity"), NodePath("BehaviorDespawnEdge")]
+metadata/_custom_type_script = "uid://iecthdath73v"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(2, 2)
+texture = ExtResource("2_oijvw")
+hframes = 10
+vframes = 13
+frame = 31
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_l8pgy")
+
+[node name="BehaviorMovementConstantVelocity" type="Node" parent="." node_paths=PackedStringArray("entity")]
+script = ExtResource("3_oijvw")
+velocity = Vector2(0, -2000)
+entity = NodePath("..")
+metadata/_custom_type_script = "uid://bstinry81mj0w"
+
+[node name="BehaviorDespawnEdge" type="Node" parent="." node_paths=PackedStringArray("entity")]
+script = ExtResource("4_l8pgy")
+entity = NodePath("..")
+metadata/_custom_type_script = "uid://u8kkirqsbt30"

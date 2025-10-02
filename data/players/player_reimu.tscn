@@ -1,10 +1,16 @@
-[gd_scene load_steps=17 format=3 uid="uid://dgl5l0j6dpfd5"]
+[gd_scene load_steps=21 format=3 uid="uid://dgl5l0j6dpfd5"]
 
-[ext_resource type="Script" uid="uid://cft61yyeccg5l" path="res://data/player/PlayerReimu.gd" id="1_iyoxi"]
+[ext_resource type="Script" uid="uid://cft61yyeccg5l" path="res://data/players/PlayerReimu.gd" id="1_iyoxi"]
 [ext_resource type="Texture2D" uid="uid://8wwwsbsdvrys" path="res://assets/graphics/players/reimu.png" id="2_xrwn8"]
 [ext_resource type="Script" uid="uid://chhrdpl7n5bse" path="res://scripts/behavior/behavior_player_movement.gd" id="3_xrwn8"]
 [ext_resource type="Texture2D" uid="uid://c882q8ogx4sax" path="res://assets/graphics/players/focus_dot.png" id="4_is2jg"]
 [ext_resource type="Texture2D" uid="uid://ckp0f3w0j2wpe" path="res://assets/graphics/players/graze_circle.png" id="5_jp3db"]
+[ext_resource type="Script" uid="uid://b800ji4krs2wn" path="res://scripts/entity/entity.gd" id="6_e207i"]
+[ext_resource type="Script" uid="uid://cq0p03i6ikw6o" path="res://scripts/behavior/behavior_player_shooter.gd" id="7_sfle2"]
+[ext_resource type="PackedScene" uid="uid://bsberf207gxya" path="res://data/bullets/reimu_bullet_unfocus.tscn" id="8_0d26x"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xrwn8"]
+radius = 5.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_iyoxi"]
 atlas = ExtResource("2_xrwn8")
@@ -87,7 +93,7 @@ animations = [{
 "speed": 12.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_xrwn8"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_j4pha"]
 radius = 5.0
 
 [node name="PlayerReimu" type="Area2D" node_paths=PackedStringArray("behaviors")]
@@ -96,10 +102,27 @@ script = ExtResource("1_iyoxi")
 behaviors = [NodePath("BehaviorPlayerMovement")]
 metadata/_custom_type_script = "uid://cft61yyeccg5l"
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_xrwn8")
+metadata/_edit_lock_ = true
+
 [node name="MainSprite" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, 2)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_iwl4c")
+metadata/_edit_lock_ = true
+
+[node name="FocusDot" type="Sprite2D" parent="."]
+z_index = 10
+scale = Vector2(2, 2)
+texture = ExtResource("4_is2jg")
+metadata/_edit_lock_ = true
+
+[node name="GrazeCircle" type="Sprite2D" parent="."]
+z_index = 1
+scale = Vector2(2, 2)
+texture = ExtResource("5_jp3db")
+metadata/_edit_lock_ = true
 
 [node name="BehaviorPlayerMovement" type="Node" parent="." node_paths=PackedStringArray("player_sprite", "focus_sprite", "graze_sprite", "entity")]
 script = ExtResource("3_xrwn8")
@@ -109,15 +132,25 @@ graze_sprite = NodePath("../GrazeCircle")
 entity = NodePath("..")
 metadata/_custom_type_script = "uid://chhrdpl7n5bse"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_xrwn8")
+[node name="Shooter1" type="Area2D" parent="." node_paths=PackedStringArray("behaviors")]
+position = Vector2(41, -28)
+script = ExtResource("6_e207i")
+behaviors = [NodePath("BehaviorPlayerShooter")]
+metadata/_custom_type_script = "uid://b800ji4krs2wn"
 
-[node name="FocusDot" type="Sprite2D" parent="."]
+[node name="FocusDot" type="Sprite2D" parent="Shooter1"]
 z_index = 10
 scale = Vector2(2, 2)
 texture = ExtResource("4_is2jg")
+metadata/_edit_lock_ = true
 
-[node name="GrazeCircle" type="Sprite2D" parent="."]
-z_index = 1
-scale = Vector2(2, 2)
-texture = ExtResource("5_jp3db")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Shooter1"]
+shape = SubResource("CircleShape2D_j4pha")
+metadata/_edit_lock_ = true
+
+[node name="BehaviorPlayerShooter" type="Node" parent="Shooter1" node_paths=PackedStringArray("entity")]
+script = ExtResource("7_sfle2")
+unfocus_bullet = ExtResource("8_0d26x")
+focus_bullet = ExtResource("8_0d26x")
+entity = NodePath("..")
+metadata/_custom_type_script = "uid://cq0p03i6ikw6o"

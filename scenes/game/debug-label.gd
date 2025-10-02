@@ -1,18 +1,16 @@
 extends Label
 
-#var player : Player
-#
-#func _ready() -> void:
-	#player = GameUtils.get_player()
-
 func _process(_delta: float) -> void:
 	if visible:
 		simple()
 
 func simple():
 	text = (
-		"FPS: " + str(Engine.get_frames_per_second()  ) + "\n" +
-		"Time: " + ("%.2f" % GameVariables.game_time)
+		"FPS: " + str(Engine.get_frames_per_second()) + "\n" +
+		"Time: " + ("%.2f" % GameVariables.game_time) + "\n" +
+		"Bullet Count: " + str(GameUtils.get_bullet_count()) + "\n" +
+		"Enemy Count: " + str(GameUtils.get_enemy_count()) + "\n" +
+		"Item Count: " + str(GameUtils.get_item_count())
 	)
 
 #func detailed():
