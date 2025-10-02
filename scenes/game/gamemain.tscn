@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://cymswu7x3ujdg"]
+[gd_scene load_steps=4 format=3 uid="uid://cymswu7x3ujdg"]
 
 [ext_resource type="PackedScene" uid="uid://dks2tixhdliu5" path="res://scenes/game/gamehud.tscn" id="1_gx7lk"]
+[ext_resource type="PackedScene" uid="uid://dgl5l0j6dpfd5" path="res://data/player/player_reimu.tscn" id="3_u0hdk"]
 [ext_resource type="AudioStream" uid="uid://c2a1nbhne0osk" path="res://assets/audio/bgm/reflection_jam_seija.mp3" id="11_fqbm5"]
 
 [node name="Gamemain" type="Control"]
@@ -26,3 +27,6 @@ render_target_update_mode = 4
 stream = ExtResource("11_fqbm5")
 autoplay = true
 parameters/looping = true
+
+[node name="PlayerReimu" parent="." instance=ExtResource("3_u0hdk")]
+position = Vector2(209, 393)

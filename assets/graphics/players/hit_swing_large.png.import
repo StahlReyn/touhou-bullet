@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://wpr67i6fdaud"
-path="res://.godot/imported/yingyang_shot.png-372b9322d3e8405cd4bbd07ccf203159.ctex"
+uid="uid://bsomleci78j4l"
+path="res://.godot/imported/hit_swing_large.png-88e318427620df472796014f95e8b751.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/graphics/character/yingyang_shot.png"
-dest_files=["res://.godot/imported/yingyang_shot.png-372b9322d3e8405cd4bbd07ccf203159.ctex"]
+source_file="res://assets/graphics/players/hit_swing_large.png"
+dest_files=["res://.godot/imported/hit_swing_large.png-88e318427620df472796014f95e8b751.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c882q8ogx4sax"
-path="res://.godot/imported/focus_dot.png-4301af7f42170c54c46a25c98d398382.ctex"
+uid="uid://7lv3i4kndgha"
+path="res://.godot/imported/hit_swing.png-3d3ff8fe19ab1fba729bcbe012275feb.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/graphics/character/focus_dot.png"
-dest_files=["res://.godot/imported/focus_dot.png-4301af7f42170c54c46a25c98d398382.ctex"]
+source_file="res://assets/graphics/players/hit_swing.png"
+dest_files=["res://.godot/imported/hit_swing.png-3d3ff8fe19ab1fba729bcbe012275feb.ctex"]
 
 [params]
 

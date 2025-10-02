@@ -14,8 +14,13 @@ var fall_velocity: Vector2 = Vector2(0, 400)
 var collection_speed: float = 400
 var collection_range_squared: float = 150 ^ 2
 var player: Player
-	
+
+func on_start(en: Entity) -> void:
+	super(en)
+	player = GameVariables.player
+
 func entity_process(delta: float) -> void:
+	# This is simple enough to do if else statement rather than proper state
 	if cur_state == State.SPREADING:
 		entity.position += spread_velocity
 		if spread_time <= 0:

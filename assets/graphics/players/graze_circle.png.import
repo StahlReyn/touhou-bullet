@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://7lv3i4kndgha"
-path="res://.godot/imported/hit_swing.png-fa7f4cfee4de6adf4d8ea111ff035bed.ctex"
+uid="uid://ckp0f3w0j2wpe"
+path="res://.godot/imported/graze_circle.png-1c2c8d2f97333ea0c040646875e2e423.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/graphics/character/hit_swing.png"
-dest_files=["res://.godot/imported/hit_swing.png-fa7f4cfee4de6adf4d8ea111ff035bed.ctex"]
+source_file="res://assets/graphics/players/graze_circle.png"
+dest_files=["res://.godot/imported/graze_circle.png-1c2c8d2f97333ea0c040646875e2e423.ctex"]
 
 [params]
 

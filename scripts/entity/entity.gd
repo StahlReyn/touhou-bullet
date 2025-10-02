@@ -3,7 +3,11 @@ extends Area2D
 
 signal removed
 
-var behaviors: Array[EntityBehavior]
+@export var behaviors: Array[EntityBehavior]
+
+func _ready() -> void:
+	for behavior in behaviors:
+		behavior.on_start(self)
 
 func _physics_process(delta: float) -> void:
 	for behavior in behaviors:
@@ -12,6 +16,7 @@ func _physics_process(delta: float) -> void:
 func add_behavior(behavior: EntityBehavior) -> void:
 	behaviors.append(behavior)
 	behavior.finished.connect(_on_behavior_finished)
+	behavior.on_start(self)
 
 func _on_behavior_finished(behavior: EntityBehavior) -> void:
 	behaviors.erase(behavior)

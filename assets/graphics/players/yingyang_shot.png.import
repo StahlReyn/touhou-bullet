@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://8wwwsbsdvrys"
-path="res://.godot/imported/reimu.png-21a9f0ba0cc92cd124b95ed15c86db84.ctex"
+uid="uid://wpr67i6fdaud"
+path="res://.godot/imported/yingyang_shot.png-19f38eeaad5a13f4c83ff4f919294e17.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/graphics/character/reimu.png"
-dest_files=["res://.godot/imported/reimu.png-21a9f0ba0cc92cd124b95ed15c86db84.ctex"]
+source_file="res://assets/graphics/players/yingyang_shot.png"
+dest_files=["res://.godot/imported/yingyang_shot.png-19f38eeaad5a13f4c83ff4f919294e17.ctex"]
 
 [params]
 
