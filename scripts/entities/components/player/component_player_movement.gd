@@ -1,5 +1,5 @@
-class_name BehaviorPlayerMovement
-extends EntityBehavior
+class_name ComponentPlayerMovement
+extends EntityComponent
 
 @export var speed: int = 300
 @export var focus_speed: int = 150
@@ -14,8 +14,11 @@ var focused_scale: Vector2 = Vector2.ONE * 2
 var unfocused_scale: Vector2 = Vector2.ONE * 3
 var focused_alpha: float = 1
 var unfocused_alpha: float = 0
-	
-func entity_process(delta: float) -> void:
+
+func _ready() -> void:
+	pass
+
+func _physics_process(delta: float) -> void:
 	process_movement(delta)
 	process_focus(delta)
 

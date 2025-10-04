@@ -5,7 +5,7 @@ signal start_stage
 signal changing_scene
 
 #@export var default_stage : StageData
-@onready var popup : PopUps = $PopUps
+#@onready var popup : PopUps = $PopUps
 @onready var game_hud : Control = $Gamehud
 @onready var game_view : Node2D = $Gameview
 

@@ -1,5 +1,5 @@
-class_name BehaviorItemDrop
-extends EntityBehavior
+class_name ComponentItemDrop
+extends EntityComponent
 
 enum State {
 	SPREADING,
@@ -15,11 +15,10 @@ var collection_speed: float = 400
 var collection_range_squared: float = 150 ^ 2
 var player: Player
 
-func on_start(en: Entity) -> void:
-	super(en)
+func _ready() -> void:
 	player = GameVariables.player
 
-func entity_process(delta: float) -> void:
+func _physics_process(delta: float) -> void:
 	# This is simple enough to do if else statement rather than proper state
 	if cur_state == State.SPREADING:
 		entity.position += spread_velocity
