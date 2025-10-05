@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://dkpchvcn0u8vr"]
+
+[ext_resource type="Script" uid="uid://y12juub2fcyj" path="res://scripts/entities/enemy.gd" id="1_st4gn"]
+[ext_resource type="Texture2D" uid="uid://djqdk6shl41pk" path="res://assets/graphics/enemies/lesser_fairy.png" id="2_6mx60"]
+[ext_resource type="Script" uid="uid://dkw4x03mmanq4" path="res://data/enemies/sprite_enemy_simple.gd" id="2_bicl5"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6mx60"]
+radius = 26.0
+
+[node name="FairyLeaf" type="Area2D"]
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("1_st4gn")
+metadata/_custom_type_script = "uid://y12juub2fcyj"
+
+[node name="SpriteEnemySimple" type="Sprite2D" parent="."]
+scale = Vector2(2, 2)
+texture = ExtResource("2_6mx60")
+hframes = 9
+vframes = 4
+script = ExtResource("2_bicl5")
+metadata/_custom_type_script = "uid://dkw4x03mmanq4"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_6mx60")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

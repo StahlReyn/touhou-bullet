@@ -1,12 +1,8 @@
 class_name Entity
 extends Area2D
 
+signal hit
 signal removed
-
-enum CollisionMask {
-	TARGET_PLAYER = 4,
-	TARGET_ENEMY = 8,
-}
 
 func do_remove() -> void:
 	removed.emit(self)

@@ -23,6 +23,7 @@ AudioManager="*res://globals/audio_manager.gd"
 SceneManager="*res://globals/scene_manager.gd"
 GameVariables="*res://globals/game_variables.gd"
 GameUtils="*res://globals/game_utils.gd"
+BulletFactory="*res://globals/bullet_factory.gd"
 
 [debug]
 
@@ -135,8 +136,8 @@ locale/translations=PackedStringArray("res://languages/system/system.en.translat
 
 2d_physics/layer_1="player"
 2d_physics/layer_2="enemy"
-2d_physics/layer_3="bullet"
-2d_physics/layer_4="bullet-player"
+2d_physics/layer_3="bullet-player"
+2d_physics/layer_4="bullet-enemy"
 2d_physics/layer_5="item"
 
 [physics]

@@ -19,16 +19,9 @@ func _physics_process(delta: float) -> void:
 func process_shoot(delta: float) -> void:
 	var bullet : Bullet
 	if Input.is_action_pressed("focus"):
-		bullet = focus_bullet.instantiate()
+		bullet = BulletFactory.create_player_bullet(focus_bullet)
 		cooldown = focus_cooldown
 	else:
-		bullet = unfocus_bullet.instantiate()
+		bullet = BulletFactory.create_player_bullet(unfocus_bullet)
 		cooldown = unfocus_cooldown
-	
-	GameVariables.game_view.add_child(bullet)
-	bullet.collision_layer = Entity.CollisionMask.TARGET_ENEMY
-	bullet.modulate.a = 0.3
-	bullet.z_index = -10
-	bullet.top_level = true
-	bullet.global_position = entity.global_position
-	bullet.position += bullet_offset
+	bullet.global_position = entity.global_position + bullet_offset
