@@ -1,0 +1,39 @@
+[gd_scene load_steps=7 format=3 uid="uid://dpe8udoyvvp7a"]
+
+[ext_resource type="Script" uid="uid://cegyrrr31yx65" path="res://scripts/entities/shooter.gd" id="1_pfkap"]
+[ext_resource type="Texture2D" uid="uid://wpr67i6fdaud" path="res://assets/graphics/players/yingyang_shot.png" id="2_tl8xm"]
+[ext_resource type="Script" uid="uid://dbajpt4gr4oqh" path="res://scripts/entities/components/movement/component_constant_rotation.gd" id="3_osfwy"]
+[ext_resource type="Script" uid="uid://cq0p03i6ikw6o" path="res://scripts/entities/components/player/component_player_shooter.gd" id="4_pfkap"]
+[ext_resource type="PackedScene" uid="uid://bsberf207gxya" path="res://data/bullets/reimu_bullet_unfocus.tscn" id="6_xtxd6"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_j4pha"]
+radius = 5.0
+
+[node name="Shooter" type="Area2D"]
+monitoring = false
+monitorable = false
+script = ExtResource("1_pfkap")
+metadata/_custom_type_script = "uid://cegyrrr31yx65"
+
+[node name="ShooterSprite" type="Sprite2D" parent="."]
+z_index = 10
+scale = Vector2(2, 2)
+texture = ExtResource("2_tl8xm")
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_j4pha")
+metadata/_edit_lock_ = true
+
+[node name="ComponentConstantRotation" type="Node" parent="." node_paths=PackedStringArray("entity")]
+script = ExtResource("3_osfwy")
+velocity = -10
+entity = NodePath("..")
+metadata/_custom_type_script = "uid://dbajpt4gr4oqh"
+
+[node name="ComponentPlayerShooter" type="Node" parent="." node_paths=PackedStringArray("entity")]
+script = ExtResource("4_pfkap")
+unfocus_bullet = ExtResource("6_xtxd6")
+focus_bullet = ExtResource("6_xtxd6")
+entity = NodePath("..")
+metadata/_custom_type_script = "uid://cq0p03i6ikw6o"

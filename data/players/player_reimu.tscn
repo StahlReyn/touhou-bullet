@@ -1,17 +1,14 @@
-[gd_scene load_steps=26 format=3 uid="uid://dgl5l0j6dpfd5"]
+[gd_scene load_steps=31 format=3 uid="uid://dgl5l0j6dpfd5"]
 
 [ext_resource type="Script" uid="uid://4uk2a50v5es0" path="res://scripts/entities/player.gd" id="1_0d26x"]
 [ext_resource type="Texture2D" uid="uid://8wwwsbsdvrys" path="res://assets/graphics/players/reimu.png" id="2_xrwn8"]
 [ext_resource type="Texture2D" uid="uid://c882q8ogx4sax" path="res://assets/graphics/players/focus_dot.png" id="4_is2jg"]
 [ext_resource type="Texture2D" uid="uid://ckp0f3w0j2wpe" path="res://assets/graphics/players/graze_circle.png" id="5_jp3db"]
-[ext_resource type="Script" uid="uid://b37tj34lgib4m" path="res://scripts/entities/components/player/component_player_shooter_movable.gd" id="6_ifuaf"]
 [ext_resource type="Script" uid="uid://cq0p03i6ikw6o" path="res://scripts/entities/components/player/component_player_shooter.gd" id="6_laj5w"]
 [ext_resource type="Script" uid="uid://chhrdpl7n5bse" path="res://scripts/entities/components/player/component_player_movement.gd" id="6_rptol"]
 [ext_resource type="PackedScene" uid="uid://bsberf207gxya" path="res://data/bullets/reimu_bullet_unfocus.tscn" id="7_0d26x"]
-[ext_resource type="Texture2D" uid="uid://wpr67i6fdaud" path="res://assets/graphics/players/yingyang_shot.png" id="7_ifuaf"]
-[ext_resource type="Script" uid="uid://b800ji4krs2wn" path="res://scripts/entities/entity.gd" id="8_yn8tb"]
+[ext_resource type="PackedScene" uid="uid://dpe8udoyvvp7a" path="res://data/players/shooter_reimu.tscn" id="8_mba3y"]
 [ext_resource type="Script" uid="uid://nw5wori6pxk4" path="res://scripts/entities/components/player/shooter_position.gd" id="9_x2pug"]
-[ext_resource type="Script" uid="uid://dbajpt4gr4oqh" path="res://scripts/entities/components/movement/component_constant_rotation.gd" id="10_yn8tb"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_xrwn8"]
 radius = 5.0
@@ -97,13 +94,74 @@ animations = [{
 "speed": 12.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_j4pha"]
-radius = 5.0
+[sub_resource type="Resource" id="Resource_mba3y"]
+script = ExtResource("9_x2pug")
+unfocused_position = Vector2(0, -70)
+focused_position = Vector2(0, -40)
+min_power = 100
+metadata/_custom_type_script = "uid://nw5wori6pxk4"
+
+[sub_resource type="Resource" id="Resource_ifuaf"]
+script = ExtResource("9_x2pug")
+unfocused_position = Vector2(75, 0)
+focused_position = Vector2(35, -50)
+min_power = 200
+metadata/_custom_type_script = "uid://nw5wori6pxk4"
+
+[sub_resource type="Resource" id="Resource_yn8tb"]
+script = ExtResource("9_x2pug")
+unfocused_position = Vector2(75, 20)
+focused_position = Vector2(35, -40)
+min_power = 300
+metadata/_custom_type_script = "uid://nw5wori6pxk4"
 
 [sub_resource type="Resource" id="Resource_x2pug"]
 script = ExtResource("9_x2pug")
-unfocused_position = Vector2(60, 0)
-focused_position = Vector2(30, -40)
+unfocused_position = Vector2(80, 20)
+focused_position = Vector2(55, -30)
+min_power = 400
+metadata/_custom_type_script = "uid://nw5wori6pxk4"
+
+[sub_resource type="Resource" id="Resource_pthfe"]
+script = ExtResource("9_x2pug")
+unfocused_position = Vector2(-75, 0)
+focused_position = Vector2(-35, -50)
+min_power = 200
+metadata/_custom_type_script = "uid://nw5wori6pxk4"
+
+[sub_resource type="Resource" id="Resource_l4vi3"]
+script = ExtResource("9_x2pug")
+unfocused_position = Vector2(0, 50)
+focused_position = Vector2(0, -50)
+min_power = 300
+metadata/_custom_type_script = "uid://nw5wori6pxk4"
+
+[sub_resource type="Resource" id="Resource_2i1qu"]
+script = ExtResource("9_x2pug")
+unfocused_position = Vector2(30, 50)
+focused_position = Vector2(20, -50)
+min_power = 400
+metadata/_custom_type_script = "uid://nw5wori6pxk4"
+
+[sub_resource type="Resource" id="Resource_yqfyw"]
+script = ExtResource("9_x2pug")
+unfocused_position = Vector2(-75, 20)
+focused_position = Vector2(-35, -40)
+min_power = 300
+metadata/_custom_type_script = "uid://nw5wori6pxk4"
+
+[sub_resource type="Resource" id="Resource_cuixu"]
+script = ExtResource("9_x2pug")
+unfocused_position = Vector2(-30, 50)
+focused_position = Vector2(-20, -50)
+min_power = 400
+metadata/_custom_type_script = "uid://nw5wori6pxk4"
+
+[sub_resource type="Resource" id="Resource_71i3h"]
+script = ExtResource("9_x2pug")
+unfocused_position = Vector2(-80, 20)
+focused_position = Vector2(-55, -30)
+min_power = 400
 metadata/_custom_type_script = "uid://nw5wori6pxk4"
 
 [node name="PlayerReimu" type="Area2D"]
@@ -157,31 +215,22 @@ bullet_offset = Vector2(20, -10)
 entity = NodePath("..")
 metadata/_custom_type_script = "uid://cq0p03i6ikw6o"
 
-[node name="Shooter1" type="Area2D" parent="."]
-position = Vector2(60, 0)
-script = ExtResource("8_yn8tb")
-metadata/_custom_type_script = "uid://b800ji4krs2wn"
+[node name="Shooter1" parent="." node_paths=PackedStringArray("following_entity") instance=ExtResource("8_mba3y")]
+position = Vector2(81, 27)
+following_entity = NodePath("..")
+layout_positions = Array[ExtResource("9_x2pug")]([SubResource("Resource_mba3y"), SubResource("Resource_ifuaf"), SubResource("Resource_yn8tb"), SubResource("Resource_x2pug")])
 
-[node name="ShooterSprite" type="Sprite2D" parent="Shooter1"]
-z_index = 10
-scale = Vector2(2, 2)
-texture = ExtResource("7_ifuaf")
-metadata/_edit_lock_ = true
+[node name="Shooter2" parent="." node_paths=PackedStringArray("following_entity") instance=ExtResource("8_mba3y")]
+position = Vector2(38, 58)
+following_entity = NodePath("..")
+layout_positions = Array[ExtResource("9_x2pug")]([SubResource("Resource_pthfe"), SubResource("Resource_l4vi3"), SubResource("Resource_2i1qu")])
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Shooter1"]
-shape = SubResource("CircleShape2D_j4pha")
-metadata/_edit_lock_ = true
+[node name="Shooter3" parent="." node_paths=PackedStringArray("following_entity") instance=ExtResource("8_mba3y")]
+position = Vector2(-50, 54)
+following_entity = NodePath("..")
+layout_positions = Array[ExtResource("9_x2pug")]([SubResource("Resource_yqfyw"), SubResource("Resource_cuixu")])
 
-[node name="ComponentConstantRotation" type="Node" parent="Shooter1" node_paths=PackedStringArray("entity")]
-script = ExtResource("10_yn8tb")
-velocity = -10
-entity = NodePath("..")
-metadata/_custom_type_script = "uid://dbajpt4gr4oqh"
-
-[node name="ComponentPlayerShooterMovable" type="Node" parent="Shooter1" node_paths=PackedStringArray("entity")]
-script = ExtResource("6_ifuaf")
-layout_positions = Array[ExtResource("9_x2pug")]([SubResource("Resource_x2pug")])
-unfocus_bullet = ExtResource("7_0d26x")
-focus_bullet = ExtResource("7_0d26x")
-entity = NodePath("..")
-metadata/_custom_type_script = "uid://b37tj34lgib4m"
+[node name="Shooter4" parent="." node_paths=PackedStringArray("following_entity") instance=ExtResource("8_mba3y")]
+position = Vector2(-88, 29)
+following_entity = NodePath("..")
+layout_positions = Array[ExtResource("9_x2pug")]([SubResource("Resource_71i3h")])

@@ -1,7 +1,7 @@
 class_name ComponentDespawnEdge
 extends EntityComponent
 
-@export var padding: int = 50
+@export var padding: int = 100
 
 func _physics_process(delta: float) -> void:
 	if (entity.position.x < -padding or entity.position.x > GameUtils.game_area.x + padding or

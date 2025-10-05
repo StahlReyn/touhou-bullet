@@ -10,6 +10,8 @@ extends EntityComponent
 var cooldown: float = unfocus_cooldown
 
 func _physics_process(delta: float) -> void:
+	if !entity.visible:
+		return
 	if cooldown < delta and Input.is_action_pressed("shoot"):
 		process_shoot(delta)
 	cooldown -= delta

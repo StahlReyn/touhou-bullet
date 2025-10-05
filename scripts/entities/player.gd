@@ -7,6 +7,7 @@ func _ready() -> void:
 	pass
 
 func _physics_process(delta: float) -> void:
+	GameVariables.add_power()
 	pass
 
 func in_collection_range(entity: Entity):

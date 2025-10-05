@@ -1,8 +1,8 @@
 class_name ComponentPlayerMovement
 extends EntityComponent
 
-@export var speed: int = 300
-@export var focus_speed: int = 150
+@export var speed: int = 400
+@export var focus_speed: int = 200
 @export var player_sprite: AnimatedSprite2D
 @export var focus_sprite: Sprite2D
 @export var graze_sprite: Sprite2D
