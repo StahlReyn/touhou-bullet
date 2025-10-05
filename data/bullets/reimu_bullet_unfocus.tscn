@@ -11,11 +11,11 @@
 collision_layer = 4
 collision_mask = 2
 script = ExtResource("1_y1bkf")
-damage = null
-damage_retention = null
+damage = 2
 metadata/_custom_type_script = "uid://iecthdath73v"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+rotation = 1.5707964
 scale = Vector2(2, 2)
 texture = ExtResource("2_oijvw")
 hframes = 10
@@ -32,7 +32,7 @@ metadata/_custom_type_script = "uid://u8kkirqsbt30"
 
 [node name="ComponentConstantVelocity" type="Node" parent="." node_paths=PackedStringArray("entity")]
 script = ExtResource("3_l8pgy")
-velocity = Vector2(0, -2000)
+velocity = Vector2(0, -2500)
 entity = NodePath("..")
 metadata/_custom_type_script = "uid://bjkwlerrqk53u"
 

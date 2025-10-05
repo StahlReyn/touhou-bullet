@@ -1,0 +1,39 @@
+[gd_scene load_steps=6 format=3 uid="uid://du4ka6a73jij8"]
+
+[ext_resource type="Script" uid="uid://iecthdath73v" path="res://scripts/entities/bullet.gd" id="1_2s7sv"]
+[ext_resource type="Texture2D" uid="uid://brl5jngelp8c4" path="res://assets/graphics/bullets/bullet_small.png" id="2_8gfep"]
+[ext_resource type="Script" uid="uid://u8kkirqsbt30" path="res://scripts/entities/components/component_despawn_edge.gd" id="3_1u82a"]
+[ext_resource type="Script" uid="uid://c8uq3vm31rge8" path="res://scripts/entities/components/movement/component_homing_lowest.gd" id="4_2s7sv"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2s7sv"]
+
+[node name="ReimuBulletHoming" type="Area2D"]
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("1_2s7sv")
+metadata/_custom_type_script = "uid://iecthdath73v"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+rotation = 1.5707964
+scale = Vector2(2, 2)
+texture = ExtResource("2_8gfep")
+hframes = 10
+vframes = 13
+frame = 33
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_2s7sv")
+
+[node name="ComponentDespawnEdge" type="Node" parent="." node_paths=PackedStringArray("entity")]
+script = ExtResource("3_1u82a")
+entity = NodePath("..")
+metadata/_custom_type_script = "uid://u8kkirqsbt30"
+
+[node name="ComponentHomingLowest" type="Node" parent="." node_paths=PackedStringArray("entity")]
+script = ExtResource("4_2s7sv")
+move_speed = 1500.0
+rotation_speed = 5.0
+entity = NodePath("..")
+metadata/_custom_type_script = "uid://c8uq3vm31rge8"
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

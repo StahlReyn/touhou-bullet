@@ -204,6 +204,7 @@ script = ExtResource("6_laj5w")
 unfocus_bullet = ExtResource("7_0d26x")
 focus_bullet = ExtResource("7_0d26x")
 bullet_offset = Vector2(-20, -10)
+bullet_rotation = -1.5707963267948966
 entity = NodePath("..")
 metadata/_custom_type_script = "uid://cq0p03i6ikw6o"
 
@@ -212,6 +213,7 @@ script = ExtResource("6_laj5w")
 unfocus_bullet = ExtResource("7_0d26x")
 focus_bullet = ExtResource("7_0d26x")
 bullet_offset = Vector2(20, -10)
+bullet_rotation = -1.5707963267948966
 entity = NodePath("..")
 metadata/_custom_type_script = "uid://cq0p03i6ikw6o"
 
