@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://cur3h3lpkkwp1"]
+
+[ext_resource type="Script" uid="uid://d26ralbkj2ol3" path="res://scripts/entities/item.gd" id="1_6mxka"]
+[ext_resource type="Texture2D" uid="uid://dhiqymmciphxx" path="res://assets/graphics/system/point_items.png" id="2_f6oxq"]
+[ext_resource type="Script" uid="uid://dc7ekqbcmhba2" path="res://scripts/entities/components/movement/component_item_drop.gd" id="3_oqtep"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_dyu0y"]
+
+[node name="ItemPoint" type="Area2D"]
+script = ExtResource("1_6mxka")
+metadata/_custom_type_script = "uid://d26ralbkj2ol3"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(2, 2)
+texture = ExtResource("2_f6oxq")
+hframes = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_dyu0y")
+
+[node name="ComponentItemDrop" type="Node" parent="." node_paths=PackedStringArray("entity")]
+script = ExtResource("3_oqtep")
+entity = NodePath("..")
+metadata/_custom_type_script = "uid://dc7ekqbcmhba2"
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

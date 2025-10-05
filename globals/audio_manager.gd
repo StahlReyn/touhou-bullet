@@ -23,7 +23,7 @@ func play_audio_2d(sound: AudioStream, pos: Vector2, volume = 0.0) -> void:
 	node.play()
 	await node.finished
 	node.call_deferred("queue_free")
-	
+
 func play_item_get() -> void:
 	play_audio(audio_item_get)
 
