@@ -11,6 +11,7 @@ var hp : int
 var is_dead : bool = false
 	
 func _ready() -> void:
+	super()
 	reset_hp()
 
 func reset_hp():

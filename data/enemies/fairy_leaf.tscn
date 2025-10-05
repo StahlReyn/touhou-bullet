@@ -25,3 +25,4 @@ metadata/_custom_type_script = "uid://dkw4x03mmanq4"
 shape = SubResource("CircleShape2D_6mx60")
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="set_type" from="." to="SpriteEnemySimple" method="set_type"]

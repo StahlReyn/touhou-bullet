@@ -9,7 +9,7 @@ enum State {
 
 var cur_state: State = State.SPREADING
 var spread_time: float = randf_range(0.1, 0.2)
-var spread_velocity: Vector2 = MathUtils.get_random_direction_vector() * 400
+var spread_velocity: Vector2 = MathUtils.randv2_angle() * 400
 var fall_velocity: Vector2 = Vector2(0, 400)
 var collection_speed: float = 400
 var collection_range_squared: float = 150 ^ 2

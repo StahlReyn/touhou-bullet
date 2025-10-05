@@ -13,6 +13,7 @@ const SPAWN_SCALE_SPEED := 20.0
 const SPAWN_OPACITY_SPEED := 5.0
 	
 func _ready() -> void:
+	super()
 	add_to_group("bullet")
 	#prev_alpha = main_sprite.modulate.a
 	#prev_scale = main_sprite.scale

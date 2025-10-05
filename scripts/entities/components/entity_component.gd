@@ -4,7 +4,7 @@ extends Node
 signal finished
 
 @export var entity: Entity
-
+	
 func set_entity(entity: Entity) -> void:
 	self.entity = entity
 	self.entity.removed.connect(_on_entity_removed)

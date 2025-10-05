@@ -24,6 +24,7 @@ SceneManager="*res://globals/scene_manager.gd"
 GameVariables="*res://globals/game_variables.gd"
 GameUtils="*res://globals/game_utils.gd"
 BulletFactory="*res://globals/bullet_factory.gd"
+EnemyFactory="*res://globals/enemy_factory.gd"
 
 [debug]
 

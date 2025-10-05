@@ -4,11 +4,14 @@ extends Character
 var collection_range_squared: float = 150 ^ 2
 
 func _ready() -> void:
+	GameVariables.player = self
 	pass
 
 func _physics_process(delta: float) -> void:
-	GameVariables.add_power()
 	pass
 
 func in_collection_range(entity: Entity):
 	return entity.position.distance_squared_to(self.position) <= collection_range_squared
+
+func kill():
+	pass

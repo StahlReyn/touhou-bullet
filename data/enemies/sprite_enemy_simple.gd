@@ -30,6 +30,7 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	frame_timer -= delta
 	if frame_timer <= 0:
+		update_animation() 
 		update_frame()
 		frame_timer += frame_delay
 
