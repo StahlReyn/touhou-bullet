@@ -15,12 +15,15 @@ var unfocused_scale: Vector2 = Vector2.ONE * 3
 var focused_alpha: float = 1
 var unfocused_alpha: float = 0
 
+var do_process_movement: bool = true
+
 func _ready() -> void:
 	pass
 
 func _physics_process(delta: float) -> void:
-	process_movement(delta)
-	process_focus(delta)
+	if do_process_movement:
+		process_movement(delta)
+		process_focus(delta)
 
 func get_speed() -> int:
 	if Input.is_action_pressed("focus"):
@@ -60,3 +63,10 @@ func process_focus(delta: float) -> void:
 		focus_sprite.scale = MathUtils.lerp_smooth(focus_sprite.scale, unfocused_scale, focus_anim_speed, delta)
 		graze_sprite.modulate.a = MathUtils.lerp_smooth(graze_sprite.modulate.a, unfocused_alpha, focus_anim_speed, delta)
 		graze_sprite.scale = MathUtils.lerp_smooth(graze_sprite.scale, unfocused_scale, focus_anim_speed, delta)
+
+
+func _on_player_die() -> void:
+	do_process_movement = false
+
+func _on_player_respawn_finish() -> void:
+	do_process_movement = true

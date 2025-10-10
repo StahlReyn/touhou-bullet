@@ -247,3 +247,10 @@ metadata/_custom_type_script = "uid://b44bdp63e1c73"
 script = ExtResource("9_mba3y")
 bullet_scene = ExtResource("10_ifuaf")
 metadata/_custom_type_script = "uid://b44bdp63e1c73"
+
+[connection signal="die" from="." to="PlayerMovement" method="_on_player_die"]
+[connection signal="die" from="." to="Shooter1" method="_on_player_die"]
+[connection signal="die" from="." to="Shooter2" method="_on_player_die"]
+[connection signal="die" from="." to="Shooter3" method="_on_player_die"]
+[connection signal="die" from="." to="Shooter4" method="_on_player_die"]
+[connection signal="respawn_finish" from="." to="PlayerMovement" method="_on_player_respawn_finish"]

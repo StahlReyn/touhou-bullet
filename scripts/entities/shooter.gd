@@ -24,7 +24,7 @@ func process_movement(delta: float) -> void:
 		return
 	
 	if !visible: # Just appeared, set location
-		global_position = following_entity.global_position + sh_pos.unfocused_position
+		reset_position()
 		visible = true
 		modulate = modulate_spawn
 	
@@ -53,3 +53,13 @@ func get_target_position() -> ShooterPosition:
 			highest_sh = sh_pos
 			highest_power = sh_pos.min_power
 	return highest_sh
+
+func _on_player_die() -> void:
+	# Call Deferred as process tries to move right before
+	call_deferred("reset_position")
+
+func reset_position() -> void:
+	global_position = following_entity.global_position
+	var sh_pos: ShooterPosition = get_target_position()
+	if sh_pos != null:
+		global_position += sh_pos.unfocused_position
