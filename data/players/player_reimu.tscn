@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://dgl5l0j6dpfd5"]
+[gd_scene load_steps=32 format=3 uid="uid://dgl5l0j6dpfd5"]
 
 [ext_resource type="Script" uid="uid://4uk2a50v5es0" path="res://scripts/entities/player.gd" id="1_0d26x"]
 [ext_resource type="Texture2D" uid="uid://8wwwsbsdvrys" path="res://assets/graphics/players/reimu.png" id="2_xrwn8"]
@@ -6,9 +6,10 @@
 [ext_resource type="Texture2D" uid="uid://ckp0f3w0j2wpe" path="res://assets/graphics/players/graze_circle.png" id="5_jp3db"]
 [ext_resource type="Script" uid="uid://cq0p03i6ikw6o" path="res://scripts/entities/components/player/component_player_shooter.gd" id="6_laj5w"]
 [ext_resource type="Script" uid="uid://chhrdpl7n5bse" path="res://scripts/entities/components/player/component_player_movement.gd" id="6_rptol"]
-[ext_resource type="PackedScene" uid="uid://bsberf207gxya" path="res://data/bullets/reimu_bullet_unfocus.tscn" id="7_0d26x"]
 [ext_resource type="PackedScene" uid="uid://dpe8udoyvvp7a" path="res://data/players/shooter_reimu.tscn" id="8_mba3y"]
+[ext_resource type="Script" uid="uid://b44bdp63e1c73" path="res://scripts/factories/bullet_scene_factory.gd" id="9_mba3y"]
 [ext_resource type="Script" uid="uid://nw5wori6pxk4" path="res://scripts/entities/components/player/shooter_position.gd" id="9_x2pug"]
+[ext_resource type="PackedScene" uid="uid://bsberf207gxya" path="res://data/bullets/player/reimu_basic.tscn" id="10_ifuaf"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_xrwn8"]
 radius = 5.0
@@ -191,7 +192,7 @@ scale = Vector2(2, 2)
 texture = ExtResource("5_jp3db")
 metadata/_edit_lock_ = true
 
-[node name="ComponentPlayerMovement" type="Node" parent="." node_paths=PackedStringArray("player_sprite", "focus_sprite", "graze_sprite", "entity")]
+[node name="PlayerMovement" type="Node" parent="." node_paths=PackedStringArray("player_sprite", "focus_sprite", "graze_sprite", "entity")]
 script = ExtResource("6_rptol")
 player_sprite = NodePath("../MainSprite")
 focus_sprite = NodePath("../FocusDot")
@@ -199,19 +200,19 @@ graze_sprite = NodePath("../GrazeCircle")
 entity = NodePath("..")
 metadata/_custom_type_script = "uid://chhrdpl7n5bse"
 
-[node name="ComponentPlayerShooterLeft" type="Node" parent="." node_paths=PackedStringArray("entity")]
+[node name="PlayerShooterLeft" type="Node" parent="." node_paths=PackedStringArray("unfocus_bullet_factory", "focus_bullet_factory", "entity")]
 script = ExtResource("6_laj5w")
-unfocus_bullet = ExtResource("7_0d26x")
-focus_bullet = ExtResource("7_0d26x")
+unfocus_bullet_factory = NodePath("../FactFocus")
+focus_bullet_factory = NodePath("../FactUnfocus")
 bullet_offset = Vector2(-20, -10)
 bullet_rotation = -1.5707963267948966
 entity = NodePath("..")
 metadata/_custom_type_script = "uid://cq0p03i6ikw6o"
 
-[node name="ComponentPlayerShooterRight" type="Node" parent="." node_paths=PackedStringArray("entity")]
+[node name="PlayerShooterRight" type="Node" parent="." node_paths=PackedStringArray("unfocus_bullet_factory", "focus_bullet_factory", "entity")]
 script = ExtResource("6_laj5w")
-unfocus_bullet = ExtResource("7_0d26x")
-focus_bullet = ExtResource("7_0d26x")
+unfocus_bullet_factory = NodePath("../FactFocus")
+focus_bullet_factory = NodePath("../FactUnfocus")
 bullet_offset = Vector2(20, -10)
 bullet_rotation = -1.5707963267948966
 entity = NodePath("..")
@@ -236,3 +237,13 @@ layout_positions = Array[ExtResource("9_x2pug")]([SubResource("Resource_yqfyw"),
 position = Vector2(-88, 29)
 following_entity = NodePath("..")
 layout_positions = Array[ExtResource("9_x2pug")]([SubResource("Resource_71i3h")])
+
+[node name="FactUnfocus" type="Node" parent="."]
+script = ExtResource("9_mba3y")
+bullet_scene = ExtResource("10_ifuaf")
+metadata/_custom_type_script = "uid://b44bdp63e1c73"
+
+[node name="FactFocus" type="Node" parent="."]
+script = ExtResource("9_mba3y")
+bullet_scene = ExtResource("10_ifuaf")
+metadata/_custom_type_script = "uid://b44bdp63e1c73"

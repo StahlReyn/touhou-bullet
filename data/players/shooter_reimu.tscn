@@ -1,11 +1,12 @@
-[gd_scene load_steps=8 format=3 uid="uid://dpe8udoyvvp7a"]
+[gd_scene load_steps=9 format=3 uid="uid://dpe8udoyvvp7a"]
 
 [ext_resource type="Script" uid="uid://cegyrrr31yx65" path="res://scripts/entities/shooter.gd" id="1_pfkap"]
 [ext_resource type="Texture2D" uid="uid://wpr67i6fdaud" path="res://assets/graphics/players/yingyang_shot.png" id="2_tl8xm"]
 [ext_resource type="Script" uid="uid://dbajpt4gr4oqh" path="res://scripts/entities/components/movement/component_constant_rotation.gd" id="3_osfwy"]
 [ext_resource type="Script" uid="uid://cq0p03i6ikw6o" path="res://scripts/entities/components/player/component_player_shooter.gd" id="4_pfkap"]
-[ext_resource type="PackedScene" uid="uid://du4ka6a73jij8" path="res://data/bullets/reimu_bullet_homing.tscn" id="5_0bvfj"]
-[ext_resource type="PackedScene" uid="uid://bsberf207gxya" path="res://data/bullets/reimu_bullet_unfocus.tscn" id="6_xtxd6"]
+[ext_resource type="Script" uid="uid://b44bdp63e1c73" path="res://scripts/factories/bullet_scene_factory.gd" id="5_tl8xm"]
+[ext_resource type="PackedScene" uid="uid://du4ka6a73jij8" path="res://data/bullets/player/reimu_homing.tscn" id="6_osfwy"]
+[ext_resource type="PackedScene" uid="uid://bsberf207gxya" path="res://data/bullets/player/reimu_basic.tscn" id="7_7dx1c"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_j4pha"]
 radius = 5.0
@@ -34,10 +35,20 @@ velocity = -10
 entity = NodePath("..")
 metadata/_custom_type_script = "uid://dbajpt4gr4oqh"
 
-[node name="ComponentPlayerShooter" type="Node" parent="." node_paths=PackedStringArray("entity")]
+[node name="ComponentPlayerShooter" type="Node" parent="." node_paths=PackedStringArray("unfocus_bullet_factory", "focus_bullet_factory", "entity")]
 script = ExtResource("4_pfkap")
-unfocus_bullet = ExtResource("5_0bvfj")
-focus_bullet = ExtResource("6_xtxd6")
+unfocus_bullet_factory = NodePath("../FactUnfocus")
+focus_bullet_factory = NodePath("../FactFocus")
 bullet_rotation = -1.5707963267948966
 entity = NodePath("..")
 metadata/_custom_type_script = "uid://cq0p03i6ikw6o"
+
+[node name="FactUnfocus" type="Node" parent="."]
+script = ExtResource("5_tl8xm")
+bullet_scene = ExtResource("6_osfwy")
+metadata/_custom_type_script = "uid://b44bdp63e1c73"
+
+[node name="FactFocus" type="Node" parent="."]
+script = ExtResource("5_tl8xm")
+bullet_scene = ExtResource("7_7dx1c")
+metadata/_custom_type_script = "uid://b44bdp63e1c73"

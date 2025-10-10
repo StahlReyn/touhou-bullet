@@ -1,3 +1,4 @@
+class_name TestFactory
 extends Node
 
 enum Collision {
@@ -11,7 +12,7 @@ enum Collision {
 const FAIRY = preload("res://data/enemies/fairy_leaf.tscn")
 const POINT = preload("res://data/items/item_point.tscn")
 
-func create_simple_enemy() -> Enemy:
+static func create_simple_enemy() -> Enemy:
 	var enemy: Enemy = FAIRY.instantiate()
 	enemy.collision_layer = Collision.ENEMY # Is an Enemy
 	enemy.collision_mask = Collision.PLAYER # Finding hit player
@@ -21,7 +22,7 @@ func create_simple_enemy() -> Enemy:
 	enemy.add_child(ComponentDespawnEdge.create(enemy))
 	return enemy
 
-func create_point_item() -> Item:
+static func create_point_item() -> Item:
 	var item: Item = POINT.instantiate()
 	item.collision_layer = Collision.ITEM
 	item.collision_mask = Collision.PLAYER

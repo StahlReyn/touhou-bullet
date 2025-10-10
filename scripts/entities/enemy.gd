@@ -12,6 +12,6 @@ func _ready() -> void:
 func kill():
 	GameVariables.add_score(10000)
 	for i in range(10):
-		var item: Item = EnemyFactory.create_point_item()
+		var item: Item = TestFactory.create_point_item()
 		item.global_position = global_position
 	super()

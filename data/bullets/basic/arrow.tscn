@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://dqeup6ki8jtnl"]
+
+[ext_resource type="Script" uid="uid://iecthdath73v" path="res://scripts/entities/bullet.gd" id="1_qrh87"]
+[ext_resource type="Texture2D" uid="uid://brl5jngelp8c4" path="res://assets/graphics/bullets/bullet_small.png" id="2_wigdv"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qrh87"]
+radius = 9.0
+
+[node name="Arrow" type="Area2D"]
+script = ExtResource("1_qrh87")
+metadata/_custom_type_script = "uid://iecthdath73v"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -4)
+scale = Vector2(2, 2)
+texture = ExtResource("2_wigdv")
+hframes = 10
+vframes = 13
+frame = 20
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_qrh87")
