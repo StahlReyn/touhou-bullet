@@ -4,7 +4,6 @@ extends Control
 signal start_stage
 signal changing_scene
 
-#@export var default_stage : StageData
 #@onready var popup : PopUps = $PopUps
 @onready var game_hud : Control = $Gamehud
 @onready var game_view : Node2D = $Gameview
@@ -21,7 +20,7 @@ func _ready() -> void:
 	# PLACEHOLDER - there's no continuous stage yet so it's fine to reset
 	GameVariables.game_view = game_view
 	GameVariables.reset_variables()
-	#start_stage.emit(default_stage)
+	start_stage.emit()
 	
 func _physics_process(delta: float) -> void:
 	cur_shake_strength -= delta * 150

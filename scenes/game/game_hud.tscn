@@ -1,5 +1,6 @@
-[gd_scene load_steps=10 format=3 uid="uid://dks2tixhdliu5"]
+[gd_scene load_steps=11 format=3 uid="uid://dks2tixhdliu5"]
 
+[ext_resource type="Script" uid="uid://78oh4cl75ngu" path="res://scenes/game/game_hud.gd" id="1_dwcec"]
 [ext_resource type="Texture2D" uid="uid://txpwpvakeqnd" path="res://assets/graphics/system/hud-test.png" id="1_tk2q4"]
 [ext_resource type="Script" uid="uid://bxsd5mskhsnfv" path="res://scenes/game/debug-label.gd" id="3_j2xfo"]
 [ext_resource type="FontFile" uid="uid://bb1qlsmay1voc" path="res://assets/fonts/RusselSquareOpti.otf" id="4_uix07"]
@@ -15,7 +16,7 @@ font_size = 12
 outline_size = 6
 outline_color = Color(0, 0, 0, 1)
 
-[node name="Gamehud" type="Control"]
+[node name="GameHud" type="Control"]
 z_index = 20
 layout_mode = 3
 anchors_preset = 15
@@ -23,6 +24,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_dwcec")
+metadata/_custom_type_script = "uid://78oh4cl75ngu"
 
 [node name="Hud-test" type="Sprite2D" parent="."]
 z_index = 10

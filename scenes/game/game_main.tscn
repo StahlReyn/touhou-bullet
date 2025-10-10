@@ -1,0 +1,35 @@
+[gd_scene load_steps=4 format=3 uid="uid://cymswu7x3ujdg"]
+
+[ext_resource type="Script" uid="uid://egelp2iwlkw7" path="res://scenes/game/game_main.gd" id="1_xlk0u"]
+[ext_resource type="PackedScene" uid="uid://dks2tixhdliu5" path="res://scenes/game/game_hud.tscn" id="2_612a3"]
+[ext_resource type="PackedScene" uid="uid://caqu7tfsa7qtg" path="res://scenes/game/game_view.tscn" id="3_snne4"]
+
+[node name="Gamemain" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_xlk0u")
+metadata/_custom_type_script = "uid://egelp2iwlkw7"
+metadata/_edit_lock_ = true
+
+[node name="Gamehud" parent="." instance=ExtResource("2_612a3")]
+layout_mode = 1
+metadata/_edit_lock_ = true
+
+[node name="Gameview" parent="." instance=ExtResource("3_snne4")]
+position = Vector2(64, 32)
+metadata/_edit_lock_ = true
+
+[node name="ViewportBackground" type="SubViewportContainer" parent="."]
+z_index = -20
+layout_mode = 0
+offset_left = 32.0
+offset_right = 864.0
+offset_bottom = 960.0
+metadata/_edit_lock_ = true
+
+[node name="SubViewport" type="SubViewport" parent="ViewportBackground"]
+handle_input_locally = false
+size = Vector2i(832, 960)
+render_target_update_mode = 4
+
+[connection signal="start_stage" from="." to="Gameview" method="_on_gamemain_start_stage"]
