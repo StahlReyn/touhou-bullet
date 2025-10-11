@@ -16,7 +16,10 @@ func get_enemy_boss_list() -> Array[Node]:
 
 func get_bullet_list() -> Array[Node]:
 	return get_tree().get_nodes_in_group("bullet")
-	
+
+func get_node_count() -> int:
+	return get_tree().get_node_count()
+
 func get_bullet_count() -> int:
 	return get_tree().get_nodes_in_group("bullet").size()
 
