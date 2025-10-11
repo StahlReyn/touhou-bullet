@@ -20,7 +20,7 @@ func _physics_process(delta: float) -> void:
 		cur_target_enemy = get_enemy_target()
 	
 	if cur_target_enemy != null: # turn toward if exists
-		var target_angle = entity.global_position.angle_to_point(cur_target_enemy.global_position)
+		var target_angle = entity.position.angle_to_point(cur_target_enemy.position)
 		entity.rotation = MathUtils.lerp_angle_smooth(entity.rotation, target_angle, rotation_speed, delta)
 	
 	# move based on rotation

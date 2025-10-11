@@ -15,7 +15,7 @@ static func create(entity_owner: Entity, gravity_subject: Entity, gravity_streng
 func _physics_process(delta: float) -> void:
 	velocity += (
 		gravity_strength 
-		/ entity.global_position.distance_squared_to(gravity_subject.global_position)
-		* entity.global_position.direction_to(gravity_subject.global_position)
+		/ entity.position.distance_squared_to(gravity_subject.position)
+		* entity.position.direction_to(gravity_subject.position)
 	)
 	entity.position += velocity * delta

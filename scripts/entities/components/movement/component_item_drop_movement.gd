@@ -22,15 +22,15 @@ func _physics_process(delta: float) -> void:
 	# This is simple enough to do if else statement rather than proper state
 	if cur_state == State.SPREADING:
 		entity.rotation += rotation_velocity * delta
-		entity.global_position += spread_velocity * delta
+		entity.position += spread_velocity * delta
 		if spread_time <= 0:
 			cur_state = State.FALLING
 			entity.rotation = 0
 		spread_time -= delta
 	elif cur_state == State.FALLING:
-		entity.global_position += fall_velocity * delta
+		entity.position += fall_velocity * delta
 		if player.in_collection_range(entity):
 			cur_state = State.COLLECTING
 	elif cur_state == State.COLLECTING:
-		entity.global_position += entity.global_position.direction_to(player.global_position) * collection_speed * delta
+		entity.position += entity.position.direction_to(player.position) * collection_speed * delta
 	

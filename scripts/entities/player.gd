@@ -23,6 +23,8 @@ enum PlayerState {
 
 func _ready() -> void:
 	GameVariables.player = self
+	position = respawn_pos
+	position.y = respawn_y
 
 func _physics_process(delta: float) -> void:
 	if invincible:
@@ -41,7 +43,7 @@ func _physics_process(delta: float) -> void:
 			respawn_finish.emit()
 
 func in_collection_range(entity: Entity):
-	return entity.global_position.distance_squared_to(self.global_position) <= collection_range_squared
+	return entity.position.distance_squared_to(position) <= collection_range_squared
 
 func kill():
 	if not invincible:

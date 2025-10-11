@@ -7,7 +7,7 @@
 [ext_resource type="Script" uid="uid://cq0p03i6ikw6o" path="res://scripts/entities/components/player/component_player_shooter.gd" id="6_laj5w"]
 [ext_resource type="Script" uid="uid://chhrdpl7n5bse" path="res://scripts/entities/components/player/component_player_movement.gd" id="6_rptol"]
 [ext_resource type="PackedScene" uid="uid://dpe8udoyvvp7a" path="res://data/players/shooter_reimu.tscn" id="8_mba3y"]
-[ext_resource type="Script" uid="uid://b44bdp63e1c73" path="res://scripts/factories/bullet_scene_factory.gd" id="9_mba3y"]
+[ext_resource type="Script" uid="uid://b44bdp63e1c73" path="res://scripts/factories/bullet/bullet_scene_factory.gd" id="9_mba3y"]
 [ext_resource type="Script" uid="uid://nw5wori6pxk4" path="res://scripts/entities/components/player/shooter_position.gd" id="9_x2pug"]
 [ext_resource type="PackedScene" uid="uid://bsberf207gxya" path="res://data/bullets/player/reimu_basic.tscn" id="10_ifuaf"]
 [ext_resource type="AudioStream" uid="uid://dq30caahnggrl" path="res://assets/audio/sfx/pichuun_processed.wav" id="11_yn8tb"]

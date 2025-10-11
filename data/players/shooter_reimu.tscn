@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://wpr67i6fdaud" path="res://assets/graphics/players/yingyang_shot.png" id="2_tl8xm"]
 [ext_resource type="Script" uid="uid://dbajpt4gr4oqh" path="res://scripts/entities/components/movement/component_constant_rotation.gd" id="3_osfwy"]
 [ext_resource type="Script" uid="uid://cq0p03i6ikw6o" path="res://scripts/entities/components/player/component_player_shooter.gd" id="4_pfkap"]
-[ext_resource type="Script" uid="uid://b44bdp63e1c73" path="res://scripts/factories/bullet_scene_factory.gd" id="5_tl8xm"]
+[ext_resource type="Script" uid="uid://b44bdp63e1c73" path="res://scripts/factories/bullet/bullet_scene_factory.gd" id="5_tl8xm"]
 [ext_resource type="PackedScene" uid="uid://du4ka6a73jij8" path="res://data/bullets/player/reimu_homing.tscn" id="6_osfwy"]
 [ext_resource type="PackedScene" uid="uid://bsberf207gxya" path="res://data/bullets/player/reimu_basic.tscn" id="7_7dx1c"]
 

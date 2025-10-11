@@ -25,7 +25,7 @@ var frame_timer: float = 0.0
 var last_pos: Vector2
 
 func _ready() -> void:
-	last_pos = global_position
+	last_pos = position
 
 func _physics_process(delta: float) -> void:
 	frame_timer -= delta
@@ -48,7 +48,7 @@ func set_anim(key: String = "default") -> void:
 	cur_anim = col_anims[key]
 
 func update_animation() -> void:
-	var diff_pos = global_position - last_pos
+	var diff_pos = position - last_pos
 	# Using relative size of axis, faster than atan()
 	if abs(diff_pos.x) * 0.5 > abs(diff_pos.y):
 		set_anim("side")
@@ -57,4 +57,4 @@ func update_animation() -> void:
 	else:
 		set_anim("default")
 	flip_h = diff_pos.x < 0
-	last_pos = global_position # Update pos
+	last_pos = position # Update pos
