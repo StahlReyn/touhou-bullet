@@ -2,7 +2,7 @@ class_name Character
 extends Entity
 ## Parent class for Player and Enemy
 
-signal die
+signal died
 
 @export var mhp : int = 10
 @export var collision_damage : int = 10
@@ -29,11 +29,11 @@ func take_damage(dmg : int):
 
 func kill():
 	is_dead = true
-	die.emit()
+	died.emit()
 	call_deferred("queue_free")
 
 func _on_area_entered(area: Area2D) -> void:
 	# Character can collide with each other. Use collision layer to differentiate.
 	if area is Character:
-		area.hit.emit()
+		hit.emit()
 		area.take_damage(collision_damage)

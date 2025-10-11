@@ -23,6 +23,7 @@ AudioManager="*res://globals/audio_manager.gd"
 SceneManager="*res://globals/scene_manager.gd"
 GameVariables="*res://globals/game_variables.gd"
 GameUtils="*res://globals/game_utils.gd"
+EntityEnums="*res://globals/entity_enums.gd"
 
 [debug]
 

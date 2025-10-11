@@ -1,6 +1,6 @@
 extends Node
 
-enum Difficulties {
+enum Difficulty {
 	EASY,
 	NORMAL,
 	HARD,
@@ -26,7 +26,7 @@ var lives: int = 3
 var bombs: int = 3
 var life_pieces: int = 0
 var bomb_pieces: int = 0
-##Powers are in integer for simplicity, display divides by 100
+## Powers are in integer for simplicity, display divides by 100
 var power: int = 0
 
 var deaths: int = 0
@@ -56,6 +56,59 @@ func reset_variables() -> void:
 	shoot_down = 0
 	reset_chapter_variables()
 
+# ================================================================
+#                       GETTER / SETTERS
+# ================================================================
+
+func add_score(value: int) -> void:
+	score += value
+
+func add_point_value(value: int) -> void:
+	point_value += value
+	point_value = clamp(point_value, 0, point_value_max)
+
+func add_graze_count(value: int = 1) -> void:
+	graze += value
+
+func add_lives(value: int = 1) -> void:
+	lives += value
+	lives = clamp(lives, 0, lives_max)
+
+func lose_lives(value: int = 1) -> void: ## Remove counterpart for clarity and debugging purposes
+	lives -= value
+	lives = clamp(lives, 0, lives_max)
+
+func add_bombs(value: int = 1) -> void:
+	bombs += value
+	bombs = clamp(bombs, 0, bombs_max)
+
+func lose_bombs(value: int = 1) -> void:
+	bombs -= value
+	bombs = clamp(bombs, 0, bombs_max)
+
+func add_life_pieces(value: int = 1) -> void:
+	life_pieces += value
+	if life_pieces >= life_pieces_max:
+		add_lives(life_pieces / life_pieces_max) # Integer does floor division
+		life_pieces = life_pieces % life_pieces_max # Remainder pieces
+
+func add_bomb_pieces(value: int = 1) -> void:
+	bomb_pieces += value
+	if bomb_pieces >= bomb_pieces_max:
+		add_bombs(bomb_pieces / bomb_pieces_max) # Integer does floor division
+		bomb_pieces = bomb_pieces % bomb_pieces_max # Remainder pieces
+
+func add_power(value: int = 1) -> void:
+	power += value
+	power = clamp(power, 0, power_max)
+
+func lose_power(value: int = 1) -> void:
+	power += value
+	power = clamp(power, 0, power_max)
+
+# ================================================================
+#                          CHAPTER
+# ================================================================
 func reset_chapter_variables() -> void:
 	section_bonus = 0
 	prev_deaths = deaths
@@ -85,51 +138,10 @@ func get_section_bonus_final() -> int:
 
 func add_section_bonus_to_score() -> void:
 	add_score(get_section_bonus_final())
-
-func add_score(value: int) -> void:
-	score += value
-
-func add_graze_count(value: int = 1) -> void:
-	graze += value
-
-func add_lives(value: int = 1) -> void:
-	lives += value
-	lives = clamp(lives, 0, lives_max)
-	AudioManager.play_item_get()
-
-func lose_lives(value: int = 1) -> void: ## Remove counterpart for clarity and debugging purposes
-	lives -= value
-	lives = clamp(lives, 0, lives_max)
-
-func add_bombs(value: int = 1) -> void:
-	bombs += value
-	bombs = clamp(bombs, 0, bombs_max)
-	AudioManager.play_item_get()
-
-func lose_bombs(value: int = 1) -> void:
-	bombs -= value
-	bombs = clamp(bombs, 0, bombs_max)
-
-func add_life_pieces(value: int = 1) -> void:
-	life_pieces += value
-	if life_pieces >= life_pieces_max:
-		add_lives(life_pieces / life_pieces_max) # Integer does floor division
-		life_pieces = life_pieces % life_pieces_max # Remainder pieces
-
-func add_bomb_pieces(value: int = 1) -> void:
-	bomb_pieces += value
-	if bomb_pieces >= bomb_pieces_max:
-		add_bombs(bomb_pieces / bomb_pieces_max) # Integer does floor division
-		bomb_pieces = bomb_pieces % bomb_pieces_max # Remainder pieces
-
-func add_power(value: int = 1) -> void:
-	power += value
-	power = clamp(power, 0, power_max)
-
-func lose_power(value: int = 1) -> void:
-	power += value
-	power = clamp(power, 0, power_max)
-
+	
+# ================================================================
+#                            DISPLAY
+# ================================================================
 func get_score_display():
 	return thousands_sep(score)
 

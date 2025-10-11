@@ -18,7 +18,7 @@ func _on_timer_end() -> void:
 		end_section()
 	
 	for i in range(16):
-		var enemy: Enemy = TestFactory.create_simple_enemy()
+		var enemy: Enemy = Enemy.create_test()
 		enemy.position.x = (timer_count % 16) * 50 + 100
 		enemy.position.y = -10
 		var comp: ComponentGravity = ComponentGravity.create(enemy, GameVariables.player, 500000)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://dgl5l0j6dpfd5"]
+[gd_scene load_steps=33 format=3 uid="uid://dgl5l0j6dpfd5"]
 
 [ext_resource type="Script" uid="uid://4uk2a50v5es0" path="res://scripts/entities/player.gd" id="1_0d26x"]
 [ext_resource type="Texture2D" uid="uid://8wwwsbsdvrys" path="res://assets/graphics/players/reimu.png" id="2_xrwn8"]
@@ -10,6 +10,7 @@
 [ext_resource type="Script" uid="uid://b44bdp63e1c73" path="res://scripts/factories/bullet_scene_factory.gd" id="9_mba3y"]
 [ext_resource type="Script" uid="uid://nw5wori6pxk4" path="res://scripts/entities/components/player/shooter_position.gd" id="9_x2pug"]
 [ext_resource type="PackedScene" uid="uid://bsberf207gxya" path="res://data/bullets/player/reimu_basic.tscn" id="10_ifuaf"]
+[ext_resource type="AudioStream" uid="uid://dq30caahnggrl" path="res://assets/audio/sfx/pichuun_processed.wav" id="11_yn8tb"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_xrwn8"]
 radius = 5.0
@@ -248,9 +249,13 @@ script = ExtResource("9_mba3y")
 bullet_scene = ExtResource("10_ifuaf")
 metadata/_custom_type_script = "uid://b44bdp63e1c73"
 
-[connection signal="die" from="." to="PlayerMovement" method="_on_player_die"]
-[connection signal="die" from="." to="Shooter1" method="_on_player_die"]
-[connection signal="die" from="." to="Shooter2" method="_on_player_die"]
-[connection signal="die" from="." to="Shooter3" method="_on_player_die"]
-[connection signal="die" from="." to="Shooter4" method="_on_player_die"]
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("11_yn8tb")
+volume_db = -7.486
+
+[connection signal="died" from="." to="PlayerMovement" method="_on_player_died"]
+[connection signal="died" from="." to="Shooter1" method="_on_player_died"]
+[connection signal="died" from="." to="Shooter2" method="_on_player_died"]
+[connection signal="died" from="." to="Shooter3" method="_on_player_died"]
+[connection signal="died" from="." to="Shooter4" method="_on_player_died"]
 [connection signal="respawn_finish" from="." to="PlayerMovement" method="_on_player_respawn_finish"]

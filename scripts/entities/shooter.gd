@@ -54,7 +54,7 @@ func get_target_position() -> ShooterPosition:
 			highest_power = sh_pos.min_power
 	return highest_sh
 
-func _on_player_die() -> void:
+func _on_player_died() -> void:
 	# Call Deferred as process tries to move right before
 	call_deferred("reset_position")
 

@@ -65,7 +65,7 @@ func process_focus(delta: float) -> void:
 		graze_sprite.scale = MathUtils.lerp_smooth(graze_sprite.scale, unfocused_scale, focus_anim_speed, delta)
 
 
-func _on_player_die() -> void:
+func _on_player_died() -> void:
 	do_process_movement = false
 
 func _on_player_respawn_finish() -> void:

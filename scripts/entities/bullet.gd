@@ -27,13 +27,14 @@ func _physics_process(delta: float) -> void:
 		#main_sprite.scale = MathUtils.lerp_smooth(main_sprite.scale, prev_scale, SPAWN_SCALE_SPEED, delta)
 	pass
 
+@warning_ignore("narrowing_conversion")
 func damage_target(character: Character) -> void:
 	character.take_damage(damage)
 	damage *= damage_retention
 	if damage <= 0:
-		do_remove()
+		despawn()
 	
 func _on_area_entered(area: Area2D) -> void:
 	if area is Character:
 		damage_target(area)
-		area.hit.emit()
+		hit.emit()

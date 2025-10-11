@@ -12,4 +12,4 @@ static func create(entity_owner: Entity, padding: int = 100) -> ComponentDespawn
 func _physics_process(delta: float) -> void:
 	if (entity.position.x < -padding or entity.position.x > GameUtils.game_area.x + padding or
 		entity.position.y < -padding or entity.position.y > GameUtils.game_area.y + padding):
-		entity.do_remove()
+		entity.despawn()

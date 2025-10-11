@@ -1,4 +1,4 @@
-class_name ComponentItemDrop
+class_name ComponentItemDropMovement
 extends EntityComponent
 
 enum State {

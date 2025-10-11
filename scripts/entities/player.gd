@@ -45,7 +45,7 @@ func in_collection_range(entity: Entity):
 
 func kill():
 	if not invincible:
-		die.emit()
+		died.emit()
 		respawn()
 
 func respawn():
