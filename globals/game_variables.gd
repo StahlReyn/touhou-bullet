@@ -14,7 +14,7 @@ static var bombs_max: int = 8
 static var life_pieces_max: int = 3
 static var bomb_pieces_max: int = 5
 
-var game_view: GameView
+var game_area: GameArea
 var player: Player
 
 var game_time: float = 0.0

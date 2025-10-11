@@ -1,11 +1,11 @@
 [gd_scene load_steps=5 format=3 uid="uid://caqu7tfsa7qtg"]
 
-[ext_resource type="Script" uid="uid://dy6e4thtl3g0j" path="res://scenes/game/game_view.gd" id="1_4nubl"]
+[ext_resource type="Script" uid="uid://dy6e4thtl3g0j" path="res://scenes/game/game_area.gd" id="1_4nubl"]
 [ext_resource type="PackedScene" uid="uid://dgl5l0j6dpfd5" path="res://data/players/player_reimu.tscn" id="1_pw8qh"]
 [ext_resource type="Script" uid="uid://cf4coa3e55q1b" path="res://scripts/gameplay/stage_controller.gd" id="2_3f2ys"]
 [ext_resource type="Resource" uid="uid://difrbojtnaq1r" path="res://data/stages/test/stage_test.tres" id="3_lq0cy"]
 
-[node name="GameView" type="Node2D"]
+[node name="GameArea" type="Node2D"]
 script = ExtResource("1_4nubl")
 
 [node name="StageController" type="Node" parent="."]
@@ -16,4 +16,4 @@ metadata/_custom_type_script = "uid://cf4coa3e55q1b"
 [node name="PlayerReimu" parent="." instance=ExtResource("1_pw8qh")]
 position = Vector2(209, 393)
 
-[connection signal="start_stage" from="." to="StageController" method="_on_game_view_start_stage"]
+[connection signal="start_stage" from="." to="StageController" method="_on_game_area_start_stage"]

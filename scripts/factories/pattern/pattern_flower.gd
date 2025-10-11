@@ -7,6 +7,7 @@ extends PatternFactory
 @export var speed_min: float = 100.0
 @export var speed_max: float = 100.0
 @export var rotation: float = 0.0
+@export var base_bullet: Bullet
 
 func create() -> Array[Bullet]:
 	var bullets: Array[Bullet] = []
@@ -21,10 +22,7 @@ func petal(rotation: float):
 	var angle_per_bullet = angle_per_petal * 0.5 / petal_size 
 	for j in range(petal_size):
 		for k in range(2):
-			var bullet: Bullet = EntityEnums.get_bullet(
-				EntityEnums.BulletType.CIRCLE_BORDERED,
-				EntityEnums.BulletColor.RED
-			)
+			var bullet: Bullet = base_bullet.duplicate()
 			var bullet_angle = rotation
 			if k == 1:
 				bullet_angle += j * angle_per_bullet
@@ -34,4 +32,4 @@ func petal(rotation: float):
 			var speed = speed_min + speed_max * (1 - float(j)/petal_size)
 
 			ComponentVelocity.add_to_entity(bullet, direction * speed)
-			GameVariables.game_view.add_bullet(bullet, position)
+			GameVariables.game_area.add_bullet(bullet, position)

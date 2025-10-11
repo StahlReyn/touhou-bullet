@@ -11,6 +11,7 @@ var modulate_decay: float = 20
 func _ready() -> void:
 	# If there is following entity specified, make it top level following
 	if following_entity != null:
+		top_level = true
 		position = following_entity.position
 
 func _physics_process(delta: float) -> void:
@@ -30,16 +31,16 @@ func process_movement(delta: float) -> void:
 	modulate = MathUtils.lerp_smooth(modulate, modulate_normal, modulate_decay, delta)
 	
 	if Input.is_action_pressed("focus"):
-		position = MathUtils.lerp_smooth(
-			position, 
-			following_entity.position + sh_pos.focused_position, 
+		global_position = MathUtils.lerp_smooth(
+			global_position, 
+			following_entity.global_position + sh_pos.focused_position, 
 			sh_pos.move_speed, 
 			delta
 		)
 	else:
-		position = MathUtils.lerp_smooth(
-			position, 
-			following_entity.position + sh_pos.unfocused_position, 
+		global_position = MathUtils.lerp_smooth(
+			global_position, 
+			following_entity.global_position + sh_pos.unfocused_position, 
 			sh_pos.move_speed, 
 			delta
 		)

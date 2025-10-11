@@ -5,8 +5,7 @@ signal start_stage
 signal changing_scene
 
 #@onready var popup : PopUps = $PopUps
-@onready var game_hud : Control = $Gamehud
-@onready var game_view : Node2D = $Gameview
+@onready var game_hud : Control = $GameHud
 
 @onready var noise = FastNoiseLite.new()
 var cur_shake_strength = 0
@@ -18,14 +17,14 @@ func _ready() -> void:
 	# as previous is considered freed, breaking stuff
 	SceneManager.current_scene = self
 	# PLACEHOLDER - there's no continuous stage yet so it's fine to reset
-	GameVariables.game_view = game_view
 	GameVariables.reset_variables()
 	start_stage.emit()
 	
 func _physics_process(delta: float) -> void:
-	cur_shake_strength -= delta * 150
-	cur_shake_strength = max(0, cur_shake_strength)
-	game_hud.position = get_noise_offset(delta, 1000, cur_shake_strength)
+	#cur_shake_strength -= delta * 150
+	#cur_shake_strength = max(0, cur_shake_strength)
+	#game_hud.position = get_noise_offset(delta, 1000, cur_shake_strength)
+	pass
 	
 func get_noise_offset(delta: float, speed: float, strength: float) -> Vector2:
 	noise_i += delta * speed

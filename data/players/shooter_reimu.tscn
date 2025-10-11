@@ -29,7 +29,7 @@ metadata/_edit_lock_ = true
 shape = SubResource("CircleShape2D_j4pha")
 metadata/_edit_lock_ = true
 
-[node name="ComponentConstantRotation" type="Node" parent="." node_paths=PackedStringArray("entity")]
+[node name="ComponentRotation" type="Node" parent="." node_paths=PackedStringArray("entity")]
 script = ExtResource("3_osfwy")
 velocity = -10
 entity = NodePath("..")

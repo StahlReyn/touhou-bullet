@@ -50,12 +50,14 @@ const BULLET_SCENES: Dictionary[BulletType, PackedScene] = {
 }
 
 enum EnemyType {
-	FAIRY	
+	FAIRY,
+	FAIRY_SUNFLOWER
 }
 
 ## List of Common Enemy scenes assigned to a bullet type
 const ENEMY_SCENES: Dictionary[EnemyType, PackedScene] = {
-	EnemyType.FAIRY: preload("res://data/enemies/fairy_leaf.tscn")
+	EnemyType.FAIRY: preload("res://data/enemies/fairy_leaf.tscn"),
+	EnemyType.FAIRY_SUNFLOWER: preload("res://data/enemies/fairy_sunflower.tscn")
 }
 
 enum ItemType {

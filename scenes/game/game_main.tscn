@@ -1,35 +1,61 @@
-[gd_scene load_steps=4 format=3 uid="uid://cymswu7x3ujdg"]
+[gd_scene load_steps=8 format=3 uid="uid://cymswu7x3ujdg"]
 
 [ext_resource type="Script" uid="uid://egelp2iwlkw7" path="res://scenes/game/game_main.gd" id="1_xlk0u"]
 [ext_resource type="PackedScene" uid="uid://dks2tixhdliu5" path="res://scenes/game/game_hud.tscn" id="2_612a3"]
-[ext_resource type="PackedScene" uid="uid://caqu7tfsa7qtg" path="res://scenes/game/game_view.tscn" id="3_snne4"]
+[ext_resource type="Texture2D" uid="uid://c4ls1lgwm8u8p" path="res://assets/graphics/skyboxes/space.png" id="3_612a3"]
+[ext_resource type="PackedScene" uid="uid://caqu7tfsa7qtg" path="res://scenes/game/game_area.tscn" id="3_snne4"]
 
-[node name="Gamemain" type="Control"]
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_snne4"]
+panorama = ExtResource("3_612a3")
+
+[sub_resource type="Sky" id="Sky_nxgbd"]
+sky_material = SubResource("PanoramaSkyMaterial_snne4")
+
+[sub_resource type="Environment" id="Environment_xlk0u"]
+background_mode = 2
+background_color = Color(1.6244128e-07, 0.09904594, 0.15504143, 1)
+sky = SubResource("Sky_nxgbd")
+
+[node name="GameMain" type="Control"]
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_xlk0u")
 metadata/_custom_type_script = "uid://egelp2iwlkw7"
 metadata/_edit_lock_ = true
 
-[node name="Gamehud" parent="." instance=ExtResource("2_612a3")]
-layout_mode = 1
-metadata/_edit_lock_ = true
-
-[node name="Gameview" parent="." instance=ExtResource("3_snne4")]
+[node name="GameView" type="Node2D" parent="."]
 position = Vector2(64, 32)
+
+[node name="GameArea" parent="GameView" instance=ExtResource("3_snne4")]
 metadata/_edit_lock_ = true
 
-[node name="ViewportBackground" type="SubViewportContainer" parent="."]
+[node name="ViewportBackground" type="SubViewportContainer" parent="GameView"]
 z_index = -20
-layout_mode = 0
-offset_left = 32.0
-offset_right = 864.0
-offset_bottom = 960.0
+offset_left = -32.0
+offset_top = -32.0
+offset_right = 800.0
+offset_bottom = 928.0
 metadata/_edit_lock_ = true
 
-[node name="SubViewport" type="SubViewport" parent="ViewportBackground"]
+[node name="SubViewport" type="SubViewport" parent="GameView/ViewportBackground"]
 handle_input_locally = false
 size = Vector2i(832, 960)
 render_target_update_mode = 4
 
-[connection signal="start_stage" from="." to="Gameview" method="_on_gamemain_start_stage"]
+[node name="Camera3D" type="Camera3D" parent="GameView/ViewportBackground/SubViewport"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="GameView/ViewportBackground/SubViewport"]
+environment = SubResource("Environment_xlk0u")
+
+[node name="GameHud" parent="." instance=ExtResource("2_612a3")]
+layout_mode = 0
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_right = 1280.0
+offset_bottom = 960.0
+grow_horizontal = 1
+grow_vertical = 1
+metadata/_edit_lock_ = true
+
+[connection signal="start_stage" from="." to="GameView/GameArea" method="_on_game_main_start_stage"]

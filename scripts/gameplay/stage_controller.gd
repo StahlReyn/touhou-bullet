@@ -6,7 +6,7 @@ signal end_stage
 @export var stage_data: StageData
 @export var section_number: int = 0
 
-func _on_game_view_start_stage() -> void:
+func _on_game_area_start_stage() -> void:
 	print("++ Stage Start")
 	start_next_section()
 

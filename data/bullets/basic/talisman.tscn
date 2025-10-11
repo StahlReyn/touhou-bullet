@@ -6,8 +6,9 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_1dxig"]
 radius = 8.0
 
-[node name="Talisman" type="Area2D"]
+[node name="Talisman" type="Area2D" node_paths=PackedStringArray("main_sprite")]
 script = ExtResource("1_fywsb")
+main_sprite = NodePath("Sprite2D")
 metadata/_custom_type_script = "uid://iecthdath73v"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
