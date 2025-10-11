@@ -1,4 +1,4 @@
-class_name ComponentConstantRotation
+class_name ComponentRotation
 extends EntityComponent
 
 @export var velocity: int = 0

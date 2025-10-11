@@ -69,8 +69,10 @@ const ITEM_SCENES: Dictionary[ItemType, PackedScene] = {
 	ItemType.POINT: preload("res://data/items/item_point.tscn")
 }
 
-func get_bullet(type: BulletType) -> Bullet:
-	return BULLET_SCENES[type].instantiate() as Bullet
+func get_bullet(type: BulletType, color: BulletColor = BulletColor.WHITE) -> Bullet:
+	var bullet: Bullet = BULLET_SCENES[type].instantiate()
+	bullet.offset_sprite_frame(color)
+	return bullet
 
 func get_enemy(type: EnemyType) -> Enemy:
 	return ENEMY_SCENES[type].instantiate() as Enemy

@@ -25,8 +25,5 @@ func process_shoot(delta: float) -> void:
 	else:
 		bullet = unfocus_bullet_factory.create()
 		cooldown = unfocus_cooldown
-	GameVariables.game_view.add_bullet(bullet)
-	bullet.global_position = entity.global_position + bullet_offset
+	GameVariables.game_view.add_bullet_player(bullet, entity.global_position + bullet_offset)
 	bullet.rotation = bullet_rotation
-	bullet.modulate.a = 0.3
-	bullet.z_index = -10

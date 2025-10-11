@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://iecthdath73v" path="res://scripts/entities/bullet.gd" id="1_aa4xs"]
 [ext_resource type="Texture2D" uid="uid://brl5jngelp8c4" path="res://assets/graphics/bullets/bullet_small.png" id="2_jwmyn"]
 [ext_resource type="Script" uid="uid://u8kkirqsbt30" path="res://scripts/entities/components/component_despawn_edge.gd" id="3_1w1cs"]
-[ext_resource type="Script" uid="uid://bjkwlerrqk53u" path="res://scripts/entities/components/movement/component_constant_velocity.gd" id="4_fmlgx"]
+[ext_resource type="Script" uid="uid://bjkwlerrqk53u" path="res://scripts/entities/components/movement/component_velocity.gd" id="4_fmlgx"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_l8pgy"]
 
@@ -11,7 +11,6 @@
 collision_layer = 4
 collision_mask = 2
 script = ExtResource("1_aa4xs")
-damage = 10
 metadata/_custom_type_script = "uid://iecthdath73v"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

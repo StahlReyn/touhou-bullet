@@ -1,12 +1,13 @@
 class_name Bullet
 extends Entity
 
-@export var damage : int = 1
-@export var damage_retention : float = 0.0 ## change in damage per hit. 0 is usual, 1 is damage is never lost (infinite pierce)
+@export var damage: int = 10
+@export var damage_retention: float = 0.0 ## change in damage per hit. 0 is usual, 1 is damage is never lost (infinite pierce)
+@export var main_sprite: Sprite2D
 
-var do_spawn_effect : bool = true ## This will make bullet do slight fade and scale-in transition
-var prev_scale : Vector2
-var prev_alpha : float
+var do_spawn_effect: bool = true ## This will make bullet do slight fade and scale-in transition
+var prev_scale: Vector2
+var prev_alpha: float
 
 const INIT_SPAWN_SCALE := 3.0
 const SPAWN_SCALE_SPEED := 20.0
@@ -26,6 +27,9 @@ func _physics_process(delta: float) -> void:
 		#main_sprite.modulate.a = MathUtils.lerp_smooth(main_sprite.modulate.a, prev_alpha, SPAWN_OPACITY_SPEED, delta)
 		#main_sprite.scale = MathUtils.lerp_smooth(main_sprite.scale, prev_scale, SPAWN_SCALE_SPEED, delta)
 	pass
+
+func offset_sprite_frame(index: int):
+	main_sprite.frame += index
 
 @warning_ignore("narrowing_conversion")
 func damage_target(character: Character) -> void:

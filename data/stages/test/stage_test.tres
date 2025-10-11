@@ -1,10 +1,16 @@
-[gd_resource type="Resource" script_class="StageData" load_steps=8 format=3 uid="uid://difrbojtnaq1r"]
+[gd_resource type="Resource" script_class="StageData" load_steps=10 format=3 uid="uid://difrbojtnaq1r"]
 
 [ext_resource type="Script" uid="uid://dmb82id2jgc4u" path="res://scripts/gameplay/stage_data_section.gd" id="1_0fcsl"]
 [ext_resource type="Script" uid="uid://bpbubir7dstld" path="res://scripts/gameplay/stage_data.gd" id="1_co3h1"]
 [ext_resource type="Script" uid="uid://7j5ebxd7k1rm" path="res://scripts/gameplay/stage_data_script.gd" id="2_f47eh"]
 [ext_resource type="Script" uid="uid://iyg7fx3sfj25" path="res://data/stages/test/s1.gd" id="3_llren"]
 [ext_resource type="Script" uid="uid://ituqutvgyikh" path="res://data/stages/test/s2.gd" id="4_llren"]
+[ext_resource type="Script" uid="uid://4flv55w4oydu" path="res://data/stages/test/s3.gd" id="5_wjklv"]
+
+[sub_resource type="Resource" id="Resource_55mas"]
+script = ExtResource("2_f47eh")
+section_script = ExtResource("5_wjklv")
+metadata/_custom_type_script = "uid://7j5ebxd7k1rm"
 
 [sub_resource type="Resource" id="Resource_wjklv"]
 script = ExtResource("2_f47eh")
@@ -18,5 +24,5 @@ metadata/_custom_type_script = "uid://7j5ebxd7k1rm"
 
 [resource]
 script = ExtResource("1_co3h1")
-data = Array[ExtResource("1_0fcsl")]([SubResource("Resource_wjklv"), SubResource("Resource_hd4i2")])
+data = Array[ExtResource("1_0fcsl")]([SubResource("Resource_55mas"), SubResource("Resource_wjklv"), SubResource("Resource_hd4i2")])
 metadata/_custom_type_script = "uid://bpbubir7dstld"

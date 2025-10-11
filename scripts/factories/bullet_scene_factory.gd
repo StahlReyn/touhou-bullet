@@ -4,4 +4,5 @@ extends BulletFactory
 @export var bullet_scene: PackedScene
 
 func create() -> Bullet:
-	return bullet_scene.instantiate()
+	var bullet: Bullet = bullet_scene.instantiate()
+	return bullet

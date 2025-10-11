@@ -18,13 +18,16 @@ func _on_timer_end() -> void:
 		end_section()
 	
 	for i in range(16):
-		var enemy: Enemy = Enemy.create_test()
+		var enemy: Enemy = EntityEnums.get_enemy(EntityEnums.EnemyType.FAIRY)
+		GameVariables.game_view.add_enemy(enemy)
 		enemy.position.x = (timer_count % 16) * 50 + 100
-		enemy.position.y = -10
+		enemy.position.y = -30
+		
 		var comp: ComponentGravity = ComponentGravity.create(enemy, GameVariables.player, 500000)
 		comp.velocity = Vector2(0, 50 + (timer_count % 16) * 0)
+		enemy.add_child(comp)
+		
 		if timer_count % 2 == 0:
 			enemy.set_type.emit("red")
-		enemy.add_child(comp)
 		timer_count += 1
 	timer.start(1)
