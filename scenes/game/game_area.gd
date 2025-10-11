@@ -9,6 +9,8 @@ enum Collision {
 	ITEM = 16
 }
 
+@onready var hit_scene := preload("res://data/effects/hit_particle_effect.tscn")
+
 signal start_stage
 
 func _ready() -> void:
@@ -26,6 +28,7 @@ func add_bullet_player(bullet: Bullet, pos: Vector2 = Vector2.ZERO) -> void:
 	bullet.z_index = -11
 	bullet.global_position = pos
 	ComponentDespawnEdge.add_to_entity(bullet)
+	HitEffectFactory.add_effect_to_entity(bullet)
 	
 func add_bullet(bullet: Bullet, pos: Vector2 = Vector2.ZERO) -> void:
 	add_child(bullet) # May change to specific container

@@ -33,6 +33,7 @@ metadata/_custom_type_script = "uid://u8kkirqsbt30"
 [node name="ComponentHomingLowest" type="Node" parent="." node_paths=PackedStringArray("entity")]
 script = ExtResource("4_pypty")
 move_speed = 1500.0
+rotation_speed = 20.0
 entity = NodePath("..")
 metadata/_custom_type_script = "uid://c8uq3vm31rge8"
 
