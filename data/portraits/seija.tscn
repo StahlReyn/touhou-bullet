@@ -1,0 +1,81 @@
+[gd_scene load_steps=10 format=3 uid="uid://c5lv57yicjv1l"]
+
+[ext_resource type="Script" uid="uid://dr2hem1dowlou" path="res://scripts/dialogues/portrait.gd" id="1_7q0a8"]
+[ext_resource type="Texture2D" uid="uid://ddsq2dvtqyxuf" path="res://assets/graphics/portraits/seija/body_default.tres" id="2_ssc1n"]
+[ext_resource type="Texture2D" uid="uid://dri2f6cu8yngo" path="res://assets/graphics/portraits/seija/body_lose.tres" id="3_r6g5c"]
+[ext_resource type="Texture2D" uid="uid://bj4uo4x1oa2ax" path="res://assets/graphics/portraits/seija/face_angry.tres" id="4_plwnu"]
+[ext_resource type="Texture2D" uid="uid://ddakfw8epwfyw" path="res://assets/graphics/portraits/seija/face_default.tres" id="5_r4ypg"]
+[ext_resource type="Texture2D" uid="uid://r405cieu0s6i" path="res://assets/graphics/portraits/seija/face_smug.tres" id="6_vx3s2"]
+[ext_resource type="Texture2D" uid="uid://b4oq16rt0l0ee" path="res://assets/graphics/portraits/seija/face_surprised.tres" id="7_nbt25"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_x3hsn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_ssc1n")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_r6g5c")
+}],
+"loop": true,
+"name": &"lose",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jxkc8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_plwnu")
+}],
+"loop": true,
+"name": &"angry",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_r4ypg")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_vx3s2")
+}],
+"loop": true,
+"name": &"smug",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_nbt25")
+}],
+"loop": true,
+"name": &"surprised",
+"speed": 5.0
+}]
+
+[node name="Portrait" type="Node2D" node_paths=PackedStringArray("body_sprite", "face_sprite")]
+script = ExtResource("1_7q0a8")
+id = "seija"
+body_sprite = NodePath("Body")
+face_sprite = NodePath("Face")
+metadata/_custom_type_script = "uid://dr2hem1dowlou"
+
+[node name="Body" type="AnimatedSprite2D" parent="."]
+position = Vector2(-70, 70)
+sprite_frames = SubResource("SpriteFrames_x3hsn")
+centered = false
+
+[node name="Face" type="AnimatedSprite2D" parent="."]
+z_index = 1
+position = Vector2(100, 150)
+sprite_frames = SubResource("SpriteFrames_jxkc8")
+centered = false

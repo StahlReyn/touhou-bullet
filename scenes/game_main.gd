@@ -51,3 +51,6 @@ func _on_pause_menu_retry() -> void:
 	await get_tree().create_timer(0.3).timeout
 	get_tree().paused = false
 	SceneManager.reload_current_scene()
+
+func _on_stage_controller_stage_ended() -> void:
+	print("==== Got Stage Controller Stage Ended ====")

@@ -1,9 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://cymswu7x3ujdg"]
+[gd_scene load_steps=12 format=3 uid="uid://cymswu7x3ujdg"]
 
 [ext_resource type="Script" uid="uid://egelp2iwlkw7" path="res://scenes/game_main.gd" id="1_xlk0u"]
 [ext_resource type="PackedScene" uid="uid://dks2tixhdliu5" path="res://scenes/game_hud.tscn" id="2_612a3"]
+[ext_resource type="Script" uid="uid://cf4coa3e55q1b" path="res://scripts/gameplay/stage_controller.gd" id="2_cxf66"]
 [ext_resource type="PackedScene" uid="uid://bhxpmmfn0rxv" path="res://scenes/section_clear_popup.tscn" id="3_3qnxt"]
 [ext_resource type="Texture2D" uid="uid://c4ls1lgwm8u8p" path="res://assets/graphics/skyboxes/space.png" id="3_612a3"]
+[ext_resource type="Resource" uid="uid://difrbojtnaq1r" path="res://data/stages/test/stage_test.tres" id="3_mn252"]
 [ext_resource type="PackedScene" uid="uid://caqu7tfsa7qtg" path="res://scenes/game_area.tscn" id="3_snne4"]
 [ext_resource type="PackedScene" uid="uid://cw2snxi5rw2t5" path="res://scenes/dialogue_view.tscn" id="6_4qd86"]
 
@@ -24,6 +26,13 @@ anchors_preset = 0
 script = ExtResource("1_xlk0u")
 metadata/_custom_type_script = "uid://egelp2iwlkw7"
 metadata/_edit_lock_ = true
+
+[node name="StageController" type="Node" parent="." node_paths=PackedStringArray("game_area", "dialogue_view")]
+script = ExtResource("2_cxf66")
+game_area = NodePath("../GameView/GameArea")
+dialogue_view = NodePath("../DialogueView")
+stage_data = ExtResource("3_mn252")
+metadata/_custom_type_script = "uid://cf4coa3e55q1b"
 
 [node name="DialogueView" parent="." instance=ExtResource("6_4qd86")]
 z_index = 100
@@ -67,5 +76,5 @@ render_target_update_mode = 4
 [node name="WorldEnvironment" type="WorldEnvironment" parent="GameView/ViewportBackground/SubViewport"]
 environment = SubResource("Environment_xlk0u")
 
-[connection signal="stage_started" from="." to="GameView/GameArea" method="_on_game_main_stage_started"]
-[connection signal="section_ended" from="GameView/GameArea" to="SectionClearPopup" method="_on_game_area_section_ended"]
+[connection signal="stage_started" from="." to="StageController" method="_on_game_main_stage_started"]
+[connection signal="stage_ended" from="StageController" to="." method="_on_stage_controller_stage_ended"]

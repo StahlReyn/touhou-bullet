@@ -9,17 +9,6 @@ enum Collision {
 	ITEM = 16
 }
 
-signal stage_started
-signal stage_ended
-signal section_ended
-
-func _ready() -> void:
-	GameVariables.game_area = self
-	pass
-
-func _physics_process(delta: float) -> void:
-	GameVariables.game_time += delta
-
 func add_bullet_player(bullet: Bullet, pos: Vector2 = Vector2.ZERO) -> void:
 	add_child(bullet)
 	bullet.collision_layer = Collision.BULLET_PLAYER # Is an Enemy
@@ -56,12 +45,3 @@ func add_item(item: Item, pos: Vector2 = Vector2.ZERO) -> void:
 	item.global_position = pos
 	ComponentDespawnEdge.add_to_entity(item)
 	CollectEffectFactory.add_effect_to_item(item)
-
-func _on_game_main_stage_started() -> void:
-	stage_started.emit()
-
-func _on_stage_controller_stage_ended() -> void:
-	stage_ended.emit()
-	
-func _on_stage_controller_section_ended() -> void:
-	section_ended.emit()

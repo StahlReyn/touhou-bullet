@@ -1,0 +1,7 @@
+[gd_resource type="AtlasTexture" load_steps=2 format=3 uid="uid://ddsq2dvtqyxuf"]
+
+[ext_resource type="Texture2D" uid="uid://dqjhmvr83aw0v" path="res://assets/graphics/portraits/seija/seija_kijin.png" id="1_3suvk"]
+
+[resource]
+atlas = ExtResource("1_3suvk")
+region = Rect2(0, 0, 500, 900)
