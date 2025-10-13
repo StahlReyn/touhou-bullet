@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://bha74p3x1608r"]
+
+[ext_resource type="Script" uid="uid://cmfy7ty1b3q6h" path="res://globals/audio_manager.gd" id="1_exsf0"]
+[ext_resource type="AudioStream" uid="uid://10k7dva83t2e" path="res://assets/audio/sfx/item_get.wav" id="2_hilj8"]
+[ext_resource type="AudioStream" uid="uid://de2bq0wvur8nc" path="res://assets/audio/sfx/thunder_light.wav" id="3_3uslp"]
+
+[node name="AudioManager" type="Node"]
+script = ExtResource("1_exsf0")
+
+[node name="ItemGet" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_hilj8")
+volume_db = -15.0
+
+[node name="Spellcard" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_3uslp")
+volume_db = -12.0

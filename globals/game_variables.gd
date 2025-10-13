@@ -71,6 +71,8 @@ func add_graze_count(value: int = 1) -> void:
 	graze += value
 
 func add_lives(value: int = 1) -> void:
+	if value > 0:
+		AudioManager.play_item_get()
 	lives += value
 	lives = clamp(lives, 0, lives_max)
 
@@ -79,6 +81,8 @@ func lose_lives(value: int = 1) -> void: ## Remove counterpart for clarity and d
 	lives = clamp(lives, 0, lives_max)
 
 func add_bombs(value: int = 1) -> void:
+	if value > 0:
+		AudioManager.play_item_get()
 	bombs += value
 	bombs = clamp(bombs, 0, bombs_max)
 

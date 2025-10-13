@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://c2u2r4nboje1s"]
+
+[ext_resource type="Script" uid="uid://ctnvfec0vjsxn" path="res://scenes/game/hud/piece_icon.gd" id="1_h1m05"]
+[ext_resource type="Texture2D" uid="uid://cnipwulhy0kh3" path="res://assets/graphics/system/bomb.png" id="2_h1m05"]
+
+[node name="PieceIcon" type="Control"]
+custom_minimum_size = Vector2(24, 50)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 24.0
+offset_bottom = 50.0
+script = ExtResource("1_h1m05")
+metadata/_custom_type_script = "uid://ctnvfec0vjsxn"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-6, 10)
+scale = Vector2(2, 2)
+texture = ExtResource("2_h1m05")
+centered = false
+hframes = 7

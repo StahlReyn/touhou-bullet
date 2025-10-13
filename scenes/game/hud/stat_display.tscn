@@ -1,0 +1,197 @@
+[gd_scene load_steps=8 format=3 uid="uid://b3p3yjowje17q"]
+
+[ext_resource type="Script" uid="uid://c0k1oyd0n1juk" path="res://scenes/game/hud/stat_display.gd" id="1_shx42"]
+[ext_resource type="LabelSettings" uid="uid://buvvmef2syqrg" path="res://assets/resources/label_settings/label_score_title.tres" id="2_2esx5"]
+[ext_resource type="LabelSettings" uid="uid://bkay61kan2hfv" path="res://assets/resources/label_settings/label_score.tres" id="3_3v65o"]
+[ext_resource type="Texture2D" uid="uid://blnrhius0cbnv" path="res://assets/graphics/system/divider_stat.png" id="4_qamqn"]
+[ext_resource type="PackedScene" uid="uid://bhgt67puheywo" path="res://scenes/game/hud/piece_container.tscn" id="5_1ffmx"]
+[ext_resource type="PackedScene" uid="uid://cr0d8cd2ug78s" path="res://scenes/game/hud/piece_icon_heart.tscn" id="6_5ycjw"]
+[ext_resource type="PackedScene" uid="uid://c2u2r4nboje1s" path="res://scenes/game/hud/piece_icon_bomb.tscn" id="7_xncqs"]
+
+[node name="StatDisplay" type="VBoxContainer"]
+z_index = 30
+offset_right = 436.0
+offset_bottom = 517.0
+script = ExtResource("1_shx42")
+metadata/_edit_lock_ = true
+
+[node name="Difficulty" type="Label" parent="."]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+text = "NORMAL"
+label_settings = ExtResource("2_2esx5")
+horizontal_alignment = 1
+
+[node name="HiScoreContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HiScoreContainer"]
+custom_minimum_size = Vector2(140, 0)
+layout_mode = 2
+text = "SYS_HIGHSCORE"
+label_settings = ExtResource("2_2esx5")
+
+[node name="Value" type="Label" parent="HiScoreContainer"]
+custom_minimum_size = Vector2(220, 0)
+layout_mode = 2
+text = "000,000,000"
+label_settings = ExtResource("3_3v65o")
+horizontal_alignment = 2
+
+[node name="Divider" type="Control" parent="."]
+z_index = -1
+layout_mode = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="Divider"]
+position = Vector2(0, -10)
+scale = Vector2(2, 2)
+texture = ExtResource("4_qamqn")
+centered = false
+
+[node name="ScoreContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="ScoreContainer"]
+custom_minimum_size = Vector2(140, 0)
+layout_mode = 2
+text = "SYS_SCORE"
+label_settings = ExtResource("2_2esx5")
+
+[node name="Value" type="Label" parent="ScoreContainer"]
+custom_minimum_size = Vector2(220, 0)
+layout_mode = 2
+text = "000,000,000"
+label_settings = ExtResource("3_3v65o")
+horizontal_alignment = 2
+
+[node name="Divider2" type="Control" parent="."]
+z_index = -1
+layout_mode = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="Divider2"]
+position = Vector2(0, -10)
+scale = Vector2(2, 2)
+texture = ExtResource("4_qamqn")
+centered = false
+
+[node name="Lives" parent="." instance=ExtResource("5_1ffmx")]
+layout_mode = 2
+label_text = "SYS_LIVES"
+label_color = Color(0.9076489, 0.3418969, 1, 1)
+icon_scene = ExtResource("6_5ycjw")
+
+[node name="Bombs" parent="." instance=ExtResource("5_1ffmx")]
+layout_mode = 2
+label_color = Color(3.5616756e-06, 0.9044336, 0.38019428, 1)
+icon_scene = ExtResource("7_xncqs")
+
+[node name="PowerContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="Icon" type="Control" parent="PowerContainer"]
+custom_minimum_size = Vector2(70, 32)
+layout_mode = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="PowerContainer/Icon"]
+position = Vector2(30, 8)
+scale = Vector2(2, 2)
+centered = false
+hframes = 8
+
+[node name="Label" type="Label" parent="PowerContainer"]
+modulate = Color(1, 0.439216, 0.439216, 1)
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+text = "SYS_POWER"
+label_settings = ExtResource("2_2esx5")
+
+[node name="Value" type="Label" parent="PowerContainer"]
+modulate = Color(1, 0.439216, 0.439216, 1)
+custom_minimum_size = Vector2(170, 0)
+layout_mode = 2
+text = "0.00/0.00"
+label_settings = ExtResource("3_3v65o")
+horizontal_alignment = 2
+
+[node name="DividerRight" type="Control" parent="."]
+modulate = Color(1, 0.439216, 0.439216, 1)
+z_index = -1
+layout_mode = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="DividerRight"]
+position = Vector2(80, -15)
+scale = Vector2(1.5, 2)
+texture = ExtResource("4_qamqn")
+centered = false
+
+[node name="ValueContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="Icon" type="Control" parent="ValueContainer"]
+custom_minimum_size = Vector2(70, 32)
+layout_mode = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="ValueContainer/Icon"]
+position = Vector2(30, 8)
+scale = Vector2(2, 2)
+centered = false
+hframes = 8
+frame = 1
+
+[node name="Label" type="Label" parent="ValueContainer"]
+modulate = Color(0.381352, 0.645355, 1, 1)
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+text = "SYS_VALUE"
+label_settings = ExtResource("2_2esx5")
+
+[node name="Value" type="Label" parent="ValueContainer"]
+modulate = Color(0.381352, 0.645355, 1, 1)
+custom_minimum_size = Vector2(170, 0)
+layout_mode = 2
+text = "000,000"
+label_settings = ExtResource("3_3v65o")
+horizontal_alignment = 2
+
+[node name="DividerRight2" type="Control" parent="."]
+modulate = Color(0.381352, 0.645355, 1, 1)
+z_index = -1
+layout_mode = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="DividerRight2"]
+position = Vector2(80, -15)
+scale = Vector2(1.5, 2)
+texture = ExtResource("4_qamqn")
+centered = false
+
+[node name="GrazeContainer" type="HBoxContainer" parent="."]
+modulate = Color(0.730913, 0.730913, 0.730913, 1)
+layout_mode = 2
+
+[node name="Icon" type="Control" parent="GrazeContainer"]
+custom_minimum_size = Vector2(70, 32)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="GrazeContainer"]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+text = "SYS_GRAZE"
+label_settings = ExtResource("2_2esx5")
+
+[node name="Value" type="Label" parent="GrazeContainer"]
+custom_minimum_size = Vector2(170, 0)
+layout_mode = 2
+text = "00,000"
+label_settings = ExtResource("3_3v65o")
+horizontal_alignment = 2
+
+[node name="DividerRight3" type="Control" parent="."]
+modulate = Color(0.730913, 0.730913, 0.730913, 1)
+z_index = -1
+layout_mode = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="DividerRight3"]
+position = Vector2(80, -15)
+scale = Vector2(1.5, 2)
+texture = ExtResource("4_qamqn")
+centered = false
