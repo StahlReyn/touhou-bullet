@@ -16,18 +16,19 @@ static var bomb_pieces_max: int = 5
 
 var game_area: GameArea
 var player: Player
+var difficulty: Difficulty = Difficulty.NORMAL
 
 var game_time: float = 0.0
 var score: int = 0
 var graze: int = 0
 var point_value: int = 10000
+## Powers are in integer for simplicity, display divides by 100
+var power: int = 0
 
 var lives: int = 3
 var bombs: int = 3
 var life_pieces: int = 0
 var bomb_pieces: int = 0
-## Powers are in integer for simplicity, display divides by 100
-var power: int = 0
 
 var deaths: int = 0
 var enemy_spawned: int = 0

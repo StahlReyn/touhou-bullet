@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" uid="uid://iecthdath73v" path="res://scripts/entities/bullet.gd" id="1_8xwtp"]
 [ext_resource type="Texture2D" uid="uid://brl5jngelp8c4" path="res://assets/graphics/bullets/bullet_small.png" id="2_tc45q"]
-[ext_resource type="Script" uid="uid://u8kkirqsbt30" path="res://scripts/entities/components/component_despawn_edge.gd" id="3_6qpuk"]
-[ext_resource type="Script" uid="uid://c8uq3vm31rge8" path="res://scripts/entities/components/movement/component_homing_lowest.gd" id="4_pypty"]
+[ext_resource type="Script" uid="uid://u8kkirqsbt30" path="res://scripts/components/component_despawn_edge.gd" id="3_6qpuk"]
+[ext_resource type="Script" uid="uid://c8uq3vm31rge8" path="res://scripts/components/movement/component_homing_lowest.gd" id="4_pypty"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2s7sv"]
 

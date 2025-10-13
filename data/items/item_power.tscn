@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" uid="uid://d26ralbkj2ol3" path="res://scripts/entities/item.gd" id="1_33slp"]
 [ext_resource type="Texture2D" uid="uid://dhiqymmciphxx" path="res://assets/graphics/system/point_items.png" id="2_mo325"]
-[ext_resource type="Script" uid="uid://dc7ekqbcmhba2" path="res://scripts/entities/components/movement/component_item_drop_movement.gd" id="3_04flv"]
-[ext_resource type="Script" uid="uid://bqfxnl5802qco" path="res://scripts/entities/components/component_game_stat.gd" id="4_mo325"]
+[ext_resource type="Script" uid="uid://dc7ekqbcmhba2" path="res://scripts/components/movement/component_item_drop_movement.gd" id="3_04flv"]
+[ext_resource type="Script" uid="uid://bqfxnl5802qco" path="res://scripts/components/component_game_stat.gd" id="4_mo325"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_dyu0y"]
 

@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://y12juub2fcyj" path="res://scripts/entities/enemy.gd" id="1_st4gn"]
 [ext_resource type="Texture2D" uid="uid://djqdk6shl41pk" path="res://assets/graphics/enemies/lesser_fairy.png" id="2_6mx60"]
 [ext_resource type="Script" uid="uid://dkw4x03mmanq4" path="res://data/enemies/sprite_enemy_simple.gd" id="2_bicl5"]
-[ext_resource type="Script" uid="uid://cgeihurb7n64m" path="res://scripts/entities/components/component_drop.gd" id="4_07u0v"]
+[ext_resource type="Script" uid="uid://cgeihurb7n64m" path="res://scripts/components/component_drop.gd" id="4_07u0v"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_6mx60"]
 radius = 26.0
