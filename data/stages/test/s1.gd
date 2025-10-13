@@ -18,8 +18,7 @@ func _on_timer_end() -> void:
 		end_section()
 	
 	for i in range(16):
-		var enemy: Enemy = EntityEnums.get_enemy(EntityEnums.EnemyType.FAIRY)
-		GameVariables.game_area.add_enemy(enemy)
+		var enemy: Enemy = add_enemy(EnemyType.FAIRY)
 		enemy.position.x = (timer_count % 16) * 50 + 100
 		enemy.position.y = -30
 		

@@ -22,7 +22,6 @@ MathUtils="*res://globals/math_utils.gd"
 SceneManager="*res://globals/scene_manager.gd"
 GameVariables="*res://globals/game_variables.gd"
 GameUtils="*res://globals/game_utils.gd"
-EntityEnums="*res://globals/entity_enums.gd"
 AudioManager="*res://globals/audio_manager.tscn"
 
 [debug]

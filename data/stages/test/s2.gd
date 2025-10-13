@@ -16,8 +16,7 @@ func _on_timer_end() -> void:
 	if timer_count >= 128:
 		end_section()
 	
-	var enemy: Enemy = EntityEnums.get_enemy(EntityEnums.EnemyType.FAIRY)
-	GameVariables.game_area.add_enemy(enemy)
+	var enemy: Enemy = add_enemy(EnemyType.FAIRY)
 	enemy.position.x = (timer_count % 16) * 50 + 100
 	enemy.position.y = -30
 	
@@ -33,11 +32,7 @@ func _on_timer_end() -> void:
 	timer.start(0.05)
 
 static func shoot_trail(entity: Entity):
-	var base_bullet = EntityEnums.get_bullet(
-		EntityEnums.BulletType.OVAL,
-		EntityEnums.BulletColor.BLUE
-	)
-	var accel := Vector2(0, 400)
-	ComponentAcceleration.add_to_entity(base_bullet, accel)
+	var base_bullet = get_bullet(BulletType.OVAL, BulletColor.BLUE)
+	ComponentAcceleration.add_to_entity(base_bullet, Vector2(0, 400))
 	GameVariables.game_area.add_bullet(base_bullet, entity.global_position)
 	

@@ -49,8 +49,8 @@ func add_item(item: Item, pos: Vector2 = Vector2.ZERO) -> void:
 	item.collision_layer = Collision.ITEM
 	item.collision_mask = Collision.PLAYER
 	item.z_index = -10
-	item.global_position = pos
 	item.modulate.a = 0.75
+	item.global_position = pos
 	ComponentDespawnEdge.add_to_entity(item)
 	CollectEffectFactory.add_effect_to_item(item)
 
