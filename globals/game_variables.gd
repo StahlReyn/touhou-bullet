@@ -124,8 +124,8 @@ func get_chapter_graze() -> int:
 	return graze - prev_graze
 
 func get_chapter_shoot_ratio() -> float:
-	if enemy_spawned - prev_enemy_spawned == 0:
-		return 0
+	if (enemy_spawned - prev_enemy_spawned) == 0:
+		return 0.0
 	return (
 		float(shoot_down - prev_shoot_down) / 
 		float(enemy_spawned - prev_enemy_spawned)

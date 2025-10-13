@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://bhgt67puheywo"]
 
 [ext_resource type="LabelSettings" uid="uid://buvvmef2syqrg" path="res://assets/resources/label_settings/label_score_title.tres" id="1_qleca"]
-[ext_resource type="Script" uid="uid://b2nlokxc0vx08" path="res://scenes/game/hud/piece_container.gd" id="1_ufoer"]
+[ext_resource type="Script" uid="uid://b2nlokxc0vx08" path="res://display/hud/piece_container.gd" id="1_ufoer"]
 [ext_resource type="LabelSettings" uid="uid://dcg8dq8lly56i" path="res://assets/resources/label_settings/label_score_title_smaller.tres" id="2_ufoer"]
 [ext_resource type="LabelSettings" uid="uid://cn3hc1ibtcc1w" path="res://assets/resources/label_settings/label_score_smaller.tres" id="3_wvjje"]
 [ext_resource type="Texture2D" uid="uid://blnrhius0cbnv" path="res://assets/graphics/system/divider_stat.png" id="6_oxmot"]

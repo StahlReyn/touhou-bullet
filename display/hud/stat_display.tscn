@@ -1,12 +1,12 @@
 [gd_scene load_steps=8 format=3 uid="uid://b3p3yjowje17q"]
 
-[ext_resource type="Script" uid="uid://c0k1oyd0n1juk" path="res://scenes/game/hud/stat_display.gd" id="1_shx42"]
+[ext_resource type="Script" uid="uid://c0k1oyd0n1juk" path="res://display/hud/stat_display.gd" id="1_shx42"]
 [ext_resource type="LabelSettings" uid="uid://buvvmef2syqrg" path="res://assets/resources/label_settings/label_score_title.tres" id="2_2esx5"]
 [ext_resource type="LabelSettings" uid="uid://bkay61kan2hfv" path="res://assets/resources/label_settings/label_score.tres" id="3_3v65o"]
 [ext_resource type="Texture2D" uid="uid://blnrhius0cbnv" path="res://assets/graphics/system/divider_stat.png" id="4_qamqn"]
-[ext_resource type="PackedScene" uid="uid://bhgt67puheywo" path="res://scenes/game/hud/piece_container.tscn" id="5_1ffmx"]
-[ext_resource type="PackedScene" uid="uid://cr0d8cd2ug78s" path="res://scenes/game/hud/piece_icon_heart.tscn" id="6_5ycjw"]
-[ext_resource type="PackedScene" uid="uid://c2u2r4nboje1s" path="res://scenes/game/hud/piece_icon_bomb.tscn" id="7_xncqs"]
+[ext_resource type="PackedScene" uid="uid://bhgt67puheywo" path="res://display/hud/piece_container.tscn" id="5_1ffmx"]
+[ext_resource type="PackedScene" uid="uid://cr0d8cd2ug78s" path="res://display/hud/piece_icon_heart.tscn" id="6_5ycjw"]
+[ext_resource type="PackedScene" uid="uid://c2u2r4nboje1s" path="res://display/hud/piece_icon_bomb.tscn" id="7_xncqs"]
 
 [node name="StatDisplay" type="VBoxContainer"]
 z_index = 30

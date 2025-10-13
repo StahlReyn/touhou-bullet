@@ -9,3 +9,4 @@ func _ready() -> void:
 
 func kill():
 	super()
+	GameVariables.shoot_down += 1

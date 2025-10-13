@@ -60,9 +60,6 @@ player=""
 bullet=""
 item=""
 enemy=""
-popups=""
-stage_script=""
-enemy_boss=""
 
 [input]
 

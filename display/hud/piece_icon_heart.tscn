@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://cr0d8cd2ug78s"]
 
-[ext_resource type="Script" uid="uid://ctnvfec0vjsxn" path="res://scenes/game/hud/piece_icon.gd" id="1_f424m"]
+[ext_resource type="Script" uid="uid://ctnvfec0vjsxn" path="res://display/hud/piece_icon.gd" id="1_f424m"]
 [ext_resource type="Texture2D" uid="uid://ddqgq0pdfy1xw" path="res://assets/graphics/system/life.png" id="2_h5obs"]
 
 [node name="PieceIcon" type="Control"]

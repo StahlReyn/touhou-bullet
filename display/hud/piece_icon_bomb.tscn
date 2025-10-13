@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://c2u2r4nboje1s"]
 
-[ext_resource type="Script" uid="uid://ctnvfec0vjsxn" path="res://scenes/game/hud/piece_icon.gd" id="1_h1m05"]
+[ext_resource type="Script" uid="uid://ctnvfec0vjsxn" path="res://display/hud/piece_icon.gd" id="1_h1m05"]
 [ext_resource type="Texture2D" uid="uid://cnipwulhy0kh3" path="res://assets/graphics/system/bomb.png" id="2_h1m05"]
 
 [node name="PieceIcon" type="Control"]

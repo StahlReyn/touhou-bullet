@@ -1,7 +1,7 @@
 class_name GameMain
 extends Control
 
-signal start_stage
+signal stage_started
 signal changing_scene
 
 #@onready var popup : PopUps = $PopUps
@@ -18,7 +18,7 @@ func _ready() -> void:
 	SceneManager.current_scene = self
 	# PLACEHOLDER - there's no continuous stage yet so it's fine to reset
 	GameVariables.reset_variables()
-	start_stage.emit()
+	stage_started.emit()
 	
 func _physics_process(delta: float) -> void:
 	#cur_shake_strength -= delta * 150

@@ -28,5 +28,9 @@ func detailed():
 		"\nLives: " + str(GameVariables.lives) +
 		"\nLife Pieces: " + str(GameVariables.life_pieces) +
 		"\nBombs: " + str(GameVariables.bombs) +
-		"\nBomb Pieces: " + str(GameVariables.bomb_pieces)
+		"\nBomb Pieces: " + str(GameVariables.bomb_pieces) +
+		"\n\nEnemy Spawned: " + str(GameVariables.enemy_spawned) +
+		"\nEnemy Spawned (Prev): " + str(GameVariables.prev_enemy_spawned) +
+		"\nShoot Down: " + str(GameVariables.shoot_down) +
+		"\nShoot Down (Prev): " + str(GameVariables.prev_shoot_down)
 	)

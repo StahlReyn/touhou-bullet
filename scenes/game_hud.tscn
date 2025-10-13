@@ -1,10 +1,10 @@
 [gd_scene load_steps=7 format=3 uid="uid://dks2tixhdliu5"]
 
-[ext_resource type="Script" uid="uid://78oh4cl75ngu" path="res://scenes/game/game_hud.gd" id="1_dwcec"]
+[ext_resource type="Script" uid="uid://78oh4cl75ngu" path="res://scenes/game_hud.gd" id="1_dwcec"]
 [ext_resource type="Texture2D" uid="uid://txpwpvakeqnd" path="res://assets/graphics/system/hud-test.png" id="1_tk2q4"]
-[ext_resource type="Script" uid="uid://bxsd5mskhsnfv" path="res://scenes/game/debug-label.gd" id="3_j2xfo"]
+[ext_resource type="Script" uid="uid://bxsd5mskhsnfv" path="res://scenes/debug-label.gd" id="3_j2xfo"]
 [ext_resource type="FontFile" uid="uid://bb1qlsmay1voc" path="res://assets/fonts/RusselSquareOpti.otf" id="4_uix07"]
-[ext_resource type="PackedScene" uid="uid://b3p3yjowje17q" path="res://scenes/game/hud/stat_display.tscn" id="5_avxdk"]
+[ext_resource type="PackedScene" uid="uid://b3p3yjowje17q" path="res://display/hud/stat_display.tscn" id="5_avxdk"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_opysw"]
 font = ExtResource("4_uix07")

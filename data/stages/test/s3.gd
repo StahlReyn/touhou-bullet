@@ -13,11 +13,10 @@ func _physics_process(delta: float) -> void:
 
 # ================ PLACEHOLDER ================
 func _on_timer_end() -> void:
-	if timer_count >= 8:
+	if timer_count > 3:
 		end_section()
 
 	var enemy: Enemy = create_enemy_shooter()
-	GameVariables.game_area.add_enemy(enemy)
 	enemy.position.x = (timer_count % 3) * 200 + 150
 	enemy.position.y = -30
 	
@@ -36,7 +35,7 @@ func create_enemy_shooter() -> Enemy:
 
 static func shoot_trail(entity: Entity):
 	for i in range(2):
-		var base_bullet = add_bullet(BulletType.CIRCLE_BORDERED, BulletColor.GREEN)
+		var base_bullet = add_bullet(BulletType.CIRCLE_BORDERED, BulletColor.GREEN, entity.global_position)
 		var accel := Vector2(200, 0)
 		if i == 1:
 			accel.x *= -1

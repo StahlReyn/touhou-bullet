@@ -49,6 +49,7 @@ func kill():
 	if not invincible:
 		died.emit()
 		GameVariables.lose_lives()
+		GameVariables.deaths += 1
 		respawn()
 
 func respawn():

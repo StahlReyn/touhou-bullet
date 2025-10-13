@@ -1,4 +1,4 @@
-class_name PopUps
+class_name SectionClearPopup
 extends Control
 ## Does Popups
 ## Chapter and Spellcard fastest, then timer and effects
@@ -39,7 +39,11 @@ func display_chapter() -> void:
 	num_retry.text = str(GameVariables.get_chapter_deaths())
 	num_bonus.text = str(GameVariables.get_section_bonus_final())
 	displaying_chapter = true
+	GameVariables.reset_chapter_variables()
 	timer_chapter.start()
 
 func _on_timer_chapter_timeout() -> void:
 	displaying_chapter = false
+
+func _on_game_area_section_ended() -> void:
+	call_deferred("display_chapter")
