@@ -4,6 +4,8 @@ extends DialogueEvent
 @export_group("Dialogue")
 @export var id: String
 @export_multiline var dialogue: String
+@export var face_anim: String
+@export var body_anim: String
 @export var deactivate_others: bool = true
 @export var bubble_offset: Vector2 = Vector2.ZERO
 @export_group("Instantiation")
@@ -21,16 +23,25 @@ func run() -> void:
 			portrait.scale.x *= -1
 		portrait.id = id
 		dialogue_view.add_portrait(portrait, portrait_position)
+	else:
+		portrait = dialogue_view.activate_portrait(id)
+	
 	if deactivate_others:
 		dialogue_view.deactivate_all_portraits()
 	
 	if wait_for_input:
-		portrait = dialogue_view.activate_portrait(id)
 		dialogue_view.input_event.connect(_on_dialogue_input)
 	
-	var bubble: DialogueBubble = bubble_scene.instantiate()
-	dialogue_view.start_dialogue(id, dialogue, bubble, bubble_offset)
-	print("Dialogue: ", dialogue)
+	if dialogue.length() > 0:
+		var bubble: DialogueBubble = bubble_scene.instantiate()
+		dialogue_view.start_dialogue(id, dialogue, bubble, bubble_offset)
+		print("Dialogue: ", dialogue)
+	
+	if face_anim.length() > 0:
+		portrait.face_sprite.play(face_anim)
+	
+	if body_anim.length() > 0:
+		portrait.body_sprite.play(body_anim)
 	
 	if !wait_for_input:
 		finished.emit()
