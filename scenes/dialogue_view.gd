@@ -17,11 +17,12 @@ static var modulate_inactive: Color = Color(0.5, 0.5, 0.5, 1)
 
 static var left_pos: Vector2 = Vector2(0, 0)
 static var left_gap: Vector2 = Vector2(-150, 50)
-static var right_pos: Vector2 = Vector2(900, 0)
+static var right_pos: Vector2 = Vector2(1000, 0)
 static var right_gap: Vector2 = Vector2(150, 50)
 
 var portraits_left: Array[Portrait]
 var portraits_right: Array[Portrait]
+var bubbles: Array[DialogueBubble]
 
 func _ready() -> void:
 	pass
@@ -29,6 +30,7 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	move_all_portraits(delta)
 	if Input.is_action_just_pressed("dialogue"):
+		clear_dialogue()
 		input_event.emit()
 
 func move_all_portraits(delta: float):
@@ -56,18 +58,21 @@ func add_portrait(portrait: Portrait, pos_type: PortraitPosition) -> void:
 		portraits_right.append(portrait)
 		add_child(portrait)
 		portrait.position = right_pos + right_gap
+		portrait.set_meta("pos_type", PortraitPosition.RIGHT)
 	else:
 		portraits_left.append(portrait)
 		add_child(portrait)
 		portrait.position = left_pos + left_gap
+		portrait.set_meta("pos_type", PortraitPosition.LEFT)
 	portrait.modulate = modulate_spawn
 	portrait.active = true
 
-func activate_portrait(id: String) -> void:
+func activate_portrait(id: String) -> Portrait:
 	var target_portrait: Portrait = get_portrait_from_id(id)
 	if target_portrait == null:
-		return
+		return null
 	target_portrait.active = true
+	return target_portrait
 
 func deactivate_all_portraits() -> void:
 	for portrait in portraits_left:
@@ -99,3 +104,26 @@ func get_portrait_from_id(id: String) -> Portrait:
 		if portrait.id == id:
 			return portrait
 	return null
+
+func start_dialogue(id: String, text: String, bubble: DialogueBubble, offset: Vector2 = Vector2.ZERO) -> void:
+	var portrait: Portrait = get_portrait_from_id(id)
+	if portrait == null:
+		return
+	portrait.active = true
+	bubble.set_text(text)
+	add_child(bubble)
+	
+	var pos_type = portrait.get_meta("pos_type")
+	if pos_type == PortraitPosition.LEFT:
+		bubble.set_type(DialogueBubble.PosType.LEFT)
+		bubble.global_position = portrait.speech_node.global_position + offset
+	else:
+		bubble.set_type(DialogueBubble.PosType.RIGHT)
+		bubble.global_position = portrait.speech_node.global_position + offset
+		bubble.global_position.x -= bubble.size.x
+	bubbles.append(bubble)
+
+func clear_dialogue():
+	for bubble in bubbles:
+		bubble.queue_free()
+	bubbles.clear()

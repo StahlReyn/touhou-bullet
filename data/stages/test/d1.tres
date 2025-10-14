@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="StageDataDialogue" load_steps=7 format=3 uid="uid://ck6naqtap3suk"]
+[gd_resource type="Resource" script_class="StageDataDialogue" load_steps=10 format=3 uid="uid://ck6naqtap3suk"]
 
 [ext_resource type="Script" uid="uid://cn6e6yd4p2nkw" path="res://scripts/dialogues/dialogue_event.gd" id="1_radte"]
 [ext_resource type="Script" uid="uid://8sos5xgum73s" path="res://scripts/gameplay/stage_data_dialogue.gd" id="2_d5hjv"]
@@ -21,7 +21,28 @@ portrait_scene = ExtResource("2_fmr47")
 portrait_position = 1
 metadata/_custom_type_script = "uid://cnkxajlq1vds6"
 
+[sub_resource type="Resource" id="Resource_s8jfk"]
+script = ExtResource("3_s8jfk")
+id = "a"
+dialogue = "This is a very long text ajsokfdj fsaoijfdoi aj apsofjiafsijo asiofio"
+metadata/_custom_type_script = "uid://cnkxajlq1vds6"
+
+[sub_resource type="Resource" id="Resource_52ju5"]
+script = ExtResource("3_s8jfk")
+id = "a"
+dialogue = "It's going to be a long night"
+wait_for_input = false
+metadata/_custom_type_script = "uid://cnkxajlq1vds6"
+
+[sub_resource type="Resource" id="Resource_fkgst"]
+script = ExtResource("3_s8jfk")
+id = "b"
+dialogue = "It's going to be a cold night (fire writing 2 sides)"
+deactivate_others = false
+bubble_offset = Vector2(0, 100)
+metadata/_custom_type_script = "uid://cnkxajlq1vds6"
+
 [resource]
 script = ExtResource("2_d5hjv")
-dialogue_events = Array[ExtResource("1_radte")]([SubResource("Resource_kqnv1"), SubResource("Resource_fmr47")])
+dialogue_events = Array[ExtResource("1_radte")]([SubResource("Resource_kqnv1"), SubResource("Resource_fmr47"), SubResource("Resource_s8jfk"), SubResource("Resource_52ju5"), SubResource("Resource_fkgst")])
 metadata/_custom_type_script = "uid://8sos5xgum73s"

@@ -3,6 +3,7 @@
 class_name StageDataSection
 extends Resource
 
+@warning_ignore("unused_signal")
 signal section_end
 
 var controller: StageController

@@ -1,27 +1,39 @@
 class_name DialogueLine
 extends DialogueEvent
 
-@export_category("Dialogue")
+@export_group("Dialogue")
 @export var id: String
-@export var dialogue: String
+@export_multiline var dialogue: String
 @export var deactivate_others: bool = true
-@export_category("Instantiation")
+@export var bubble_offset: Vector2 = Vector2.ZERO
+@export_group("Instantiation")
 @export var flip_x: bool = false
 @export var portrait_scene: PackedScene
 @export var portrait_position: DialogueView.PortraitPosition
 
+static var bubble_scene = preload("res://scripts/dialogues/dialogue_bubble.tscn")
+
 func run() -> void:
+	var portrait: Portrait
 	if portrait_scene != null:
-		var portrait: Portrait = portrait_scene.instantiate()
+		portrait = portrait_scene.instantiate()
 		if flip_x:
 			portrait.scale.x *= -1
 		portrait.id = id
 		dialogue_view.add_portrait(portrait, portrait_position)
 	if deactivate_others:
 		dialogue_view.deactivate_all_portraits()
-	dialogue_view.activate_portrait(id)
-	dialogue_view.input_event.connect(_on_dialogue_input)
-	print(dialogue)
+	
+	if wait_for_input:
+		portrait = dialogue_view.activate_portrait(id)
+		dialogue_view.input_event.connect(_on_dialogue_input)
+	
+	var bubble: DialogueBubble = bubble_scene.instantiate()
+	dialogue_view.start_dialogue(id, dialogue, bubble, bubble_offset)
+	print("Dialogue: ", dialogue)
+	
+	if !wait_for_input:
+		finished.emit()
 
 func _on_dialogue_input():
 	# Clean up signal so it clears itself
