@@ -78,7 +78,6 @@ centered = false
 metadata/_edit_lock_ = true
 
 [node name="Face" type="AnimatedSprite2D" parent="."]
-z_index = 1
 position = Vector2(70, 150)
 sprite_frames = SubResource("SpriteFrames_jxkc8")
 centered = false

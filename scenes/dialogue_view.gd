@@ -11,7 +11,7 @@ signal input_event
 static var lerp_speed: float = 30.0
 
 static var modulate_spawn: Color = Color(0, 0, 0, 0)
-static var modulate_remove: Color = Color(0, 0, 0, 0)
+static var modulate_remove: Color = Color(0.5, 0.5, 0.5, 0)
 static var modulate_active: Color = Color(1, 1, 1, 1)
 static var modulate_inactive: Color = Color(0.5, 0.5, 0.5, 1)
 
@@ -34,15 +34,28 @@ func _physics_process(delta: float) -> void:
 		input_event.emit()
 
 func move_all_portraits(delta: float):
-	var target_pos := left_pos
+	var i: int = 0
+	var target_pos: Vector2
 	for portrait in portraits_left:
+		target_pos = left_pos + left_gap * i
+		if portrait.active:
+			target_pos -= left_gap * 0.25
+			portrait.z_index = portraits_left.size() - i # When active, "further back" are above
+		else:
+			portrait.z_index = i # When active, further back are back
 		move_portrait(portrait, target_pos, delta)
-		target_pos += left_gap
-
-	target_pos = right_pos
+		i += 1
+		
+	i = 0
 	for portrait in portraits_right:
+		target_pos = right_pos + right_gap * i
+		if portrait.active:
+			target_pos -= right_gap * 0.25
+			portrait.z_index = portraits_right.size() - i  # When active, "further back" are above
+		else:
+			portrait.z_index = i # When active, further back are back
 		move_portrait(portrait, target_pos, delta)
-		target_pos += right_gap
+		i += 1
 		
 func move_portrait(portrait: Portrait, target_pos: Vector2, delta: float) -> void:
 	portrait.position = MathUtils.lerp_smooth(portrait.position, target_pos, lerp_speed, delta)
@@ -105,6 +118,14 @@ func get_portrait_from_id(id: String) -> Portrait:
 			return portrait
 	return null
 
+func move_active_front() -> void:
+	for i: int in portraits_left.size():
+		if portraits_left[i].active:
+			portraits_left.push_front(portraits_left.pop_at(i))
+	for i: int in portraits_right.size():
+		if portraits_right[i].active:
+			portraits_right.push_front(portraits_right.pop_at(i))
+		
 func start_dialogue(id: String, text: String, bubble: DialogueBubble, offset: Vector2 = Vector2.ZERO) -> void:
 	var portrait: Portrait = get_portrait_from_id(id)
 	if portrait == null:
@@ -116,12 +137,13 @@ func start_dialogue(id: String, text: String, bubble: DialogueBubble, offset: Ve
 	var pos_type = portrait.get_meta("pos_type")
 	if pos_type == PortraitPosition.LEFT:
 		bubble.set_type(DialogueBubble.PosType.LEFT)
-		bubble.global_position = portrait.speech_node.global_position + offset
+		bubble.global_position = left_pos + portrait.speech_node.position + offset
 	else:
 		bubble.set_type(DialogueBubble.PosType.RIGHT)
-		bubble.global_position = portrait.speech_node.global_position + offset
-		bubble.global_position.x -= bubble.size.x
+		bubble.global_position = right_pos + portrait.speech_node.position + offset
+		bubble.global_position.x -= bubble.size.x + portrait.speech_node.position.x * 2
 	bubbles.append(bubble)
+	move_active_front()
 
 func clear_dialogue():
 	for bubble in bubbles:
