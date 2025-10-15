@@ -1,23 +1,23 @@
-[gd_scene load_steps=5 format=3 uid="uid://bhxpmmfn0rxv"]
+[gd_scene load_steps=6 format=3 uid="uid://bhxpmmfn0rxv"]
 
-[ext_resource type="Script" uid="uid://cpsjx4jvlmn6h" path="res://scenes/section_clear_popup.gd" id="1_wwv67"]
+[ext_resource type="Script" uid="uid://cpsjx4jvlmn6h" path="res://display/gameplay/section_clear_popup.gd" id="1_wwv67"]
 [ext_resource type="LabelSettings" uid="uid://cnrsir06e6mff" path="res://assets/resources/label_settings/label_bonus_get.tres" id="2_dpj1r"]
 [ext_resource type="LabelSettings" uid="uid://bkay61kan2hfv" path="res://assets/resources/label_settings/label_score.tres" id="3_tou5v"]
 [ext_resource type="LabelSettings" uid="uid://nnehbdowh1ax" path="res://assets/resources/label_settings/label_chapter.tres" id="4_p7neo"]
 
-[node name="SectionClearPopup" type="Control"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_e53f3"]
+
+[node name="SectionClearPopup" type="PanelContainer"]
 z_index = 5
-layout_mode = 3
-anchors_preset = 0
+offset_right = 768.0
+offset_bottom = 896.0
+theme_override_styles/panel = SubResource("StyleBoxEmpty_e53f3")
 script = ExtResource("1_wwv67")
 metadata/_custom_type_script = "uid://cpsjx4jvlmn6h"
 
 [node name="Center" type="CenterContainer" parent="."]
-layout_mode = 0
-offset_left = 64.0
-offset_top = 32.0
-offset_right = 832.0
-offset_bottom = 928.0
+custom_minimum_size = Vector2(768, 896)
+layout_mode = 2
 
 [node name="VBox" type="VBoxContainer" parent="Center"]
 layout_mode = 2

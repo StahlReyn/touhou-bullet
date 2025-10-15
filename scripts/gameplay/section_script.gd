@@ -75,6 +75,7 @@ const ITEM_SCENES: Dictionary[ItemType, PackedScene] = {
 
 var stage_data_script: StageDataScript
 
+## Only gets the bullet but does not add it. Useful for factories
 static func get_bullet(
 	type: BulletType,
 	color: BulletColor = BulletColor.WHITE
@@ -106,3 +107,6 @@ static func add_item(type: ItemType, pos: Vector2 = Vector2.ZERO) -> Item:
 func end_section() -> void:
 	section_end.emit()
 	call_deferred("queue_free")
+
+func despawn_all() -> void:
+	stage_data_script.despawn_all()

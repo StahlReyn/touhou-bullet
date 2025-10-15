@@ -1,13 +1,16 @@
-[gd_scene load_steps=12 format=3 uid="uid://cymswu7x3ujdg"]
+[gd_scene load_steps=14 format=3 uid="uid://cymswu7x3ujdg"]
 
 [ext_resource type="Script" uid="uid://egelp2iwlkw7" path="res://scenes/game_main.gd" id="1_xlk0u"]
 [ext_resource type="PackedScene" uid="uid://dks2tixhdliu5" path="res://scenes/game_hud.tscn" id="2_612a3"]
 [ext_resource type="Script" uid="uid://cf4coa3e55q1b" path="res://scripts/gameplay/stage_controller.gd" id="2_cxf66"]
-[ext_resource type="PackedScene" uid="uid://bhxpmmfn0rxv" path="res://scenes/section_clear_popup.tscn" id="3_3qnxt"]
+[ext_resource type="PackedScene" uid="uid://bhxpmmfn0rxv" path="res://display/gameplay/section_clear_popup.tscn" id="3_3qnxt"]
 [ext_resource type="Texture2D" uid="uid://c4ls1lgwm8u8p" path="res://assets/graphics/skyboxes/space.png" id="3_612a3"]
 [ext_resource type="Resource" uid="uid://difrbojtnaq1r" path="res://data/stages/test/stage_test.tres" id="3_mn252"]
 [ext_resource type="PackedScene" uid="uid://caqu7tfsa7qtg" path="res://scenes/game_area.tscn" id="3_snne4"]
 [ext_resource type="PackedScene" uid="uid://cw2snxi5rw2t5" path="res://scenes/dialogue_view.tscn" id="6_4qd86"]
+[ext_resource type="PackedScene" uid="uid://et66msp52cef" path="res://display/gameplay/spell_card_displayer.tscn" id="7_mn252"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_mn252"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_snne4"]
 panorama = ExtResource("3_612a3")
@@ -22,7 +25,11 @@ sky = SubResource("Sky_nxgbd")
 
 [node name="GameMain" type="Control"]
 layout_mode = 3
-anchors_preset = 0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("1_xlk0u")
 metadata/_custom_type_script = "uid://egelp2iwlkw7"
 metadata/_edit_lock_ = true
@@ -51,29 +58,47 @@ metadata/_edit_lock_ = true
 [node name="SectionClearPopup" parent="." instance=ExtResource("3_3qnxt")]
 z_index = 30
 layout_mode = 0
+offset_left = 64.0
+offset_top = 32.0
+offset_right = 832.0
+offset_bottom = 928.0
 
-[node name="GameView" type="Node2D" parent="."]
-position = Vector2(64, 32)
+[node name="SpellCardDisplayer" parent="." instance=ExtResource("7_mn252")]
+layout_mode = 0
+offset_left = 64.0
+offset_top = 32.0
+offset_right = 64.0
+offset_bottom = 32.0
+
+[node name="GameView" type="PanelContainer" parent="."]
+layout_mode = 0
+offset_left = 64.0
+offset_top = 32.0
+offset_right = 64.0
+offset_bottom = 32.0
+theme_override_styles/panel = SubResource("StyleBoxEmpty_mn252")
 
 [node name="GameArea" parent="GameView" instance=ExtResource("3_snne4")]
 metadata/_edit_lock_ = true
 
-[node name="ViewportBackground" type="SubViewportContainer" parent="GameView"]
+[node name="MarginContainer" type="MarginContainer" parent="GameView"]
+layout_mode = 2
+theme_override_constants/margin_left = -32
+theme_override_constants/margin_top = -32
+
+[node name="ViewportBackground" type="SubViewportContainer" parent="GameView/MarginContainer"]
 z_index = -20
-offset_left = -32.0
-offset_top = -32.0
-offset_right = 800.0
-offset_bottom = 928.0
+layout_mode = 2
 metadata/_edit_lock_ = true
 
-[node name="SubViewport" type="SubViewport" parent="GameView/ViewportBackground"]
+[node name="SubViewport" type="SubViewport" parent="GameView/MarginContainer/ViewportBackground"]
 handle_input_locally = false
 size = Vector2i(832, 960)
 render_target_update_mode = 4
 
-[node name="Camera3D" type="Camera3D" parent="GameView/ViewportBackground/SubViewport"]
+[node name="Camera3D" type="Camera3D" parent="GameView/MarginContainer/ViewportBackground/SubViewport"]
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="GameView/ViewportBackground/SubViewport"]
+[node name="WorldEnvironment" type="WorldEnvironment" parent="GameView/MarginContainer/ViewportBackground/SubViewport"]
 environment = SubResource("Environment_xlk0u")
 
 [connection signal="stage_started" from="." to="StageController" method="_on_game_main_stage_started"]
