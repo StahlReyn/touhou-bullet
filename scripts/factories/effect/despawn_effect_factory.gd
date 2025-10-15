@@ -1,14 +1,14 @@
-class_name HitEffectFactory
+class_name DespawnEffectFactory
 extends EffectFactory
 
-static var scene := preload("res://data/effects/hit_particle_effect.tscn")
+static var scene := preload("res://data/effects/despawn_effect.tscn")
 
 @export var entity: Entity
 
 static func add_effect_to_entity(entity: Entity) -> void:
 	var effect_factory := new()
 	effect_factory.entity = entity
-	entity.hit.connect(effect_factory.create)
+	entity.despawned.connect(effect_factory.create)
 	entity.add_child(effect_factory)
 	
 func create() -> TempEffect:

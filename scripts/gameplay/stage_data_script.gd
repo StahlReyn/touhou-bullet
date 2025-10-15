@@ -11,4 +11,10 @@ func run() -> void:
 	controller.add_child(node)
 
 func end_section():
+	call_deferred("despawn_all")
 	section_end.emit()
+	controller.chapter_ended.emit()
+
+func despawn_all():
+	controller.game_area.despawn_enemy_bullets()
+	controller.game_area.despawn_enemies()

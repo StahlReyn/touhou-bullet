@@ -1,6 +1,5 @@
 extends Node
 
-var game_area: Vector2 = Vector2(768,896) # Half is Vector2(384,448)
 var default_time_scale := 1.0
 
 func freeze_frame(time_scale, duration):

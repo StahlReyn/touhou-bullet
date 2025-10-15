@@ -30,7 +30,7 @@ func take_damage(dmg : int):
 func kill():
 	is_dead = true
 	died.emit()
-	call_deferred("queue_free")
+	remove()
 
 func _on_area_entered(area: Area2D) -> void:
 	# Character can collide with each other. Use collision layer to differentiate.

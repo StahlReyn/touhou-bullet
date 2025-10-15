@@ -45,5 +45,5 @@ func display_chapter() -> void:
 func _on_timer_chapter_timeout() -> void:
 	displaying_chapter = false
 
-func _on_game_area_section_ended() -> void:
+func _on_stage_controller_chapter_ended() -> void:
 	call_deferred("display_chapter")

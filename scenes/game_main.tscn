@@ -77,4 +77,5 @@ render_target_update_mode = 4
 environment = SubResource("Environment_xlk0u")
 
 [connection signal="stage_started" from="." to="StageController" method="_on_game_main_stage_started"]
+[connection signal="chapter_ended" from="StageController" to="SectionClearPopup" method="_on_stage_controller_chapter_ended"]
 [connection signal="stage_ended" from="StageController" to="." method="_on_stage_controller_stage_ended"]

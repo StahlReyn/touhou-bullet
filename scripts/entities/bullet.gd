@@ -31,12 +31,12 @@ func _physics_process(delta: float) -> void:
 func offset_sprite_frame(index: int):
 	main_sprite.frame += index
 
-@warning_ignore("narrowing_conversion")
+@warning_ignore_start("narrowing_conversion")
 func damage_target(character: Character) -> void:
 	character.take_damage(damage)
 	damage *= damage_retention
 	if damage <= 0:
-		despawn()
+		remove()
 	
 func _on_area_entered(area: Area2D) -> void:
 	if area is Character:

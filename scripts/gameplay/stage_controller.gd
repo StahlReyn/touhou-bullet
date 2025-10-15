@@ -3,6 +3,7 @@ extends Node
 
 signal stage_ended
 signal section_ended
+signal chapter_ended ## Specific type of section that displays LOLK style chapter
 
 @export_category("Managers")
 @export var game_area: GameArea

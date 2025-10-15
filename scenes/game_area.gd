@@ -1,6 +1,8 @@
 class_name GameArea
 extends Node2D
 
+static var size: Vector2 = Vector2(768,896) # Half is Vector2(384,448)
+
 enum Collision {
 	PLAYER = 1,
 	ENEMY = 2,
@@ -9,6 +11,12 @@ enum Collision {
 	ITEM = 16
 }
 
+static func in_area(pos: Vector2, padding: float = 0) -> bool:
+	return (
+		pos.x > -padding and pos.x < GameArea.size.x + padding and
+		pos.y > -padding and pos.y < GameArea.size.y + padding
+	)
+			
 func add_bullet_player(bullet: Bullet, pos: Vector2 = Vector2.ZERO) -> void:
 	add_child(bullet)
 	bullet.collision_layer = Collision.BULLET_PLAYER # Is an Enemy
@@ -26,6 +34,7 @@ func add_bullet(bullet: Bullet, pos: Vector2 = Vector2.ZERO) -> void:
 	bullet.z_index = 0
 	bullet.global_position = pos
 	ComponentDespawnEdge.add_to_entity(bullet)
+	DespawnEffectFactory.add_effect_to_entity(bullet)
 
 func add_enemy(enemy: Enemy, pos: Vector2 = Vector2.ZERO) -> void:
 	add_child(enemy)
@@ -34,6 +43,7 @@ func add_enemy(enemy: Enemy, pos: Vector2 = Vector2.ZERO) -> void:
 	enemy.z_index = 0
 	enemy.global_position = pos
 	ComponentDespawnEdge.add_to_entity(enemy)
+	DespawnEffectFactory.add_effect_to_entity(enemy)
 	GameVariables.enemy_spawned += 1
 
 func add_item(item: Item, pos: Vector2 = Vector2.ZERO) -> void:
@@ -45,3 +55,16 @@ func add_item(item: Item, pos: Vector2 = Vector2.ZERO) -> void:
 	item.global_position = pos
 	ComponentDespawnEdge.add_to_entity(item)
 	CollectEffectFactory.add_effect_to_item(item)
+
+func despawn_enemy_bullets() -> void:
+	for bullet: Bullet in GameUtils.get_bullet_list():
+		if bullet.collision_mask & Collision.PLAYER: # Collision looking for player
+			bullet.despawn()
+
+func despawn_bullets() -> void:
+	for bullet: Bullet in GameUtils.get_bullet_list():
+		bullet.despawn()
+
+func despawn_enemies() -> void:
+	for enemy: Enemy in GameUtils.get_enemy_list():
+		enemy.despawn()

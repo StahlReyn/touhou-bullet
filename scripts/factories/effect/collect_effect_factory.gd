@@ -11,7 +11,6 @@ static func add_effect_to_item(item: Item) -> void:
 	item.collected.connect(effect_factory.create)
 	item.add_child(effect_factory)
 	
-## Creates a Bullet
 func create() -> TempEffect:
 	var node: TempEffect = scene.instantiate()
 	GameVariables.game_area.add_child(node)

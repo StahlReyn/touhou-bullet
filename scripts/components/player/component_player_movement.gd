@@ -42,7 +42,7 @@ func process_movement(delta: float) -> void:
 		velocity.y = -1
 	
 	entity.position += velocity * get_speed() * delta
-	entity.position = entity.position.clamp(Vector2.ZERO, GameUtils.game_area)
+	entity.position = entity.position.clamp(Vector2.ZERO, GameArea.size)
 	
 	if velocity.x < 0: 
 		player_sprite.play("left")

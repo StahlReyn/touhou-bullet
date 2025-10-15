@@ -10,10 +10,10 @@ var invincible: bool = false
 var invincible_time: float = 3.0
 var invincible_time_length: float = 3.0
 var respawn_speed: float = 800
-var respawn_y: float = GameUtils.game_area.y - 150
+var respawn_y: float = GameArea.size.y - 150
 var respawn_pos: Vector2 = Vector2(
-	GameUtils.game_area.x * 0.5,
-	GameUtils.game_area.y + 40
+	GameArea.size.x * 0.5,
+	GameArea.size.y + 40
 )
 
 enum PlayerState {
