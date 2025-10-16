@@ -5,17 +5,22 @@ var timer_count: int = 0
 
 static var junko_scene: PackedScene = preload("res://data/enemies/bosses/junko.tscn")
 var junko: Enemy
-var target_pos: Vector2 = Vector2(420, 200)
+var target_pos: Vector2 = Vector2(410, 400)
 var pattern_circle: PatternCircle
+
+var puller_target_pos: Vector2 = Vector2(410, 250)
+var puller: Bullet
+
+var total_time: float = 0.0
 
 func _ready() -> void:
 	add_child(timer)
 	timer.timeout.connect(_on_timer_end)
-	timer.start(3)
+	timer.start(2)
 	
 	pattern_circle = PatternCircle.new()
-	pattern_circle.amount = 100
-	pattern_circle.speed = 160
+	pattern_circle.amount = 60
+	pattern_circle.speed = 100
 	var bullet: Bullet = get_bullet(BulletType.CIRCLE_SMALL, BulletColor.BLUE)
 	bullet.material = MATERIAL_ADD
 	pattern_circle.base_bullet = bullet
@@ -23,34 +28,50 @@ func _ready() -> void:
 	if get_bosses().size() > 0:
 		junko = get_bosses()[0]
 	else:
-		junko = add_boss_scene(junko_scene, Vector2(420, -40))
+		junko = add_boss_scene(junko_scene, Vector2(410, -40))
 	junko.mhp = 4000
 	junko.hp = 1000
-	junko.damage_taken_mult = 0.5
+	junko.damage_taken_mult = 0.2
 	
-	GameVariables.cur_spellcard_name = "「Balls」"
+	GameVariables.cur_spellcard_name = "「Collapsing Star」"
 	start_spellcard(40.0)
 
 func _physics_process(delta: float) -> void:
 	if is_instance_valid(junko):
 		junko.position = MathUtils.lerp_smooth(junko.position, target_pos, 2.0, delta)
 		if junko.is_dead:
-			end_chapter()
-			target_pos = Vector2(420, -120)
-			timer.stop()
+			clean_up()
 		if junko.position.y < -110:
 			print("Despawned Boss")
 			junko.remove()
 			end_section()
-
+	if is_instance_valid(puller):
+		puller.global_position = junko.global_position + Vector2.from_angle(total_time * 0.5) * 240
+	total_time += delta
+	
+func _on_spellcard_timeout() -> void:
+	clean_up()
+	
 # ================ PLACEHOLDER ================
+func clean_up() -> void:
+	end_chapter()
+	target_pos = Vector2(420, -120)
+	timer.stop()
+	
 func _on_timer_end() -> void:
+	if timer_count == 0:
+		print("Attractor")
+		puller = add_bullet(BulletType.CIRCLE_BORDERED, BulletColor.RED, junko.global_position)
+		ComponentGravityPull.add_to_entity(puller, 20000)
+		timer.start(1)
+		timer_count += 1
+		return
 	pattern_circle.position = junko.global_position
 	pattern_circle.rotation += PI / pattern_circle.amount
 	pattern_circle.create()
 	timer_count += 1
 	if timer_count % 8 == 0:
-		timer.start(3)
+		timer.start(5)
 	else:
 		timer.start(0.2)
 	
