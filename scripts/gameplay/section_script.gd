@@ -2,9 +2,6 @@
 class_name SectionScript
 extends Node
 
-signal section_end
-
-
 enum BulletColor {
 	BLACK,
 	RED,
@@ -73,7 +70,7 @@ const ITEM_SCENES: Dictionary[ItemType, PackedScene] = {
 	ItemType.POINT: preload("res://data/items/item_point.tscn")
 }
 
-var stage_data_script: StageDataScript
+var controller: StageController
 
 ## Only gets the bullet but does not add it. Useful for factories
 static func get_bullet(
@@ -84,29 +81,42 @@ static func get_bullet(
 	bullet.offset_sprite_frame(color)
 	return bullet
 
+static func get_enemy(type: EnemyType) -> Enemy:
+	var enemy: Enemy = ENEMY_SCENES[type].instantiate()
+	return enemy
+
+static func get_item(type: ItemType) -> Item:
+	var item: Item = ITEM_SCENES[type].instantiate()
+	return item
+
 static func add_bullet(
 	type: BulletType, 
 	color: BulletColor = BulletColor.WHITE, 
 	pos: Vector2 = Vector2.ZERO
 ) -> Bullet:
-	var bullet: Bullet = BULLET_SCENES[type].instantiate()
-	bullet.offset_sprite_frame(color)
+	var bullet: Bullet = get_bullet(type, color)
 	GameVariables.game_area.add_bullet(bullet, pos)
 	return bullet
 
 static func add_enemy(type: EnemyType, pos: Vector2 = Vector2.ZERO) -> Enemy:
-	var enemy: Enemy = ENEMY_SCENES[type].instantiate()
+	var enemy: Enemy = get_enemy(type)
 	GameVariables.game_area.add_enemy(enemy, pos)
 	return enemy
 
 static func add_item(type: ItemType, pos: Vector2 = Vector2.ZERO) -> Item:
-	var item: Item = ITEM_SCENES[type].instantiate()
+	var item: Item = get_item(type)
 	GameVariables.game_area.add_item(item, pos)
 	return item
 
 func end_section() -> void:
-	section_end.emit()
+	controller.end_chapter()
+	controller.end_section()
+	call_deferred("despawn_all")
 	call_deferred("queue_free")
 
+func start_spellcard() -> void:
+	controller.start_spellcard()
+
 func despawn_all() -> void:
-	stage_data_script.despawn_all()
+	controller.game_area.despawn_enemy_bullets()
+	controller.game_area.despawn_enemies()

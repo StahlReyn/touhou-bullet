@@ -4,6 +4,7 @@ extends Node
 signal stage_ended
 signal section_ended
 signal chapter_ended ## Specific type of section that displays LOLK style chapter
+signal spellcard_started
 
 @export_category("Managers")
 @export var game_area: GameArea
@@ -17,6 +18,7 @@ var cur_section: StageDataSection
 
 func _ready() -> void:
 	GameVariables.game_area = game_area
+	print(game_area)
 
 func _physics_process(delta: float) -> void:
 	GameVariables.game_time += delta
@@ -30,22 +32,26 @@ func start_next_section() -> void:
 	var section_data: StageDataSection = section_queue.pop_front()
 	cur_section = section_data
 	section_data.controller = self
-	section_data.section_end.connect(_on_section_end)
 	section_data.run()
 	section_number += 1
 
 func has_next_section() -> bool:
 	return section_queue.size() > 0
 
-func _on_section_end() -> void:
-	print("- Section End")
+# Function below are used by stage data
+func end_section() -> void:
+	print("- Section Ended")
 	section_ended.emit()
-	# Clean up signal so it clears itself
-	cur_section.section_end.disconnect(_on_section_end)
 	if has_next_section():
 		start_next_section()
 	else:
 		stage_ended.emit()
 
+func end_chapter() -> void:
+	chapter_ended.emit()
+
+func start_spellcard() -> void:
+	spellcard_started.emit()
+	
 func _on_game_main_stage_started() -> void:
 	run()

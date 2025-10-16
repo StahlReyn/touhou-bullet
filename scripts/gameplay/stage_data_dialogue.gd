@@ -25,4 +25,4 @@ func _on_event_finished() -> void:
 		run_next_event()
 	else:
 		controller.dialogue_view.clear_all_portraits()
-		section_end.emit()
+		controller.end_section()

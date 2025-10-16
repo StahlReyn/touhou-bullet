@@ -8,7 +8,7 @@ enum State {
 }
 
 @onready var animation_node: AnimationPlayer = $AnimationPlayer
-@onready var label_name: Label = $FullDisplay/SpellCardName/LabelName
+@onready var label_name: Label = $SpellCardName/LabelName
 @onready var label_timer: Label = $MarginContainer/LabelTimer
 @onready var margin_timer: MarginContainer = $MarginContainer
 
