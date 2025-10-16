@@ -15,7 +15,7 @@ func _physics_process(delta: float) -> void:
 func _on_timer_end() -> void:
 	if timer_count > 3:
 		end_chapter()
-		end_section()
+		end_script()
 
 	var enemy: Enemy = create_enemy_shooter()
 	enemy.position.x = (timer_count % 3) * 200 + 150

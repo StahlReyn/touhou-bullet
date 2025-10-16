@@ -73,6 +73,7 @@ const ITEM_SCENES: Dictionary[ItemType, PackedScene] = {
 const MATERIAL_ADD: CanvasItemMaterial = preload("res://assets/resources/materials/add.tres")
 
 var controller: StageController
+var stage_data_script: StageDataScript
 
 ## Only gets the bullet but does not add it. Useful for factories
 static func get_bullet(
@@ -135,7 +136,12 @@ func end_chapter() -> void:
 	controller.spellcard_displayer.end_spellcard()
 	controller.end_chapter()
 	call_deferred("despawn_all")
-	
+
+func end_script() -> void:
+	stage_data_script.run_next_script()
+	call_deferred("queue_free")
+
+## This skips the entire section. Not for usual gameplay.
 func end_section() -> void:
 	controller.end_section()
 	call_deferred("queue_free")
@@ -150,7 +156,7 @@ func start_nonspellcard(time: float) -> void:
 
 ## Runs on spellcard finishing. Ends the section by default
 func _on_spellcard_timeout() -> void:
-	end_section()
+	end_script()
 
 func despawn_all() -> void:
 	controller.game_area.despawn_enemy_bullets()

@@ -16,7 +16,7 @@ func _physics_process(delta: float) -> void:
 func _on_timer_end() -> void:
 	if timer_count >= 64:
 		end_chapter()
-		end_section()
+		end_script()
 	
 	for i in range(16):
 		var enemy: Enemy = add_enemy(EnemyType.FAIRY)

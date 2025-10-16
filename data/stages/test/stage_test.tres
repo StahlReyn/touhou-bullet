@@ -1,41 +1,11 @@
-[gd_resource type="Resource" script_class="StageData" load_steps=15 format=3 uid="uid://difrbojtnaq1r"]
+[gd_resource type="Resource" script_class="StageData" load_steps=5 format=3 uid="uid://difrbojtnaq1r"]
 
 [ext_resource type="Script" uid="uid://dmb82id2jgc4u" path="res://scripts/gameplay/stage_data_section.gd" id="1_0fcsl"]
 [ext_resource type="Script" uid="uid://bpbubir7dstld" path="res://scripts/gameplay/stage_data.gd" id="1_co3h1"]
-[ext_resource type="Script" uid="uid://7j5ebxd7k1rm" path="res://scripts/gameplay/stage_data_script.gd" id="2_f47eh"]
 [ext_resource type="Resource" uid="uid://ck6naqtap3suk" path="res://data/stages/test/d1.tres" id="2_hd4i2"]
-[ext_resource type="Script" uid="uid://iyg7fx3sfj25" path="res://data/stages/test/s1.gd" id="3_llren"]
-[ext_resource type="Script" uid="uid://ituqutvgyikh" path="res://data/stages/test/s2.gd" id="4_llren"]
-[ext_resource type="Script" uid="uid://bfyvptwdg11ct" path="res://data/stages/test/nsc1.gd" id="5_j4ao6"]
-[ext_resource type="Script" uid="uid://4flv55w4oydu" path="res://data/stages/test/s3.gd" id="5_wjklv"]
-[ext_resource type="Script" uid="uid://dm08whu7gkvep" path="res://data/stages/test/sc1.gd" id="6_oxjse"]
-
-[sub_resource type="Resource" id="Resource_x4bcq"]
-script = ExtResource("2_f47eh")
-section_script = ExtResource("5_j4ao6")
-metadata/_custom_type_script = "uid://7j5ebxd7k1rm"
-
-[sub_resource type="Resource" id="Resource_oxjse"]
-script = ExtResource("2_f47eh")
-section_script = ExtResource("6_oxjse")
-metadata/_custom_type_script = "uid://7j5ebxd7k1rm"
-
-[sub_resource type="Resource" id="Resource_hd4i2"]
-script = ExtResource("2_f47eh")
-section_script = ExtResource("5_wjklv")
-metadata/_custom_type_script = "uid://7j5ebxd7k1rm"
-
-[sub_resource type="Resource" id="Resource_55mas"]
-script = ExtResource("2_f47eh")
-section_script = ExtResource("4_llren")
-metadata/_custom_type_script = "uid://7j5ebxd7k1rm"
-
-[sub_resource type="Resource" id="Resource_j4ao6"]
-script = ExtResource("2_f47eh")
-section_script = ExtResource("3_llren")
-metadata/_custom_type_script = "uid://7j5ebxd7k1rm"
+[ext_resource type="Resource" uid="uid://dsm134iu43xdm" path="res://data/stages/test/section1.tres" id="4_f47eh"]
 
 [resource]
 script = ExtResource("1_co3h1")
-sections = Array[ExtResource("1_0fcsl")]([ExtResource("2_hd4i2"), SubResource("Resource_x4bcq"), SubResource("Resource_oxjse"), SubResource("Resource_hd4i2"), SubResource("Resource_55mas"), SubResource("Resource_j4ao6")])
+sections = Array[ExtResource("1_0fcsl")]([ExtResource("2_hd4i2"), ExtResource("4_f47eh")])
 metadata/_custom_type_script = "uid://bpbubir7dstld"

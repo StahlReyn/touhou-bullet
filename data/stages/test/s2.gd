@@ -15,7 +15,7 @@ func _physics_process(delta: float) -> void:
 func _on_timer_end() -> void:
 	if timer_count >= 128:
 		end_chapter()
-		end_section()
+		end_script()
 	
 	var enemy: Enemy = add_enemy(EnemyType.FAIRY)
 	enemy.position.x = (timer_count % 16) * 50 + 100

@@ -33,7 +33,7 @@ func _physics_process(delta: float) -> void:
 		junko.position = MathUtils.lerp_smooth(junko.position, target_pos, 2.0, delta)
 		if junko.hp < 1000:
 			end_chapter()
-			end_section()
+			end_script()
 
 # ================ PLACEHOLDER ================
 func _on_timer_end() -> void:
