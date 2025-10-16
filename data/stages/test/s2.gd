@@ -17,7 +17,7 @@ func _on_timer_end() -> void:
 		end_chapter()
 		end_script()
 	
-	var enemy: Enemy = add_enemy(EnemyType.FAIRY)
+	var enemy: Enemy = add_enemy(ENEMY_FAIRY)
 	enemy.position.x = (timer_count % 16) * 50 + 100
 	enemy.position.y = -30
 	
@@ -33,7 +33,5 @@ func _on_timer_end() -> void:
 	timer.start(0.05)
 
 static func shoot_trail(entity: Entity):
-	var base_bullet = get_bullet(BulletType.OVAL, BulletColor.BLUE)
+	var base_bullet = add_bullet_colored(BULLET_OVAL, BCOLOR_BLUE)
 	ComponentAcceleration.add_to_entity(base_bullet, Vector2(0, 400))
-	GameVariables.game_area.add_bullet(base_bullet, entity.global_position)
-	

@@ -1,9 +1,10 @@
 extends SectionScript
 
+const JUNKO_SCENE: PackedScene = preload("res://data/enemies/bosses/junko.tscn")
+
 var timer: Timer = Timer.new()
 var timer_count: int = 0
 
-static var junko_scene: PackedScene = preload("res://data/enemies/bosses/junko.tscn")
 var junko: Enemy
 var target_pos: Vector2 = Vector2(400, 150)
 var pattern_circle: PatternCircle
@@ -16,14 +17,14 @@ func _ready() -> void:
 	pattern_circle = PatternCircle.new()
 	pattern_circle.amount = 100
 	pattern_circle.speed = 160
-	var bullet: Bullet = get_bullet(BulletType.CIRCLE_SMALL, BulletColor.BLUE)
-	bullet.material = MATERIAL_ADD
-	pattern_circle.base_bullet = bullet
+	pattern_circle.base_bullet = BULLET_CIRCLE_SMALL.instantiate()
+	pattern_circle.base_bullet.sprite_frame_x(BCOLOR_BLUE)
+	pattern_circle.base_bullet.material = MATERIAL_ADD
 	
 	if get_bosses().size() > 0:
 		junko = get_bosses()[0]
 	else:
-		junko = add_boss_scene(junko_scene, Vector2(400, -40))
+		junko = add_boss(JUNKO_SCENE, Vector2(400, -40))
 		junko.set_mhp(4000)
 	
 	start_nonspellcard(40.0)
@@ -32,6 +33,7 @@ func _physics_process(delta: float) -> void:
 	if is_instance_valid(junko):
 		junko.position = MathUtils.lerp_smooth(junko.position, target_pos, 2.0, delta)
 		if junko.hp < 1000:
+			add_item_bulk(ITEM_POWER, 40, junko.global_position)
 			end_chapter()
 			end_script()
 

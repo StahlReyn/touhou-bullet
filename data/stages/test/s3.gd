@@ -28,7 +28,7 @@ func _on_timer_end() -> void:
 	timer.start(3)
 
 func create_enemy_shooter() -> Enemy:
-	var enemy: Enemy = add_enemy(EnemyType.FAIRY_SUNFLOWER)
+	var enemy: Enemy = add_enemy(ENEMY_FAIRY_SUNFLOWER)
 	ComponentAcceleration.add_to_entity(enemy, Vector2(0, -300), Vector2(0, 500))
 	ComponentTimer.add_to_entity(enemy, shoot_circle, 2.0)
 	ComponentTimer.add_to_entity(enemy, shoot_trail, 0.25)
@@ -36,7 +36,7 @@ func create_enemy_shooter() -> Enemy:
 
 static func shoot_trail(entity: Entity):
 	for i in range(2):
-		var base_bullet = add_bullet(BulletType.CIRCLE_BORDERED, BulletColor.GREEN, entity.global_position)
+		var base_bullet = add_bullet_colored(BULLET_CIRCLE_BORDERED, BCOLOR_GREEN, entity.global_position)
 		var accel := Vector2(200, 0)
 		if i == 1:
 			accel.x *= -1
@@ -44,15 +44,14 @@ static func shoot_trail(entity: Entity):
 	
 static func shoot_circle(entity: Entity):
 	var rotation = entity.position.angle_to_point(GameVariables.player.position)
-	var bullet_1 = get_bullet(BulletType.CIRCLE_BORDERED, BulletColor.RED)
-	var bullet_2 = get_bullet(BulletType.CIRCLE_BORDERED, BulletColor.BLUE)
 	
 	var circ = PatternCircle.new()
 	circ.position = entity.global_position
 	circ.rotation = rotation
 	circ.speed = 0
 	circ.acceleration = 300
-	circ.base_bullet = get_bullet(BulletType.CIRCLE_BORDERED, BulletColor.YELLOW)
+	circ.base_bullet = BULLET_CIRCLE_BORDERED.instantiate()
+	circ.base_bullet.sprite_frame_x(BCOLOR_YELLOW)
 	circ.create()
 	
 	var flower = PatternFlower.new()
@@ -62,12 +61,13 @@ static func shoot_circle(entity: Entity):
 	flower.petal_size = 6
 	flower.speed_max = 400
 	flower.speed_min = flower.speed_max * 0.5
-	flower.base_bullet = bullet_1
+	flower.base_bullet = BULLET_CIRCLE_BORDERED.instantiate()
 
 	for i in range(2):
-		flower.base_bullet = bullet_1
-		if i % 2 == 1:
-			flower.base_bullet = bullet_2
+		if i % 2 == 0:
+			flower.base_bullet.sprite_frame_x(BCOLOR_RED)
+		else:
+			flower.base_bullet.sprite_frame_x(BCOLOR_BLUE)
 		flower.create()
 		flower.rotation += PI/6
 		#flower.petal_size -= 1

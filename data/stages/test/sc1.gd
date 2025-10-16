@@ -1,9 +1,10 @@
 extends SectionScript
 
+const JUNKO_SCENE: PackedScene = preload("res://data/enemies/bosses/junko.tscn")
+
 var timer: Timer = Timer.new()
 var timer_count: int = 0
 
-static var junko_scene: PackedScene = preload("res://data/enemies/bosses/junko.tscn")
 var junko: Enemy
 var target_pos: Vector2 = Vector2(410, 400)
 var pattern_circle: PatternCircle
@@ -21,14 +22,14 @@ func _ready() -> void:
 	pattern_circle = PatternCircle.new()
 	pattern_circle.amount = 60
 	pattern_circle.speed = 100
-	var bullet: Bullet = get_bullet(BulletType.CIRCLE_SMALL, BulletColor.BLUE)
-	bullet.material = MATERIAL_ADD
-	pattern_circle.base_bullet = bullet
+	pattern_circle.base_bullet = BULLET_CIRCLE_SMALL.instantiate()
+	pattern_circle.base_bullet.sprite_frame_x(BCOLOR_BLUE)
+	pattern_circle.base_bullet.material = MATERIAL_ADD
 	
 	if get_bosses().size() > 0:
 		junko = get_bosses()[0]
 	else:
-		junko = add_boss_scene(junko_scene, Vector2(410, -40))
+		junko = add_boss(JUNKO_SCENE, Vector2(410, -40))
 	junko.mhp = 4000
 	junko.hp = 1000
 	junko.damage_taken_mult = 0.2
@@ -61,11 +62,12 @@ func clean_up() -> void:
 func _on_timer_end() -> void:
 	if timer_count == 0:
 		print("Attractor")
-		puller = add_bullet(BulletType.CIRCLE_BORDERED, BulletColor.RED, junko.global_position)
+		puller = add_bullet_colored(BULLET_CIRCLE_BORDERED, BCOLOR_RED, junko.global_position)
 		ComponentGravityPull.add_to_entity(puller, 20000)
 		timer.start(1)
 		timer_count += 1
 		return
+	
 	pattern_circle.position = junko.global_position
 	pattern_circle.rotation += PI / pattern_circle.amount
 	pattern_circle.create()

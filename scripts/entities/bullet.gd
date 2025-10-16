@@ -28,8 +28,8 @@ func _physics_process(delta: float) -> void:
 		#main_sprite.scale = MathUtils.lerp_smooth(main_sprite.scale, prev_scale, SPAWN_SCALE_SPEED, delta)
 	pass
 
-func offset_sprite_frame(index: int):
-	main_sprite.frame += index
+func sprite_frame_x(index: int):
+	main_sprite.frame_coords.x = index
 
 @warning_ignore_start("narrowing_conversion")
 func damage_target(character: Character) -> void:
