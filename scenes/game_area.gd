@@ -46,6 +46,15 @@ func add_enemy(enemy: Enemy, pos: Vector2 = Vector2.ZERO) -> void:
 	DespawnEffectFactory.add_effect_to_entity(enemy)
 	GameVariables.enemy_spawned += 1
 
+func add_enemy_boss(enemy: Enemy, pos: Vector2 = Vector2.ZERO) -> void:
+	add_child(enemy)
+	enemy.add_to_group("boss")
+	enemy.collision_layer = Collision.ENEMY # Is an Enemy
+	enemy.collision_mask = Collision.PLAYER # Finding hit player
+	enemy.z_index = 0
+	enemy.global_position = pos
+	GameVariables.enemy_spawned += 1
+
 func add_item(item: Item, pos: Vector2 = Vector2.ZERO) -> void:
 	add_child(item)
 	item.collision_layer = Collision.ITEM
@@ -68,3 +77,8 @@ func despawn_bullets() -> void:
 func despawn_enemies() -> void:
 	for enemy: Enemy in GameUtils.get_enemy_list():
 		enemy.despawn()
+
+func despawn_non_boss_enemies() -> void:
+	for enemy: Enemy in GameUtils.get_enemy_list():
+		if not enemy.is_in_group("boss"):
+			enemy.despawn()

@@ -60,6 +60,7 @@ player=""
 bullet=""
 item=""
 enemy=""
+boss=""
 
 [input]
 

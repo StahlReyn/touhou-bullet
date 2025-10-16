@@ -6,6 +6,8 @@ signal died
 
 @export var mhp : int = 10
 @export var collision_damage : int = 10
+@export var remove_on_death: bool = true ## Whether to remove on death. Useful for bosses persisting when disabled
+@export var damage_taken_mult: float = 1.0
 
 var hp : int
 var is_dead : bool = false
@@ -23,15 +25,21 @@ func set_mhp(value : int, restore : bool = true):
 		reset_hp()
 
 func take_damage(dmg : int):
-	hp -= dmg
+	hp -= dmg * damage_taken_mult
 	if hp <= 0 and not is_dead:
-		kill()
+		die()
 
-func kill():
+func die():
 	is_dead = true
 	died.emit()
-	remove()
+	if remove_on_death:
+		remove()
 
+## This is used in spellcard where boss persists
+func revive():
+	is_dead = false
+	reset_hp()
+	
 func _on_area_entered(area: Area2D) -> void:
 	# Character can collide with each other. Use collision layer to differentiate.
 	if area is Character:

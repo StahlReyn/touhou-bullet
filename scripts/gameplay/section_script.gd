@@ -42,7 +42,7 @@ const BULLET_SCENES: Dictionary[BulletType, PackedScene] = {
 	BulletType.SPIKE: preload("res://data/bullets/basic/circle.tscn"),
 	BulletType.CRYSTAL: preload("res://data/bullets/basic/circle.tscn"),
 	BulletType.BULLET: preload("res://data/bullets/basic/circle.tscn"),
-	BulletType.CIRCLE_SMALL: preload("res://data/bullets/basic/circle.tscn"),
+	BulletType.CIRCLE_SMALL: preload("res://data/bullets/basic/circle_small.tscn"),
 	BulletType.CIRCLE_CHIP: preload("res://data/bullets/basic/circle.tscn"),
 	BulletType.LASER: preload("res://data/bullets/basic/circle.tscn"),
 	BulletType.LASER_PARTIAL: preload("res://data/bullets/basic/circle.tscn")
@@ -69,6 +69,8 @@ const ITEM_SCENES: Dictionary[ItemType, PackedScene] = {
 	ItemType.POWER: preload("res://data/items/item_power.tscn"),
 	ItemType.POINT: preload("res://data/items/item_point.tscn")
 }
+
+const MATERIAL_ADD: CanvasItemMaterial = preload("res://assets/resources/materials/add.tres")
 
 var controller: StageController
 
@@ -108,15 +110,51 @@ static func add_item(type: ItemType, pos: Vector2 = Vector2.ZERO) -> Item:
 	GameVariables.game_area.add_item(item, pos)
 	return item
 
-func end_section() -> void:
+static func add_bullet_scene(scene: PackedScene, pos: Vector2 = Vector2.ZERO) -> Bullet:
+	var bullet: Bullet = scene.instantiate()
+	GameVariables.game_area.add_bullet(bullet, pos)
+	return bullet
+
+static func add_enemy_scene(scene: PackedScene, pos: Vector2 = Vector2.ZERO) -> Enemy:
+	var enemy: Enemy = scene.instantiate()
+	GameVariables.game_area.add_enemy(enemy, pos)
+	return enemy
+
+static func add_item_scene(scene: PackedScene, pos: Vector2 = Vector2.ZERO) -> Item:
+	var item: Item = scene.instantiate()
+	GameVariables.game_area.add_item(item, pos)
+	return item
+
+static func add_boss_scene(scene: PackedScene, pos: Vector2 = Vector2.ZERO) -> Enemy:
+	var enemy: Enemy = scene.instantiate()
+	GameVariables.game_area.add_enemy_boss(enemy, pos)
+	return enemy
+
+## Calls end chapter and spellcard without proceeding to next section immediately
+func end_chapter() -> void:
+	controller.spellcard_displayer.end_spellcard()
 	controller.end_chapter()
-	controller.end_section()
 	call_deferred("despawn_all")
+	
+func end_section() -> void:
+	controller.end_section()
 	call_deferred("queue_free")
 
-func start_spellcard() -> void:
-	controller.start_spellcard()
+func start_spellcard(time: float) -> void:
+	controller.start_spellcard(time)
+	controller.spellcard_displayer.timeout.connect(_on_spellcard_timeout)
+
+func start_nonspellcard(time: float) -> void:
+	controller.start_nonspellcard(time)
+	controller.spellcard_displayer.timeout.connect(_on_spellcard_timeout)
+
+## Runs on spellcard finishing. Ends the section by default
+func _on_spellcard_timeout() -> void:
+	end_section()
 
 func despawn_all() -> void:
 	controller.game_area.despawn_enemy_bullets()
-	controller.game_area.despawn_enemies()
+	controller.game_area.despawn_non_boss_enemies()
+
+func get_bosses() -> Array[Node]:
+	return GameUtils.get_boss_list()

@@ -5,7 +5,7 @@ extends PatternFactory
 @export var rotation: float = 0.0
 @export var amount: int = 16
 @export var speed: float = 100
-@export var acceleration: float = 100
+@export var acceleration: float = 0
 @export var base_bullet: Bullet
 
 func create() -> Array[Bullet]:
@@ -13,9 +13,9 @@ func create() -> Array[Bullet]:
 	for i in range(amount):
 		var bullet: Bullet = base_bullet.duplicate()
 		var direction := Vector2.from_angle(i * TAU/amount + rotation)
-		if acceleration != 0:
-			ComponentAcceleration.add_to_entity(bullet, direction * acceleration, direction * speed)
-		else:
+		if acceleration == 0:
 			ComponentVelocity.add_to_entity(bullet, direction * speed)
+		else:
+			ComponentAcceleration.add_to_entity(bullet, direction * acceleration, direction * speed)
 		GameVariables.game_area.add_bullet(bullet, position)
 	return bullets

@@ -14,6 +14,7 @@ func _physics_process(delta: float) -> void:
 # ================ PLACEHOLDER ================
 func _on_timer_end() -> void:
 	if timer_count >= 128:
+		end_chapter()
 		end_section()
 	
 	var enemy: Enemy = add_enemy(EnemyType.FAIRY)

@@ -7,6 +7,6 @@ func _ready() -> void:
 	super()
 	add_to_group("enemy")
 
-func kill():
+func die():
 	super()
 	GameVariables.shoot_down += 1

@@ -41,6 +41,9 @@ var prev_graze: int = 0
 var prev_enemy_spawned: int = 0
 var prev_shoot_down: int = 0
 
+# Might change when proper spellcard database comes
+var cur_spellcard_name: String
+
 func reset_variables() -> void:
 	print("==== RESET GAME VARIABLES ====")
 	game_time = 0.0
@@ -48,7 +51,7 @@ func reset_variables() -> void:
 	graze = 0
 	lives = 3
 	bombs = 3
-	power = 0
+	power = 400
 	point_value = 10000
 	
 	section_bonus = 0

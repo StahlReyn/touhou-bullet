@@ -45,7 +45,7 @@ func _physics_process(delta: float) -> void:
 func in_collection_range(entity: Entity):
 	return entity.position.distance_squared_to(position) <= collection_range_squared
 
-func kill():
+func die():
 	if not invincible:
 		died.emit()
 		GameVariables.lose_lives()

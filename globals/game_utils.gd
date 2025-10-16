@@ -10,9 +10,9 @@ func freeze_frame(time_scale, duration):
 func get_enemy_list() -> Array[Node]:
 	return get_tree().get_nodes_in_group("enemy")
 
-func get_enemy_boss_list() -> Array[Node]:
-	return get_tree().get_nodes_in_group("enemy_boss")
-
+func get_boss_list() -> Array[Node]:
+	return get_tree().get_nodes_in_group("boss")
+	
 func get_bullet_list() -> Array[Node]:
 	return get_tree().get_nodes_in_group("bullet")
 

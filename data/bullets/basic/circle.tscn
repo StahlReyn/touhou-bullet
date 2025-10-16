@@ -11,6 +11,7 @@ main_sprite = NodePath("Sprite2D")
 metadata/_custom_type_script = "uid://iecthdath73v"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+use_parent_material = true
 scale = Vector2(2, 2)
 texture = ExtResource("2_k166v")
 hframes = 10

@@ -9,6 +9,7 @@ signal spellcard_started
 @export_category("Managers")
 @export var game_area: GameArea
 @export var dialogue_view: DialogueView
+@export var spellcard_displayer: SpellcardDisplayer
 @export_category("Data")
 @export var stage_data: StageData
 @export var section_number: int = 0
@@ -50,8 +51,13 @@ func end_section() -> void:
 func end_chapter() -> void:
 	chapter_ended.emit()
 
-func start_spellcard() -> void:
+func start_spellcard(time: float) -> void:
+	spellcard_displayer.start_spellcard(time)
 	spellcard_started.emit()
-	
+
+func start_nonspellcard(time: float) -> void:
+	spellcard_displayer.start_nonspellcard(time)
+	spellcard_started.emit()
+
 func _on_game_main_stage_started() -> void:
 	run()

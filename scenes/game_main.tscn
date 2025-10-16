@@ -8,7 +8,7 @@
 [ext_resource type="Resource" uid="uid://difrbojtnaq1r" path="res://data/stages/test/stage_test.tres" id="3_mn252"]
 [ext_resource type="PackedScene" uid="uid://caqu7tfsa7qtg" path="res://scenes/game_area.tscn" id="3_snne4"]
 [ext_resource type="PackedScene" uid="uid://cw2snxi5rw2t5" path="res://scenes/dialogue_view.tscn" id="6_4qd86"]
-[ext_resource type="PackedScene" uid="uid://et66msp52cef" path="res://display/gameplay/spell_card_displayer.tscn" id="7_mn252"]
+[ext_resource type="PackedScene" uid="uid://et66msp52cef" path="res://display/gameplay/spellcard_displayer.tscn" id="7_mn252"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_mn252"]
 
@@ -34,10 +34,11 @@ script = ExtResource("1_xlk0u")
 metadata/_custom_type_script = "uid://egelp2iwlkw7"
 metadata/_edit_lock_ = true
 
-[node name="StageController" type="Node" parent="." node_paths=PackedStringArray("game_area", "dialogue_view")]
+[node name="StageController" type="Node" parent="." node_paths=PackedStringArray("game_area", "dialogue_view", "spellcard_displayer")]
 script = ExtResource("2_cxf66")
 game_area = NodePath("../GameView/GameArea")
 dialogue_view = NodePath("../DialogueView")
+spellcard_displayer = NodePath("../SpellcardDisplayer")
 stage_data = ExtResource("3_mn252")
 metadata/_custom_type_script = "uid://cf4coa3e55q1b"
 
@@ -63,7 +64,7 @@ offset_top = 32.0
 offset_right = 832.0
 offset_bottom = 928.0
 
-[node name="SpellCardDisplayer" parent="." instance=ExtResource("7_mn252")]
+[node name="SpellcardDisplayer" parent="." instance=ExtResource("7_mn252")]
 layout_mode = 0
 offset_left = 64.0
 offset_top = 32.0
@@ -103,4 +104,5 @@ environment = SubResource("Environment_xlk0u")
 
 [connection signal="stage_started" from="." to="StageController" method="_on_game_main_stage_started"]
 [connection signal="chapter_ended" from="StageController" to="SectionClearPopup" method="_on_stage_controller_chapter_ended"]
+[connection signal="spellcard_started" from="StageController" to="SpellcardDisplayer" method="_on_stage_controller_spellcard_started"]
 [connection signal="stage_ended" from="StageController" to="." method="_on_stage_controller_stage_ended"]
