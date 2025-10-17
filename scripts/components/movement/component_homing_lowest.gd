@@ -16,7 +16,7 @@ func _ready() -> void:
 	cur_target_enemy = get_enemy_target()
 
 func _physics_process(delta: float) -> void:
-	if cur_target_enemy == null: # try get new one if old is gone
+	if cur_target_enemy == null or cur_target_enemy.hp <= 0: # try get new one if old is gone
 		cur_target_enemy = get_enemy_target()
 	
 	if cur_target_enemy != null: # turn toward if exists
@@ -31,10 +31,13 @@ func physics_process_active(delta: float) -> void:
 
 func get_enemy_target() -> Enemy:
 	var enemy_list = GameUtils.get_enemy_list()
+	if enemy_list.size() <= 0:
+		return null
+	
 	var cur_enemy = null
 	for enemy in enemy_list:
 		if enemy is Enemy:
-			if not (enemy.collision_layer & GameArea.Collision.ENEMY): # Not enemy collision
+			if not (enemy.collision_layer & GameArea.Collision.ENEMY) or enemy.hp <= 0: # Not enemy collision
 				continue
 			if cur_enemy == null:
 				cur_enemy = enemy

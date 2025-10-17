@@ -6,7 +6,8 @@ var timer: Timer = Timer.new()
 var timer_count: int = 0
 
 var junko: Enemy
-var target_pos: Vector2 = Vector2(410, 400)
+var junko_lerp: ComponentLerpPosition
+
 var pattern_circle: PatternCircle
 
 var puller_target_pos: Vector2 = Vector2(410, 250)
@@ -30,14 +31,14 @@ func _ready() -> void:
 	junko.mhp = 4000
 	junko.hp = 1000
 	junko.damage_taken_mult = 0.2
+	junko_lerp = ComponentLerpPosition.add_to_entity(junko, Vector2(410, 400), 2.0)
 	
 	GameVariables.cur_spellcard_name = "「Collapsing Star」"
 	start_spellcard(40.0)
 
 func _physics_process(delta: float) -> void:
 	if is_instance_valid(junko):
-		junko.position = MathUtils.lerp_smooth(junko.position, target_pos, 2.0, delta)
-		if junko.is_dead:
+		if junko.hp <= 0:
 			clean_up()
 			end_script()
 	if is_instance_valid(puller):
@@ -50,7 +51,8 @@ func _on_spellcard_timeout() -> void:
 # ================ PLACEHOLDER ================
 func clean_up() -> void:
 	end_chapter()
-	target_pos = Vector2(420, -120)
+	# junko_lerp.position = Vector2(420, -120)
+	junko_lerp.queue_free() # Free for next one to add back
 	timer.stop()
 	
 func _on_timer_end() -> void:

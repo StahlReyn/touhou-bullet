@@ -2,29 +2,17 @@ extends SectionScript
 
 const JUNKO_SCENE: PackedScene = preload("res://data/enemies/bosses/junko.tscn")
 const HECATIA_SCENE: PackedScene = preload("res://data/enemies/bosses/hecatia.tscn")
-
-class BossData: 
-	var enemy: Enemy
-	var target_pos: Vector2
-	var active: bool = true
-	var move_speed: float = 2.0
-	
-	func _init(enemy: Enemy, target_pos: Vector2) -> void:
-		self.enemy = enemy
-		self.target_pos = target_pos
-	
-	func move(delta: float) -> void:
-		if is_instance_valid(enemy):
-			enemy.position = MathUtils.lerp_smooth(enemy.position, target_pos, move_speed, delta)
-
-	func is_active() -> bool:
-		return active and is_instance_valid(enemy)
 	
 var timer: Timer = Timer.new()
 var timer_count: int = 0
 
-var junko: BossData
-var hecatia: BossData
+var junko: Enemy
+var junko_lerp: ComponentLerpPosition
+var junko_active: bool = true
+
+var hecatia: Enemy
+var hecatia_lerp: ComponentLerpPosition
+var hecatia_active: bool = true
 
 var pattern_circle: PatternCircle
 var pattern_accel: PatternCircle
@@ -60,46 +48,39 @@ func _ready() -> void:
 	call_deferred("spawn")
 
 func spawn() -> void:
-	junko = BossData.new(
-		get_boss("junko", JUNKO_SCENE, Vector2(410, -40)),
-		Vector2(210, 400)
-	)
-	junko.enemy.mhp = 4000
-	junko.enemy.hp = 4000
-	junko.enemy.damage_taken_mult = 1.0
+	junko = get_boss("junko", JUNKO_SCENE, Vector2(410, -40))
+	junko.mhp = 4000
+	junko.hp = 4000
+	junko.damage_taken_mult = 1.0
+	junko_lerp = ComponentLerpPosition.add_to_entity(junko, Vector2(210, 400), 2.0)
 	
-	hecatia = BossData.new(
-		get_boss("hecatia", HECATIA_SCENE, Vector2(410, -40)),
-		Vector2(610, 400)
-	)
-	hecatia.enemy.mhp = 4000
-	hecatia.enemy.hp = 4000
-	hecatia.enemy.damage_taken_mult = 1.0
+	hecatia = get_boss("hecatia", HECATIA_SCENE, Vector2(410, -40))
+	hecatia.mhp = 4000
+	hecatia.hp = 4000
+	hecatia.damage_taken_mult = 1.0
+	hecatia_lerp = ComponentLerpPosition.add_to_entity(hecatia, Vector2(610, 400), 2.0)
 	
-	puller = add_bullet_colored(BULLET_CIRCLE_BORDERED, BCOLOR_YELLOW, hecatia.enemy.global_position)
+	puller = add_bullet_colored(BULLET_CIRCLE_BORDERED, BCOLOR_YELLOW, hecatia.global_position)
 	ComponentGravityPull.add_to_entity(puller, 50000)
 	
 func _physics_process(delta: float) -> void:
-	if not ending and not junko.is_active() and not hecatia.is_active():
+	if not ending and not junko_active and not hecatia_active:
 		clean_up()
 	
-	junko.move(delta)
-	hecatia.move(delta)
+	if junko_active:
+		if junko.hp <= 0:
+			junko.modulate.a = 0.5
+			junko.collision_layer = 0
+			junko_active = false
 	
-	if junko.is_active():
-		if junko.enemy.hp <= 0:
-			junko.active = false
-			junko.enemy.modulate.a = 0.5
-			junko.enemy.collision_layer = 0
-	
-	if hecatia.is_active():
-		if hecatia.enemy.hp <= 0:
-			hecatia.active = false
-			hecatia.enemy.modulate.a = 0.5
-			hecatia.enemy.collision_layer = 0
+	if hecatia_active:
+		if hecatia.hp <= 0:
+			hecatia.modulate.a = 0.5
+			hecatia.collision_layer = 0
+			hecatia_active = false
 	
 	if is_instance_valid(puller):
-		puller.global_position = hecatia.enemy.global_position + Vector2.from_angle(total_time) * 200
+		puller.global_position = hecatia.global_position + Vector2.from_angle(total_time) * 200
 	
 	total_time += delta
 	
@@ -110,26 +91,26 @@ func _on_spellcard_timeout() -> void:
 func clean_up() -> void:
 	print("clean up")
 	end_chapter()
-	junko.target_pos = Vector2(410, -130)
-	hecatia.target_pos = Vector2(410, -130)
+	junko_lerp.position = Vector2(410, -130)
+	hecatia_lerp.position = Vector2(410, -130)
 	ending = true
 	timer.start(2)
 	
 func _on_timer_end() -> void:
 	if ending:
 		print("Ending both")
-		junko.enemy.despawn()
-		hecatia.enemy.despawn()
+		junko.despawn()
+		hecatia.despawn()
 		end_script()
 		return
 		
-	if junko.active:
-		pattern_circle.position = junko.enemy.global_position
+	if junko_active:
+		pattern_circle.position = junko.global_position
 		pattern_circle.rotation += PI / pattern_circle.amount
 		pattern_circle.create()
 	
-	if hecatia.active and timer_count % 4 == 0:
-		pattern_accel.position = hecatia.enemy.global_position
+	if hecatia_active and timer_count % 2 == 0:
+		pattern_accel.position = hecatia.global_position
 		pattern_accel.rotation += PI / pattern_accel.amount
 		pattern_accel.create()
 		

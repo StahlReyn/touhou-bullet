@@ -6,7 +6,8 @@ var timer: Timer = Timer.new()
 var timer_count: int = 0
 
 var junko: Enemy
-var target_pos: Vector2 = Vector2(400, 150)
+var junko_lerp: ComponentLerpPosition
+
 var pattern_circle: PatternCircle
 
 func _ready() -> void:
@@ -23,12 +24,13 @@ func _ready() -> void:
 	
 	junko = get_boss("junko", JUNKO_SCENE, Vector2(410, -40))
 	junko.set_mhp(4000)
+	junko_lerp = ComponentLerpPosition.add_to_entity(junko, Vector2(410, 250), 2.0)
 	start_nonspellcard(40.0)
 
 func _physics_process(delta: float) -> void:
 	if is_instance_valid(junko):
-		junko.position = MathUtils.lerp_smooth(junko.position, target_pos, 2.0, delta)
 		if junko.hp < 1000:
+			junko_lerp.queue_free()
 			add_item_bulk(ITEM_POWER, 40, junko.global_position)
 			end_chapter()
 			end_script()
