@@ -41,7 +41,7 @@ func _physics_process(delta: float) -> void:
 			clean_up()
 		if junko.position.y < -110:
 			print("Despawned Boss")
-			junko.remove()
+			junko.despawn()
 			end_script()
 	if is_instance_valid(puller):
 		puller.global_position = junko.global_position + Vector2.from_angle(total_time * 0.5) * 240

@@ -36,9 +36,9 @@ func damage_target(character: Character) -> void:
 	character.take_damage(damage)
 	damage *= damage_retention
 	if damage <= 0:
-		remove()
+		despawn()
 	
 func _on_area_entered(area: Area2D) -> void:
 	if area is Character:
 		damage_target(area)
-		hit.emit()
+		hitted.emit()

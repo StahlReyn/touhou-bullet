@@ -74,7 +74,7 @@ static func add_boss(scene: PackedScene, pos: Vector2 = Vector2.ZERO) -> Enemy:
 func end_chapter() -> void:
 	controller.spellcard_displayer.end_spellcard()
 	controller.end_chapter()
-	call_deferred("despawn_all")
+	call_deferred("remove_enemy_entities")
 
 func end_script() -> void:
 	stage_data_script.run_next_script()
@@ -97,14 +97,12 @@ func start_nonspellcard(time: float) -> void:
 func _on_spellcard_timeout() -> void:
 	end_script()
 
-func despawn_all() -> void:
-	controller.game_area.despawn_enemy_bullets()
-	controller.game_area.despawn_non_boss_enemies()
-
-func get_bosses() -> Array[Node]:
-	return GameUtils.get_boss_list()
+func remove_enemy_entities() -> void:
+	controller.game_area.remove_enemy_bullets()
+	controller.game_area.remove_non_boss_enemies()
 
 func get_boss(index: int, fallback_scene: PackedScene, fallback_pos: Vector2 = Vector2.ZERO) -> Enemy:
-	if get_bosses().size() > index:
-		return get_bosses()[index]
+	var boss_list := GameUtils.get_boss_list()
+	if boss_list.size() > index:
+		return boss_list[index]
 	return add_boss(fallback_scene, fallback_pos)

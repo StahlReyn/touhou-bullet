@@ -16,17 +16,17 @@ func get_boss_list() -> Array[Node]:
 func get_bullet_list() -> Array[Node]:
 	return get_tree().get_nodes_in_group("bullet")
 
+func get_item_list() -> Array[Node]:
+	return get_tree().get_nodes_in_group("item")
+
 func get_node_count() -> int:
 	return get_tree().get_node_count()
 
 func get_bullet_count() -> int:
-	return get_tree().get_nodes_in_group("bullet").size()
+	return get_tree().get_node_count_in_group("bullet")
 
 func get_item_count() -> int:
-	return get_tree().get_nodes_in_group("item").size()
+	return get_tree().get_node_count_in_group("item")
 
 func get_enemy_count() -> int:
-	return get_tree().get_nodes_in_group("enemy").size()
-
-func get_point_items() -> Array[Node]:
-	return get_tree().get_nodes_in_group("item")
+	return get_tree().get_node_count_in_group("enemy")

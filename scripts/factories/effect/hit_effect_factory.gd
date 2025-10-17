@@ -8,7 +8,7 @@ static var scene := preload("res://data/effects/hit_particle_effect.tscn")
 static func add_effect_to_entity(entity: Entity) -> void:
 	var effect_factory := new()
 	effect_factory.entity = entity
-	entity.hit.connect(effect_factory.create)
+	entity.hitted.connect(effect_factory.create)
 	entity.add_child(effect_factory)
 	
 func create() -> TempEffect:

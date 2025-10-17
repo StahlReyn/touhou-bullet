@@ -34,16 +34,16 @@ func add_bullet(bullet: Bullet, pos: Vector2 = Vector2.ZERO) -> void:
 	bullet.z_index = 0
 	bullet.global_position = pos
 	ComponentDespawnEdge.add_to_entity(bullet)
-	DespawnEffectFactory.add_effect_to_entity(bullet)
+	RemoveEffectFactory.add_effect_to_entity(bullet)
 
 func add_enemy(enemy: Enemy, pos: Vector2 = Vector2.ZERO) -> void:
 	add_child(enemy)
-	enemy.collision_layer = Collision.ENEMY # Is an Enemy
+	enemy.collision_layer = Collision.ENEMY # Izzs an Enemy
 	enemy.collision_mask = Collision.PLAYER # Finding hit player
 	enemy.z_index = 0
 	enemy.global_position = pos
 	ComponentDespawnEdge.add_to_entity(enemy)
-	DespawnEffectFactory.add_effect_to_entity(enemy)
+	RemoveEffectFactory.add_effect_to_entity(enemy)
 	GameVariables.enemy_spawned += 1
 
 func add_enemy_boss(enemy: Enemy, pos: Vector2 = Vector2.ZERO) -> void:
@@ -65,20 +65,20 @@ func add_item(item: Item, pos: Vector2 = Vector2.ZERO) -> void:
 	ComponentDespawnEdge.add_to_entity(item)
 	CollectEffectFactory.add_effect_to_item(item)
 
-func despawn_enemy_bullets() -> void:
+func remove_enemy_bullets() -> void:
 	for bullet: Bullet in GameUtils.get_bullet_list():
 		if bullet.collision_mask & Collision.PLAYER: # Collision looking for player
-			bullet.despawn()
+			bullet.remove()
 
-func despawn_bullets() -> void:
+func remove_bullets() -> void:
 	for bullet: Bullet in GameUtils.get_bullet_list():
-		bullet.despawn()
+		bullet.remove()
 
-func despawn_enemies() -> void:
+func remove_enemies() -> void:
 	for enemy: Enemy in GameUtils.get_enemy_list():
-		enemy.despawn()
+		enemy.remove()
 
-func despawn_non_boss_enemies() -> void:
+func remove_non_boss_enemies() -> void:
 	for enemy: Enemy in GameUtils.get_enemy_list():
 		if not enemy.is_in_group("boss"):
-			enemy.despawn()
+			enemy.remove()

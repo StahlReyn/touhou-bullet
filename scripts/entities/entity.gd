@@ -1,17 +1,19 @@
 class_name Entity
 extends Area2D
 
-signal hit
+signal hitted
 signal despawned
+signal removed
 
 func _ready() -> void:
 	pass
 
-## Despawns the entity. This is when it get removed from going out of bounds or clear.
+## Remove bullets, indicate it's force removed like board clear.
+func remove() -> void:
+	removed.emit()
+	despawn()
+
+## Despawns the entity, does queue free. For example on out of bound.
 func despawn() -> void:
 	despawned.emit()
-	remove()
-
-## Actually removes the entity
-func remove() -> void:
 	call_deferred("queue_free")

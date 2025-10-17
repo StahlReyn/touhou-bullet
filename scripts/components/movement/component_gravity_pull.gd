@@ -16,7 +16,7 @@ func _physics_process(delta: float) -> void:
 		if target == entity:
 			continue
 		if target.global_position.distance_squared_to(entity.global_position) < despawn_radius ** 2:
-			target.remove()
+			target.despawn()
 		if not target.has_meta(&"g_vel"):
 			target.set_meta(&"g_vel", Vector2.ZERO)
 		var new_vel: Vector2 = (
