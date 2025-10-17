@@ -1,6 +1,8 @@
-## For script in making stage.
 class_name SectionScript
 extends Node
+## For script in making stage.
+## This class also works as a facade. As the script extends this directly,
+## it will be using a lot of functions contained here.
 
 const BCOLOR_BLACK = 0
 const BCOLOR_RED = 1
@@ -101,3 +103,8 @@ func despawn_all() -> void:
 
 func get_bosses() -> Array[Node]:
 	return GameUtils.get_boss_list()
+
+func get_boss(index: int, fallback_scene: PackedScene, fallback_pos: Vector2 = Vector2.ZERO) -> Enemy:
+	if get_bosses().size() > index:
+		return get_bosses()[index]
+	return add_boss(fallback_scene, fallback_pos)
