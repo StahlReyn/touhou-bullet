@@ -65,9 +65,9 @@ static func add_item_bulk(scene: PackedScene, count: int, pos: Vector2 = Vector2
 	for i in range(count):
 		add_item(scene, pos)
 
-static func add_boss(scene: PackedScene, pos: Vector2 = Vector2.ZERO) -> Enemy:
+static func add_boss(scene: PackedScene, id: String, pos: Vector2 = Vector2.ZERO) -> Enemy:
 	var enemy: Enemy = scene.instantiate()
-	GameVariables.game_area.add_enemy_boss(enemy, pos)
+	GameVariables.game_area.add_enemy_boss(enemy, id, pos)
 	return enemy
 
 ## Calls end chapter and spellcard without proceeding to next section immediately
@@ -101,8 +101,7 @@ func remove_enemy_entities() -> void:
 	controller.game_area.remove_enemy_bullets()
 	controller.game_area.remove_non_boss_enemies()
 
-func get_boss(index: int, fallback_scene: PackedScene, fallback_pos: Vector2 = Vector2.ZERO) -> Enemy:
-	var boss_list := GameUtils.get_boss_list()
-	if boss_list.size() > index:
-		return boss_list[index]
-	return add_boss(fallback_scene, fallback_pos)
+func get_boss(id: String, fallback_scene: PackedScene, fallback_pos: Vector2 = Vector2.ZERO) -> Enemy:
+	if GameVariables.boss_list.has(id):
+		return GameVariables.boss_list[id]
+	return add_boss(fallback_scene, id, fallback_pos)

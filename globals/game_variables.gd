@@ -17,6 +17,7 @@ static var bomb_pieces_max: int = 5
 var game_area: GameArea
 var player: Player
 var difficulty: Difficulty = Difficulty.NORMAL
+var boss_list: Dictionary[String, Enemy]
 
 var game_time: float = 0.0
 var score: int = 0

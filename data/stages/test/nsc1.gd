@@ -21,7 +21,7 @@ func _ready() -> void:
 	pattern_circle.base_bullet.sprite_frame_x(BCOLOR_BLUE)
 	pattern_circle.base_bullet.material = MATERIAL_ADD
 	
-	junko = get_boss(0, JUNKO_SCENE, Vector2(410, -40))
+	junko = get_boss("junko", JUNKO_SCENE, Vector2(410, -40))
 	junko.set_mhp(4000)
 	start_nonspellcard(40.0)
 

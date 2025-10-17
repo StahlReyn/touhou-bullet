@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://8vvjkaprdwy2"]
 
 [ext_resource type="Script" uid="uid://y12juub2fcyj" path="res://scripts/entities/enemy.gd" id="1_0xm4q"]
-[ext_resource type="Texture2D" uid="uid://clq433ssia5c6" path="res://assets/graphics/enemies/boss_junko.png" id="2_td2a8"]
+[ext_resource type="Texture2D" uid="uid://clq433ssia5c6" path="res://assets/graphics/enemies/junko.png" id="2_td2a8"]
 [ext_resource type="PackedScene" uid="uid://w54qs2iq7b0n" path="res://display/gameplay/health_bar.tscn" id="3_smo7q"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_smo7q"]
@@ -28,7 +28,7 @@ collision_mask = 4
 script = ExtResource("1_0xm4q")
 mhp = 2000
 collision_damage = 100
-remove_on_death = false
+despawn_on_death = false
 metadata/_custom_type_script = "uid://y12juub2fcyj"
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

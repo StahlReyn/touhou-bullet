@@ -34,9 +34,10 @@ func get_enemy_target() -> Enemy:
 	var cur_enemy = null
 	for enemy in enemy_list:
 		if enemy is Enemy:
+			if not (enemy.collision_layer & GameArea.Collision.ENEMY): # Not enemy collision
+				continue
 			if cur_enemy == null:
 				cur_enemy = enemy
-			# Get enemy with largest y, Lowest
 			elif enemy.position.y > cur_enemy.position.y: 
 				cur_enemy = enemy
 	return cur_enemy

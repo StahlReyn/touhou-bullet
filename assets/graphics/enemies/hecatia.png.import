@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dpe2kr1wonqq7"
-path="res://.godot/imported/boss_letty_whiterock.png-b025dc57f3a28ffe0ac6501168489557.ctex"
+uid="uid://ct0xe8pl8rshb"
+path="res://.godot/imported/hecatia.png-a7372770ff006f01e848ceaa55e3a593.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/graphics/enemies/boss_letty_whiterock.png"
-dest_files=["res://.godot/imported/boss_letty_whiterock.png-b025dc57f3a28ffe0ac6501168489557.ctex"]
+source_file="res://assets/graphics/enemies/hecatia.png"
+dest_files=["res://.godot/imported/hecatia.png-a7372770ff006f01e848ceaa55e3a593.ctex"]
 
 [params]
 

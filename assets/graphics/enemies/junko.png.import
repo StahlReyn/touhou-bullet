@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://clq433ssia5c6"
-path="res://.godot/imported/boss_junko.png-7859c05bdddbec4323f04798065a65e7.ctex"
+path="res://.godot/imported/junko.png-dde82eeb8f6b451889cf5c197f750be2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/graphics/enemies/boss_junko.png"
-dest_files=["res://.godot/imported/boss_junko.png-7859c05bdddbec4323f04798065a65e7.ctex"]
+source_file="res://assets/graphics/enemies/junko.png"
+dest_files=["res://.godot/imported/junko.png-dde82eeb8f6b451889cf5c197f750be2.ctex"]
 
 [params]
 

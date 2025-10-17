@@ -26,7 +26,7 @@ func _ready() -> void:
 	pattern_circle.base_bullet.sprite_frame_x(BCOLOR_BLUE)
 	pattern_circle.base_bullet.material = MATERIAL_ADD
 	
-	junko = get_boss(0, JUNKO_SCENE, Vector2(410, -40))
+	junko = get_boss("junko", JUNKO_SCENE, Vector2(410, -40))
 	junko.mhp = 4000
 	junko.hp = 1000
 	junko.damage_taken_mult = 0.2
@@ -39,9 +39,6 @@ func _physics_process(delta: float) -> void:
 		junko.position = MathUtils.lerp_smooth(junko.position, target_pos, 2.0, delta)
 		if junko.is_dead:
 			clean_up()
-		if junko.position.y < -110:
-			print("Despawned Boss")
-			junko.despawn()
 			end_script()
 	if is_instance_valid(puller):
 		puller.global_position = junko.global_position + Vector2.from_angle(total_time * 0.5) * 240

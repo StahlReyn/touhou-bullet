@@ -46,7 +46,7 @@ func add_enemy(enemy: Enemy, pos: Vector2 = Vector2.ZERO) -> void:
 	RemoveEffectFactory.add_effect_to_entity(enemy)
 	GameVariables.enemy_spawned += 1
 
-func add_enemy_boss(enemy: Enemy, pos: Vector2 = Vector2.ZERO) -> void:
+func add_enemy_boss(enemy: Enemy, id: String, pos: Vector2 = Vector2.ZERO) -> void:
 	add_child(enemy)
 	enemy.add_to_group("boss")
 	enemy.collision_layer = Collision.ENEMY # Is an Enemy
@@ -54,6 +54,7 @@ func add_enemy_boss(enemy: Enemy, pos: Vector2 = Vector2.ZERO) -> void:
 	enemy.z_index = 0
 	enemy.global_position = pos
 	GameVariables.enemy_spawned += 1
+	GameVariables.boss_list[id] = enemy
 
 func add_item(item: Item, pos: Vector2 = Vector2.ZERO) -> void:
 	add_child(item)
