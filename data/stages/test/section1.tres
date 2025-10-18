@@ -1,11 +1,12 @@
-[gd_resource type="Resource" script_class="StageDataScript" load_steps=5 format=3 uid="uid://dsm134iu43xdm"]
+[gd_resource type="Resource" script_class="StageDataScript" load_steps=6 format=3 uid="uid://dsm134iu43xdm"]
 
 [ext_resource type="Script" uid="uid://7j5ebxd7k1rm" path="res://scripts/gameplay/stage_data_script.gd" id="1_n6k1m"]
-[ext_resource type="Script" uid="uid://iyg7fx3sfj25" path="res://data/stages/test/scripts/s1.gd" id="4_ursym"]
-[ext_resource type="Script" uid="uid://ituqutvgyikh" path="res://data/stages/test/scripts/s2.gd" id="5_wqp7u"]
-[ext_resource type="Script" uid="uid://4flv55w4oydu" path="res://data/stages/test/scripts/s3.gd" id="6_7i7vg"]
+[ext_resource type="Script" uid="uid://iyg7fx3sfj25" path="res://data/stages/test/scripts/s1.gd" id="2_4r7sb"]
+[ext_resource type="Script" uid="uid://ituqutvgyikh" path="res://data/stages/test/scripts/s2.gd" id="3_2aoai"]
+[ext_resource type="Script" uid="uid://4flv55w4oydu" path="res://data/stages/test/scripts/s3.gd" id="4_2w67l"]
+[ext_resource type="Script" uid="uid://xyjpkv7qopr5" path="res://data/stages/test/scripts/s4.gd" id="5_ursym"]
 
 [resource]
 script = ExtResource("1_n6k1m")
-section_script = Array[GDScript]([ExtResource("4_ursym"), ExtResource("5_wqp7u"), ExtResource("6_7i7vg")])
+section_script = Array[GDScript]([ExtResource("2_4r7sb"), ExtResource("3_2aoai"), ExtResource("4_2w67l"), ExtResource("5_ursym")])
 metadata/_custom_type_script = "uid://7j5ebxd7k1rm"

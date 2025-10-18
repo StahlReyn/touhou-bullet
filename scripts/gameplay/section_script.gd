@@ -31,6 +31,7 @@ const BULLET_LASER_PARTIAL = preload("res://data/bullets/basic/circle.tscn")
 
 const ENEMY_FAIRY = preload("res://data/enemies/fairy_leaf.tscn")
 const ENEMY_FAIRY_SUNFLOWER = preload("res://data/enemies/fairy_sunflower.tscn")
+const ENEMY_FAIRY_SUNFLOWER_DREAM = preload("res://data/enemies/fairy_sunflower_dream.tscn")
 
 const ITEM_POWER = preload("res://data/items/item_power.tscn")
 const ITEM_POINT = preload("res://data/items/item_point.tscn")
