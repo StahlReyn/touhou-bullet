@@ -31,11 +31,19 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	if is_instance_valid(junko):
 		if junko.hp < 1000:
-			junko_lerp.queue_free()
 			add_item_bulk(ITEM_POWER, 40, junko.global_position)
-			end_chapter()
-			end_script()
+			clean_up()
 
+func _on_spellcard_timeout() -> void:
+	clean_up()
+
+func clean_up() -> void:
+	end_chapter()
+	# junko_lerp.position = Vector2(420, -120)
+	junko_lerp.queue_free() # Free for next one to add back
+	timer.stop()
+	end_script()
+	
 # ================ PLACEHOLDER ================
 func _on_timer_end() -> void:
 	pattern_circle.position = junko.global_position

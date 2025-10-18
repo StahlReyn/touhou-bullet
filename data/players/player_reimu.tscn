@@ -1,6 +1,7 @@
-[gd_scene load_steps=35 format=3 uid="uid://dgl5l0j6dpfd5"]
+[gd_scene load_steps=37 format=3 uid="uid://dgl5l0j6dpfd5"]
 
 [ext_resource type="Script" uid="uid://4uk2a50v5es0" path="res://scripts/entities/player.gd" id="1_0d26x"]
+[ext_resource type="Script" uid="uid://cs7srthvki82f" path="res://scripts/entities/graze.gd" id="2_l4vi3"]
 [ext_resource type="Texture2D" uid="uid://8wwwsbsdvrys" path="res://assets/graphics/players/reimu.png" id="2_xrwn8"]
 [ext_resource type="Texture2D" uid="uid://c882q8ogx4sax" path="res://assets/graphics/players/focus_dot.png" id="4_is2jg"]
 [ext_resource type="Texture2D" uid="uid://ckp0f3w0j2wpe" path="res://assets/graphics/players/graze_circle.png" id="5_jp3db"]
@@ -16,6 +17,9 @@
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_xrwn8"]
 radius = 5.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_l4vi3"]
+radius = 44.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_iyoxi"]
 atlas = ExtResource("2_xrwn8")
@@ -176,6 +180,14 @@ metadata/_custom_type_script = "uid://4uk2a50v5es0"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_xrwn8")
 metadata/_edit_lock_ = true
+
+[node name="Graze" type="Area2D" parent="."]
+collision_mask = 0
+script = ExtResource("2_l4vi3")
+metadata/_custom_type_script = "uid://cs7srthvki82f"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Graze"]
+shape = SubResource("CircleShape2D_l4vi3")
 
 [node name="MainSprite" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, 2)

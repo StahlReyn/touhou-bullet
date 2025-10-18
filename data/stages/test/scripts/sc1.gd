@@ -54,6 +54,7 @@ func clean_up() -> void:
 	# junko_lerp.position = Vector2(420, -120)
 	junko_lerp.queue_free() # Free for next one to add back
 	timer.stop()
+	end_script()
 	
 func _on_timer_end() -> void:
 	if timer_count == 0:

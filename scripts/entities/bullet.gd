@@ -42,3 +42,5 @@ func _on_area_entered(area: Area2D) -> void:
 	if area is Character:
 		damage_target(area)
 		hitted.emit()
+	if area is Graze:
+		area.add_graze()
