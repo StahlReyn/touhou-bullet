@@ -27,6 +27,8 @@ func _on_timer_end() -> void:
 		comp.velocity = Vector2(0, 50 + (timer_count % 16) * 0)
 		enemy.add_child(comp)
 		
+		ComponentDrop.add_powerpoint(enemy, 3, 0)
+		
 		if timer_count % 2 == 0:
 			enemy.set_type.emit("red")
 		timer_count += 1

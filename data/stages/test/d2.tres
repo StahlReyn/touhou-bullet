@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="StageDataDialogue" load_steps=6 format=3 uid="uid://cdhtswls7emrf"]
+
+[ext_resource type="Script" uid="uid://cn6e6yd4p2nkw" path="res://scripts/dialogues/dialogue_event.gd" id="1_eka10"]
+[ext_resource type="Script" uid="uid://8sos5xgum73s" path="res://scripts/gameplay/stage_data_dialogue.gd" id="2_3mrcp"]
+[ext_resource type="PackedScene" uid="uid://c5lv57yicjv1l" path="res://data/portraits/seija.tscn" id="2_dl2te"]
+[ext_resource type="Script" uid="uid://cnkxajlq1vds6" path="res://scripts/dialogues/dialogue_line.gd" id="3_wegwp"]
+
+[sub_resource type="Resource" id="Resource_0fosj"]
+script = ExtResource("3_wegwp")
+id = "seija"
+dialogue = "Oh no post battle"
+face_anim = "angry"
+portrait_scene = ExtResource("2_dl2te")
+metadata/_custom_type_script = "uid://cnkxajlq1vds6"
+
+[resource]
+script = ExtResource("2_3mrcp")
+dialogue_events = Array[ExtResource("1_eka10")]([SubResource("Resource_0fosj")])
+metadata/_custom_type_script = "uid://8sos5xgum73s"

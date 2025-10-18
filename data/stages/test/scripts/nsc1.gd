@@ -24,6 +24,7 @@ func _ready() -> void:
 	
 	junko = get_boss("junko", JUNKO_SCENE, Vector2(410, -40))
 	junko.set_mhp(4000)
+	junko.damage_taken_mult = 1.0
 	junko_lerp = ComponentLerpPosition.add_to_entity(junko, Vector2(410, 250), 2.0)
 	start_nonspellcard(40.0)
 

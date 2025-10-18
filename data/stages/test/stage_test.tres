@@ -1,11 +1,13 @@
-[gd_resource type="Resource" script_class="StageData" load_steps=5 format=3 uid="uid://difrbojtnaq1r"]
+[gd_resource type="Resource" script_class="StageData" load_steps=7 format=3 uid="uid://difrbojtnaq1r"]
 
 [ext_resource type="Script" uid="uid://dmb82id2jgc4u" path="res://scripts/gameplay/stage_data_section.gd" id="1_0fcsl"]
 [ext_resource type="Script" uid="uid://bpbubir7dstld" path="res://scripts/gameplay/stage_data.gd" id="1_co3h1"]
 [ext_resource type="Resource" uid="uid://ck6naqtap3suk" path="res://data/stages/test/d1.tres" id="2_hd4i2"]
 [ext_resource type="Resource" uid="uid://dsm134iu43xdm" path="res://data/stages/test/section1.tres" id="4_f47eh"]
+[ext_resource type="Resource" uid="uid://cdhtswls7emrf" path="res://data/stages/test/d2.tres" id="5_llren"]
+[ext_resource type="Resource" uid="uid://bo3q5tegwkqhb" path="res://data/stages/test/boss1.tres" id="6_wjklv"]
 
 [resource]
 script = ExtResource("1_co3h1")
-sections = Array[ExtResource("1_0fcsl")]([ExtResource("2_hd4i2"), ExtResource("4_f47eh")])
+sections = Array[ExtResource("1_0fcsl")]([ExtResource("2_hd4i2"), ExtResource("4_f47eh"), ExtResource("5_llren"), ExtResource("6_wjklv")])
 metadata/_custom_type_script = "uid://bpbubir7dstld"

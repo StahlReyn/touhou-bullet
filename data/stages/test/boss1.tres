@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="StageDataScript" load_steps=5 format=3 uid="uid://bo3q5tegwkqhb"]
+
+[ext_resource type="Script" uid="uid://7j5ebxd7k1rm" path="res://scripts/gameplay/stage_data_script.gd" id="1_6ccxw"]
+[ext_resource type="Script" uid="uid://bfyvptwdg11ct" path="res://data/stages/test/scripts/nsc1.gd" id="2_bm21u"]
+[ext_resource type="Script" uid="uid://dm08whu7gkvep" path="res://data/stages/test/scripts/sc1.gd" id="3_y7w2b"]
+[ext_resource type="Script" uid="uid://bno4gynst34kf" path="res://data/stages/test/scripts/sc2.gd" id="4_2byx0"]
+
+[resource]
+script = ExtResource("1_6ccxw")
+section_script = Array[GDScript]([ExtResource("2_bm21u"), ExtResource("3_y7w2b"), ExtResource("2_bm21u"), ExtResource("4_2byx0")])
+metadata/_custom_type_script = "uid://7j5ebxd7k1rm"

@@ -11,9 +11,14 @@ enum ItemType {
 
 var drop_position: Vector2
 
-func _on_enemy_died() -> void:
-	drop_position = entity.global_position
-	call_deferred("drop") # Call deferred due to how this is called after signal
+static func add_powerpoint(entity_owner: Character, power: int, point: int) -> ComponentDrop:
+	var comp := new()
+	comp.entity = entity_owner
+	comp.item_drops[ItemType.POWER] = power
+	comp.item_drops[ItemType.POINT] = point
+	entity_owner.died.connect(comp.drop)
+	entity_owner.add_child(comp)
+	return comp
 
 func get_scene(type: ItemType) -> PackedScene:
 	match type:

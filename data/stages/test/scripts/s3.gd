@@ -32,6 +32,7 @@ func create_enemy_shooter() -> Enemy:
 	ComponentAcceleration.add_to_entity(enemy, Vector2(0, -300), Vector2(0, 500))
 	ComponentTimer.add_to_entity(enemy, shoot_circle, 2.0)
 	ComponentTimer.add_to_entity(enemy, shoot_trail, 0.25)
+	ComponentDrop.add_powerpoint(enemy, 40, 0)
 	return enemy
 
 static func shoot_trail(entity: Entity):

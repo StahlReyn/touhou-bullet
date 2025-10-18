@@ -26,6 +26,7 @@ func _on_timer_end() -> void:
 	enemy.add_child(comp)
 	
 	ComponentTimer.add_to_entity(enemy, shoot_trail, 0.2)
+	ComponentDrop.add_powerpoint(enemy, 0, 3)
 	
 	if timer_count % 2 == 0:
 		enemy.set_type.emit("red")
@@ -33,5 +34,5 @@ func _on_timer_end() -> void:
 	timer.start(0.05)
 
 static func shoot_trail(entity: Entity):
-	var base_bullet = add_bullet_colored(BULLET_OVAL, BCOLOR_BLUE)
+	var base_bullet = add_bullet_colored(BULLET_OVAL, BCOLOR_BLUE, entity.global_position)
 	ComponentAcceleration.add_to_entity(base_bullet, Vector2(0, 400))
