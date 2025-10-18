@@ -1,10 +1,11 @@
-[gd_scene load_steps=20 format=3 uid="uid://cymswu7x3ujdg"]
+[gd_scene load_steps=18 format=3 uid="uid://cymswu7x3ujdg"]
 
 [ext_resource type="Script" uid="uid://egelp2iwlkw7" path="res://scenes/scene_game.gd" id="1_ahrb4"]
 [ext_resource type="Script" uid="uid://cf4coa3e55q1b" path="res://scripts/gameplay/stage_controller.gd" id="2_cgls0"]
 [ext_resource type="Shader" uid="uid://b5c0vnxv2u53n" path="res://assets/shaders/multi_frame_wipe.gdshader" id="2_uj20q"]
 [ext_resource type="Script" uid="uid://ccy2ohusmggtk" path="res://display/common/screen_wipe.gd" id="3_cqmd0"]
 [ext_resource type="Resource" uid="uid://difrbojtnaq1r" path="res://data/stages/test/stage_test.tres" id="3_uj20q"]
+[ext_resource type="Script" uid="uid://khhk7jxvmdbr" path="res://scenes/game_overlay.gd" id="4_axbol"]
 [ext_resource type="PackedScene" uid="uid://cw2snxi5rw2t5" path="res://scenes/gameplay/dialogue_view.tscn" id="4_cqmd0"]
 [ext_resource type="PackedScene" uid="uid://dks2tixhdliu5" path="res://scenes/gameplay/game_hud.tscn" id="5_axbol"]
 [ext_resource type="PackedScene" uid="uid://fuxvcjrqr0fg" path="res://scenes/gameplay/pause_menu.tscn" id="6_rfj8o"]
@@ -13,7 +14,8 @@
 [ext_resource type="Texture2D" uid="uid://drwxow2x3u56q" path="res://assets/graphics/system/item_get_line.png" id="9_llk3u"]
 [ext_resource type="Script" uid="uid://pmafp0ichrea" path="res://display/gameplay/area_collection.gd" id="10_ypw7w"]
 [ext_resource type="PackedScene" uid="uid://caqu7tfsa7qtg" path="res://scenes/gameplay/game_area.tscn" id="11_l45cg"]
-[ext_resource type="Texture2D" uid="uid://c4ls1lgwm8u8p" path="res://assets/graphics/skyboxes/space.png" id="12_fd365"]
+[ext_resource type="PackedScene" uid="uid://bwbs4tuwt77ap" path="res://scenes/maps/sea_of_tranquility.tscn" id="14_uj20q"]
+[ext_resource type="Script" uid="uid://bq76axo3opvtb" path="res://scenes/stage_background.gd" id="15_axbol"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_axbol"]
 shader = ExtResource("2_uj20q")
@@ -23,142 +25,113 @@ shader_parameter/flip = false
 shader_parameter/horizontal = false
 shader_parameter/frames = 20
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_mn252"]
-
-[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_snne4"]
-panorama = ExtResource("12_fd365")
-
-[sub_resource type="Sky" id="Sky_nxgbd"]
-sky_material = SubResource("PanoramaSkyMaterial_snne4")
-
-[sub_resource type="Environment" id="Environment_xlk0u"]
-background_mode = 2
-background_color = Color(1.6244128e-07, 0.09904594, 0.15504143, 1)
-sky = SubResource("Sky_nxgbd")
-
-[node name="SceneGame" type="Control"]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="SceneGame" type="Node2D"]
+physics_interpolation_mode = 2
 script = ExtResource("1_ahrb4")
 metadata/_custom_type_script = "uid://egelp2iwlkw7"
 metadata/_edit_lock_ = true
 
-[node name="ScreenWipe" type="ColorRect" parent="."]
+[node name="StageController" type="Node" parent="." node_paths=PackedStringArray("game_area", "dialogue_view", "spellcard_displayer")]
+script = ExtResource("2_cgls0")
+game_area = NodePath("../GameView/GameArea")
+dialogue_view = NodePath("../GameOverlay/DialogueView")
+spellcard_displayer = NodePath("../GameOverlay/SpellcardDisplayer")
+stage_data = ExtResource("3_uj20q")
+metadata/_custom_type_script = "uid://cf4coa3e55q1b"
+
+[node name="GameOverlay" type="Node2D" parent="."]
+script = ExtResource("4_axbol")
+metadata/_custom_type_script = "uid://khhk7jxvmdbr"
+
+[node name="Camera2D" type="Camera2D" parent="GameOverlay"]
+anchor_mode = 0
+metadata/_edit_lock_ = true
+
+[node name="ScreenWipe" type="ColorRect" parent="GameOverlay"]
 process_mode = 3
 z_index = 200
 material = SubResource("ShaderMaterial_axbol")
-layout_mode = 0
-offset_left = -1.0
-offset_right = 1279.0
+offset_right = 1280.0
 offset_bottom = 960.0
 color = Color(0, 0, 0, 1)
 script = ExtResource("3_cqmd0")
 metadata/_custom_type_script = "uid://ccy2ohusmggtk"
+metadata/_edit_lock_ = true
 
-[node name="StageController" type="Node" parent="." node_paths=PackedStringArray("game_area", "dialogue_view", "spellcard_displayer")]
-script = ExtResource("2_cgls0")
-game_area = NodePath("../GameView/GameArea")
-dialogue_view = NodePath("../DialogueView")
-spellcard_displayer = NodePath("../SpellcardDisplayer")
-stage_data = ExtResource("3_uj20q")
-metadata/_custom_type_script = "uid://cf4coa3e55q1b"
-
-[node name="DialogueView" parent="." instance=ExtResource("4_cqmd0")]
+[node name="DialogueView" parent="GameOverlay" instance=ExtResource("4_cqmd0")]
 z_index = 100
 metadata/_edit_lock_ = true
 
-[node name="GameHud" parent="." instance=ExtResource("5_axbol")]
+[node name="GameHud" parent="GameOverlay" instance=ExtResource("5_axbol")]
 z_index = 80
-layout_mode = 0
 anchors_preset = 0
 anchor_right = 0.0
 anchor_bottom = 0.0
 offset_right = 1280.0
 offset_bottom = 960.0
-grow_horizontal = 1
-grow_vertical = 1
 metadata/_edit_lock_ = true
 
-[node name="PauseMenu" parent="." instance=ExtResource("6_rfj8o")]
+[node name="PauseMenu" parent="GameOverlay" instance=ExtResource("6_rfj8o")]
 z_index = 70
-layout_mode = 0
 anchors_preset = 0
 anchor_right = 0.0
 anchor_bottom = 0.0
-offset_left = 64.0
-offset_top = 32.0
-offset_right = 1344.0
-offset_bottom = 992.0
-grow_horizontal = 1
-grow_vertical = 1
+offset_right = 1280.0
+offset_bottom = 960.0
 metadata/_edit_lock_ = true
 
-[node name="SectionClearPopup" parent="." instance=ExtResource("7_3tsxn")]
+[node name="ChapterPopup" parent="GameOverlay" instance=ExtResource("7_3tsxn")]
 z_index = 60
-layout_mode = 0
 offset_left = 64.0
 offset_top = 32.0
 offset_right = 832.0
 offset_bottom = 928.0
 metadata/_edit_lock_ = true
 
-[node name="SpellcardDisplayer" parent="." instance=ExtResource("8_ig268")]
+[node name="SpellcardDisplayer" parent="GameOverlay" instance=ExtResource("8_ig268")]
 z_index = 50
-layout_mode = 0
 offset_left = 64.0
 offset_top = 32.0
-offset_right = 64.0
-offset_bottom = 32.0
+offset_right = 832.0
+offset_bottom = 928.0
 metadata/_edit_lock_ = true
 
-[node name="AreaCollection" type="Sprite2D" parent="."]
+[node name="AreaCollection" type="Sprite2D" parent="GameOverlay"]
 z_index = 20
 position = Vector2(448, 200)
 scale = Vector2(2, 2)
 texture = ExtResource("9_llk3u")
 script = ExtResource("10_ypw7w")
 metadata/_custom_type_script = "uid://pmafp0ichrea"
-
-[node name="GameView" type="PanelContainer" parent="."]
-layout_mode = 0
-offset_left = 64.0
-offset_top = 32.0
-offset_right = 64.0
-offset_bottom = 32.0
-theme_override_styles/panel = SubResource("StyleBoxEmpty_mn252")
 metadata/_edit_lock_ = true
+
+[node name="GameView" type="Node2D" parent="."]
+position = Vector2(64, 32)
 
 [node name="GameArea" parent="GameView" instance=ExtResource("11_l45cg")]
-metadata/_edit_lock_ = true
 
-[node name="MarginContainer" type="MarginContainer" parent="GameView"]
-layout_mode = 2
-theme_override_constants/margin_left = -32
-theme_override_constants/margin_top = -32
-
-[node name="ViewportBackground" type="SubViewportContainer" parent="GameView/MarginContainer"]
+[node name="ViewportBackground" type="SubViewportContainer" parent="GameView"]
 z_index = -20
-layout_mode = 2
-metadata/_edit_lock_ = true
+offset_left = -32.0
+offset_top = -32.0
+offset_right = 800.0
+offset_bottom = 928.0
 
-[node name="SubViewport" type="SubViewport" parent="GameView/MarginContainer/ViewportBackground"]
+[node name="SubViewport" type="SubViewport" parent="GameView/ViewportBackground"]
 handle_input_locally = false
 size = Vector2i(832, 960)
 render_target_update_mode = 4
 
-[node name="Camera3D" type="Camera3D" parent="GameView/MarginContainer/ViewportBackground/SubViewport"]
+[node name="StageBackground" type="Node3D" parent="GameView/ViewportBackground/SubViewport"]
+script = ExtResource("15_axbol")
+metadata/_custom_type_script = "uid://bq76axo3opvtb"
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="GameView/MarginContainer/ViewportBackground/SubViewport"]
-environment = SubResource("Environment_xlk0u")
+[node name="SeaOfTranquility" parent="GameView/ViewportBackground/SubViewport/StageBackground" instance=ExtResource("14_uj20q")]
 
 [connection signal="stage_started" from="." to="StageController" method="_on_game_main_stage_started"]
-[connection signal="stage_started" from="." to="AreaCollection" method="_on_game_main_stage_started"]
-[connection signal="chapter_ended" from="StageController" to="SectionClearPopup" method="_on_stage_controller_chapter_ended"]
-[connection signal="spellcard_started" from="StageController" to="SpellcardDisplayer" method="_on_stage_controller_spellcard_started"]
+[connection signal="stage_started" from="." to="GameOverlay/AreaCollection" method="_on_game_main_stage_started"]
+[connection signal="chapter_ended" from="StageController" to="GameOverlay/ChapterPopup" method="_on_stage_controller_chapter_ended"]
+[connection signal="spellcard_started" from="StageController" to="GameOverlay/SpellcardDisplayer" method="_on_stage_controller_spellcard_started"]
 [connection signal="stage_ended" from="StageController" to="." method="_on_stage_controller_stage_ended"]
-[connection signal="quit" from="PauseMenu" to="ScreenWipe" method="close"]
-[connection signal="retry" from="PauseMenu" to="ScreenWipe" method="close"]
+[connection signal="quit" from="GameOverlay/PauseMenu" to="GameOverlay/ScreenWipe" method="close"]
+[connection signal="retry" from="GameOverlay/PauseMenu" to="GameOverlay/ScreenWipe" method="close"]

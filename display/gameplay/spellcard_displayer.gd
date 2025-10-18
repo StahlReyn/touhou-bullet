@@ -73,9 +73,3 @@ func end_spellcard() -> void:
 	if status == Status.SPELL:
 		animation_node.play("end")
 	status = Status.REGULAR
-
-func start_non_spell() -> void:
-	pass
-
-func end_non_spell() -> void:
-	pass

@@ -7,7 +7,7 @@
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_e53f3"]
 
-[node name="SectionClearPopup" type="PanelContainer"]
+[node name="ChapterPopup" type="PanelContainer"]
 offset_right = 768.0
 offset_bottom = 896.0
 theme_override_styles/panel = SubResource("StyleBoxEmpty_e53f3")

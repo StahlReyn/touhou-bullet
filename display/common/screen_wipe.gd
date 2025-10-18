@@ -1,30 +1,42 @@
 class_name ScreenWipe
 extends ColorRect
 
+signal opened
 signal closed
 
-var cur_percent : float = 1.0
-var closing : bool = false
-var signal_closed : bool = false
-var time_closed : float = 0.0
+enum Status {
+	IDLE,
+	CLOSING,
+	OPENING
+}
+
+var status: Status = Status.OPENING
+var progress: float = 1.0
+var next_scene_path: String
 
 func _ready() -> void:
-	material.set_shader_parameter("percentage", cur_percent)
+	material.set_shader_parameter("percentage", progress)
 
 func _physics_process(delta: float) -> void:
-	if closing:
-		cur_percent += delta * 10
-	else:
-		cur_percent -= delta * 10
-		signal_closed = false # Reset
-	cur_percent = clamp(cur_percent, 0, 1)
-	material.set_shader_parameter("percentage", cur_percent)
-	if cur_percent >= 1:
-		time_closed += delta
-		# Slight delay so it doesnt flash
-		if not signal_closed and time_closed >= 0.2:
+	progress = clamp(progress, 0, 1)	
+	material.set_shader_parameter("percentage", progress)
+	
+	if status == Status.CLOSING:
+		progress += delta * 10
+		if progress >= 1:
 			closed.emit()
-			signal_closed = true
+			status = Status.IDLE
+			if next_scene_path.length() > 0:
+				SceneManager.goto_scene(next_scene_path)
+	elif status == Status.OPENING:
+		progress -= delta * 10
+		if progress <= 0:
+			opened.emit()
+			status = Status.IDLE
 
 func close() -> void:
-	closing = true
+	status = Status.CLOSING
+
+func transition_scene(next_scene_path: String) -> void:
+	status = Status.CLOSING
+	self.next_scene_path = next_scene_path

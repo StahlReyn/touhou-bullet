@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://bwbs4tuwt77ap"]
+
+[ext_resource type="Texture2D" uid="uid://c4ls1lgwm8u8p" path="res://assets/graphics/skyboxes/space.png" id="1_bod55"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_snne4"]
+panorama = ExtResource("1_bod55")
+
+[sub_resource type="Sky" id="Sky_nxgbd"]
+sky_material = SubResource("PanoramaSkyMaterial_snne4")
+
+[sub_resource type="Environment" id="Environment_xlk0u"]
+background_mode = 2
+background_color = Color(1.6244128e-07, 0.09904594, 0.15504143, 1)
+sky = SubResource("Sky_nxgbd")
+
+[node name="SeaOfTranquility" type="Node3D"]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+fov = 100.0
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_xlk0u")

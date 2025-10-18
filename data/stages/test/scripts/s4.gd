@@ -13,16 +13,17 @@ func _physics_process(delta: float) -> void:
 
 # ================ PLACEHOLDER ================
 func _on_timer_end() -> void:
-	if timer_count > 3:
+	if timer_count > 2:
 		end_chapter()
 		end_script()
+		return
 
 	var enemy: Enemy = create_enemy_shooter()
 	enemy.position.x = (timer_count % 3) * 200 + 150
 	enemy.position.y = -40
 	timer_count += 1
 		
-	timer.start(2)
+	timer.start(1)
 
 func create_enemy_shooter() -> Enemy:
 	var enemy: Enemy = add_enemy(ENEMY_FAIRY_SUNFLOWER_DREAM)

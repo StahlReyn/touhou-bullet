@@ -5,6 +5,7 @@ signal start_game
 
 @onready var label_volume: Label = $StartMenu/SelectionList/Options/Label
 @onready var selection_list: SelectionList = $StartMenu/SelectionList
+@onready var screen_wipe: ScreenWipe = $ScreenWipe
 
 
 func _ready() -> void:
@@ -46,6 +47,7 @@ func add_volume(num : float) -> void:
 func option_start():
 	print("> Option Start")
 	start_game.emit()
+	screen_wipe.transition_scene(SceneManager.SCENE_GAME)
 
 func option_options():
 	#print("> Option Options")
@@ -54,6 +56,3 @@ func option_options():
 func option_quit():
 	print("> Option Quit")
 	get_tree().quit()
-
-func _on_screen_wipe_closed() -> void:
-	SceneManager.goto_scene(SceneManager.SCENE_GAME)

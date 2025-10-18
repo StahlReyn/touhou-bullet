@@ -1,4 +1,4 @@
-class_name SectionClearPopup
+class_name ChapterPopup
 extends PanelContainer
 ## Does Popups
 ## Chapter and Spellcard fastest, then timer and effects

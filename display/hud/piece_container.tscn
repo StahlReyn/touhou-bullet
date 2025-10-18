@@ -7,8 +7,8 @@
 [ext_resource type="Texture2D" uid="uid://blnrhius0cbnv" path="res://assets/graphics/system/divider_stat.png" id="6_oxmot"]
 
 [node name="PieceContainer" type="VBoxContainer"]
-offset_right = 418.0
-offset_bottom = 78.0
+offset_right = 378.0
+offset_bottom = 97.0
 script = ExtResource("1_ufoer")
 metadata/_custom_type_script = "uid://b2nlokxc0vx08"
 
@@ -17,29 +17,26 @@ layout_mode = 2
 
 [node name="Label" type="Label" parent="MainContainer"]
 modulate = Color(0.496, 0.8, 0.5112, 1)
-custom_minimum_size = Vector2(145, 0)
 layout_mode = 2
+size_flags_horizontal = 3
 text = "SYS_SPELLCARD"
 label_settings = ExtResource("1_qleca")
 
 [node name="Pieces" type="HBoxContainer" parent="MainContainer"]
-custom_minimum_size = Vector2(210, 50)
+custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 alignment = 2
 
 [node name="PieceContainer" type="HBoxContainer" parent="."]
 layout_mode = 2
 
-[node name="Space" type="Control" parent="PieceContainer"]
-custom_minimum_size = Vector2(150, 0)
-layout_mode = 2
-
 [node name="Label" type="Label" parent="PieceContainer"]
 custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
+size_flags_horizontal = 3
 text = "SYS_PIECES"
 label_settings = ExtResource("2_ufoer")
-horizontal_alignment = 1
+horizontal_alignment = 2
 
 [node name="Value" type="Label" parent="PieceContainer"]
 custom_minimum_size = Vector2(50, 0)

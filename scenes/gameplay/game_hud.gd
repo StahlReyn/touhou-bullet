@@ -1,2 +1,2 @@
 class_name GameHud
-extends Control
+extends PanelContainer

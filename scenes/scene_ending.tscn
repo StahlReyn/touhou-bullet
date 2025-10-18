@@ -17,46 +17,36 @@ shader_parameter/frames = 20
 [node name="SceneEnding" type="Node2D"]
 script = ExtResource("1_lx3p4")
 
-[node name="Control" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 1280.0
-offset_bottom = 960.0
-
-[node name="ScreenWipe" type="ColorRect" parent="Control"]
+[node name="ScreenWipe" type="ColorRect" parent="."]
 process_mode = 3
 z_index = 200
 material = SubResource("ShaderMaterial_53xi6")
-layout_mode = 0
 offset_right = 1280.0
 offset_bottom = 960.0
 color = Color(0, 0, 0, 1)
 script = ExtResource("3_aogh1")
 
-[node name="CenterContainer" type="CenterContainer" parent="Control"]
+[node name="CenterContainer" type="CenterContainer" parent="."]
 custom_minimum_size = Vector2(1280, 960)
-layout_mode = 0
-offset_right = 953.0
-offset_bottom = 205.0
+offset_right = 1280.0
+offset_bottom = 960.0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Control/CenterContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="Control/CenterContainer/VBoxContainer"]
+[node name="Label" type="Label" parent="CenterContainer/VBoxContainer"]
 layout_mode = 2
 text = "The end :)
 
 I don't have enough frame work to do the end proper
 so here is Blackscreen tm
 
-Here are the Stats:
-
-"
+Here are the Stats:"
 label_settings = ExtResource("4_bsp1n")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Stats" type="Label" parent="Control/CenterContainer/VBoxContainer"]
+[node name="Stats" type="Label" parent="CenterContainer/VBoxContainer"]
 modulate = Color(1, 1, 0, 1)
 layout_mode = 2
 text = "STAT HERE"
@@ -64,14 +54,13 @@ label_settings = ExtResource("4_bsp1n")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Label2" type="Label" parent="Control/CenterContainer/VBoxContainer"]
+[node name="Label2" type="Label" parent="CenterContainer/VBoxContainer"]
 layout_mode = 2
 text = "
 Press (X) to Return
 
 P.S. if you die a lot to Junko, uhhhhh
-Just try to not stall for more than 80 seconds
-"
+Just try to not stall for more than 80 seconds"
 label_settings = ExtResource("5_8xj23")
 horizontal_alignment = 1
 vertical_alignment = 1

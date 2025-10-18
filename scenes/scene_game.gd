@@ -1,40 +1,24 @@
 class_name SceneGame
-extends Control
+extends Node2D
 
 signal stage_started
 
-@onready var noise = FastNoiseLite.new()
-
-var cur_shake_strength = 0
-var noise_i: float = 0.0
+@onready var screen_wipe: ScreenWipe = $GameOverlay/ScreenWipe
 
 func _ready() -> void:
 	print("GAME MAIN READY")
 	# Scene Handler need to update if it's reloaded 
 	# as previous is considered freed, breaking stuff
 	SceneManager.current_scene = self
+	start_game()
+	
+func _physics_process(delta: float) -> void:
+	pass
+
+func start_game() -> void:
 	# PLACEHOLDER - there's no continuous stage yet so it's fine to reset
 	GameVariables.reset_variables()
 	stage_started.emit()
-	
-func _physics_process(delta: float) -> void:
-	#cur_shake_strength -= delta * 150
-	#cur_shake_strength = max(0, cur_shake_strength)
-	#game_hud.position = get_noise_offset(delta, 1000, cur_shake_strength)
-	pass
-	
-func get_noise_offset(delta: float, speed: float, strength: float) -> Vector2:
-	noise_i += delta * speed
-	return Vector2(
-		noise.get_noise_2d(1, noise_i) * strength,
-		noise.get_noise_2d(100, noise_i) * strength
-	)
-
-func _on_gameview_ending_stage() -> void:
-	print("==== GAME VIEW END STAGE - PLACEHOLDER END ====")
-	await get_tree().create_timer(0.3).timeout
-	get_tree().paused = false
-	SceneManager.goto_scene(SceneManager.SCENE_ENDING)
 
 func _on_stage_controller_stage_ended() -> void:
-	print("==== Got Stage Controller Stage Ended ====")
+	screen_wipe.transition_scene(SceneManager.SCENE_ENDING)
