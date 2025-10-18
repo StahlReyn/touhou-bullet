@@ -13,7 +13,6 @@ outline_size = 6
 outline_color = Color(0, 0, 0, 1)
 
 [node name="GameHud" type="Control"]
-z_index = 20
 custom_minimum_size = Vector2(1280, 960)
 layout_mode = 3
 anchors_preset = 15

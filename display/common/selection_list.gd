@@ -2,20 +2,17 @@ class_name SelectionList
 extends VBoxContainer
 ## Styled container, all children should be Margin Container
 
-static var audio_move : AudioStream = preload("res://assets/audio/sfx/click_collect.wav")
-static var audio_select : AudioStream = preload("res://assets/audio/sfx/hit_noise_fade.wav")
+@export var margin_deselect: int = 0
+@export var margin_select: int = 20
+@export var margin_pressed: int = 30
+@export var modulate_select: Color = Color(1,1,0,1)
+@export var modulate_deselect: Color = Color(1,1,1,0.5)
+@export var modulate_pressed: Color = Color(1,1,1,1)
+@export var margin_increment: float = 30
+@export var margin_speed: float = 15
 
-static var margin_deselect : int = 0
-static var margin_select : int = 20
-static var margin_pressed : int = 30
-static var modulate_select : Color = Color(1,1,0,1)
-static var modulate_deselect : Color = Color(1,1,1,0.5)
-static var modulate_pressed : Color = Color(1,1,1,1)
-static var margin_increment : float = 30
-static var margin_speed : float = 15
-
-var cur_selection : int = 0
-var selected_option : bool = false
+var cur_selection: int = 0
+var selected_option: bool = false
 
 func _ready() -> void:
 	cur_selection = 0
@@ -31,17 +28,17 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("move_up"):
 		cur_selection -= 1
 		cur_selection = wrapi(cur_selection, 0, get_option_count())
-		AudioManager.play_audio(audio_move)
+		AudioManager.play_move_select()
 	elif Input.is_action_just_pressed("move_down"):
 		cur_selection += 1
 		cur_selection = wrapi(cur_selection, 0, get_option_count())
-		AudioManager.play_audio(audio_move)
+		AudioManager.play_move_select()
 	
 	if Input.is_action_just_pressed("shoot"):
 		var node = get_children()[cur_selection]
 		node.modulate = modulate_pressed
 		node.add_theme_constant_override("margin_left", margin_pressed)
-		AudioManager.play_audio(audio_select, -1.0)
+		AudioManager.play_select()
 	
 	# Update Display
 	var margin_index : int = 0

@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://cymswu7x3ujdg"]
+[gd_scene load_steps=15 format=3 uid="uid://cymswu7x3ujdg"]
 
 [ext_resource type="Script" uid="uid://egelp2iwlkw7" path="res://scenes/game_main.gd" id="1_xlk0u"]
 [ext_resource type="PackedScene" uid="uid://dks2tixhdliu5" path="res://scenes/game_hud.tscn" id="2_612a3"]
@@ -8,6 +8,7 @@
 [ext_resource type="Resource" uid="uid://difrbojtnaq1r" path="res://data/stages/test/stage_test.tres" id="3_mn252"]
 [ext_resource type="PackedScene" uid="uid://caqu7tfsa7qtg" path="res://scenes/game_area.tscn" id="3_snne4"]
 [ext_resource type="PackedScene" uid="uid://cw2snxi5rw2t5" path="res://scenes/dialogue_view.tscn" id="6_4qd86"]
+[ext_resource type="PackedScene" uid="uid://fuxvcjrqr0fg" path="res://scenes/pause_menu.tscn" id="6_lla21"]
 [ext_resource type="PackedScene" uid="uid://et66msp52cef" path="res://display/gameplay/spellcard_displayer.tscn" id="7_mn252"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_mn252"]
@@ -46,6 +47,7 @@ metadata/_custom_type_script = "uid://cf4coa3e55q1b"
 z_index = 100
 
 [node name="GameHud" parent="." instance=ExtResource("2_612a3")]
+z_index = 80
 layout_mode = 0
 anchors_preset = 0
 anchor_right = 0.0
@@ -56,8 +58,22 @@ grow_horizontal = 1
 grow_vertical = 1
 metadata/_edit_lock_ = true
 
+[node name="PauseMenu" parent="." instance=ExtResource("6_lla21")]
+z_index = 70
+layout_mode = 0
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 64.0
+offset_top = 32.0
+offset_right = 1344.0
+offset_bottom = 992.0
+grow_horizontal = 1
+grow_vertical = 1
+metadata/_edit_lock_ = true
+
 [node name="SectionClearPopup" parent="." instance=ExtResource("3_3qnxt")]
-z_index = 30
+z_index = 60
 layout_mode = 0
 offset_left = 64.0
 offset_top = 32.0
@@ -65,6 +81,7 @@ offset_right = 832.0
 offset_bottom = 928.0
 
 [node name="SpellcardDisplayer" parent="." instance=ExtResource("7_mn252")]
+z_index = 50
 layout_mode = 0
 offset_left = 64.0
 offset_top = 32.0

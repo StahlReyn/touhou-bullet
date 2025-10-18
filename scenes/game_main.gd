@@ -4,10 +4,8 @@ extends Control
 signal stage_started
 signal changing_scene
 
-#@onready var popup : PopUps = $PopUps
-@onready var game_hud : Control = $GameHud
-
 @onready var noise = FastNoiseLite.new()
+
 var cur_shake_strength = 0
 var noise_i: float = 0.0
 

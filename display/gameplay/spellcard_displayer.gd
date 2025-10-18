@@ -61,7 +61,7 @@ func start_spellcard(time: float) -> void:
 	status = Status.SPELL
 	reset_anim()
 	animation_node.play("start")
-	AudioManager.play_spell_card()
+	AudioManager.play_spellcard()
 	label_name.text = GameVariables.cur_spellcard_name
 
 func start_nonspellcard(time: float) -> void:

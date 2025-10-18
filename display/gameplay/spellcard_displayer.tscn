@@ -208,7 +208,6 @@ _data = {
 }
 
 [node name="SpellCardDisplayer" type="PanelContainer"]
-z_index = 10
 custom_minimum_size = Vector2(768, 896)
 offset_right = 120.0
 offset_bottom = 93.0
