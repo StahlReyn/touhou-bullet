@@ -17,7 +17,7 @@ shader_parameter/horizontal = false
 shader_parameter/frames = 20
 
 [sub_resource type="LabelSettings" id="LabelSettings_73ojy"]
-line_spacing = 2.0
+paragraph_spacing = -30.0
 font = ExtResource("7_uprx0")
 font_size = 20
 font_color = Color(0.592157, 1, 1, 1)

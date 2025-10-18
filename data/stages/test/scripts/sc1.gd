@@ -40,7 +40,6 @@ func _physics_process(delta: float) -> void:
 	if is_instance_valid(junko):
 		if junko.hp <= 0:
 			clean_up()
-			end_script()
 	if is_instance_valid(puller):
 		puller.global_position = junko.global_position + Vector2.from_angle(total_time * 0.5) * 240
 	total_time += delta
