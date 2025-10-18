@@ -1,0 +1,113 @@
+[gd_scene load_steps=10 format=3 uid="uid://dn6rmhfrk208t"]
+
+[ext_resource type="Shader" uid="uid://b5c0vnxv2u53n" path="res://assets/shaders/multi_frame_wipe.gdshader" id="1_v0kd0"]
+[ext_resource type="Script" uid="uid://ccy2ohusmggtk" path="res://display/common/screen_wipe.gd" id="2_3re45"]
+[ext_resource type="Script" uid="uid://b07g83nipmyho" path="res://scenes/scene_main_menu.gd" id="3_6k25j"]
+[ext_resource type="Script" uid="uid://ckj2h5bkfubbw" path="res://display/common/selection_list.gd" id="4_l67cq"]
+[ext_resource type="LabelSettings" uid="uid://cri81cp1to0ux" path="res://assets/resources/label_settings/label_pause_options.tres" id="5_toqhm"]
+[ext_resource type="Texture2D" uid="uid://cabqi3fnd3m0x" path="res://assets/graphics/system/placeholder_menu.png" id="6_kuy75"]
+[ext_resource type="FontFile" uid="uid://cgat1phnbct83" path="res://assets/fonts/Seagull-Bold.otf" id="7_uprx0"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3gp7d"]
+shader = ExtResource("1_v0kd0")
+shader_parameter/percentage = 0.0
+shader_parameter/hidden_alpha = 0.0
+shader_parameter/flip = false
+shader_parameter/horizontal = false
+shader_parameter/frames = 20
+
+[sub_resource type="LabelSettings" id="LabelSettings_73ojy"]
+line_spacing = 2.0
+font = ExtResource("7_uprx0")
+font_size = 20
+font_color = Color(0.592157, 1, 1, 1)
+outline_size = 10
+outline_color = Color(0, 0, 0, 1)
+
+[node name="SceneMainMenu" type="Node2D"]
+script = ExtResource("3_6k25j")
+metadata/_custom_type_script = "uid://b07g83nipmyho"
+
+[node name="ScreenWipe" type="ColorRect" parent="."]
+process_mode = 3
+z_index = 200
+material = SubResource("ShaderMaterial_3gp7d")
+offset_left = -1.0
+offset_right = 1279.0
+offset_bottom = 960.0
+color = Color(0, 0, 0, 1)
+script = ExtResource("2_3re45")
+metadata/_custom_type_script = "uid://ccy2ohusmggtk"
+
+[node name="StartMenu" type="Node2D" parent="."]
+
+[node name="SelectionList" type="VBoxContainer" parent="StartMenu"]
+offset_left = 100.0
+offset_top = 475.0
+offset_right = 409.0
+offset_bottom = 684.0
+theme_override_constants/separation = 25
+script = ExtResource("4_l67cq")
+metadata/_custom_type_script = "uid://ckj2h5bkfubbw"
+
+[node name="Start" type="MarginContainer" parent="StartMenu/SelectionList"]
+layout_mode = 2
+theme_override_constants/margin_left = 0
+
+[node name="Label" type="Label" parent="StartMenu/SelectionList/Start"]
+layout_mode = 2
+text = "MENU_START"
+label_settings = ExtResource("5_toqhm")
+
+[node name="Options" type="MarginContainer" parent="StartMenu/SelectionList"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="StartMenu/SelectionList/Options"]
+layout_mode = 2
+text = "VOLUME"
+label_settings = ExtResource("5_toqhm")
+
+[node name="Quit" type="MarginContainer" parent="StartMenu/SelectionList"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="StartMenu/SelectionList/Quit"]
+layout_mode = 2
+text = "MENU_QUIT"
+label_settings = ExtResource("5_toqhm")
+
+[node name="PlaceholderMenu" type="Sprite2D" parent="."]
+z_index = -20
+texture = ExtResource("6_kuy75")
+centered = false
+
+[node name="Label" type="Label" parent="."]
+offset_left = 487.0
+offset_top = 457.0
+offset_right = 782.0
+offset_bottom = 752.0
+text = "Z - Confirm
+X - Back
+Ctrl - Skip Dialouge
+Shift - Volume x10
+
+Z (Hold) - Charge
+Z (Release) - Hit
+Arrow Keys - Move
+
+No control options currently.
+Still working on Framework :("
+label_settings = SubResource("LabelSettings_73ojy")
+
+[node name="Label2" type="Label" parent="."]
+modulate = Color(1, 1, 0.505882, 1)
+offset_left = 439.0
+offset_top = 787.0
+offset_right = 781.0
+offset_bottom = 839.0
+text = "Reflection Direction is same as Pong!!!
+(Relative position to Player)"
+label_settings = SubResource("LabelSettings_73ojy")
+horizontal_alignment = 1
+
+[connection signal="start_game" from="." to="ScreenWipe" method="close"]
+[connection signal="closed" from="ScreenWipe" to="." method="_on_screen_wipe_closed"]

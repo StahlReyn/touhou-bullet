@@ -1,8 +1,7 @@
-class_name GameMain
+class_name SceneGame
 extends Control
 
 signal stage_started
-signal changing_scene
 
 @onready var noise = FastNoiseLite.new()
 
@@ -33,22 +32,9 @@ func get_noise_offset(delta: float, speed: float, strength: float) -> Vector2:
 
 func _on_gameview_ending_stage() -> void:
 	print("==== GAME VIEW END STAGE - PLACEHOLDER END ====")
-	changing_scene.emit()
 	await get_tree().create_timer(0.3).timeout
 	get_tree().paused = false
-	SceneManager.goto_scene(SceneManager.scene_end)
-
-func _on_pause_menu_quit() -> void:
-	changing_scene.emit()
-	await get_tree().create_timer(0.3).timeout
-	get_tree().paused = false
-	SceneManager.goto_scene(SceneManager.scene_menu)
-
-func _on_pause_menu_retry() -> void:
-	changing_scene.emit()
-	await get_tree().create_timer(0.3).timeout
-	get_tree().paused = false
-	SceneManager.reload_current_scene()
+	SceneManager.goto_scene(SceneManager.SCENE_ENDING)
 
 func _on_stage_controller_stage_ended() -> void:
 	print("==== Got Stage Controller Stage Ended ====")

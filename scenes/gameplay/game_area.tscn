@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://caqu7tfsa7qtg"]
 
-[ext_resource type="Script" uid="uid://dy6e4thtl3g0j" path="res://scenes/game_area.gd" id="1_4nubl"]
+[ext_resource type="Script" uid="uid://dy6e4thtl3g0j" path="res://scenes/gameplay/game_area.gd" id="1_4nubl"]
 [ext_resource type="PackedScene" uid="uid://dgl5l0j6dpfd5" path="res://data/players/player_reimu.tscn" id="1_pw8qh"]
 
 [node name="GameArea" type="Node2D"]

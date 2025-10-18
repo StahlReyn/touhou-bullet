@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://fuxvcjrqr0fg"]
 
-[ext_resource type="Script" uid="uid://me5e1ybfabco" path="res://scenes/pause_menu.gd" id="1_kukqi"]
+[ext_resource type="Script" uid="uid://me5e1ybfabco" path="res://scenes/gameplay/pause_menu.gd" id="1_kukqi"]
 [ext_resource type="Script" uid="uid://ckj2h5bkfubbw" path="res://display/common/selection_list.gd" id="2_bn2ex"]
 [ext_resource type="LabelSettings" uid="uid://cri81cp1to0ux" path="res://assets/resources/label_settings/label_pause_options.tres" id="3_tgauo"]
 
@@ -25,7 +25,7 @@ color = Color(0, 0, 0, 0.631373)
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 2
-theme_override_constants/margin_left = 200
+theme_override_constants/margin_left = 150
 theme_override_constants/margin_top = 500
 
 [node name="SelectionList" type="VBoxContainer" parent="MarginContainer"]

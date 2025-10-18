@@ -12,7 +12,7 @@ config_version=5
 
 config/name="Touhou Bullet Base"
 config/description="Base for bullet hell in touhou style"
-run/main_scene="uid://cymswu7x3ujdg"
+run/main_scene="uid://dn6rmhfrk208t"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon_temp.png"
 

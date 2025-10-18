@@ -1,3 +1,4 @@
+class_name ScreenWipe
 extends ColorRect
 
 signal closed
@@ -25,5 +26,5 @@ func _physics_process(delta: float) -> void:
 			closed.emit()
 			signal_closed = true
 
-func _do_close() -> void:
+func close() -> void:
 	closing = true

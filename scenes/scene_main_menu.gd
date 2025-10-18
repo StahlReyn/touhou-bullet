@@ -1,11 +1,10 @@
+class_name SceneMainMenu
 extends Node2D
-
-static var audio_shoot : AudioStream = preload("res://assets/audio/sfx/hit_noise_fade.wav")
-@onready var label_volume = $SelectionList/Options/Label
 
 signal start_game
 
-@export var selection_list : SelectionList
+@onready var label_volume: Label = $StartMenu/SelectionList/Options/Label
+@onready var selection_list: SelectionList = $StartMenu/SelectionList
 
 
 func _ready() -> void:
@@ -57,4 +56,4 @@ func option_quit():
 	get_tree().quit()
 
 func _on_screen_wipe_closed() -> void:
-	SceneManager.goto_scene(SceneManager.scene_game)
+	SceneManager.goto_scene(SceneManager.SCENE_GAME)

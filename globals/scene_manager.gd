@@ -2,9 +2,9 @@ extends Node
 
 var current_scene = null
 
-static var scene_game = "res://scenes/main/gamemain.tscn"
-static var scene_menu = "res://scenes/main/menu.tscn"
-static var scene_end = "res://scenes/main/end_scene.tscn"
+const SCENE_GAME = "res://scenes/scene_game.tscn"
+const SCENE_MAIN_MENU = "res://scenes/scene_main_menu.tscn"
+const SCENE_ENDING = "res://scenes/scene_ending.tscn"
 
 func _ready():
 	var root = get_tree().root

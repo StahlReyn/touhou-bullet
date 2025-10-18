@@ -17,7 +17,7 @@ static var bomb_pieces_max: int = 5
 var game_area: GameArea
 var player: Player
 var difficulty: Difficulty = Difficulty.NORMAL
-var boss_list: Dictionary[String, Enemy]
+var boss_list: Dictionary[String, Enemy] = {}
 
 var game_time: float = 0.0
 var score: int = 0
@@ -59,6 +59,8 @@ func reset_variables() -> void:
 	deaths = 0
 	enemy_spawned = 0
 	shoot_down = 0
+	
+	boss_list.clear()
 	reset_chapter_variables()
 
 # ================================================================

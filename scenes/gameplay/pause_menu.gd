@@ -39,7 +39,13 @@ func option_return():
 func option_retry():
 	print("> Option Retry")
 	retry.emit()
-	
+	await get_tree().create_timer(0.2).timeout
+	get_tree().paused = false
+	SceneManager.reload_current_scene()
+
 func option_quit():
 	print("> Option Quit")
 	quit.emit()
+	await get_tree().create_timer(0.2).timeout
+	get_tree().paused = false
+	SceneManager.goto_scene(SceneManager.SCENE_MAIN_MENU)
