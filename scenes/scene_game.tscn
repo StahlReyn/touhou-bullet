@@ -5,7 +5,7 @@
 [ext_resource type="Shader" uid="uid://b5c0vnxv2u53n" path="res://assets/shaders/multi_frame_wipe.gdshader" id="2_uj20q"]
 [ext_resource type="Script" uid="uid://ccy2ohusmggtk" path="res://display/common/screen_wipe.gd" id="3_cqmd0"]
 [ext_resource type="Resource" uid="uid://difrbojtnaq1r" path="res://data/stages/test/stage_test.tres" id="3_uj20q"]
-[ext_resource type="Script" uid="uid://khhk7jxvmdbr" path="res://scenes/game_overlay.gd" id="4_axbol"]
+[ext_resource type="Script" uid="uid://khhk7jxvmdbr" path="res://scenes/gameplay/game_overlay.gd" id="4_axbol"]
 [ext_resource type="PackedScene" uid="uid://cw2snxi5rw2t5" path="res://scenes/gameplay/dialogue_view.tscn" id="4_cqmd0"]
 [ext_resource type="PackedScene" uid="uid://dks2tixhdliu5" path="res://scenes/gameplay/game_hud.tscn" id="5_axbol"]
 [ext_resource type="PackedScene" uid="uid://fuxvcjrqr0fg" path="res://scenes/gameplay/pause_menu.tscn" id="6_rfj8o"]

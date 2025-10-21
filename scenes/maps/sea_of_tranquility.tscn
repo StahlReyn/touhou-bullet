@@ -1,6 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://bwbs4tuwt77ap"]
+[gd_scene load_steps=17 format=3 uid="uid://bwbs4tuwt77ap"]
 
 [ext_resource type="Texture2D" uid="uid://c4ls1lgwm8u8p" path="res://assets/graphics/skyboxes/space.png" id="1_bod55"]
+[ext_resource type="Material" uid="uid://d4nrgqyawy22t" path="res://scenes/maps/sea_1.tres" id="2_wcdpa"]
+[ext_resource type="Texture2D" uid="uid://dpso8yuxhmrxs" path="res://assets/graphics/textures/sea_waves.png" id="2_xpk23"]
+[ext_resource type="Script" uid="uid://bry2ek4rj4eo8" path="res://scenes/maps/scrolling_texture.gd" id="3_dkagk"]
+[ext_resource type="Texture2D" uid="uid://b0pbkim6ox468" path="res://assets/graphics/textures/moon_surface.png" id="3_wcdpa"]
+[ext_resource type="Texture2D" uid="uid://c1tkb54vloadm" path="res://assets/graphics/textures/earth_asia.png" id="5_dkagk"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_snne4"]
 panorama = ExtResource("1_bod55")
@@ -12,11 +17,91 @@ sky_material = SubResource("PanoramaSkyMaterial_snne4")
 background_mode = 2
 background_color = Color(1.6244128e-07, 0.09904594, 0.15504143, 1)
 sky = SubResource("Sky_nxgbd")
+fog_enabled = true
+fog_light_color = Color(0, 0, 0, 1)
+fog_sky_affect = 0.0
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_3yjbr"]
+load_path = "res://.godot/imported/sea_waves.jpg-7ad9a945bce46d23c20e8bbda3b6c5af.s3tc.ctex"
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3uofp"]
+transparency = 1
+blend_mode = 1
+albedo_color = Color(1, 0.41890717, 0.6320585, 1)
+albedo_texture = ExtResource("2_xpk23")
+normal_texture = SubResource("CompressedTexture2D_3yjbr")
+uv1_scale = Vector3(0.11, 0.11, 0.11)
+uv1_triplanar = true
+grow_amount = 0.831
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_dc2jv"]
+size = Vector2(100, 100)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_dkagk"]
+size = Vector2(100, 100)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_gdppc"]
+size = Vector2(100, 100)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dc2jv"]
+albedo_texture = ExtResource("3_wcdpa")
+uv1_scale = Vector3(0.1, 0.1, 0.1)
+uv1_triplanar = true
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_wcdpa"]
+size = Vector2(200, 30)
+orientation = 2
 
 [node name="SeaOfTranquility" type="Node3D"]
 
 [node name="Camera3D" type="Camera3D" parent="."]
-fov = 100.0
+transform = Transform3D(1, 0, 0, 0, 0.92184293, 0.38756382, 0, -0.38756382, 0.92184293, 0, 7.478676, 46.13462)
+far = 500.0
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Camera3D"]
+light_energy = 4.0
+light_indirect_energy = 5.0
+omni_range = 90.0
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_xlk0u")
+
+[node name="Waves2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.1475754, 0)
+material_override = SubResource("StandardMaterial3D_3uofp")
+transparency = 0.45
+cast_shadow = 0
+mesh = SubResource("PlaneMesh_dc2jv")
+script = ExtResource("3_dkagk")
+velocity = Vector3(0.06, 0, -0.15)
+
+[node name="Waves" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0)
+material_override = ExtResource("2_wcdpa")
+transparency = 0.4
+cast_shadow = 0
+mesh = SubResource("PlaneMesh_dkagk")
+script = ExtResource("3_dkagk")
+velocity = Vector3(0.05, 0, -0.1)
+
+[node name="Ground" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.2679407, 0)
+mesh = SubResource("PlaneMesh_gdppc")
+skeleton = NodePath("../Waves")
+surface_material_override/0 = SubResource("StandardMaterial3D_dc2jv")
+script = ExtResource("3_dkagk")
+velocity = Vector3(0.025, 0, -0.05)
+
+[node name="Back" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -11.078552, -49.299835)
+mesh = SubResource("PlaneMesh_wcdpa")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9.098116, 33.666183)
+cast_shadow = 0
+pixel_size = 0.002
+billboard = 1
+double_sided = false
+texture = ExtResource("5_dkagk")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Sprite3D"]
