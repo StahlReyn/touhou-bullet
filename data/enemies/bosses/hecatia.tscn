@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://b52jjpx4djxr0"]
+[gd_scene load_steps=8 format=3 uid="uid://b52jjpx4djxr0"]
 
 [ext_resource type="Script" uid="uid://y12juub2fcyj" path="res://scripts/entities/enemy.gd" id="1_5f1x6"]
 [ext_resource type="Texture2D" uid="uid://ct0xe8pl8rshb" path="res://assets/graphics/enemies/hecatia.png" id="2_5f1x6"]
 [ext_resource type="PackedScene" uid="uid://w54qs2iq7b0n" path="res://display/gameplay/health_bar.tscn" id="3_kgq0e"]
+[ext_resource type="PackedScene" uid="uid://da324g1kunmvo" path="res://data/enemies/bosses/boss_aura.tscn" id="4_33fsj"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_33fsj"]
 atlas = ExtResource("2_5f1x6")
@@ -40,3 +41,5 @@ shape = SubResource("CircleShape2D_5f1x6")
 
 [node name="HealthBar" parent="." node_paths=PackedStringArray("character") instance=ExtResource("3_kgq0e")]
 character = NodePath("..")
+
+[node name="BossAura" parent="." instance=ExtResource("4_33fsj")]

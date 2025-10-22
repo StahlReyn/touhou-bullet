@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://8vvjkaprdwy2"]
+[gd_scene load_steps=8 format=3 uid="uid://8vvjkaprdwy2"]
 
 [ext_resource type="Script" uid="uid://y12juub2fcyj" path="res://scripts/entities/enemy.gd" id="1_0xm4q"]
 [ext_resource type="Texture2D" uid="uid://clq433ssia5c6" path="res://assets/graphics/enemies/junko.png" id="2_td2a8"]
 [ext_resource type="PackedScene" uid="uid://w54qs2iq7b0n" path="res://display/gameplay/health_bar.tscn" id="3_smo7q"]
+[ext_resource type="PackedScene" uid="uid://da324g1kunmvo" path="res://data/enemies/bosses/boss_aura.tscn" id="4_opntd"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_smo7q"]
 atlas = ExtResource("2_td2a8")
@@ -40,3 +41,5 @@ shape = SubResource("CircleShape2D_td2a8")
 
 [node name="HealthBar" parent="." node_paths=PackedStringArray("character") instance=ExtResource("3_smo7q")]
 character = NodePath("..")
+
+[node name="BossAura" parent="." instance=ExtResource("4_opntd")]

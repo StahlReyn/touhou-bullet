@@ -22,7 +22,6 @@ fog_light_color = Color(0, 0, 0, 1)
 fog_sky_affect = 0.0
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_3yjbr"]
-load_path = "res://.godot/imported/sea_waves.jpg-7ad9a945bce46d23c20e8bbda3b6c5af.s3tc.ctex"
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3uofp"]
 transparency = 1

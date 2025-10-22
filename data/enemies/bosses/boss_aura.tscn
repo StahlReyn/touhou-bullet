@@ -1,0 +1,50 @@
+[gd_scene load_steps=7 format=3 uid="uid://da324g1kunmvo"]
+
+[ext_resource type="Script" uid="uid://c5f7upwvlurqq" path="res://data/enemies/bosses/boss_aura.gd" id="1_vxgxw"]
+[ext_resource type="Shader" uid="uid://daihbv1gb0q37" path="res://assets/shaders/shockwave.gdshader" id="2_phaae"]
+[ext_resource type="Shader" uid="uid://c0lwv28ljxu8t" path="res://assets/shaders/perspective_2d.gdshader" id="3_8erpi"]
+[ext_resource type="Texture2D" uid="uid://1207m3bevu6r" path="res://assets/graphics/effects/boss_circle.png" id="4_2e2vx"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_opntd"]
+resource_local_to_scene = true
+shader = ExtResource("2_phaae")
+shader_parameter/strength = 0.10000000475
+shader_parameter/center = Vector2(0.555, 0.5)
+shader_parameter/radius = 0.250000011875
+shader_parameter/aberration = 0.2000000095
+shader_parameter/width = 1.9999999494
+shader_parameter/feather = 0.10000000475
+shader_parameter/color = Color(1, 0.7423083, 0.7391192, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hvygb"]
+resource_local_to_scene = true
+shader = ExtResource("3_8erpi")
+shader_parameter/fov = 60.0000028025
+shader_parameter/cull_back = true
+shader_parameter/y_rot = 40.909010493177504
+shader_parameter/x_rot = -4.674991672062504
+shader_parameter/inset = 0.0
+shader_parameter/alpha = 0.50000002375
+
+[node name="BossAura" type="Node2D"]
+script = ExtResource("1_vxgxw")
+
+[node name="Distort" type="ColorRect" parent="."]
+z_index = -30
+material = SubResource("ShaderMaterial_opntd")
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -500.0
+offset_top = -500.0
+offset_right = 500.0
+offset_bottom = 500.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Circle" type="Sprite2D" parent="."]
+z_index = -20
+material = SubResource("ShaderMaterial_hvygb")
+texture = ExtResource("4_2e2vx")

@@ -3,7 +3,6 @@
 [ext_resource type="Texture2D" uid="uid://dpso8yuxhmrxs" path="res://assets/graphics/textures/sea_waves.png" id="1_llh3n"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_3yjbr"]
-load_path = "res://.godot/imported/sea_waves.jpg-7ad9a945bce46d23c20e8bbda3b6c5af.s3tc.ctex"
 
 [resource]
 transparency = 1

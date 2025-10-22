@@ -9,5 +9,5 @@
 
 [resource]
 script = ExtResource("1_co3h1")
-sections = Array[ExtResource("1_0fcsl")]([ExtResource("2_hd4i2"), ExtResource("4_f47eh"), ExtResource("5_llren"), ExtResource("6_wjklv")])
+sections = Array[ExtResource("1_0fcsl")]([ExtResource("6_wjklv"), ExtResource("2_hd4i2"), ExtResource("4_f47eh"), ExtResource("5_llren")])
 metadata/_custom_type_script = "uid://bpbubir7dstld"

@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://cymswu7x3ujdg"]
+[gd_scene load_steps=19 format=3 uid="uid://cymswu7x3ujdg"]
 
 [ext_resource type="Script" uid="uid://egelp2iwlkw7" path="res://scenes/scene_game.gd" id="1_ahrb4"]
 [ext_resource type="Script" uid="uid://cf4coa3e55q1b" path="res://scripts/gameplay/stage_controller.gd" id="2_cgls0"]
@@ -24,6 +24,8 @@ shader_parameter/hidden_alpha = 0.0
 shader_parameter/flip = false
 shader_parameter/horizontal = false
 shader_parameter/frames = 20
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_axbol"]
 
 [node name="SceneGame" type="Node2D"]
 physics_interpolation_mode = 2
@@ -110,23 +112,27 @@ position = Vector2(64, 32)
 
 [node name="GameArea" parent="GameView" instance=ExtResource("11_l45cg")]
 
-[node name="ViewportBackground" type="SubViewportContainer" parent="GameView"]
-z_index = -20
+[node name="PanelContainer" type="PanelContainer" parent="GameView"]
+z_index = -50
 offset_left = -32.0
 offset_top = -32.0
 offset_right = 800.0
 offset_bottom = 928.0
+theme_override_styles/panel = SubResource("StyleBoxEmpty_axbol")
 
-[node name="SubViewport" type="SubViewport" parent="GameView/ViewportBackground"]
+[node name="ViewportBackground" type="SubViewportContainer" parent="GameView/PanelContainer"]
+layout_mode = 2
+
+[node name="SubViewport" type="SubViewport" parent="GameView/PanelContainer/ViewportBackground"]
 handle_input_locally = false
 size = Vector2i(832, 960)
 render_target_update_mode = 4
 
-[node name="StageBackground" type="Node3D" parent="GameView/ViewportBackground/SubViewport"]
+[node name="StageBackground" type="Node3D" parent="GameView/PanelContainer/ViewportBackground/SubViewport"]
 script = ExtResource("15_axbol")
 metadata/_custom_type_script = "uid://bq76axo3opvtb"
 
-[node name="SeaOfTranquility" parent="GameView/ViewportBackground/SubViewport/StageBackground" instance=ExtResource("14_uj20q")]
+[node name="SeaOfTranquility" parent="GameView/PanelContainer/ViewportBackground/SubViewport/StageBackground" instance=ExtResource("14_uj20q")]
 
 [connection signal="stage_started" from="." to="StageController" method="_on_game_main_stage_started"]
 [connection signal="stage_started" from="." to="GameOverlay/AreaCollection" method="_on_game_main_stage_started"]
