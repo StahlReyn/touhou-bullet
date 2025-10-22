@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://cymswu7x3ujdg"]
+[gd_scene load_steps=18 format=3 uid="uid://cymswu7x3ujdg"]
 
 [ext_resource type="Script" uid="uid://egelp2iwlkw7" path="res://scenes/scene_game.gd" id="1_ahrb4"]
 [ext_resource type="Script" uid="uid://cf4coa3e55q1b" path="res://scripts/gameplay/stage_controller.gd" id="2_cgls0"]
@@ -23,6 +23,11 @@ shader_parameter/hidden_alpha = 0.0
 shader_parameter/flip = false
 shader_parameter/horizontal = false
 shader_parameter/frames = 20
+
+[sub_resource type="Curve" id="Curve_cqmd0"]
+_data = [Vector2(0, 0), 0.0, 12.469498, 0, 0, Vector2(0.2, 1), 0.0, 0.0, 0, 0, Vector2(0.8, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -11.7452135, 0.0, 0, 0]
+point_count = 4
+metadata/_snap_enabled = true
 
 [node name="SceneGame" type="Node2D"]
 physics_interpolation_mode = 2
@@ -111,6 +116,7 @@ position = Vector2(64, 32)
 [node name="GameArea" parent="GameView" instance=ExtResource("11_l45cg")]
 
 [node name="GameBackground" parent="GameView" instance=ExtResource("15_cqmd0")]
+fade_curve = SubResource("Curve_cqmd0")
 
 [connection signal="stage_started" from="." to="StageController" method="_on_game_main_stage_started"]
 [connection signal="stage_started" from="." to="GameOverlay/AreaCollection" method="_on_game_main_stage_started"]
