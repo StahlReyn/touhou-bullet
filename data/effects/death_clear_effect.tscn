@@ -24,7 +24,7 @@ copy_mode = 2
 
 [node name="Shockwave" type="ColorRect" parent="BackBufferCopy"]
 material = SubResource("ShaderMaterial_ggu3d")
-offset_left = -750.0
-offset_top = -750.0
-offset_right = 750.0
-offset_bottom = 750.0
+offset_left = -1000.0
+offset_top = -1000.0
+offset_right = 1000.0
+offset_bottom = 1000.0

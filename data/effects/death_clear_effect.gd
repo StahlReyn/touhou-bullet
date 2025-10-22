@@ -5,7 +5,7 @@ const MAIN_SCENE: PackedScene = preload("res://data/effects/death_clear_effect.t
 
 @onready var shockwave: ColorRect = $BackBufferCopy/Shockwave
 @onready var shockwave_shader: ShaderMaterial = shockwave.material
-@onready var viewport_size: Vector2 = get_viewport().size
+@onready var viewport_size: Vector2 = get_viewport_rect().size
 var radius: float = 0.01
 
 static func create(pos: Vector2) -> void:
