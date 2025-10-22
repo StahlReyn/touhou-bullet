@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://cymswu7x3ujdg"]
+[gd_scene load_steps=20 format=3 uid="uid://cymswu7x3ujdg"]
 
 [ext_resource type="Script" uid="uid://egelp2iwlkw7" path="res://scenes/scene_game.gd" id="1_ahrb4"]
 [ext_resource type="Script" uid="uid://cf4coa3e55q1b" path="res://scripts/gameplay/stage_controller.gd" id="2_cgls0"]
@@ -16,6 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://caqu7tfsa7qtg" path="res://scenes/gameplay/game_area.tscn" id="11_l45cg"]
 [ext_resource type="PackedScene" uid="uid://bwbs4tuwt77ap" path="res://scenes/maps/sea_of_tranquility.tscn" id="14_uj20q"]
 [ext_resource type="Script" uid="uid://bq76axo3opvtb" path="res://scenes/stage_background.gd" id="15_axbol"]
+[ext_resource type="PackedScene" uid="uid://yc2kkfjprqjy" path="res://scenes/maps/dreamworld.tscn" id="17_rfj8o"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_axbol"]
 shader = ExtResource("2_uj20q")
@@ -129,10 +130,14 @@ size = Vector2i(896, 1024)
 render_target_update_mode = 4
 
 [node name="StageBackground" type="Node3D" parent="GameView/PanelContainer/ViewportBackground/SubViewport"]
+visible = false
 script = ExtResource("15_axbol")
 metadata/_custom_type_script = "uid://bq76axo3opvtb"
 
-[node name="SeaOfTranquility" parent="GameView/PanelContainer/ViewportBackground/SubViewport/StageBackground" instance=ExtResource("14_uj20q")]
+[node name="Dreamworld" parent="GameView/PanelContainer/ViewportBackground/SubViewport" instance=ExtResource("17_rfj8o")]
+
+[node name="SeaOfTranquility" parent="GameView/PanelContainer/ViewportBackground/SubViewport" instance=ExtResource("14_uj20q")]
+visible = false
 
 [connection signal="stage_started" from="." to="StageController" method="_on_game_main_stage_started"]
 [connection signal="stage_started" from="." to="GameOverlay/AreaCollection" method="_on_game_main_stage_started"]
