@@ -1,0 +1,28 @@
+[gd_scene load_steps=3 format=3 uid="uid://dj7bgwdkhiqgh"]
+
+[ext_resource type="Script" uid="uid://ch8m4j0b36w0u" path="res://scenes/game_background.gd" id="1_fjsm1"]
+[ext_resource type="PackedScene" uid="uid://bwbs4tuwt77ap" path="res://scenes/maps/sea_of_tranquility.tscn" id="1_qebxc"]
+
+[node name="GameBackground" type="PanelContainer"]
+z_index = -100
+offset_left = -64.0
+offset_top = -64.0
+offset_right = 832.0
+offset_bottom = 960.0
+script = ExtResource("1_fjsm1")
+metadata/_custom_type_script = "uid://ch8m4j0b36w0u"
+
+[node name="Overlay" type="ColorRect" parent="."]
+z_index = 1
+layout_mode = 2
+color = Color(0, 0, 0, 1)
+
+[node name="BackgroundViewport" type="SubViewportContainer" parent="."]
+layout_mode = 2
+
+[node name="StageViewport" type="SubViewport" parent="BackgroundViewport"]
+handle_input_locally = false
+size = Vector2i(896, 1024)
+render_target_update_mode = 4
+
+[node name="SeaOfTranquility" parent="BackgroundViewport/StageViewport" instance=ExtResource("1_qebxc")]

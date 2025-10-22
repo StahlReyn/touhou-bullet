@@ -14,7 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://drwxow2x3u56q" path="res://assets/graphics/system/item_get_line.png" id="9_llk3u"]
 [ext_resource type="Script" uid="uid://pmafp0ichrea" path="res://display/gameplay/area_collection.gd" id="10_ypw7w"]
 [ext_resource type="PackedScene" uid="uid://caqu7tfsa7qtg" path="res://scenes/gameplay/game_area.tscn" id="11_l45cg"]
-[ext_resource type="PackedScene" uid="uid://bwbs4tuwt77ap" path="res://scenes/maps/sea_of_tranquility.tscn" id="14_uj20q"]
+[ext_resource type="PackedScene" uid="uid://dj7bgwdkhiqgh" path="res://scenes/game_background.tscn" id="15_cqmd0"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_axbol"]
 shader = ExtResource("2_uj20q")
@@ -30,12 +30,12 @@ script = ExtResource("1_ahrb4")
 metadata/_custom_type_script = "uid://egelp2iwlkw7"
 metadata/_edit_lock_ = true
 
-[node name="StageController" type="Node" parent="." node_paths=PackedStringArray("game_area", "dialogue_view", "spellcard_displayer", "stage_viewport")]
+[node name="StageController" type="Node" parent="." node_paths=PackedStringArray("game_area", "dialogue_view", "spellcard_displayer", "game_background")]
 script = ExtResource("2_cgls0")
 game_area = NodePath("../GameView/GameArea")
 dialogue_view = NodePath("../GameOverlay/DialogueView")
 spellcard_displayer = NodePath("../GameOverlay/SpellcardDisplayer")
-stage_viewport = NodePath("../GameView/BackgroundViewport/StageViewport")
+game_background = NodePath("../GameView/GameBackground")
 stage_data = ExtResource("3_uj20q")
 metadata/_custom_type_script = "uid://cf4coa3e55q1b"
 
@@ -110,19 +110,7 @@ position = Vector2(64, 32)
 
 [node name="GameArea" parent="GameView" instance=ExtResource("11_l45cg")]
 
-[node name="BackgroundViewport" type="SubViewportContainer" parent="GameView"]
-z_index = -100
-offset_left = -64.0
-offset_top = -64.0
-offset_right = 832.0
-offset_bottom = 960.0
-
-[node name="StageViewport" type="SubViewport" parent="GameView/BackgroundViewport"]
-handle_input_locally = false
-size = Vector2i(896, 1024)
-render_target_update_mode = 4
-
-[node name="SeaOfTranquility" parent="GameView/BackgroundViewport/StageViewport" instance=ExtResource("14_uj20q")]
+[node name="GameBackground" parent="GameView" instance=ExtResource("15_cqmd0")]
 
 [connection signal="stage_started" from="." to="StageController" method="_on_game_main_stage_started"]
 [connection signal="stage_started" from="." to="GameOverlay/AreaCollection" method="_on_game_main_stage_started"]

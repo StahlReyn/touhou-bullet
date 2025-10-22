@@ -10,7 +10,7 @@ signal spellcard_started
 @export var game_area: GameArea
 @export var dialogue_view: DialogueView
 @export var spellcard_displayer: SpellcardDisplayer
-@export var stage_viewport: SubViewport
+@export var game_background: GameBackground
 @export_category("Data")
 @export var stage_data: StageData
 @export var section_number: int = 0
@@ -60,11 +60,8 @@ func start_nonspellcard(time: float) -> void:
 	spellcard_displayer.start_nonspellcard(time)
 	spellcard_started.emit()
 
+func transition_stage_scene(scene: PackedScene) -> void:
+	game_background.transition_stage_scene(scene)
+
 func _on_game_main_stage_started() -> void:
 	run()
-
-func set_stage_scene(scene: PackedScene) -> void:
-	for n in stage_viewport.get_children():
-		stage_viewport.remove_child(n)
-		n.queue_free() 
-	stage_viewport.add_child(scene.instantiate())

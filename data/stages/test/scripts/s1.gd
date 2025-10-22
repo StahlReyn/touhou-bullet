@@ -10,7 +10,7 @@ func _ready() -> void:
 	timer.wait_time = 1.0
 	timer.timeout.connect(_on_timer_end)
 	add_child(timer)
-	set_stage_scene(SCENE_DREAMWORLD)
+	transition_stage_scene(SCENE_DREAMWORLD)
 
 func _physics_process(delta: float) -> void:
 	pass

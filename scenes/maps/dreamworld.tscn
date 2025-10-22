@@ -101,7 +101,7 @@ script = ExtResource("3_kisqp")
 velocity = Vector3(0, 0, -0.1)
 
 [node name="Moon" type="Sprite3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.674614, 8.452616, -6.3771973)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.734333, 4.937948, -6.3771973)
 cast_shadow = 0
 pixel_size = 0.03
 billboard = 1
