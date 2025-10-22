@@ -16,10 +16,10 @@ func _ready() -> void:
 	super()
 	reset_hp()
 
-func reset_hp():
+func reset_hp() -> void:
 	hp = mhp
 
-func set_mhp(value : int, restore : bool = true):
+func set_mhp(value : int, restore : bool = true) -> void:
 	mhp = value
 	if restore:
 		reset_hp()
@@ -30,14 +30,14 @@ func take_damage(dmg : int):
 	if hp <= 0 and not is_dead:
 		die()
 
-func die():
+func die() -> void:
 	is_dead = true
 	died.emit()
 	if despawn_on_death:
 		despawn()
 
 ## This is used in spellcard where boss persists
-func revive():
+func revive() -> void:
 	is_dead = false
 	reset_hp()
 	

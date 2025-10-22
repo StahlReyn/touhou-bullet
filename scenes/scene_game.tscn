@@ -114,10 +114,10 @@ position = Vector2(64, 32)
 
 [node name="PanelContainer" type="PanelContainer" parent="GameView"]
 z_index = -100
-offset_left = -32.0
-offset_top = -32.0
-offset_right = 800.0
-offset_bottom = 928.0
+offset_left = -64.0
+offset_top = -64.0
+offset_right = 832.0
+offset_bottom = 960.0
 theme_override_styles/panel = SubResource("StyleBoxEmpty_axbol")
 
 [node name="ViewportBackground" type="SubViewportContainer" parent="GameView/PanelContainer"]
@@ -125,7 +125,7 @@ layout_mode = 2
 
 [node name="SubViewport" type="SubViewport" parent="GameView/PanelContainer/ViewportBackground"]
 handle_input_locally = false
-size = Vector2i(832, 960)
+size = Vector2i(896, 1024)
 render_target_update_mode = 4
 
 [node name="StageBackground" type="Node3D" parent="GameView/PanelContainer/ViewportBackground/SubViewport"]

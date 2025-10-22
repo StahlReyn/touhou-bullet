@@ -91,8 +91,8 @@ func _on_spellcard_timeout() -> void:
 func clean_up() -> void:
 	print("clean up")
 	end_chapter()
-	junko_lerp.position = Vector2(410, -200)
-	hecatia_lerp.position = Vector2(410, -200)
+	junko_lerp.position = Vector2(410, -300)
+	hecatia_lerp.position = Vector2(410, -300)
 	ending = true
 	timer.start(2)
 	

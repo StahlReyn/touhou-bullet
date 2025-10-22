@@ -24,6 +24,7 @@ func _ready() -> void:
 	
 	junko = get_boss("junko", JUNKO_SCENE, Vector2(410, -40))
 	junko.set_mhp(4000)
+	junko.add_hp_marker(1000)
 	junko.damage_taken_mult = 1.0
 	junko_lerp = ComponentLerpPosition.add_to_entity(junko, Vector2(410, 250), 2.0)
 	start_nonspellcard(40.0)
@@ -41,6 +42,7 @@ func clean_up() -> void:
 	end_chapter()
 	# junko_lerp.position = Vector2(420, -120)
 	junko_lerp.queue_free() # Free for next one to add back
+	junko.clear_hp_markers()
 	timer.stop()
 	end_script()
 	
