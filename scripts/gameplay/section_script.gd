@@ -106,3 +106,6 @@ func get_boss(id: String, fallback_scene: PackedScene, fallback_pos: Vector2 = V
 	if GameVariables.boss_list.has(id):
 		return GameVariables.boss_list[id]
 	return add_boss(fallback_scene, id, fallback_pos)
+
+func set_stage_scene(scene: PackedScene) -> void:
+	controller.set_stage_scene(scene)

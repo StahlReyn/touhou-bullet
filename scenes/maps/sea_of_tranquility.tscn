@@ -1,5 +1,6 @@
-[gd_scene load_steps=18 format=3 uid="uid://bwbs4tuwt77ap"]
+[gd_scene load_steps=19 format=3 uid="uid://bwbs4tuwt77ap"]
 
+[ext_resource type="Script" uid="uid://dio7q65n1753g" path="res://scenes/maps/scene_stage.gd" id="1_3uofp"]
 [ext_resource type="Texture2D" uid="uid://c4ls1lgwm8u8p" path="res://assets/graphics/skyboxes/space.png" id="1_bod55"]
 [ext_resource type="Texture2D" uid="uid://dpso8yuxhmrxs" path="res://assets/graphics/textures/sea_waves.png" id="2_xpk23"]
 [ext_resource type="Script" uid="uid://bry2ek4rj4eo8" path="res://scenes/maps/scrolling_texture.gd" id="3_dkagk"]
@@ -61,9 +62,12 @@ size = Vector2(200, 30)
 orientation = 2
 
 [node name="SeaOfTranquility" type="Node3D"]
+script = ExtResource("1_3uofp")
+metadata/_custom_type_script = "uid://dio7q65n1753g"
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.92184293, 0.38756382, 0, -0.38756382, 0.92184293, 0, 7.478676, 46.13462)
+current = true
 far = 500.0
 
 [node name="OmniLight3D" type="OmniLight3D" parent="Camera3D"]

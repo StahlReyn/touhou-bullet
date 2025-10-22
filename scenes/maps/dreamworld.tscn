@@ -1,5 +1,6 @@
-[gd_scene load_steps=14 format=3 uid="uid://yc2kkfjprqjy"]
+[gd_scene load_steps=15 format=3 uid="uid://yc2kkfjprqjy"]
 
+[ext_resource type="Script" uid="uid://dio7q65n1753g" path="res://scenes/maps/scene_stage.gd" id="1_ahbjt"]
 [ext_resource type="Texture2D" uid="uid://bt51rt0nkuiqq" path="res://assets/graphics/textures/grid_red.png" id="2_ahbjt"]
 [ext_resource type="Script" uid="uid://bry2ek4rj4eo8" path="res://scenes/maps/scrolling_texture.gd" id="3_kisqp"]
 [ext_resource type="Texture2D" uid="uid://cxg61hc744t40" path="res://assets/graphics/textures/grid_blue.png" id="4_gshoy"]
@@ -48,9 +49,12 @@ uv1_triplanar = true
 grow_amount = 0.831
 
 [node name="Dreamworld" type="Node3D"]
+script = ExtResource("1_ahbjt")
+metadata/_custom_type_script = "uid://dio7q65n1753g"
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.6712421, 0.7412382, 0, -0.7412382, 0.6712421, 0, 2.2931485, 46.13462)
+current = true
 far = 500.0
 
 [node name="OmniLight3D" type="OmniLight3D" parent="Camera3D"]
