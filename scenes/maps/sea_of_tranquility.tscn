@@ -1,7 +1,6 @@
-[gd_scene load_steps=17 format=3 uid="uid://bwbs4tuwt77ap"]
+[gd_scene load_steps=18 format=3 uid="uid://bwbs4tuwt77ap"]
 
 [ext_resource type="Texture2D" uid="uid://c4ls1lgwm8u8p" path="res://assets/graphics/skyboxes/space.png" id="1_bod55"]
-[ext_resource type="Material" uid="uid://d4nrgqyawy22t" path="res://scenes/maps/sea_1.tres" id="2_wcdpa"]
 [ext_resource type="Texture2D" uid="uid://dpso8yuxhmrxs" path="res://assets/graphics/textures/sea_waves.png" id="2_xpk23"]
 [ext_resource type="Script" uid="uid://bry2ek4rj4eo8" path="res://scenes/maps/scrolling_texture.gd" id="3_dkagk"]
 [ext_resource type="Texture2D" uid="uid://b0pbkim6ox468" path="res://assets/graphics/textures/moon_surface.png" id="3_wcdpa"]
@@ -35,6 +34,16 @@ grow_amount = 0.831
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_dc2jv"]
 size = Vector2(100, 100)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_dkagk"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gdppc"]
+transparency = 1
+albedo_texture = ExtResource("2_xpk23")
+normal_texture = SubResource("CompressedTexture2D_dkagk")
+uv1_scale = Vector3(0.1, 0.1, 0.1)
+uv1_triplanar = true
+grow_amount = 0.831
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_dkagk"]
 size = Vector2(100, 100)
@@ -76,7 +85,7 @@ velocity = Vector3(0.06, 0, -0.15)
 
 [node name="Waves" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0)
-material_override = ExtResource("2_wcdpa")
+material_override = SubResource("StandardMaterial3D_gdppc")
 transparency = 0.4
 cast_shadow = 0
 mesh = SubResource("PlaneMesh_dkagk")

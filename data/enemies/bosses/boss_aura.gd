@@ -8,7 +8,7 @@ enum Status {
 }
 
 @onready var viewport_size: Vector2 = get_viewport().size
-@onready var distort := $Distort
+@onready var distort := $BackBufferCopy/Distort
 @onready var circle := $Circle
 
 @onready var distort_shader: ShaderMaterial = distort.material

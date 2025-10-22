@@ -113,7 +113,7 @@ position = Vector2(64, 32)
 [node name="GameArea" parent="GameView" instance=ExtResource("11_l45cg")]
 
 [node name="PanelContainer" type="PanelContainer" parent="GameView"]
-z_index = -50
+z_index = -100
 offset_left = -32.0
 offset_top = -32.0
 offset_right = 800.0

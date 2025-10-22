@@ -9,7 +9,7 @@ uniform float aberration: hint_range(0.0, 1.0, 0.001) = 0.425;
 uniform float width: hint_range(0.0, 10.0, 0.0001) = 0.04;
 uniform float feather: hint_range(0.0, 1.0, 0.001) = 0.135;
 
-uniform vec4 color: source_color = vec4(1.0);
+uniform vec4 color: source_color = vec4(0.0);
 
 uniform sampler2D SCREEN_TEXTURE : hint_screen_texture, filter_linear_mipmap;
 
@@ -29,5 +29,5 @@ void fragment() {
 	vec4 red = texture(SCREEN_TEXTURE, final_st + abber_vec);
 	vec4 blue = texture(SCREEN_TEXTURE, final_st - abber_vec);
 	vec4 ori = texture(SCREEN_TEXTURE, final_st);
-	COLOR = vec4(red.r, ori.g, blue.b, 1.0) * color * mask;
+	COLOR = vec4(red.r, ori.g, blue.b, 1.0) + color * mask;
 }

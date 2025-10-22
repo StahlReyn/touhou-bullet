@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=3 uid="uid://dkiptomu8km38"]
+
+[ext_resource type="Script" uid="uid://bb1fsmpa10mar" path="res://data/effects/death_clear_effect.gd" id="1_wbn11"]
+[ext_resource type="Shader" uid="uid://daihbv1gb0q37" path="res://assets/shaders/shockwave.gdshader" id="2_wbn11"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ggu3d"]
+resource_local_to_scene = true
+shader = ExtResource("2_wbn11")
+shader_parameter/strength = 0.2000000095
+shader_parameter/center = Vector2(0.5, 0.5)
+shader_parameter/radius = 0.25
+shader_parameter/aberration = 1.0
+shader_parameter/width = 0.1349999965845
+shader_parameter/feather = 0.135
+shader_parameter/color = Color(0, 0, 0, 0)
+
+[node name="DeathClearEffect" type="Node2D"]
+script = ExtResource("1_wbn11")
+metadata/_custom_type_script = "uid://dhj636f5s7kxe"
+
+[node name="BackBufferCopy" type="BackBufferCopy" parent="."]
+z_index = -21
+copy_mode = 2
+
+[node name="Shockwave" type="ColorRect" parent="BackBufferCopy"]
+material = SubResource("ShaderMaterial_ggu3d")
+offset_left = -750.0
+offset_top = -750.0
+offset_right = 750.0
+offset_bottom = 750.0
