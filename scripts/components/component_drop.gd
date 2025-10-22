@@ -31,4 +31,7 @@ func get_scene(type: ItemType) -> PackedScene:
 func drop() -> void:
 	GameVariables.add_score(score)
 	for type in item_drops:
-		SectionScript.add_item_bulk(get_scene(type), item_drops[type], entity.global_position)
+		call_deferred("drop_deferred", get_scene(type), item_drops[type], entity.global_position)
+
+func drop_deferred(scene: PackedScene, count: int, pos: Vector2 = Vector2.ZERO) -> void:
+	SectionScript.add_item_bulk(scene, count, pos)
