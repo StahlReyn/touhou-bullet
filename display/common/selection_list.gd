@@ -2,9 +2,14 @@ class_name SelectionList
 extends VBoxContainer
 ## Styled container, all children should be Margin Container
 
+signal selected(index: int)
+signal left_selected(index: int)
+signal right_selected(index: int)
+
 @export var margin_deselect: int = 0
 @export var margin_select: int = 20
 @export var margin_pressed: int = 30
+@export var margin_side_pressed: int = 20
 @export var modulate_select: Color = Color(1,1,0,1)
 @export var modulate_deselect: Color = Color(1,1,1,0.5)
 @export var modulate_pressed: Color = Color(1,1,1,1)
@@ -39,11 +44,25 @@ func _physics_process(delta: float) -> void:
 		node.modulate = modulate_pressed
 		node.add_theme_constant_override("margin_left", margin_pressed)
 		AudioManager.play_select()
+		selected.emit(cur_selection)
+	elif Input.is_action_just_pressed("move_left"):
+		var node: MarginContainer = get_children()[cur_selection]
+		node.modulate = modulate_pressed
+		node.add_theme_constant_override("margin_left", node.get_theme_constant("margin_left") - margin_side_pressed)
+		left_selected.emit(cur_selection)
+	elif Input.is_action_just_pressed("move_right"):
+		var node: MarginContainer = get_children()[cur_selection]
+		node.modulate = modulate_pressed
+		node.add_theme_constant_override("margin_left", node.get_theme_constant("margin_left") + margin_side_pressed)
+		right_selected.emit(cur_selection)
 	
+	update_display(delta)
+
+func update_display(delta: float):
 	# Update Display
-	var margin_index : int = 0
-	var cur_margin : int = 0
-	var extra_margin : int = 0
+	var margin_index: int = 0
+	var cur_margin: int = 0
+	var extra_margin: int = 0
 	for child in get_children():
 		if child is MarginContainer:
 			cur_margin = child.get_theme_constant("margin_left")

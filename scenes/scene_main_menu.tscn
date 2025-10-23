@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://dn6rmhfrk208t"]
+[gd_scene load_steps=11 format=3 uid="uid://dn6rmhfrk208t"]
 
 [ext_resource type="Shader" uid="uid://b5c0vnxv2u53n" path="res://assets/shaders/multi_frame_wipe.gdshader" id="1_v0kd0"]
 [ext_resource type="Script" uid="uid://ccy2ohusmggtk" path="res://display/common/screen_wipe.gd" id="2_3re45"]
@@ -7,6 +7,7 @@
 [ext_resource type="LabelSettings" uid="uid://cri81cp1to0ux" path="res://assets/resources/label_settings/label_pause_options.tres" id="5_toqhm"]
 [ext_resource type="Texture2D" uid="uid://cabqi3fnd3m0x" path="res://assets/graphics/system/placeholder_menu.png" id="6_kuy75"]
 [ext_resource type="FontFile" uid="uid://cgat1phnbct83" path="res://assets/fonts/Seagull-Bold.otf" id="7_uprx0"]
+[ext_resource type="AudioStream" uid="uid://c2a1nbhne0osk" path="res://assets/audio/bgm/reflection_jam_seija.mp3" id="8_3re45"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_3gp7d"]
 shader = ExtResource("1_v0kd0")
@@ -58,10 +59,18 @@ layout_mode = 2
 text = "MENU_START"
 label_settings = ExtResource("5_toqhm")
 
-[node name="Options" type="MarginContainer" parent="StartMenu/SelectionList"]
+[node name="BGM" type="MarginContainer" parent="StartMenu/SelectionList"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="StartMenu/SelectionList/Options"]
+[node name="Label" type="Label" parent="StartMenu/SelectionList/BGM"]
+layout_mode = 2
+text = "VOLUME"
+label_settings = ExtResource("5_toqhm")
+
+[node name="SFX" type="MarginContainer" parent="StartMenu/SelectionList"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="StartMenu/SelectionList/SFX"]
 layout_mode = 2
 text = "VOLUME"
 label_settings = ExtResource("5_toqhm")
@@ -108,4 +117,12 @@ text = "Reflection Direction is same as Pong!!!
 label_settings = SubResource("LabelSettings_73ojy")
 horizontal_alignment = 1
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_3re45")
+autoplay = true
+bus = &"BGM"
+
 [connection signal="closed" from="ScreenWipe" to="." method="_on_screen_wipe_closed"]
+[connection signal="left_selected" from="StartMenu/SelectionList" to="." method="_on_selection_list_left_selected"]
+[connection signal="right_selected" from="StartMenu/SelectionList" to="." method="_on_selection_list_right_selected"]
+[connection signal="selected" from="StartMenu/SelectionList" to="." method="_on_selection_list_selected"]

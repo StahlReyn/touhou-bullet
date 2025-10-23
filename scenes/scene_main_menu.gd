@@ -3,46 +3,32 @@ extends Node2D
 
 signal start_game
 
-@onready var label_volume: Label = $StartMenu/SelectionList/Options/Label
-@onready var selection_list: SelectionList = $StartMenu/SelectionList
+@onready var label_bgm: Label = $StartMenu/SelectionList/BGM/Label
+@onready var label_sfx: Label = $StartMenu/SelectionList/SFX/Label
 @onready var screen_wipe: ScreenWipe = $ScreenWipe
-
 
 func _ready() -> void:
 	modulate.a = 1.0
-	set_volume(-4.0)
+	update_labels()
 
 func _physics_process(delta: float) -> void:
-	if Input.is_action_just_pressed("shoot"):
-		match selection_list.cur_selection:
-			0: # START
-				option_start()
-			1: # RETRY
-				#option_options()
-				pass
-			2: # QUIT
-				option_quit()
-	
-	if selection_list.cur_selection == 1:
-		var mult = 1 
-		if (Input.is_action_pressed("focus") or Input.is_key_pressed(KEY_SHIFT)):
-			mult = 10
-		if Input.is_action_just_pressed("move_left"):
-			add_volume(-0.1 * mult)
-		elif Input.is_action_just_pressed("move_right"):
-			add_volume(0.1 * mult)
+	pass
 
-func set_volume(num : float) -> void:
-	var cur_bus = AudioServer.get_bus_index("Master")
-	AudioServer.set_bus_volume_db(cur_bus, num)
-	label_volume.text = "VOLUME: " + ("%.2f" % num) + " dB"
+func add_volume(bus: String, num: float) -> void:
+	var cur_bus = AudioServer.get_bus_index(bus)
+	var cur_volume = AudioServer.get_bus_volume_linear(cur_bus)
+	var new_volume = clamp(cur_volume + num, 0, 1)
+	AudioServer.set_bus_volume_linear(cur_bus, new_volume)
+	update_labels()
 
-func add_volume(num : float) -> void:
-	var cur_bus = AudioServer.get_bus_index("Master")
-	var cur_volume = AudioServer.get_bus_volume_db(cur_bus)
-	var new_volume = clamp(cur_volume + num, -20, 10)
-	AudioServer.set_bus_volume_db(cur_bus, new_volume)
-	label_volume.text = "VOLUME: " + ("%.2f" % new_volume) + " dB"
+func get_volume_percent(bus: String) -> int:
+	var cur_bus = AudioServer.get_bus_index(bus)
+	var cur_volume = AudioServer.get_bus_volume_linear(cur_bus)
+	return round(cur_volume * 100)
+
+func update_labels() -> void:
+	label_bgm.text = "BGM: " + str(get_volume_percent("BGM")) + " %"
+	label_sfx.text = "SFX: " + str(get_volume_percent("SFX")) + " %"
 
 func option_start():
 	print("> Option Start")
@@ -56,3 +42,30 @@ func option_options():
 func option_quit():
 	print("> Option Quit")
 	get_tree().quit()
+
+func _on_selection_list_selected(index: int) -> void:
+	match index:
+		0: # START
+			option_start()
+		3: # QUIT
+			option_quit()
+
+func _on_selection_list_right_selected(index: int) -> void:
+	var increment: float = 0.05
+	if Input.is_action_pressed("focus") or Input.is_key_pressed(KEY_SHIFT):
+		increment = 0.2
+	match index:
+		1:
+			add_volume("BGM", increment)
+		2:
+			add_volume("SFX", increment)
+
+func _on_selection_list_left_selected(index: int) -> void:
+	var increment: float = 0.05
+	if Input.is_action_pressed("focus") or Input.is_key_pressed(KEY_SHIFT):
+		increment = 0.2
+	match index:
+		1:
+			add_volume("BGM", -increment)
+		2:
+			add_volume("SFX", -increment)
