@@ -1,5 +1,6 @@
 extends Node
 
+@onready var audio_hit: AudioStreamPlayer = $Hit
 @onready var audio_graze: AudioStreamPlayer = $Graze
 @onready var audio_item_get: AudioStreamPlayer = $ItemGet
 @onready var audio_spellcard: AudioStreamPlayer = $Spellcard
@@ -24,6 +25,9 @@ func play_audio_2d(sound: AudioStream, pos: Vector2, volume = 0.0) -> void:
 	node.play()
 	await node.finished
 	node.call_deferred("queue_free")
+
+func play_hit() -> void:
+	audio_hit.play()
 
 func play_graze() -> void:
 	audio_graze.play()

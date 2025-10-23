@@ -38,7 +38,7 @@ func add_bullet(bullet: Bullet, pos: Vector2 = Vector2.ZERO) -> void:
 
 func add_enemy(enemy: Enemy, pos: Vector2 = Vector2.ZERO) -> void:
 	add_child(enemy)
-	enemy.collision_layer = Collision.ENEMY # Izzs an Enemy
+	enemy.collision_layer = Collision.ENEMY # Is an Enemy
 	enemy.collision_mask = Collision.PLAYER # Finding hit player
 	enemy.z_index = 0
 	enemy.global_position = pos

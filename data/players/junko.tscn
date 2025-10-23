@@ -1,0 +1,178 @@
+[gd_scene load_steps=25 format=3 uid="uid://bwxfvrmmmem48"]
+
+[ext_resource type="Script" uid="uid://4uk2a50v5es0" path="res://scripts/entities/player.gd" id="1_7iww8"]
+[ext_resource type="Script" uid="uid://cs7srthvki82f" path="res://scripts/entities/graze.gd" id="2_4c6l5"]
+[ext_resource type="Texture2D" uid="uid://c1grc62wcdqu6" path="res://assets/graphics/players/junko.png" id="3_7iww8"]
+[ext_resource type="Texture2D" uid="uid://c882q8ogx4sax" path="res://assets/graphics/players/focus_dot.png" id="4_xdkag"]
+[ext_resource type="Texture2D" uid="uid://ckp0f3w0j2wpe" path="res://assets/graphics/players/graze_circle.png" id="5_c3rpp"]
+[ext_resource type="Script" uid="uid://chhrdpl7n5bse" path="res://scripts/components/player/component_player_movement.gd" id="6_knax5"]
+[ext_resource type="Script" uid="uid://117nyylaecrq" path="res://data/players/junko_shooter.gd" id="7_87qfe"]
+[ext_resource type="PackedScene" uid="uid://dc1o1ufjpa33o" path="res://data/bullets/player/junko_partial_laser.tscn" id="12_87qfe"]
+[ext_resource type="AudioStream" uid="uid://d2xwmw785vew0" path="res://assets/audio/sfx/bullet_player.wav" id="12_vbjee"]
+[ext_resource type="PackedScene" uid="uid://bxckkrrphqyn0" path="res://data/bullets/player/junko_small_circle.tscn" id="13_csbhh"]
+[ext_resource type="Script" uid="uid://bhjmbkdtbdlf2" path="res://data/players/audio_shoot.gd" id="13_fyx8c"]
+[ext_resource type="AudioStream" uid="uid://dq30caahnggrl" path="res://assets/audio/sfx/pichuun_processed.wav" id="14_4kqyr"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xrwn8"]
+radius = 5.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_l4vi3"]
+radius = 44.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4c6l5"]
+atlas = ExtResource("3_7iww8")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6xa5a"]
+atlas = ExtResource("3_7iww8")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xdkag"]
+atlas = ExtResource("3_7iww8")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c3rpp"]
+atlas = ExtResource("3_7iww8")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_knax5"]
+atlas = ExtResource("3_7iww8")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v228m"]
+atlas = ExtResource("3_7iww8")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_78qva"]
+atlas = ExtResource("3_7iww8")
+region = Rect2(384, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o0oew"]
+atlas = ExtResource("3_7iww8")
+region = Rect2(448, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_otouc"]
+atlas = ExtResource("3_7iww8")
+region = Rect2(512, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_iwl4c"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4c6l5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6xa5a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xdkag")
+}],
+"loop": true,
+"name": &"default",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c3rpp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_knax5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v228m")
+}],
+"loop": true,
+"name": &"left",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_78qva")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o0oew")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_otouc")
+}],
+"loop": true,
+"name": &"right",
+"speed": 12.0
+}]
+
+[node name="Junko" type="Area2D"]
+collision_mask = 6
+script = ExtResource("1_7iww8")
+metadata/_custom_type_script = "uid://4uk2a50v5es0"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_xrwn8")
+metadata/_edit_lock_ = true
+
+[node name="Graze" type="Area2D" parent="."]
+collision_mask = 0
+script = ExtResource("2_4c6l5")
+metadata/_custom_type_script = "uid://cs7srthvki82f"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Graze"]
+shape = SubResource("CircleShape2D_l4vi3")
+
+[node name="MainSprite" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, 2)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_iwl4c")
+metadata/_edit_lock_ = true
+
+[node name="FocusDot" type="Sprite2D" parent="."]
+z_index = 10
+scale = Vector2(2, 2)
+texture = ExtResource("4_xdkag")
+metadata/_edit_lock_ = true
+
+[node name="GrazeCircle" type="Sprite2D" parent="."]
+z_index = 1
+scale = Vector2(2, 2)
+texture = ExtResource("5_c3rpp")
+metadata/_edit_lock_ = true
+
+[node name="PlayerMovement" type="Node" parent="." node_paths=PackedStringArray("player_sprite", "focus_sprite", "graze_sprite", "entity")]
+script = ExtResource("6_knax5")
+player_sprite = NodePath("../MainSprite")
+focus_sprite = NodePath("../FocusDot")
+graze_sprite = NodePath("../GrazeCircle")
+entity = NodePath("..")
+metadata/_custom_type_script = "uid://chhrdpl7n5bse"
+
+[node name="PlayerShooter" type="Node" parent="." node_paths=PackedStringArray("unfocus_bullet", "focus_bullet", "entity")]
+script = ExtResource("7_87qfe")
+unfocus_bullet = NodePath("../CircleSmall")
+unfocus_cooldown = 0.2
+focus_bullet = NodePath("../PartialLaser")
+focus_cooldown = 0.03
+bullet_offset = Vector2(-20, -10)
+bullet_rotation = -1.5707963267948966
+entity = NodePath("..")
+metadata/_custom_type_script = "uid://cq0p03i6ikw6o"
+
+[node name="AudioShoot" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("12_vbjee")
+volume_db = -20.0
+script = ExtResource("13_fyx8c")
+
+[node name="AudioDie" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("14_4kqyr")
+volume_db = -15.0
+
+[node name="CircleSmall" parent="." instance=ExtResource("13_csbhh")]
+visible = false
+position = Vector2(99, -6)
+monitoring = false
+monitorable = false
+
+[node name="PartialLaser" parent="." instance=ExtResource("12_87qfe")]
+visible = false
+position = Vector2(116, -7)
+
+[connection signal="died" from="." to="PlayerMovement" method="_on_player_died"]
+[connection signal="died" from="." to="AudioDie" method="play"]
+[connection signal="respawn_finish" from="." to="PlayerMovement" method="_on_player_respawn_finish"]

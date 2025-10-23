@@ -26,6 +26,8 @@ func _physics_process(delta: float) -> void:
 	
 	var max_dist_sq = (radius * viewport_size.x) ** 2
 	for bullet: Bullet in GameUtils.get_bullet_list():
+		if not bullet.collision_mask & GameArea.Collision.PLAYER: # Collision looking for player
+			continue
 		if global_position.distance_squared_to(bullet.global_position) <= max_dist_sq:
 			bullet.remove()
 	

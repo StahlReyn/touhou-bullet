@@ -1,8 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://rhjtryd4omdm"]
+[gd_scene load_steps=6 format=3 uid="uid://rhjtryd4omdm"]
 
 [ext_resource type="Script" uid="uid://dhj636f5s7kxe" path="res://scripts/effects/temp_effect.gd" id="1_o32nq"]
 [ext_resource type="Texture2D" uid="uid://da2lfcyl77g0s" path="res://assets/graphics/effects/cloud_small.png" id="2_7688u"]
-[ext_resource type="AudioStream" uid="uid://c7r4fudpm8xph" path="res://assets/audio/sfx/bullet_hit.mp3" id="3_crhsg"]
 
 [sub_resource type="Curve" id="Curve_crhsg"]
 _data = [Vector2(0, 1), 0.0, -1.8935571, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
@@ -30,16 +29,10 @@ script = ExtResource("1_o32nq")
 metadata/_custom_type_script = "uid://dhj636f5s7kxe"
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+emitting = false
 amount = 4
 texture = ExtResource("2_7688u")
 lifetime = 0.3
 one_shot = true
 explosiveness = 1.0
 process_material = SubResource("ParticleProcessMaterial_uasob")
-
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("3_crhsg")
-volume_db = -28.0
-autoplay = true
-
-[connection signal="finished" from="AudioStreamPlayer2D" to="." method="remove"]
