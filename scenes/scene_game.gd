@@ -11,6 +11,7 @@ func _ready() -> void:
 	# as previous is considered freed, breaking stuff
 	SceneManager.current_scene = self
 	start_game()
+	# Engine.time_scale = 5.0
 	
 func _physics_process(delta: float) -> void:
 	pass

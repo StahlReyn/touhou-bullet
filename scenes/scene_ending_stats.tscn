@@ -1,0 +1,72 @@
+[gd_scene load_steps=7 format=3 uid="uid://ddh21b8esm8of"]
+
+[ext_resource type="Script" uid="uid://b35ljh6kp7k74" path="res://scenes/scene_ending.gd" id="1_f430k"]
+[ext_resource type="Shader" uid="uid://b5c0vnxv2u53n" path="res://assets/shaders/multi_frame_wipe.gdshader" id="2_er2qi"]
+[ext_resource type="Script" uid="uid://ccy2ohusmggtk" path="res://display/common/screen_wipe.gd" id="3_5jw2u"]
+[ext_resource type="LabelSettings" uid="uid://magrn7v6vmcj" path="res://assets/resources/label_settings/label_name_main.tres" id="4_bbg8v"]
+[ext_resource type="LabelSettings" uid="uid://c6wx3igo44q2q" path="res://assets/resources/label_settings/label_name_alt.tres" id="5_phoyt"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_53xi6"]
+shader = ExtResource("2_er2qi")
+shader_parameter/percentage = 0.0
+shader_parameter/hidden_alpha = 0.0
+shader_parameter/flip = false
+shader_parameter/horizontal = false
+shader_parameter/frames = 20
+
+[node name="SceneEndingStats" type="Node2D"]
+script = ExtResource("1_f430k")
+metadata/_custom_type_script = "uid://beyovkgne4j2b"
+
+[node name="ScreenWipe" type="ColorRect" parent="."]
+process_mode = 3
+z_index = 200
+material = SubResource("ShaderMaterial_53xi6")
+offset_right = 1280.0
+offset_bottom = 960.0
+color = Color(0, 0, 0, 1)
+script = ExtResource("3_5jw2u")
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+custom_minimum_size = Vector2(1280, 960)
+offset_right = 1280.0
+offset_bottom = 960.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "The end :)
+
+I don't have enough frame work to do the end proper
+so here is Blackscreen tm
+
+Here are the Stats:"
+label_settings = ExtResource("4_bbg8v")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Stats" type="Label" parent="CenterContainer/VBoxContainer"]
+modulate = Color(1, 1, 0, 1)
+layout_mode = 2
+text = "STAT HERE"
+label_settings = ExtResource("4_bbg8v")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "
+Press (X) to Return
+
+P.S. if you die a lot to Junko, uhhhhh
+Just try to not stall for more than 80 seconds"
+label_settings = ExtResource("5_phoyt")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

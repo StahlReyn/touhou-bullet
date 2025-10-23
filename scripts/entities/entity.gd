@@ -17,3 +17,8 @@ func remove() -> void:
 func despawn() -> void:
 	despawned.emit()
 	call_deferred("queue_free")
+
+func _on_area_entered(area: Area2D) -> void:
+	# Default Implementation
+	if area is Character:
+		hitted.emit()

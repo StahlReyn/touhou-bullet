@@ -5,6 +5,7 @@ var current_scene = null
 const SCENE_GAME = "res://scenes/scene_game.tscn"
 const SCENE_MAIN_MENU = "res://scenes/scene_main_menu.tscn"
 const SCENE_ENDING = "res://scenes/scene_ending.tscn"
+const SCENE_ENDING_STATS = "res://scenes/scene_ending_stats.tscn"
 
 func _ready():
 	var root = get_tree().root

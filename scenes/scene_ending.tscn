@@ -3,8 +3,8 @@
 [ext_resource type="Script" uid="uid://b35ljh6kp7k74" path="res://scenes/scene_ending.gd" id="1_lx3p4"]
 [ext_resource type="Shader" uid="uid://b5c0vnxv2u53n" path="res://assets/shaders/multi_frame_wipe.gdshader" id="2_f1swd"]
 [ext_resource type="Script" uid="uid://ccy2ohusmggtk" path="res://display/common/screen_wipe.gd" id="3_aogh1"]
-[ext_resource type="LabelSettings" uid="uid://magrn7v6vmcj" path="res://assets/resources/label_settings/label_name_main.tres" id="4_bsp1n"]
-[ext_resource type="LabelSettings" uid="uid://c6wx3igo44q2q" path="res://assets/resources/label_settings/label_name_alt.tres" id="5_8xj23"]
+[ext_resource type="LabelSettings" uid="uid://d0ms5i4imffra" path="res://assets/resources/label_settings/label_ending_text.tres" id="4_lx3p4"]
+[ext_resource type="Texture2D" uid="uid://c1tkb54vloadm" path="res://assets/graphics/textures/earth_asia.png" id="5_lx3p4"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_53xi6"]
 shader = ExtResource("2_f1swd")
@@ -16,6 +16,8 @@ shader_parameter/frames = 20
 
 [node name="SceneEnding" type="Node2D"]
 script = ExtResource("1_lx3p4")
+texts = Array[String](["ASIOJSFOJS jasoipdjioasd", "bblaJKSF lksajpf asofijpfasoifjsa", "safoijas oipasjfpioasj  oifsajpofiasf poijasfpoij sipof asffas"])
+metadata/_custom_type_script = "uid://b35ljh6kp7k74"
 
 [node name="ScreenWipe" type="ColorRect" parent="."]
 process_mode = 3
@@ -25,47 +27,48 @@ offset_right = 1280.0
 offset_bottom = 960.0
 color = Color(0, 0, 0, 1)
 script = ExtResource("3_aogh1")
+metadata/_custom_type_script = "uid://ccy2ohusmggtk"
 
-[node name="CenterContainer" type="CenterContainer" parent="."]
-custom_minimum_size = Vector2(1280, 960)
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.2
+one_shot = true
+
+[node name="TextPanel" type="PanelContainer" parent="."]
+offset_top = 706.0
 offset_right = 1280.0
 offset_bottom = 960.0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="TextPanel"]
 layout_mode = 2
+theme_override_constants/margin_left = 60
+theme_override_constants/margin_top = 40
+theme_override_constants/margin_right = 60
+theme_override_constants/margin_bottom = 40
 
-[node name="Label" type="Label" parent="CenterContainer/VBoxContainer"]
+[node name="Text" type="Label" parent="TextPanel/MarginContainer"]
 layout_mode = 2
-text = "The end :)
-
-I don't have enough frame work to do the end proper
-so here is Blackscreen tm
-
-Here are the Stats:"
-label_settings = ExtResource("4_bsp1n")
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Stats" type="Label" parent="CenterContainer/VBoxContainer"]
-modulate = Color(1, 1, 0, 1)
-layout_mode = 2
-text = "STAT HERE"
-label_settings = ExtResource("4_bsp1n")
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Label2" type="Label" parent="CenterContainer/VBoxContainer"]
-layout_mode = 2
-text = "
-Press (X) to Return
-
+size_flags_vertical = 1
+text = "Press (X) to Return
 P.S. if you die a lot to Junko, uhhhhh
 Just try to not stall for more than 80 seconds"
-label_settings = ExtResource("5_8xj23")
-horizontal_alignment = 1
-vertical_alignment = 1
+label_settings = ExtResource("4_lx3p4")
 
-[node name="Timer" type="Timer" parent="."]
-one_shot = true
+[node name="ImageContainer" type="Node2D" parent="."]
+z_index = -20
+
+[node name="Image1" type="Sprite2D" parent="ImageContainer"]
+position = Vector2(248.00002, 334)
+scale = Vector2(0.46952766, 0.46952766)
+texture = ExtResource("5_lx3p4")
+
+[node name="Image2" type="Sprite2D" parent="ImageContainer"]
+position = Vector2(541, 483)
+scale = Vector2(0.46952766, 0.46952766)
+texture = ExtResource("5_lx3p4")
+
+[node name="Image3" type="Sprite2D" parent="ImageContainer"]
+position = Vector2(850.00006, 622)
+scale = Vector2(0.46952766, 0.46952766)
+texture = ExtResource("5_lx3p4")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
