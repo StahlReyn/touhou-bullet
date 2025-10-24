@@ -38,6 +38,13 @@ stream = ExtResource("4_4m8wf")
 volume_db = -16.0
 bus = &"SFX"
 
+[node name="Shoot1" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_4m8wf")
+volume_db = -16.0
+pitch_scale = 1.5
+max_polyphony = 3
+bus = &"SFX"
+
 [node name="MoveSelect" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_8ak76")
 volume_db = -10.0

@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="StageDataScript" load_steps=3 format=3 uid="uid://cvv4rnlspn7r"]
+
+[ext_resource type="Script" uid="uid://7j5ebxd7k1rm" path="res://scripts/gameplay/stage_data_script.gd" id="1_1627c"]
+[ext_resource type="Script" uid="uid://b7uk85swlffwa" path="res://data/stages/tailor/scripts/s1.gd" id="2_qvjj3"]
+
+[resource]
+script = ExtResource("1_1627c")
+section_script = Array[GDScript]([ExtResource("2_qvjj3")])
+metadata/_custom_type_script = "uid://7j5ebxd7k1rm"

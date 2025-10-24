@@ -13,7 +13,8 @@ metadata/_custom_type_script = "uid://iecthdath73v"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 use_parent_material = true
-position = Vector2(0, -4)
+position = Vector2(2, 0)
+rotation = 1.5707964
 scale = Vector2(2, 2)
 texture = ExtResource("2_wigdv")
 hframes = 10

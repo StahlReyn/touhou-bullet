@@ -21,13 +21,13 @@ const BULLET_ARROW = preload("res://data/bullets/basic/arrow.tscn")
 const BULLET_TALISMAN = preload("res://data/bullets/basic/talisman.tscn")
 const BULLET_STAR = preload("res://data/bullets/basic/star.tscn")
 const BULLET_OVAL = preload("res://data/bullets/basic/oval.tscn")
-const BULLET_SPIKE = preload("res://data/bullets/basic/circle.tscn")
-const BULLET_CRYSTAL = preload("res://data/bullets/basic/circle.tscn")
-const BULLET_BULLET = preload("res://data/bullets/basic/circle.tscn")
+const BULLET_SPIKE = preload("res://data/bullets/basic/spike.tscn")
+const BULLET_CRYSTAL = preload("res://data/bullets/basic/crystal.tscn")
+const BULLET_BULLET = preload("res://data/bullets/basic/bullet.tscn")
 const BULLET_CIRCLE_SMALL = preload("res://data/bullets/basic/circle_small.tscn")
-const BULLET_CIRCLE_CHIP = preload("res://data/bullets/basic/circle.tscn")
-const BULLET_LASER = preload("res://data/bullets/basic/circle.tscn")
-const BULLET_LASER_PARTIAL = preload("res://data/bullets/basic/circle.tscn")
+const BULLET_CIRCLE_CHIP = preload("res://data/bullets/basic/circle_chip.tscn")
+const BULLET_LASER = preload("res://data/bullets/basic/laser_partial.tscn")
+const BULLET_LASER_PARTIAL = preload("res://data/bullets/basic/laser_partial.tscn")
 
 const ENEMY_FAIRY = preload("res://data/enemies/fairy_leaf.tscn")
 const ENEMY_FAIRY_SUNFLOWER = preload("res://data/enemies/fairy_sunflower.tscn")
@@ -70,6 +70,53 @@ static func add_boss(scene: PackedScene, id: String, pos: Vector2 = Vector2.ZERO
 	var enemy: Enemy = scene.instantiate()
 	GameVariables.game_area.add_enemy_boss(enemy, id, pos)
 	return enemy
+
+## Facade for common component
+static func vel(en: Entity, vel: Vector2) -> void:
+	var comp := ComponentVelocity.new()
+	comp.entity = en
+	comp.velocity = vel
+	en.add_child(comp)
+
+static func accel(en: Entity, accel: Vector2, vel: Vector2 = Vector2.ZERO) -> void:
+	var comp := ComponentAcceleration.new()
+	comp.entity = en
+	comp.acceleration = accel
+	comp.velocity = vel
+	en.add_child(comp)
+
+static func drop(chara: Character, power: int, point: int) -> void:
+	var comp := ComponentDrop.new()
+	comp.entity = chara
+	comp.item_drops[ComponentDrop.ItemType.POWER] = power
+	comp.item_drops[ComponentDrop.ItemType.POINT] = point
+	chara.died.connect(comp.drop)
+	chara.add_child(comp)
+
+static func timer_loop(en: Entity, callable: Callable, wait_time: float) -> void:
+	var ti := Timer.new()
+	ti.autostart = true
+	ti.wait_time = wait_time
+	ti.timeout.connect(callable)
+	en.add_child(ti)
+
+static func disp_rot(en: Entity) -> void:
+	var comp := ComponentDisplacementRotation.new()
+	comp.entity = en
+	en.add_child(comp)
+
+static func rotate_to(a: Node2D, b: Node2D) -> void:
+	a.rotation = a.global_position.angle_to_point(b.global_position)
+
+static func rotate_to_player(a: Node2D) -> void:
+	if GameVariables.player == null:
+		return
+	a.rotation = a.global_position.angle_to_point(GameVariables.player.global_position)
+
+static func direction_to_player(a: Node2D) -> Vector2:
+	if GameVariables.player == null:
+		return Vector2.ZERO
+	return a.global_position.direction_to(GameVariables.player.global_position)
 
 ## Calls end chapter and spellcard without proceeding to next section immediately
 func end_chapter() -> void:
