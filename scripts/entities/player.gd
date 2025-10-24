@@ -4,6 +4,7 @@ extends Character
 signal respawn_finish
 
 var collection_range_squared: float = 150 ** 2
+var collection_line: float = 220
 var state: PlayerState = PlayerState.NORMAL
 
 var invincible: bool = false
@@ -43,7 +44,10 @@ func _physics_process(delta: float) -> void:
 			respawn_finish.emit()
 
 func in_collection_range(entity: Entity):
-	return entity.position.distance_squared_to(position) <= collection_range_squared
+	return (
+		global_position.y <= collection_line or
+		entity.position.distance_squared_to(position) <= collection_range_squared
+	)
 
 func die():
 	if not invincible:

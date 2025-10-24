@@ -12,7 +12,7 @@ var spread_time: float = 0.1
 var spread_velocity: Vector2 = MathUtils.randv2_angle() * randf_range(200, 600)
 var rotation_velocity: float = 10
 var fall_velocity: Vector2 = Vector2(0, 500)
-var collection_speed: float = 500
+var collection_speed: float = 1000
 var player: Player
 
 func _ready() -> void:

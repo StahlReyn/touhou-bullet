@@ -21,7 +21,7 @@ func _on_timer_end() -> void:
 		
 	if timer_count >= 64:
 		ending = true
-		timer.start(3.0)
+		timer.start(2.0)
 		return
 	
 	var enemy: Enemy = add_enemy(ENEMY_FAIRY)
