@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://bwxfvrmmmem48"]
+[gd_scene load_steps=23 format=3 uid="uid://bwxfvrmmmem48"]
 
 [ext_resource type="Script" uid="uid://4uk2a50v5es0" path="res://scripts/entities/player.gd" id="1_7iww8"]
 [ext_resource type="Script" uid="uid://cs7srthvki82f" path="res://scripts/entities/graze.gd" id="2_4c6l5"]
@@ -7,9 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://ckp0f3w0j2wpe" path="res://assets/graphics/players/graze_circle.png" id="5_c3rpp"]
 [ext_resource type="Script" uid="uid://chhrdpl7n5bse" path="res://scripts/components/player/component_player_movement.gd" id="6_knax5"]
 [ext_resource type="Script" uid="uid://117nyylaecrq" path="res://data/players/junko_shooter.gd" id="7_87qfe"]
-[ext_resource type="PackedScene" uid="uid://dc1o1ufjpa33o" path="res://data/bullets/player/junko_partial_laser.tscn" id="12_87qfe"]
 [ext_resource type="AudioStream" uid="uid://d2xwmw785vew0" path="res://assets/audio/sfx/bullet_player.wav" id="12_vbjee"]
-[ext_resource type="PackedScene" uid="uid://bxckkrrphqyn0" path="res://data/bullets/player/junko_small_circle.tscn" id="13_csbhh"]
 [ext_resource type="Script" uid="uid://bhjmbkdtbdlf2" path="res://data/players/audio_shoot.gd" id="13_fyx8c"]
 [ext_resource type="AudioStream" uid="uid://dq30caahnggrl" path="res://assets/audio/sfx/pichuun_processed.wav" id="14_4kqyr"]
 
@@ -143,11 +141,9 @@ graze_sprite = NodePath("../GrazeCircle")
 entity = NodePath("..")
 metadata/_custom_type_script = "uid://chhrdpl7n5bse"
 
-[node name="PlayerShooter" type="Node" parent="." node_paths=PackedStringArray("unfocus_bullet", "focus_bullet", "entity")]
+[node name="PlayerShooter" type="Node" parent="." node_paths=PackedStringArray("entity")]
 script = ExtResource("7_87qfe")
-unfocus_bullet = NodePath("../CircleSmall")
 unfocus_cooldown = 0.2
-focus_bullet = NodePath("../PartialLaser")
 focus_cooldown = 0.03
 bullet_offset = Vector2(-20, -10)
 bullet_rotation = -1.5707963267948966
@@ -162,16 +158,6 @@ script = ExtResource("13_fyx8c")
 [node name="AudioDie" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("14_4kqyr")
 volume_db = -15.0
-
-[node name="CircleSmall" parent="." instance=ExtResource("13_csbhh")]
-visible = false
-position = Vector2(99, -6)
-monitoring = false
-monitorable = false
-
-[node name="PartialLaser" parent="." instance=ExtResource("12_87qfe")]
-visible = false
-position = Vector2(116, -7)
 
 [connection signal="died" from="." to="PlayerMovement" method="_on_player_died"]
 [connection signal="died" from="." to="AudioDie" method="play"]

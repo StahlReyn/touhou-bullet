@@ -49,9 +49,9 @@ static func shoot_circle(entity: Entity):
 	circ.rotation = rotation
 	circ.speed = 0
 	circ.acceleration = 300
-	circ.base_bullet = BULLET_CIRCLE_BORDERED.instantiate()
-	circ.base_bullet.sprite_frame_x(BCOLOR_YELLOW)
-	circ.create()
+	circ.bullet_scene = BULLET_CIRCLE_BORDERED
+	for bullet: Bullet in circ.create():
+		bullet.sprite_frame_x(BCOLOR_YELLOW)
 	
 	var flower = PatternFlower.new()
 	flower.position = entity.global_position
@@ -60,14 +60,16 @@ static func shoot_circle(entity: Entity):
 	flower.petal_size = 6
 	flower.speed_max = 400
 	flower.speed_min = flower.speed_max * 0.5
-	flower.base_bullet = BULLET_CIRCLE_BORDERED.instantiate()
+	flower.bullet_scene = BULLET_CIRCLE_BORDERED
 
 	for i in range(2):
-		if i % 2 == 0:
-			flower.base_bullet.sprite_frame_x(BCOLOR_RED)
-		else:
-			flower.base_bullet.sprite_frame_x(BCOLOR_BLUE)
 		flower.create()
+		if i % 2 == 0:
+			for bullet: Bullet in flower.create():
+				bullet.sprite_frame_x(BCOLOR_RED)
+		else:
+			for bullet: Bullet in flower.create():
+				bullet.sprite_frame_x(BCOLOR_BLUE)
 		flower.rotation += PI/6
 		#flower.petal_size -= 1
 		flower.speed_max -= 50

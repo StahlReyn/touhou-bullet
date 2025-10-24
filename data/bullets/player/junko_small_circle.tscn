@@ -10,6 +10,7 @@ radius = 5.0
 [node name="CircleSmall" type="Area2D" node_paths=PackedStringArray("main_sprite")]
 collision_layer = 4
 collision_mask = 2
+monitorable = false
 script = ExtResource("1_15tnj")
 main_sprite = NodePath("Sprite2D")
 metadata/_custom_type_script = "uid://iecthdath73v"

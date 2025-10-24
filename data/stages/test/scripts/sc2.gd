@@ -31,16 +31,13 @@ func _ready() -> void:
 	pattern_circle = PatternCircle.new()
 	pattern_circle.amount = 60
 	pattern_circle.speed = 100
-	pattern_circle.base_bullet = BULLET_CIRCLE_SMALL.instantiate()
-	pattern_circle.base_bullet.sprite_frame_x(BCOLOR_BLUE)
-	pattern_circle.base_bullet.material = MATERIAL_ADD
+	pattern_circle.bullet_scene = BULLET_CIRCLE_SMALL
 	
 	pattern_accel = PatternCircle.new()
 	pattern_accel.amount = 40
 	pattern_accel.speed = 0
 	pattern_accel.acceleration = 200
-	pattern_accel.base_bullet = BULLET_CIRCLE_BORDERED.instantiate()
-	pattern_accel.base_bullet.sprite_frame_x(BCOLOR_RED)
+	pattern_accel.bullet_scene = BULLET_CIRCLE_BORDERED
 	
 	GameVariables.cur_spellcard_name = "「I Love Balls」"
 	start_spellcard(60.0)
@@ -107,12 +104,15 @@ func _on_timer_end() -> void:
 	if junko_active:
 		pattern_circle.position = junko.global_position
 		pattern_circle.rotation += PI / pattern_circle.amount
-		pattern_circle.create()
+		for bullet: Bullet in pattern_circle.create():
+			bullet.sprite_frame_x(BCOLOR_BLUE)
+			bullet.material = MATERIAL_ADD
 	
 	if hecatia_active and timer_count % 2 == 0:
 		pattern_accel.position = hecatia.global_position
 		pattern_accel.rotation += PI / pattern_accel.amount
-		pattern_accel.create()
+		for bullet: Bullet in pattern_accel.create():
+			bullet.sprite_frame_x(BCOLOR_RED)
 		
 	timer_count += 1
 	if timer_count % 8 == 0:

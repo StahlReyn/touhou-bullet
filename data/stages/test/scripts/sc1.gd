@@ -66,7 +66,10 @@ func _on_timer_end() -> void:
 	
 	pattern_circle.position = junko.global_position
 	pattern_circle.rotation += PI / pattern_circle.amount
-	pattern_circle.create()
+	for bullet: Bullet in pattern_circle.create():
+		bullet.sprite_frame_x(BCOLOR_BLUE)
+		bullet.material = MATERIAL_ADD
+	
 	timer_count += 1
 	if timer_count % 8 == 0:
 		timer.start(5)

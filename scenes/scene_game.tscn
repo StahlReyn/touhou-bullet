@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://cymswu7x3ujdg"]
+[gd_scene load_steps=21 format=3 uid="uid://cymswu7x3ujdg"]
 
 [ext_resource type="Script" uid="uid://egelp2iwlkw7" path="res://scenes/scene_game.gd" id="1_ahrb4"]
 [ext_resource type="Script" uid="uid://cf4coa3e55q1b" path="res://scripts/gameplay/stage_controller.gd" id="2_cgls0"]
@@ -8,6 +8,8 @@
 [ext_resource type="Script" uid="uid://khhk7jxvmdbr" path="res://scenes/gameplay/game_overlay.gd" id="4_axbol"]
 [ext_resource type="PackedScene" uid="uid://cw2snxi5rw2t5" path="res://scenes/gameplay/dialogue_view.tscn" id="4_cqmd0"]
 [ext_resource type="PackedScene" uid="uid://dks2tixhdliu5" path="res://scenes/gameplay/game_hud.tscn" id="5_axbol"]
+[ext_resource type="FontFile" uid="uid://bb1qlsmay1voc" path="res://assets/fonts/RusselSquareOpti.otf" id="5_rfj8o"]
+[ext_resource type="Script" uid="uid://bxsd5mskhsnfv" path="res://display/gameplay/debug-label.gd" id="6_3tsxn"]
 [ext_resource type="PackedScene" uid="uid://fuxvcjrqr0fg" path="res://scenes/gameplay/pause_menu.tscn" id="6_rfj8o"]
 [ext_resource type="PackedScene" uid="uid://bhxpmmfn0rxv" path="res://display/gameplay/section_clear_popup.tscn" id="7_3tsxn"]
 [ext_resource type="PackedScene" uid="uid://et66msp52cef" path="res://display/gameplay/spellcard_displayer.tscn" id="8_ig268"]
@@ -15,6 +17,12 @@
 [ext_resource type="Script" uid="uid://pmafp0ichrea" path="res://display/gameplay/area_collection.gd" id="10_ypw7w"]
 [ext_resource type="PackedScene" uid="uid://caqu7tfsa7qtg" path="res://scenes/gameplay/game_area.tscn" id="11_l45cg"]
 [ext_resource type="PackedScene" uid="uid://dj7bgwdkhiqgh" path="res://scenes/game_background.tscn" id="15_cqmd0"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_ig268"]
+font = ExtResource("5_rfj8o")
+font_size = 12
+outline_size = 6
+outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_axbol"]
 shader = ExtResource("2_uj20q")
@@ -47,6 +55,18 @@ metadata/_custom_type_script = "uid://cf4coa3e55q1b"
 [node name="GameOverlay" type="Node2D" parent="."]
 script = ExtResource("4_axbol")
 metadata/_custom_type_script = "uid://khhk7jxvmdbr"
+
+[node name="DebugLabel" type="Label" parent="GameOverlay"]
+z_index = 20
+offset_left = 75.0
+offset_top = 36.0
+offset_right = 476.0
+offset_bottom = 847.0
+text = "DEBUG TEXT
+"
+label_settings = SubResource("LabelSettings_ig268")
+script = ExtResource("6_3tsxn")
+metadata/_custom_type_script = "uid://bxsd5mskhsnfv"
 
 [node name="Camera2D" type="Camera2D" parent="GameOverlay"]
 anchor_mode = 0

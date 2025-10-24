@@ -12,14 +12,15 @@ script = ExtResource("1_exsf0")
 
 [node name="Hit" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_8ak76")
-volume_db = -28.0
+volume_db = -30.0
+pitch_scale = 0.4
 autoplay = true
-max_polyphony = 5
+max_polyphony = 3
 
 [node name="Graze" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_8ak76")
 volume_db = -12.0
-max_polyphony = 5
+max_polyphony = 3
 bus = &"SFX"
 
 [node name="ItemGet" type="AudioStreamPlayer" parent="."]

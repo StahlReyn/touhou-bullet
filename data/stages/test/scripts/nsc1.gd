@@ -18,9 +18,7 @@ func _ready() -> void:
 	pattern_circle = PatternCircle.new()
 	pattern_circle.amount = 100
 	pattern_circle.speed = 160
-	pattern_circle.base_bullet = BULLET_CIRCLE_SMALL.instantiate()
-	pattern_circle.base_bullet.sprite_frame_x(BCOLOR_BLUE)
-	pattern_circle.base_bullet.material = MATERIAL_ADD
+	pattern_circle.bullet_scene = BULLET_CIRCLE_SMALL
 	
 	junko = get_boss("junko", JUNKO_SCENE, Vector2(410, -40))
 	junko.set_mhp(4000)
@@ -50,7 +48,10 @@ func clean_up() -> void:
 func _on_timer_end() -> void:
 	pattern_circle.position = junko.global_position
 	pattern_circle.rotation += PI / pattern_circle.amount
-	pattern_circle.create()
+	for bullet: Bullet in pattern_circle.create():
+		bullet.sprite_frame_x(BCOLOR_BLUE)
+		bullet.material = MATERIAL_ADD
+	
 	timer_count += 1
 	if timer_count % 8 == 0:
 		timer.start(3)
