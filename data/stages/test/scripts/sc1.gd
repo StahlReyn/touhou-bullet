@@ -23,9 +23,7 @@ func _ready() -> void:
 	pattern_circle = PatternCircle.new()
 	pattern_circle.amount = 60
 	pattern_circle.speed = 100
-	pattern_circle.base_bullet = BULLET_CIRCLE_SMALL.instantiate()
-	pattern_circle.base_bullet.sprite_frame_x(BCOLOR_BLUE)
-	pattern_circle.base_bullet.material = MATERIAL_ADD
+	pattern_circle.bullet_scene = BULLET_CIRCLE_SMALL
 	
 	junko = get_boss("junko", JUNKO_SCENE, Vector2(410, -40))
 	junko.mhp = 4000

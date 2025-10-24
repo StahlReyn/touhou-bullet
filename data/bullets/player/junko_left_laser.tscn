@@ -1,26 +1,27 @@
-[gd_scene load_steps=5 format=3 uid="uid://dc1o1ufjpa33o"]
+[gd_scene load_steps=5 format=3 uid="uid://blobf04hakkgu"]
 
-[ext_resource type="Script" uid="uid://iecthdath73v" path="res://scripts/entities/bullet.gd" id="1_ryrsl"]
-[ext_resource type="Material" uid="uid://cmvyiopr502v1" path="res://assets/resources/materials/add.tres" id="2_oyj6e"]
-[ext_resource type="Texture2D" uid="uid://brl5jngelp8c4" path="res://assets/graphics/bullets/bullet_small.png" id="3_japqi"]
+[ext_resource type="Script" uid="uid://iecthdath73v" path="res://scripts/entities/bullet.gd" id="1_1pqov"]
+[ext_resource type="Material" uid="uid://cmvyiopr502v1" path="res://assets/resources/materials/add.tres" id="2_n2jxi"]
+[ext_resource type="Texture2D" uid="uid://brl5jngelp8c4" path="res://assets/graphics/bullets/bullet_small.png" id="3_wl6v4"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_xmcpj"]
-radius = 16.0
+radius = 8.0
 
 [node name="PartialLaser" type="Area2D" node_paths=PackedStringArray("main_sprite")]
 collision_layer = 4
 collision_mask = 2
 monitorable = false
-script = ExtResource("1_ryrsl")
+script = ExtResource("1_1pqov")
 damage = 2
 damage_retention = 1.0
 main_sprite = NodePath("Sprite2D")
 metadata/_custom_type_script = "uid://iecthdath73v"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-material = ExtResource("2_oyj6e")
-scale = Vector2(4, 6)
-texture = ExtResource("3_japqi")
+material = ExtResource("2_n2jxi")
+rotation = 1.5707964
+scale = Vector2(2, 4)
+texture = ExtResource("3_wl6v4")
 hframes = 10
 vframes = 13
 frame = 121
