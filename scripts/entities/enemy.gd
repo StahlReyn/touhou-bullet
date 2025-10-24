@@ -1,7 +1,7 @@
 class_name Enemy
 extends Character
 
-signal set_type
+signal setted_type(key: String)
 
 @export var health_bar: HealthBar
 
@@ -20,3 +20,6 @@ func add_hp_marker(target_hp: float) -> void:
 func clear_hp_markers() -> void:
 	if health_bar != null:
 		health_bar.clear_markers()
+
+func set_type(key: String):
+	setted_type.emit(key)

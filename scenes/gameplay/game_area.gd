@@ -35,6 +35,7 @@ func add_bullet(bullet: Bullet, pos: Vector2 = Vector2.ZERO) -> void:
 	bullet.global_position = pos
 	ComponentDespawnEdge.add_to_entity(bullet)
 	RemoveEffectFactory.add_effect_to_entity(bullet)
+	bullet.add_to_group("clearable")
 
 func add_enemy(enemy: Enemy, pos: Vector2 = Vector2.ZERO) -> void:
 	add_child(enemy)
@@ -45,7 +46,7 @@ func add_enemy(enemy: Enemy, pos: Vector2 = Vector2.ZERO) -> void:
 	ComponentDespawnEdge.add_to_entity(enemy)
 	RemoveEffectFactory.add_effect_to_entity(enemy)
 	GameVariables.enemy_spawned += 1
-
+	
 func add_enemy_boss(enemy: Enemy, id: String, pos: Vector2 = Vector2.ZERO) -> void:
 	add_child(enemy)
 	enemy.add_to_group("boss")
@@ -66,14 +67,10 @@ func add_item(item: Item, pos: Vector2 = Vector2.ZERO) -> void:
 	ComponentDespawnEdge.add_to_entity(item)
 	CollectEffectFactory.add_effect_to_item(item)
 
-func remove_enemy_bullets() -> void:
+func remove_clearable_bullets() -> void:
 	for bullet: Bullet in GameUtils.get_bullet_list():
-		if bullet.collision_mask & Collision.PLAYER: # Collision looking for player
+		if bullet.is_in_group("clearable"):
 			bullet.remove()
-
-func remove_bullets() -> void:
-	for bullet: Bullet in GameUtils.get_bullet_list():
-		bullet.remove()
 
 func remove_enemies() -> void:
 	for enemy: Enemy in GameUtils.get_enemy_list():

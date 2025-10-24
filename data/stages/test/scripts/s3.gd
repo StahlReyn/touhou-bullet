@@ -23,7 +23,7 @@ func _on_timer_end() -> void:
 	enemy.position.y = -30
 	
 	if timer_count % 2 == 0:
-		enemy.set_type.emit("red")
+		enemy.set_type("red")
 	timer_count += 1
 		
 	timer.start(3)

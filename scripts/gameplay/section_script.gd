@@ -99,7 +99,7 @@ func _on_spellcard_timeout() -> void:
 	end_script()
 
 func remove_enemy_entities() -> void:
-	controller.game_area.remove_enemy_bullets()
+	controller.game_area.remove_clearable_bullets()
 	controller.game_area.remove_non_boss_enemies()
 
 func get_boss(id: String, fallback_scene: PackedScene, fallback_pos: Vector2 = Vector2.ZERO) -> Enemy:
