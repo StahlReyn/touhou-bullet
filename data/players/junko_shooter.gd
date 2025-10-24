@@ -1,9 +1,9 @@
 extends ComponentPlayerShooter
 
 var rotation: float = 0.0
-var amount: int = 64
+var amount: int = 48
 var speed: float = 0
-var acceleration: float = 4000
+var acceleration: float = 5000
 
 const UNFOCUS_SCENE := preload("res://data/bullets/player/junko_small_circle.tscn")
 const FOCUS_SCENE := preload("res://data/bullets/player/junko_partial_laser.tscn")
@@ -15,10 +15,7 @@ func process_shoot_unfocused() -> void:
 		var bullet: Bullet = UNFOCUS_SCENE.instantiate()
 		bullet.do_spawn_effect = false
 		var direction := Vector2.from_angle(i * TAU/amount + rotation)
-		if acceleration == 0:
-			ComponentVelocity.add_to_entity(bullet, direction * speed)
-		else:
-			ComponentAcceleration.add_to_entity(bullet, direction * acceleration, direction * speed)
+		ComponentAcceleration.add_to_entity(bullet, direction * acceleration, direction * speed)
 		GameVariables.game_area.add_bullet_player(bullet, entity.global_position)
 
 func process_shoot_focused() -> void:

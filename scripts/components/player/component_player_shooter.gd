@@ -1,9 +1,9 @@
 class_name ComponentPlayerShooter
 extends EntityComponent
 
-@export var unfocus_bullet: Bullet
+@export var unfocus_bullet: PackedScene
 @export var unfocus_cooldown: float = 0.05
-@export var focus_bullet: Bullet
+@export var focus_bullet: PackedScene
 @export var focus_cooldown: float = 0.05
 @export var bullet_offset: Vector2 = Vector2.ZERO
 @export_range(-180, 180, 0.001, "radians_as_degrees") var bullet_rotation: float = 0
@@ -23,15 +23,13 @@ func _physics_process(delta: float) -> void:
 	cooldown -= delta
 
 func process_shoot_unfocused() -> void:
-	var bullet : Bullet
-	bullet = focus_bullet.duplicate()
+	var bullet: Bullet = focus_bullet.instantiate()
 	bullet.visible = true
 	GameVariables.game_area.add_bullet_player(bullet, entity.global_position + bullet_offset)
 	bullet.rotation = bullet_rotation
 
 func process_shoot_focused() -> void:
-	var bullet : Bullet
-	bullet = unfocus_bullet.duplicate()
+	var bullet: Bullet = unfocus_bullet.instantiate()
 	bullet.visible = true
 	GameVariables.game_area.add_bullet_player(bullet, entity.global_position + bullet_offset)
 	bullet.rotation = bullet_rotation

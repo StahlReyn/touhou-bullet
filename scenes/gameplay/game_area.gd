@@ -16,13 +16,16 @@ static func in_area(pos: Vector2, padding: float = 0) -> bool:
 		pos.x > -padding and pos.x < GameArea.size.x + padding and
 		pos.y > -padding and pos.y < GameArea.size.y + padding
 	)
-			
-func add_bullet_player(bullet: Bullet, pos: Vector2 = Vector2.ZERO) -> void:
-	add_child(bullet)
+
+static func set_player_bullet(bullet: Bullet) -> void:
 	bullet.collision_layer = Collision.BULLET_PLAYER # Is an Enemy
 	bullet.collision_mask = Collision.ENEMY # Finding hit player
 	bullet.modulate.a = 0.3
 	bullet.z_index = -11
+
+func add_bullet_player(bullet: Bullet, pos: Vector2 = Vector2.ZERO) -> void:
+	add_child(bullet)
+	set_player_bullet(bullet)
 	bullet.global_position = pos
 	ComponentDespawnEdge.add_to_entity(bullet)
 	HitEffectFactory.add_effect_to_entity(bullet)

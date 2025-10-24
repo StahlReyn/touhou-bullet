@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://bwxfvrmmmem48"]
+[gd_scene load_steps=25 format=3 uid="uid://bwxfvrmmmem48"]
 
 [ext_resource type="Script" uid="uid://4uk2a50v5es0" path="res://scripts/entities/player.gd" id="1_7iww8"]
 [ext_resource type="Script" uid="uid://cs7srthvki82f" path="res://scripts/entities/graze.gd" id="2_4c6l5"]
@@ -7,6 +7,8 @@
 [ext_resource type="Texture2D" uid="uid://ckp0f3w0j2wpe" path="res://assets/graphics/players/graze_circle.png" id="5_c3rpp"]
 [ext_resource type="Script" uid="uid://chhrdpl7n5bse" path="res://scripts/components/player/component_player_movement.gd" id="6_knax5"]
 [ext_resource type="Script" uid="uid://117nyylaecrq" path="res://data/players/junko_shooter.gd" id="7_87qfe"]
+[ext_resource type="Script" uid="uid://crmu4mwk3d3y6" path="res://data/players/junko_wound.gd" id="11_1kh8d"]
+[ext_resource type="Texture2D" uid="uid://bidwvyoqda3v1" path="res://assets/graphics/players/target_circle.png" id="11_87qfe"]
 [ext_resource type="AudioStream" uid="uid://d2xwmw785vew0" path="res://assets/audio/sfx/bullet_player.wav" id="12_vbjee"]
 [ext_resource type="Script" uid="uid://bhjmbkdtbdlf2" path="res://data/players/audio_shoot.gd" id="13_fyx8c"]
 [ext_resource type="AudioStream" uid="uid://dq30caahnggrl" path="res://assets/audio/sfx/pichuun_processed.wav" id="14_4kqyr"]
@@ -141,7 +143,7 @@ graze_sprite = NodePath("../GrazeCircle")
 entity = NodePath("..")
 metadata/_custom_type_script = "uid://chhrdpl7n5bse"
 
-[node name="PlayerShooter" type="Node" parent="." node_paths=PackedStringArray("entity")]
+[node name="MainShooter" type="Node" parent="." node_paths=PackedStringArray("entity")]
 script = ExtResource("7_87qfe")
 unfocus_cooldown = 0.2
 focus_cooldown = 0.03
@@ -158,6 +160,19 @@ script = ExtResource("13_fyx8c")
 [node name="AudioDie" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("14_4kqyr")
 volume_db = -15.0
+
+[node name="TargetMarker" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.45882353)
+top_level = true
+z_index = 10
+scale = Vector2(2, 2)
+texture = ExtResource("11_87qfe")
+
+[node name="ComponentPlayerShooter" type="Node" parent="TargetMarker" node_paths=PackedStringArray("entity")]
+script = ExtResource("11_1kh8d")
+unfocus_cooldown = 2.0
+entity = NodePath("../..")
+metadata/_custom_type_script = "uid://cq0p03i6ikw6o"
 
 [connection signal="died" from="." to="PlayerMovement" method="_on_player_died"]
 [connection signal="died" from="." to="AudioDie" method="play"]
