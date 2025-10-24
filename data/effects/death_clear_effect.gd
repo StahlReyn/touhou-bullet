@@ -19,7 +19,7 @@ func _ready() -> void:
 	shockwave_shader.set_shader_parameter("center", global_position / viewport_size)
 
 func _physics_process(delta: float) -> void:
-	radius += delta
+	radius += delta * 2
 	
 	shockwave_shader.set_shader_parameter("radius", radius)
 	shockwave_shader.set_shader_parameter("center", global_position / viewport_size)
@@ -31,5 +31,5 @@ func _physics_process(delta: float) -> void:
 		if global_position.distance_squared_to(bullet.global_position) <= max_dist_sq:
 			bullet.remove()
 	
-	if radius >= 1.0:
+	if radius >= 1.5:
 		remove()

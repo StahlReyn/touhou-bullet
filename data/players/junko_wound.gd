@@ -28,8 +28,16 @@ func _physics_process(delta: float) -> void:
 	target_time += delta
 		
 func process_shoot_unfocused() -> void:
-	shoot_circle_set(amount, 0.75, SectionScript.BCOLOR_BLUE)
-	shoot_circle_set(amount, 1, SectionScript.BCOLOR_RED)
+	if GameVariables.power >= 400:
+		shoot_circle_set(amount, 0.75, SectionScript.BCOLOR_BLUE)
+		shoot_circle_set(amount, 1, SectionScript.BCOLOR_RED)
+	elif GameVariables.power >= 300:
+		shoot_circle_set(amount / 2, 0.75, SectionScript.BCOLOR_BLUE)
+		shoot_circle_set(amount, 1, SectionScript.BCOLOR_RED)
+	elif GameVariables.power >= 200:
+		shoot_circle_set(amount, 1, SectionScript.BCOLOR_RED)
+	elif GameVariables.power >= 100:
+		shoot_circle_set(amount / 2, 1, SectionScript.BCOLOR_RED)
 
 func process_shoot_focused() -> void:
 	return
