@@ -1,0 +1,17 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://dteknudd0l5gp"
+
+[deps]
+
+files=["res://languages/stage_dialogues/jam_tailor.en.translation"]
+
+source_file="res://languages/stage_dialogues/jam_tailor.csv"
+dest_files=["res://languages/stage_dialogues/jam_tailor.en.translation"]
+
+[params]
+
+compress=true
+delimiter=0

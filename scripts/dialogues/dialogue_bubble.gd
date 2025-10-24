@@ -32,5 +32,5 @@ func set_type(pos_type: PosType):
 func set_text(text: String):
 	text_label.text = text
 	var string_size: Vector2 = text_label.label_settings.font.get_string_size(text_label.text)
-	text_label.custom_minimum_size.x = min(string_size.x + 24, text_label.custom_minimum_size.x)
-	size.x = string_size.x
+	text_label.custom_minimum_size.x = min(string_size.x + 24, 450)
+	size.x = text_label.size.x

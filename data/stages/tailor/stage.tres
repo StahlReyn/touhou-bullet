@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="StageData" load_steps=4 format=3 uid="uid://dg4b7luxhb4bk"]
+
+[ext_resource type="Script" uid="uid://bpbubir7dstld" path="res://scripts/gameplay/stage_data.gd" id="1_k0wto"]
+[ext_resource type="Script" uid="uid://dmb82id2jgc4u" path="res://scripts/gameplay/stage_data_section.gd" id="2_mqmux"]
+[ext_resource type="Resource" uid="uid://dk77xohdpde2m" path="res://data/stages/tailor/d_intro.tres" id="3_mqmux"]
+
+[resource]
+script = ExtResource("1_k0wto")
+sections = Array[ExtResource("2_mqmux")]([ExtResource("3_mqmux")])
+metadata/_custom_type_script = "uid://bpbubir7dstld"

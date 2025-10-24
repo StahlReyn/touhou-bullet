@@ -131,7 +131,7 @@ func start_dialogue(id: String, text: String, bubble: DialogueBubble, offset: Ve
 	if portrait == null:
 		return
 	portrait.active = true
-	bubble.set_text(text)
+	bubble.set_text(tr(text))
 	add_child(bubble)
 	
 	var pos_type = portrait.get_meta("pos_type")

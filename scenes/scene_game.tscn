@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://cf4coa3e55q1b" path="res://scripts/gameplay/stage_controller.gd" id="2_cgls0"]
 [ext_resource type="Shader" uid="uid://b5c0vnxv2u53n" path="res://assets/shaders/multi_frame_wipe.gdshader" id="2_uj20q"]
 [ext_resource type="Script" uid="uid://ccy2ohusmggtk" path="res://display/common/screen_wipe.gd" id="3_cqmd0"]
-[ext_resource type="Resource" uid="uid://difrbojtnaq1r" path="res://data/stages/test/stage_test.tres" id="3_uj20q"]
+[ext_resource type="Resource" uid="uid://dg4b7luxhb4bk" path="res://data/stages/tailor/stage.tres" id="3_rfj8o"]
 [ext_resource type="Script" uid="uid://khhk7jxvmdbr" path="res://scenes/gameplay/game_overlay.gd" id="4_axbol"]
 [ext_resource type="PackedScene" uid="uid://cw2snxi5rw2t5" path="res://scenes/gameplay/dialogue_view.tscn" id="4_cqmd0"]
 [ext_resource type="PackedScene" uid="uid://dks2tixhdliu5" path="res://scenes/gameplay/game_hud.tscn" id="5_axbol"]
@@ -49,7 +49,7 @@ game_area = NodePath("../GameView/GameArea")
 dialogue_view = NodePath("../GameOverlay/DialogueView")
 spellcard_displayer = NodePath("../GameOverlay/SpellcardDisplayer")
 game_background = NodePath("../GameView/GameBackground")
-stage_data = ExtResource("3_uj20q")
+stage_data = ExtResource("3_rfj8o")
 metadata/_custom_type_script = "uid://cf4coa3e55q1b"
 
 [node name="GameOverlay" type="Node2D" parent="."]

@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://drgtq3s044baj"
-path="res://.godot/imported/junko.png-41e24c9c47e2deb7fa06e3d792d32d47.ctex"
+path="res://.godot/imported/junko.png-28c87e07a2b807ca8d3177535660b338.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/graphics/portraits/junko.png"
-dest_files=["res://.godot/imported/junko.png-41e24c9c47e2deb7fa06e3d792d32d47.ctex"]
+source_file="res://assets/graphics/portraits/junko/junko.png"
+dest_files=["res://.godot/imported/junko.png-28c87e07a2b807ca8d3177535660b338.ctex"]
 
 [params]
 
