@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="StageDataScript" load_steps=6 format=3 uid="uid://765863ul3i4o"]
+
+[ext_resource type="Script" uid="uid://7j5ebxd7k1rm" path="res://scripts/gameplay/stage_data_script.gd" id="1_dkivk"]
+[ext_resource type="Script" uid="uid://buhd0xbybapkj" path="res://data/stages/tailor/scripts/eirin_n1.gd" id="2_mcdii"]
+[ext_resource type="Script" uid="uid://b2bifcwwmfsu8" path="res://data/stages/tailor/scripts/eirin_s1.gd" id="3_phmb7"]
+[ext_resource type="Script" uid="uid://bjxtnkk0epip7" path="res://data/stages/tailor/scripts/eirin_n2.gd" id="4_8vbos"]
+[ext_resource type="Script" uid="uid://d355r227se8rw" path="res://data/stages/tailor/scripts/eirin_s2.gd" id="5_m0hhh"]
+
+[resource]
+script = ExtResource("1_dkivk")
+section_script = Array[GDScript]([ExtResource("2_mcdii"), ExtResource("3_phmb7"), ExtResource("4_8vbos"), ExtResource("5_m0hhh")])
+metadata/_custom_type_script = "uid://7j5ebxd7k1rm"

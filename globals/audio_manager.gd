@@ -7,6 +7,7 @@ extends Node
 @onready var audio_select: AudioStreamPlayer = $Select
 @onready var audio_move_select: AudioStreamPlayer = $MoveSelect
 @onready var audio_shoot1: AudioStreamPlayer = $Shoot1
+@onready var audio_shoot_soft: AudioStreamPlayer = $ShootSoft
 
 func play_audio(sound: AudioStream, volume = 0.0) -> void:
 	var node = AudioStreamPlayer.new()
@@ -47,3 +48,6 @@ func play_move_select() -> void:
 
 func play_shoot1() -> void:
 	audio_shoot1.play()
+
+func play_shoot_soft() -> void:
+	audio_shoot_soft.play()

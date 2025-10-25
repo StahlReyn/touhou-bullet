@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://csan0vepu7jpb"]
+
+[ext_resource type="Script" uid="uid://y12juub2fcyj" path="res://scripts/entities/enemy.gd" id="1_on63k"]
+[ext_resource type="Texture2D" uid="uid://d2u1d1py3r4w" path="res://assets/graphics/enemies/books.png" id="2_4l0bj"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6mx60"]
+radius = 26.0
+
+[node name="MagicBook" type="Area2D"]
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("1_on63k")
+mhp = 500
+metadata/_custom_type_script = "uid://y12juub2fcyj"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_6mx60")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(1, -1)
+scale = Vector2(2, 2)
+texture = ExtResource("2_4l0bj")
+hframes = 4
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

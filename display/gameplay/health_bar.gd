@@ -32,11 +32,17 @@ func update_value(delta):
 		target_alpha = 1.0
 	modulate.a = MathUtils.lerp_smooth(modulate.a, target_alpha, 20, delta)
 	value = MathUtils.lerp_smooth(value, float(character.hp), 20, delta)
+	
+func update_markers():
+	for marker: Node2D in markers:
+		marker.rotation = ((marker.get_meta("hp_value") / character.mhp) + 0.25) * TAU
 
 func add_marker(hp: float) -> void:
 	var marker = base_marker.duplicate()
+	marker.set_meta("hp_value", hp)
+	print(hp, "/", character.mhp)
 	# Quarter as angle start pointing RIGHT while hp bar starts UP
-	marker.rotation = ((hp / character.mhp) + 0.25) * TAU
+	marker.rotation = (-(hp / character.mhp) - 0.25) * TAU
 	marker.visible = true
 	add_child(marker)
 	markers.push_back(marker)

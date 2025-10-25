@@ -5,10 +5,9 @@ var timer_count: int = 0
 var ending: bool = false
 
 func _ready() -> void:
-	timer.autostart = true;
-	timer.wait_time = 1.0
 	timer.timeout.connect(_on_timer_end)
 	add_child(timer)
+	timer.start(1.0)
 
 func _physics_process(delta: float) -> void:
 	pass
@@ -29,25 +28,25 @@ func _on_timer_end() -> void:
 	if timer_count % 32 < 8:
 		enemy.position = Vector2((timer_count % 8) * 50, -30)
 		accel(enemy, Vector2(150, -100), Vector2(50, (timer_count % 8) * 40 + 150))
-		drop(enemy, 3, 0)
+		drop(enemy, 5, 0)
 		timer_loop(enemy, shoot_trail.bind(enemy, BCOLOR_RED), 1.0)
 		enemy.set_type("red")
 	elif timer_count % 32 < 16:
 		enemy.position = Vector2(GameArea.size.x - 200 + (timer_count % 8) * 25, -30)
 		accel(enemy, Vector2(-250, -150), Vector2(-50, (timer_count % 8) * 40 + 600))
-		drop(enemy, 0, 3)
+		drop(enemy, 0, 5)
 		timer_loop(enemy, shoot_trail.bind(enemy, BCOLOR_BLUE), 1.0)
 		enemy.set_type("blue")
 	elif timer_count % 32 < 24:
 		enemy.position = Vector2(200 - (timer_count % 8) * 25, -30)
 		accel(enemy, Vector2(250, -150), Vector2(50, (timer_count % 8) * 40 + 600))
-		drop(enemy, 0, 3)
+		drop(enemy, 0, 5)
 		timer_loop(enemy, shoot_trail.bind(enemy, BCOLOR_YELLOW), 1.0)
 		enemy.set_type("yellow")
 	else:
 		enemy.position = Vector2(GameArea.size.x - (timer_count % 8) * 50, -30)
 		accel(enemy, Vector2(-150, -100), Vector2(-50, (timer_count % 8) * 40 + 150))
-		drop(enemy, 3, 0)
+		drop(enemy, 5, 0)
 		timer_loop(enemy, shoot_trail.bind(enemy, BCOLOR_GREEN), 1.0)
 		enemy.set_type("green")
 	

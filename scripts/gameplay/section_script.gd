@@ -100,11 +100,26 @@ static func timer_loop(en: Entity, callable: Callable, wait_time: float) -> void
 	ti.timeout.connect(callable)
 	en.add_child(ti)
 
+static func timer_once(en: Entity, callable: Callable, wait_time: float) -> void:
+	var ti := Timer.new()
+	ti.autostart = true
+	ti.wait_time = wait_time
+	ti.one_shot = true
+	ti.timeout.connect(callable)
+	en.add_child(ti)
+
 static func disp_rot(en: Entity) -> void:
 	var comp := ComponentDisplacementRotation.new()
 	comp.entity = en
 	en.add_child(comp)
 
+static func const_rot(en: Entity, vel: float) -> void:
+	var comp := ComponentRotation.new()
+	comp.entity = en
+	comp.velocity = vel
+	en.add_child(comp)
+
+# Getting Directions
 static func rotate_to(a: Node2D, b: Node2D) -> void:
 	a.rotation = a.global_position.angle_to_point(b.global_position)
 
@@ -112,6 +127,11 @@ static func rotate_to_player(a: Node2D) -> void:
 	if GameVariables.player == null:
 		return
 	a.rotation = a.global_position.angle_to_point(GameVariables.player.global_position)
+
+static func angle_to_player(a: Node2D) -> float:
+	if GameVariables.player == null:
+		return 0.0
+	return a.global_position.angle_to_point(GameVariables.player.global_position)
 
 static func direction_to_player(a: Node2D) -> Vector2:
 	if GameVariables.player == null:

@@ -3,6 +3,7 @@ extends Entity
 ## Parent class for Player and Enemy
 
 signal died
+signal mhp_changed
 
 @export var mhp : int = 10
 @export var collision_damage : int = 10
@@ -23,6 +24,7 @@ func set_mhp(value : int, restore : bool = true) -> void:
 	mhp = value
 	if restore:
 		reset_hp()
+	mhp_changed.emit()
 
 @warning_ignore_start("narrowing_conversion")
 func take_damage(dmg : int):

@@ -162,6 +162,7 @@ stream = ExtResource("14_4kqyr")
 volume_db = -15.0
 
 [node name="TargetMarker" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.5882353)
 top_level = true
 z_index = 10
 scale = Vector2(2, 2)

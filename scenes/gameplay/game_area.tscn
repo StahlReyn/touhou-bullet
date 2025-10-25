@@ -8,4 +8,4 @@ script = ExtResource("1_4nubl")
 metadata/_custom_type_script = "uid://dy6e4thtl3g0j"
 
 [node name="Junko" parent="." instance=ExtResource("2_661ka")]
-position = Vector2(69.81516, 242.28105)
+position = Vector2(357, 795)
