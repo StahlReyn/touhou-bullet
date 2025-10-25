@@ -7,7 +7,6 @@ var timer: Timer = Timer.new()
 var timer_count: int = 0
 
 var eirin: Enemy
-var eirin_lerp: ComponentLerpPosition
 
 var pat_circ1: PatternCircle
 var pat_circ2: PatternCircle
@@ -32,12 +31,13 @@ func _ready() -> void:
 	eirin = get_boss("eirin", EIRIN_SCENE, Vector2(GameArea.size.x * 0.5, -40))
 	eirin.hp = 1000
 	eirin.damage_taken_mult = 0.25
-	eirin_lerp = ComponentLerpPosition.add_to_entity(eirin, Vector2(GameArea.size.x * 0.5, 250), 2.0)
 	
 	GameVariables.cur_spellcard_name = "Esoterica \"Kaguya's Disorganized Room\""
 	start_spellcard(40.0)
 	
-	await get_tree().create_timer(1.0, false, true).timeout
+	await eirin.create_tween().tween_property(
+		eirin, "position", Vector2(GameArea.size.x * 0.5, 250), 1.0
+	).set_trans(Tween.TRANS_QUAD).finished
 	
 	for i in range(50):
 		var book: Enemy = add_enemy(SCENE_BOOK)
@@ -76,9 +76,12 @@ func _on_spellcard_timeout() -> void:
 # ================ PLACEHOLDER ================
 func clean_up() -> void:
 	end_chapter()
-	# eirin_lerp.position = Vector2(420, -120)
-	eirin_lerp.queue_free() # Free for next one to add back
 	timer.stop()
+	await eirin.create_tween().tween_property(
+		eirin, "position", Vector2(800, -200), 1.0
+	).set_trans(Tween.TRANS_QUAD).finished
+	if is_instance_valid(eirin):
+		eirin.remove()
 	end_script()
 	
 func _on_timer_end() -> void:

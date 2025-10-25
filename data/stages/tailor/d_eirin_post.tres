@@ -1,0 +1,75 @@
+[gd_resource type="Resource" script_class="StageDataDialogue" load_steps=16 format=3 uid="uid://oso7njmu3cqr"]
+
+[ext_resource type="Script" uid="uid://cn6e6yd4p2nkw" path="res://scripts/dialogues/dialogue_event.gd" id="1_01y3k"]
+[ext_resource type="PackedScene" uid="uid://dnf0sww73j8n5" path="res://data/portraits/junko.tscn" id="2_84lsk"]
+[ext_resource type="Script" uid="uid://cnkxajlq1vds6" path="res://scripts/dialogues/dialogue_line.gd" id="3_nusre"]
+[ext_resource type="PackedScene" uid="uid://cj0cv4dyfxiwo" path="res://data/portraits/eirin.tscn" id="4_snh0n"]
+[ext_resource type="Script" uid="uid://8sos5xgum73s" path="res://scripts/gameplay/stage_data_dialogue.gd" id="5_2kynd"]
+
+[sub_resource type="Resource" id="Resource_01y3k"]
+script = ExtResource("3_nusre")
+id = "eirin"
+portrait_scene = ExtResource("4_snh0n")
+portrait_position = 1
+wait_for_input = false
+metadata/_custom_type_script = "uid://cnkxajlq1vds6"
+
+[sub_resource type="Resource" id="Resource_xhevt"]
+script = ExtResource("3_nusre")
+id = "junko"
+dialogue = "TJ_EIRP_1"
+portrait_scene = ExtResource("2_84lsk")
+metadata/_custom_type_script = "uid://cnkxajlq1vds6"
+
+[sub_resource type="Resource" id="Resource_gsphd"]
+script = ExtResource("3_nusre")
+id = "eirin"
+dialogue = "TJ_EIRP_2"
+metadata/_custom_type_script = "uid://cnkxajlq1vds6"
+
+[sub_resource type="Resource" id="Resource_wb5h5"]
+script = ExtResource("3_nusre")
+id = "junko"
+dialogue = "TJ_EIRP_3"
+metadata/_custom_type_script = "uid://cnkxajlq1vds6"
+
+[sub_resource type="Resource" id="Resource_r3tdv"]
+script = ExtResource("3_nusre")
+id = "eirin"
+dialogue = "TJ_EIRP_4"
+metadata/_custom_type_script = "uid://cnkxajlq1vds6"
+
+[sub_resource type="Resource" id="Resource_84lsk"]
+script = ExtResource("3_nusre")
+id = "eirin"
+dialogue = "TJ_EIRP_5"
+metadata/_custom_type_script = "uid://cnkxajlq1vds6"
+
+[sub_resource type="Resource" id="Resource_nusre"]
+script = ExtResource("3_nusre")
+id = "junko"
+dialogue = "TJ_EIRP_6"
+metadata/_custom_type_script = "uid://cnkxajlq1vds6"
+
+[sub_resource type="Resource" id="Resource_snh0n"]
+script = ExtResource("3_nusre")
+id = "eirin"
+dialogue = "TJ_EIRP_7"
+metadata/_custom_type_script = "uid://cnkxajlq1vds6"
+
+[sub_resource type="Resource" id="Resource_2kynd"]
+script = ExtResource("3_nusre")
+id = "eirin"
+dialogue = "TJ_EIRP_8"
+metadata/_custom_type_script = "uid://cnkxajlq1vds6"
+
+[sub_resource type="Resource" id="Resource_pqwii"]
+script = ExtResource("3_nusre")
+id = "junko"
+dialogue = "TJ_EIRP_9"
+metadata/_custom_type_script = "uid://cnkxajlq1vds6"
+
+[resource]
+script = ExtResource("5_2kynd")
+dialogue_events = Array[ExtResource("1_01y3k")]([SubResource("Resource_01y3k"), SubResource("Resource_xhevt"), SubResource("Resource_gsphd"), SubResource("Resource_wb5h5"), SubResource("Resource_r3tdv"), SubResource("Resource_84lsk"), SubResource("Resource_nusre"), SubResource("Resource_snh0n"), SubResource("Resource_2kynd"), SubResource("Resource_pqwii")])
+metadata/_custom_type_script = "uid://8sos5xgum73s"

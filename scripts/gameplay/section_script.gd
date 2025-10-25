@@ -169,7 +169,7 @@ func remove_enemy_entities() -> void:
 	controller.game_area.remove_clearable_bullets()
 	controller.game_area.remove_non_boss_enemies()
 
-func get_boss(id: String, fallback_scene: PackedScene, fallback_pos: Vector2 = Vector2.ZERO) -> Enemy:
+static func get_boss(id: String, fallback_scene: PackedScene, fallback_pos: Vector2 = Vector2.ZERO) -> Enemy:
 	if GameVariables.boss_list.has(id):
 		return GameVariables.boss_list[id]
 	return add_boss(fallback_scene, id, fallback_pos)

@@ -15,6 +15,7 @@ func run_next_script():
 		print("No more Script; Ending Section")
 		controller.end_section()
 		return
+	# Trying to assign value of type '' Error means Wrong script type
 	var node: SectionScript = script_queue.pop_front().new()
 	node.stage_data_script = self
 	node.controller = controller

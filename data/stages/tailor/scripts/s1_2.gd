@@ -21,7 +21,7 @@ func _on_timer_end() -> void:
 		end_script()
 		return
 		
-	if timer_count >= 64:
+	if timer_count >= 32:
 		ending = true
 		timer.start(2.0)
 		return
