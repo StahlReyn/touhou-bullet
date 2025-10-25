@@ -24,12 +24,13 @@ func process_shoot_focused() -> void:
 		bullet.position -= Vector2.DOWN * 20 * i
 		bullet.modulate.a = 0.2
 	
-	if GameVariables.power >= 200:
+	if GameVariables.power >= 100:
 		spawn_side_laser(Vector2(-120, 0), Vector2(200, -1500))
+	if GameVariables.power >= 200:
 		spawn_side_laser(Vector2(120, 0), Vector2(-200, -1500))
-	
-	if GameVariables.power >= 400:
+	if GameVariables.power >= 300:
 		spawn_side_laser(Vector2(-120, 0), Vector2(-160, -1500))
+	if GameVariables.power >= 400:
 		spawn_side_laser(Vector2(120, 0), Vector2(160, -1500))
 
 func spawn_circle(circ_amount: int) -> void:

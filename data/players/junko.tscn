@@ -103,6 +103,8 @@ animations = [{
 [node name="Junko" type="Area2D"]
 collision_mask = 6
 script = ExtResource("1_7iww8")
+mhp = 1
+collision_damage = 1
 metadata/_custom_type_script = "uid://4uk2a50v5es0"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -137,6 +139,8 @@ metadata/_edit_lock_ = true
 
 [node name="PlayerMovement" type="Node" parent="." node_paths=PackedStringArray("player_sprite", "focus_sprite", "graze_sprite", "entity")]
 script = ExtResource("6_knax5")
+speed = 500
+focus_speed = 250
 player_sprite = NodePath("../MainSprite")
 focus_sprite = NodePath("../FocusDot")
 graze_sprite = NodePath("../GrazeCircle")

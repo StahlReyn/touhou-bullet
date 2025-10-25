@@ -1,0 +1,203 @@
+[gd_scene load_steps=26 format=3 uid="uid://bko2u3l1lot33"]
+
+[ext_resource type="Script" uid="uid://dio7q65n1753g" path="res://scenes/maps/scene_stage.gd" id="1_augye"]
+[ext_resource type="Texture2D" uid="uid://c4ls1lgwm8u8p" path="res://assets/graphics/skyboxes/space.png" id="2_djf8q"]
+[ext_resource type="Texture2D" uid="uid://cumax0rveg5n8" path="res://assets/graphics/textures/ground_leaf.png" id="3_um8jv"]
+[ext_resource type="Script" uid="uid://bry2ek4rj4eo8" path="res://scenes/maps/scrolling_texture.gd" id="4_h5er8"]
+[ext_resource type="Texture2D" uid="uid://c0l353kdhuovj" path="res://assets/graphics/textures/moon.png" id="5_um8jv"]
+
+[sub_resource type="Animation" id="Animation_um8jv"]
+resource_name = "play"
+length = 20.0
+loop_mode = 1
+step = 1.0
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0, 5.3772526, 46.13462, 5, 1, -1, 5.377, 46.135, 15, 1, 1, 5.377, 46.135, 20, 1, 0, 5.3772526, 46.13462)
+tracks/1/type = "rotation_3d"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = PackedFloat32Array(0, 1, -0.22481498, 0, 0, 0.9744015, 5, 1, -0.225, -0.01, -0.043, 0.973, 15, 1, -0.225, 0.01, 0.043, 0.973, 20, 1, -0.22481498, 0, 0, 0.9744015)
+
+[sub_resource type="Animation" id="Animation_augye"]
+length = 0.001
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0, 5.3772526, 46.13462)
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_djf8q"]
+_data = {
+&"RESET": SubResource("Animation_augye"),
+&"play": SubResource("Animation_um8jv")
+}
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_snne4"]
+panorama = ExtResource("2_djf8q")
+
+[sub_resource type="Sky" id="Sky_nxgbd"]
+sky_material = SubResource("PanoramaSkyMaterial_snne4")
+
+[sub_resource type="Environment" id="Environment_xlk0u"]
+background_mode = 2
+background_color = Color(1.6244128e-07, 0.09904594, 0.15504143, 1)
+sky = SubResource("Sky_nxgbd")
+fog_enabled = true
+fog_light_color = Color(0, 0, 0, 1)
+fog_density = 0.0604
+fog_sky_affect = 0.264
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_djf8q"]
+size = Vector2(100, 20)
+orientation = 0
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_um8jv"]
+load_path = "res://.godot/imported/bamboo.png-4faafd401c144450b897e9bef3193f64.s3tc.ctex"
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_augye"]
+transparency = 1
+albedo_texture = SubResource("CompressedTexture2D_um8jv")
+uv1_scale = Vector3(0.1, 0.1, 0.1)
+uv1_offset = Vector3(0, 0.5, 0)
+uv1_triplanar = true
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_djf8q"]
+load_path = "res://.godot/imported/bamboo.png-4faafd401c144450b897e9bef3193f64.s3tc.ctex"
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_07ki8"]
+transparency = 1
+albedo_texture = SubResource("CompressedTexture2D_djf8q")
+uv1_scale = Vector3(0.1, 0.1, 0.1)
+uv1_offset = Vector3(0, 0.5, 0)
+uv1_triplanar = true
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_h5er8"]
+load_path = "res://.godot/imported/bamboo.png-4faafd401c144450b897e9bef3193f64.s3tc.ctex"
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yqa5b"]
+transparency = 1
+albedo_texture = SubResource("CompressedTexture2D_h5er8")
+uv1_scale = Vector3(0.1, 0.1, 0.1)
+uv1_offset = Vector3(0, 0.5, 0)
+uv1_triplanar = true
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_4kqs3"]
+load_path = "res://.godot/imported/bamboo.png-4faafd401c144450b897e9bef3193f64.s3tc.ctex"
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jymrn"]
+transparency = 1
+albedo_texture = SubResource("CompressedTexture2D_4kqs3")
+uv1_scale = Vector3(0.1, 0.1, 0.1)
+uv1_offset = Vector3(0, 0.5, 0)
+uv1_triplanar = true
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_gdppc"]
+size = Vector2(100, 100)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dc2jv"]
+albedo_texture = ExtResource("3_um8jv")
+uv1_scale = Vector3(0.1, 0.1, 0.1)
+uv1_triplanar = true
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_wcdpa"]
+size = Vector2(200, 30)
+orientation = 2
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_um8jv"]
+size = Vector2(10, 10)
+orientation = 2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_djf8q"]
+transparency = 4
+shading_mode = 0
+disable_ambient_light = true
+disable_fog = true
+disable_specular_occlusion = true
+albedo_texture = ExtResource("5_um8jv")
+
+[node name="BambooForest" type="Node3D"]
+script = ExtResource("1_augye")
+metadata/_custom_type_script = "uid://dio7q65n1753g"
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.89891654, 0.43811992, 0, -0.43811992, 0.89891654, 0, 5.3772526, 46.13462)
+current = true
+far = 500.0
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Camera3D"]
+light_energy = 4.0
+light_indirect_energy = 5.0
+omni_range = 90.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Camera3D"]
+libraries = {
+&"": SubResource("AnimationLibrary_djf8q")
+}
+autoplay = "play"
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_xlk0u")
+
+[node name="Bamboo" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 5, 0)
+mesh = SubResource("PlaneMesh_djf8q")
+skeleton = NodePath("")
+surface_material_override/0 = SubResource("StandardMaterial3D_augye")
+script = ExtResource("4_h5er8")
+velocity = Vector3(0, 0, -0.2)
+
+[node name="Bamboo2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 4, 2)
+mesh = SubResource("PlaneMesh_djf8q")
+skeleton = NodePath("")
+surface_material_override/0 = SubResource("StandardMaterial3D_07ki8")
+script = ExtResource("4_h5er8")
+velocity = Vector3(0, 0, -0.2)
+
+[node name="Bamboo3" type="MeshInstance3D" parent="."]
+transform = Transform3D(-0.99999994, 0, -8.742277e-08, 0, 1, 0, 8.742277e-08, 0, -0.99999994, 4, 5, 0)
+mesh = SubResource("PlaneMesh_djf8q")
+skeleton = NodePath("")
+surface_material_override/0 = SubResource("StandardMaterial3D_yqa5b")
+script = ExtResource("4_h5er8")
+velocity = Vector3(0, 0, 0.2)
+
+[node name="Bamboo4" type="MeshInstance3D" parent="."]
+transform = Transform3D(-0.99999994, 0, -8.742277e-08, 0, 1, 0, 8.742277e-08, 0, -0.99999994, 7, 4, 2)
+mesh = SubResource("PlaneMesh_djf8q")
+skeleton = NodePath("")
+surface_material_override/0 = SubResource("StandardMaterial3D_jymrn")
+script = ExtResource("4_h5er8")
+velocity = Vector3(0, 0, 0.2)
+
+[node name="Ground" type="MeshInstance3D" parent="."]
+mesh = SubResource("PlaneMesh_gdppc")
+skeleton = NodePath("")
+surface_material_override/0 = SubResource("StandardMaterial3D_dc2jv")
+script = ExtResource("4_h5er8")
+velocity = Vector3(0, 0, -0.2)
+
+[node name="Back" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -10.429207, -49.299835)
+mesh = SubResource("PlaneMesh_wcdpa")
+
+[node name="Moon" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 20.822784, -62.35122)
+mesh = SubResource("PlaneMesh_um8jv")
+surface_material_override/0 = SubResource("StandardMaterial3D_djf8q")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Moon"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.5)
+visible = false
+omni_range = 7.606
+omni_attenuation = -0.569

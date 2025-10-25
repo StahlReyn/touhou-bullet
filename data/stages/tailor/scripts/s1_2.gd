@@ -39,7 +39,7 @@ func _on_timer_end() -> void:
 		enemy = add_enemy(ENEMY_FAIRY)
 		enemy.set_mhp(30)
 		enemy.set_type("blue")
-		timer_loop(enemy, trail.bind(enemy, BCOLOR_GREEN), 1.0)
+		timer_loop(enemy, trail.bind(enemy, BCOLOR_GREEN), 1.5)
 		drop(enemy, 0, 5)
 	
 	enemy.position = Vector2(50, -40)
@@ -67,8 +67,8 @@ static func trail(entity: Entity, color: int):
 	flower.petal_count = 1
 	flower.petal_size = 4
 	flower.speed_max = 400
-	flower.speed_min = 200
-	flower.arc_angle = TAU/10
+	flower.speed_min = 300
+	flower.arc_angle = TAU/16
 	flower.bullet_scene = BULLET_ARROW
 	for bullet: Bullet in flower.create():
 		disp_rot(bullet)
