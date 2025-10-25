@@ -141,7 +141,7 @@ func start_dialogue(id: String, text: String, bubble: DialogueBubble, offset: Ve
 	else:
 		bubble.set_type(DialogueBubble.PosType.RIGHT)
 		bubble.global_position = right_pos + portrait.speech_node.position + offset
-		bubble.global_position.x -= bubble.size.x + portrait.speech_node.position.x * 2
+		bubble.global_position.x -= bubble.size.x #+ portrait.speech_node.poszition.x * 2
 	bubbles.append(bubble)
 	move_active_front()
 

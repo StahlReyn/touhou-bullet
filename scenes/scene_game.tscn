@@ -84,7 +84,7 @@ metadata/_custom_type_script = "uid://ccy2ohusmggtk"
 metadata/_edit_lock_ = true
 
 [node name="DialogueView" parent="GameOverlay" instance=ExtResource("4_cqmd0")]
-z_index = 100
+z_index = 150
 metadata/_edit_lock_ = true
 
 [node name="GameHud" parent="GameOverlay" instance=ExtResource("5_axbol")]
