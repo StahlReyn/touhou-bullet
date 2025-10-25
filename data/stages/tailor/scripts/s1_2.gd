@@ -34,28 +34,28 @@ func _on_timer_end() -> void:
 		enemy.set_mhp(300)
 		enemy.set_type("green")
 		timer_once(enemy, flower.bind(enemy), 4.0)
-		drop(enemy, 0, 5)
+		drop(enemy, 25, 0)
 	else:
 		enemy = add_enemy(ENEMY_FAIRY)
 		enemy.set_mhp(30)
 		enemy.set_type("blue")
-		timer_loop(enemy, trail.bind(enemy, BCOLOR_GREEN), 2.0)
-		drop(enemy, 25, 0)
+		timer_loop(enemy, trail.bind(enemy, BCOLOR_GREEN), 1.0)
+		drop(enemy, 0, 5)
 	
-	enemy.position = Vector2(100, -40)
-	var a := Vector2(-80, -80 + i * 20)
+	enemy.position = Vector2(50, -40)
+	var a := Vector2(-75, -75 + i * 5)
 	
 	if timer_count % 16 >= 8:
 		a.x *= -1
-		enemy.position.x = GameArea.size.x - 100
+		enemy.position.x = GameArea.size.x - 50
 		
 	accel(enemy, a, a * -4)
 	
 	timer_count += 1
-	if timer_count % 8 == 7:
-		timer.start(3.0)
+	if timer_count % 8 == 0:
+		timer.start(2.5)
 	else:
-		timer.start(0.3)
+		timer.start(0.25)
 
 static func trail(entity: Entity, color: int):
 	AudioManager.play_shoot1()
@@ -65,9 +65,10 @@ static func trail(entity: Entity, color: int):
 	flower.position = entity.global_position
 	flower.rotation = rot
 	flower.petal_count = 1
-	flower.petal_size = 8
-	flower.speed_max = 300
-	flower.speed_min = 50
+	flower.petal_size = 4
+	flower.speed_max = 400
+	flower.speed_min = 200
+	flower.arc_angle = TAU/10
 	flower.bullet_scene = BULLET_ARROW
 	for bullet: Bullet in flower.create():
 		disp_rot(bullet)

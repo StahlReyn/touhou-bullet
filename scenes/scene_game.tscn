@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://cymswu7x3ujdg"]
+[gd_scene load_steps=22 format=3 uid="uid://cymswu7x3ujdg"]
 
 [ext_resource type="Script" uid="uid://egelp2iwlkw7" path="res://scenes/scene_game.gd" id="1_ahrb4"]
 [ext_resource type="Script" uid="uid://cf4coa3e55q1b" path="res://scripts/gameplay/stage_controller.gd" id="2_cgls0"]
@@ -17,6 +17,7 @@
 [ext_resource type="Script" uid="uid://pmafp0ichrea" path="res://display/gameplay/area_collection.gd" id="10_ypw7w"]
 [ext_resource type="PackedScene" uid="uid://caqu7tfsa7qtg" path="res://scenes/gameplay/game_area.tscn" id="11_l45cg"]
 [ext_resource type="PackedScene" uid="uid://dj7bgwdkhiqgh" path="res://scenes/game_background.tscn" id="15_cqmd0"]
+[ext_resource type="AudioStream" uid="uid://du8ih6qcjcjkc" path="res://assets/audio/bgm/imperishable_flight.ogg" id="18_3tsxn"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_ig268"]
 font = ExtResource("5_rfj8o")
@@ -137,6 +138,13 @@ position = Vector2(64, 32)
 
 [node name="GameBackground" parent="GameView" instance=ExtResource("15_cqmd0")]
 fade_curve = SubResource("Curve_cqmd0")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("18_3tsxn")
+volume_db = -3.0
+autoplay = true
+bus = &"BGM"
+parameters/looping = true
 
 [connection signal="stage_started" from="." to="StageController" method="_on_game_main_stage_started"]
 [connection signal="stage_started" from="." to="GameOverlay/AreaCollection" method="_on_game_main_stage_started"]

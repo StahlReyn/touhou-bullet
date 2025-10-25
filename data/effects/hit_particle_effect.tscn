@@ -29,16 +29,14 @@ script = ExtResource("1_o32nq")
 metadata/_custom_type_script = "uid://dhj636f5s7kxe"
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]
-emitting = false
-amount = 4
+amount = 3
 texture = ExtResource("2_7688u")
 lifetime = 0.3
-one_shot = true
 explosiveness = 1.0
 process_material = SubResource("ParticleProcessMaterial_uasob")
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 0.3
+wait_time = 0.25
 one_shot = true
 autostart = true
 

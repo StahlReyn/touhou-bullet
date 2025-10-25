@@ -12,6 +12,7 @@ var pat_circ1: PatternCircle
 var pat_circ2: PatternCircle
 
 var rng = RandomNumberGenerator.new()
+var cleaning: bool = false
 
 var books: Array[Enemy]
 var bouncers: Array[Bullet]
@@ -29,15 +30,15 @@ func _ready() -> void:
 	pat_circ1.bullet_scene = BULLET_ARROW
 	
 	eirin = get_boss("eirin", EIRIN_SCENE, Vector2(GameArea.size.x * 0.5, -40))
-	eirin.hp = 1000
+	eirin.hp = 1500
 	eirin.damage_taken_mult = 0.25
 	
 	GameVariables.cur_spellcard_name = "Esoterica \"Kaguya's Disorganized Room\""
 	start_spellcard(40.0)
 	
 	await eirin.create_tween().tween_property(
-		eirin, "position", Vector2(GameArea.size.x * 0.5, 250), 1.0
-	).set_trans(Tween.TRANS_QUAD).finished
+		eirin, "position", Vector2(GameArea.size.x * 0.5, 175), 1.0
+	).set_trans(Tween.TRANS_SINE).finished
 	
 	for i in range(50):
 		var book: Enemy = add_enemy(SCENE_BOOK)
@@ -46,15 +47,15 @@ func _ready() -> void:
 			book, "position", Vector2(
 				GameArea.size.x * 0.5 + rng.randfn(0, 200), 450 + rng.randfn(0, 50)
 			), 1.0
-		).set_trans(Tween.TRANS_QUAD)
+		).set_trans(Tween.TRANS_SINE)
 		book.create_tween().tween_property(
 			book, "rotation", rng.randf_range(TAU, TAU * 10), 1.0
-		).set_trans(Tween.TRANS_QUAD)
+		).set_trans(Tween.TRANS_SINE)
 		await get_tree().create_timer(0.05, false, true).timeout
 
 func _physics_process(delta: float) -> void:
 	if is_instance_valid(eirin):
-		if eirin.hp <= 0:
+		if not cleaning and eirin.hp <= 0:
 			clean_up()
 	
 	for bouncer: Bullet in bouncers:
@@ -75,11 +76,14 @@ func _on_spellcard_timeout() -> void:
 	
 # ================ PLACEHOLDER ================
 func clean_up() -> void:
+	cleaning = true
 	end_chapter()
 	timer.stop()
+	
 	await eirin.create_tween().tween_property(
-		eirin, "position", Vector2(800, -200), 1.0
-	).set_trans(Tween.TRANS_QUAD).finished
+		eirin, "global_position", Vector2(1000, -300), 1.0
+	).set_trans(Tween.TRANS_SINE).finished
+	
 	if is_instance_valid(eirin):
 		eirin.remove()
 	end_script()

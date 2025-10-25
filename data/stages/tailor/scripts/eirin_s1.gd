@@ -6,13 +6,13 @@ var timer: Timer = Timer.new()
 var timer_count: int = 0
 
 var eirin: Enemy
-var eirin_lerp: ComponentLerpPosition
 
 var pat_circ1: PatternCircle
 var pat_circ2: PatternCircle
 
 var main_bullet: Bullet
 var start_spin: bool = false
+var cleaning: bool = false
 
 var total_time: float = 0.0
 
@@ -36,14 +36,17 @@ func _ready() -> void:
 	pat_circ2.rotation = 0
 	
 	eirin = get_boss("eirin", EIRIN_SCENE, Vector2(GameArea.size.x * 0.5, -40))
-	eirin.hp = 1000
+	eirin.hp = 1500
 	eirin.damage_taken_mult = 0.25
-	eirin_lerp = ComponentLerpPosition.add_to_entity(eirin, Vector2(GameArea.size.x * 0.5, 300), 2.0)
 	
 	GameVariables.cur_spellcard_name = "Mind of God \"Mind your Business\""
 	start_spellcard(40.0)
 	
-	await get_tree().create_timer(1.0, false, true).timeout
+	await eirin.create_tween().tween_property(
+		eirin, "position", Vector2(GameArea.size.x * 0.5, 225), 1.0
+	).set_trans(Tween.TRANS_SINE).finished
+	
+	#await get_tree().create_timer(1.0, false, true).timeout
 	main_bullet = add_bullet(BULLET_CIRCLE_BORDERED, eirin.global_position)
 	main_bullet.remove_from_group("clearable")
 	main_bullet.damage_retention = 1.0
@@ -51,12 +54,12 @@ func _ready() -> void:
 	main_bullet.sprite_frame_x(BCOLOR_BLUE)
 	await main_bullet.create_tween().tween_property(
 		main_bullet, "position", Vector2(GameArea.size.x * 0.5, 550), 1.0
-	).set_trans(Tween.TRANS_QUAD).finished
+	).set_trans(Tween.TRANS_SINE).finished
 	start_spin = true
 
 func _physics_process(delta: float) -> void:
 	if is_instance_valid(eirin):
-		if eirin.hp <= 0:
+		if not cleaning and eirin.hp <= 0:
 			clean_up()
 	if start_spin:
 		main_bullet.rotation += delta * 0.5
@@ -68,10 +71,9 @@ func _on_spellcard_timeout() -> void:
 	
 # ================ PLACEHOLDER ================
 func clean_up() -> void:
-	end_chapter()
-	# eirin_lerp.position = Vector2(420, -120)
-	eirin_lerp.queue_free() # Free for next one to add back
+	cleaning = true
 	start_spin = false
+	end_chapter()
 	main_bullet.remove()
 	timer.stop()
 	end_script()

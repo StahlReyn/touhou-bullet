@@ -69,6 +69,7 @@ static func add_item_bulk(scene: PackedScene, count: int, pos: Vector2 = Vector2
 static func add_boss(scene: PackedScene, id: String, pos: Vector2 = Vector2.ZERO) -> Enemy:
 	var enemy: Enemy = scene.instantiate()
 	GameVariables.game_area.add_enemy_boss(enemy, id, pos)
+	enemy.despawn_on_death = false
 	return enemy
 
 ## Facade for common component

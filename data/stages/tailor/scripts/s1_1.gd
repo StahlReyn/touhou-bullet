@@ -39,20 +39,20 @@ func _on_timer_end() -> void:
 		enemy.set_type("blue")
 	elif timer_count % 32 < 24:
 		enemy.position = Vector2(200 - (timer_count % 8) * 25, -30)
-		accel(enemy, Vector2(250, -150), Vector2(50, (timer_count % 8) * 40 + 600))
+		accel(enemy, Vector2(250, -150), Vector2(0, (timer_count % 8) * 40 + 600))
 		drop(enemy, 0, 5)
 		timer_loop(enemy, shoot_trail.bind(enemy, BCOLOR_YELLOW), 1.0)
 		enemy.set_type("yellow")
 	else:
 		enemy.position = Vector2(GameArea.size.x - (timer_count % 8) * 50, -30)
-		accel(enemy, Vector2(-150, -100), Vector2(-50, (timer_count % 8) * 40 + 150))
+		accel(enemy, Vector2(-150, -100), Vector2(0, (timer_count % 8) * 40 + 150))
 		drop(enemy, 5, 0)
 		timer_loop(enemy, shoot_trail.bind(enemy, BCOLOR_GREEN), 1.0)
 		enemy.set_type("green")
 	
 	
 	timer_count += 1
-	timer.start(0.2)
+	timer.start(0.15)
 
 static func shoot_trail(entity: Entity, color: int):
 	AudioManager.play_shoot1()
