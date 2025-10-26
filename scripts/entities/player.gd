@@ -54,6 +54,7 @@ func die():
 		died.emit()
 		GameVariables.lose_lives()
 		GameVariables.deaths += 1
+		GameVariables.lose_power(20)
 		DeathClearEffect.create(global_position)
 		respawn()
 
