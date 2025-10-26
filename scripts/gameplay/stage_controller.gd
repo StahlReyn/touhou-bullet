@@ -27,6 +27,8 @@ func _physics_process(delta: float) -> void:
 
 func run() -> void:
 	section_queue = stage_data.sections.duplicate_deep()
+	for i in range(stage_data.start_index):
+		section_queue.pop_front()
 	start_next_section()
 	
 func start_next_section() -> void:

@@ -8,7 +8,7 @@ enum PortraitPosition {
 
 signal input_event
 
-static var lerp_speed: float = 30.0
+static var lerp_speed: float = 20.0
 
 static var modulate_spawn: Color = Color(0, 0, 0, 0)
 static var modulate_remove: Color = Color(0.5, 0.5, 0.5, 0)
@@ -16,9 +16,9 @@ static var modulate_active: Color = Color(1, 1, 1, 1)
 static var modulate_inactive: Color = Color(0.5, 0.5, 0.5, 1)
 
 static var left_pos: Vector2 = Vector2(0, 0)
-static var left_gap: Vector2 = Vector2(-150, 50)
+static var left_gap: Vector2 = Vector2(-200, 50)
 static var right_pos: Vector2 = Vector2(1000, 0)
-static var right_gap: Vector2 = Vector2(150, 50)
+static var right_gap: Vector2 = Vector2(200, 50)
 
 var portraits_left: Array[Portrait]
 var portraits_right: Array[Portrait]

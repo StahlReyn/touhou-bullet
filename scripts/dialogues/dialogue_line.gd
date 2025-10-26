@@ -4,6 +4,7 @@ extends DialogueEvent
 @export_group("Dialogue")
 @export var id: String
 @export_multiline var dialogue: String
+@export_group("Extra")
 @export var face_anim: String
 @export var body_anim: String
 @export var deactivate_others: bool = true

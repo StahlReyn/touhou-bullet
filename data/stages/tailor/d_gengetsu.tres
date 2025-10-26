@@ -1,0 +1,95 @@
+[gd_resource type="Resource" script_class="StageDataDialogue" load_steps=22 format=3 uid="uid://bnjmvk37db2es"]
+
+[ext_resource type="Script" uid="uid://cn6e6yd4p2nkw" path="res://scripts/dialogues/dialogue_event.gd" id="1_7u45n"]
+[ext_resource type="PackedScene" uid="uid://b1p0p48s41yyv" path="res://data/enemies/bosses/mugetsu.tscn" id="2_7u45n"]
+[ext_resource type="Script" uid="uid://bv06oqqitslh1" path="res://scripts/dialogues/dialogue_spawn_boss.gd" id="3_je2nr"]
+[ext_resource type="PackedScene" uid="uid://dnf0sww73j8n5" path="res://data/portraits/junko.tscn" id="4_fdwyg"]
+[ext_resource type="Script" uid="uid://cnkxajlq1vds6" path="res://scripts/dialogues/dialogue_line.gd" id="5_uvlng"]
+[ext_resource type="PackedScene" uid="uid://ddr0qr7up7eku" path="res://data/enemies/bosses/gengetsu.tscn" id="6_a0e81"]
+[ext_resource type="PackedScene" uid="uid://bgtqrja6ar8hw" path="res://data/portraits/mugetsu.tscn" id="6_je2nr"]
+[ext_resource type="Script" uid="uid://8sos5xgum73s" path="res://scripts/gameplay/stage_data_dialogue.gd" id="7_1r1lu"]
+[ext_resource type="PackedScene" uid="uid://bu8687jx7yrg6" path="res://data/portraits/gengetsu.tscn" id="8_fdwyg"]
+
+[sub_resource type="Resource" id="Resource_je2nr"]
+script = ExtResource("3_je2nr")
+id = "mugetsu"
+enemy_scene = ExtResource("2_7u45n")
+target_position = Vector2(200, 250)
+metadata/_custom_type_script = "uid://bv06oqqitslh1"
+
+[sub_resource type="Resource" id="Resource_fdwyg"]
+script = ExtResource("5_uvlng")
+id = "mugetsu"
+dialogue = "TJ_GEN_1"
+portrait_scene = ExtResource("6_je2nr")
+portrait_position = 1
+metadata/_custom_type_script = "uid://cnkxajlq1vds6"
+
+[sub_resource type="Resource" id="Resource_131h5"]
+script = ExtResource("3_je2nr")
+id = "gengetsu"
+enemy_scene = ExtResource("6_a0e81")
+target_position = Vector2(568, 250)
+metadata/_custom_type_script = "uid://bv06oqqitslh1"
+
+[sub_resource type="Resource" id="Resource_7u45n"]
+script = ExtResource("5_uvlng")
+id = "gengetsu"
+dialogue = "TJ_GEN_2"
+portrait_scene = ExtResource("8_fdwyg")
+portrait_position = 1
+metadata/_custom_type_script = "uid://cnkxajlq1vds6"
+
+[sub_resource type="Resource" id="Resource_a0e81"]
+script = ExtResource("5_uvlng")
+id = "junko"
+dialogue = "TJ_GEN_3"
+portrait_scene = ExtResource("4_fdwyg")
+metadata/_custom_type_script = "uid://cnkxajlq1vds6"
+
+[sub_resource type="Resource" id="Resource_uvlng"]
+script = ExtResource("5_uvlng")
+id = "gengetsu"
+dialogue = "TJ_GEN_4"
+metadata/_custom_type_script = "uid://cnkxajlq1vds6"
+
+[sub_resource type="Resource" id="Resource_xui6v"]
+script = ExtResource("5_uvlng")
+id = "junko"
+dialogue = "TJ_GEN_5"
+metadata/_custom_type_script = "uid://cnkxajlq1vds6"
+
+[sub_resource type="Resource" id="Resource_1r1lu"]
+script = ExtResource("5_uvlng")
+id = "junko"
+dialogue = "TJ_GEN_6"
+metadata/_custom_type_script = "uid://cnkxajlq1vds6"
+
+[sub_resource type="Resource" id="Resource_u3dxr"]
+script = ExtResource("5_uvlng")
+id = "gengetsu"
+dialogue = "TJ_GEN_7"
+metadata/_custom_type_script = "uid://cnkxajlq1vds6"
+
+[sub_resource type="Resource" id="Resource_2jrae"]
+script = ExtResource("5_uvlng")
+id = "mugetsu"
+dialogue = "TJ_GEN_8"
+metadata/_custom_type_script = "uid://cnkxajlq1vds6"
+
+[sub_resource type="Resource" id="Resource_yycc8"]
+script = ExtResource("5_uvlng")
+id = "mugetsu"
+dialogue = "TJ_GEN_9"
+metadata/_custom_type_script = "uid://cnkxajlq1vds6"
+
+[sub_resource type="Resource" id="Resource_8eos5"]
+script = ExtResource("5_uvlng")
+id = "junko"
+dialogue = "TJ_GEN_10"
+metadata/_custom_type_script = "uid://cnkxajlq1vds6"
+
+[resource]
+script = ExtResource("7_1r1lu")
+dialogue_events = Array[ExtResource("1_7u45n")]([SubResource("Resource_je2nr"), SubResource("Resource_fdwyg"), SubResource("Resource_131h5"), SubResource("Resource_7u45n"), SubResource("Resource_a0e81"), SubResource("Resource_uvlng"), SubResource("Resource_xui6v"), SubResource("Resource_1r1lu"), SubResource("Resource_u3dxr"), SubResource("Resource_2jrae"), SubResource("Resource_yycc8"), SubResource("Resource_8eos5")])
+metadata/_custom_type_script = "uid://8sos5xgum73s"

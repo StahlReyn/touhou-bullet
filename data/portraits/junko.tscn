@@ -63,7 +63,7 @@ metadata/_custom_type_script = "uid://dr2hem1dowlou"
 metadata/_edit_lock_ = true
 
 [node name="Body" type="AnimatedSprite2D" parent="."]
-position = Vector2(-308, -47)
+position = Vector2(-368, -55)
 sprite_frames = SubResource("SpriteFrames_u2khd")
 centered = false
 
@@ -75,4 +75,4 @@ centered = false
 metadata/_edit_lock_ = true
 
 [node name="Speech" type="Node2D" parent="."]
-position = Vector2(263, 368)
+position = Vector2(230, 364)

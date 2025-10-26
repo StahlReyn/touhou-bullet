@@ -1,0 +1,66 @@
+[gd_resource type="Resource" script_class="StageDataDialogue" load_steps=15 format=3 uid="uid://bmj3m6qrwn2nb"]
+
+[ext_resource type="Script" uid="uid://cn6e6yd4p2nkw" path="res://scripts/dialogues/dialogue_event.gd" id="1_21lc2"]
+[ext_resource type="PackedScene" uid="uid://bgtqrja6ar8hw" path="res://data/portraits/mugetsu.tscn" id="4_egkqs"]
+[ext_resource type="Script" uid="uid://cnkxajlq1vds6" path="res://scripts/dialogues/dialogue_line.gd" id="5_qpnc1"]
+[ext_resource type="PackedScene" uid="uid://bu8687jx7yrg6" path="res://data/portraits/gengetsu.tscn" id="7_unm86"]
+[ext_resource type="PackedScene" uid="uid://dnf0sww73j8n5" path="res://data/portraits/junko.tscn" id="8_etiyo"]
+[ext_resource type="Script" uid="uid://8sos5xgum73s" path="res://scripts/gameplay/stage_data_dialogue.gd" id="9_yqmjk"]
+
+[sub_resource type="Resource" id="Resource_dkh7e"]
+script = ExtResource("5_qpnc1")
+id = "gengetsu"
+dialogue = "TJ_GENP_1"
+portrait_scene = ExtResource("7_unm86")
+portrait_position = 1
+metadata/_custom_type_script = "uid://cnkxajlq1vds6"
+
+[sub_resource type="Resource" id="Resource_fdwyg"]
+script = ExtResource("5_qpnc1")
+id = "mugetsu"
+dialogue = "TJ_GENP_2"
+portrait_scene = ExtResource("4_egkqs")
+portrait_position = 1
+metadata/_custom_type_script = "uid://cnkxajlq1vds6"
+
+[sub_resource type="Resource" id="Resource_xhdje"]
+script = ExtResource("5_qpnc1")
+id = "junko"
+dialogue = "TJ_GENP_3"
+portrait_scene = ExtResource("8_etiyo")
+metadata/_custom_type_script = "uid://cnkxajlq1vds6"
+
+[sub_resource type="Resource" id="Resource_36h07"]
+script = ExtResource("5_qpnc1")
+id = "junko"
+dialogue = "TJ_GENP_4"
+metadata/_custom_type_script = "uid://cnkxajlq1vds6"
+
+[sub_resource type="Resource" id="Resource_l8cve"]
+script = ExtResource("5_qpnc1")
+id = "gengetsu"
+dialogue = "TJ_GENP_5"
+metadata/_custom_type_script = "uid://cnkxajlq1vds6"
+
+[sub_resource type="Resource" id="Resource_21lc2"]
+script = ExtResource("5_qpnc1")
+id = "gengetsu"
+dialogue = "TJ_GENP_6"
+metadata/_custom_type_script = "uid://cnkxajlq1vds6"
+
+[sub_resource type="Resource" id="Resource_n04it"]
+script = ExtResource("5_qpnc1")
+id = "mugetsu"
+dialogue = "TJ_GENP_7"
+metadata/_custom_type_script = "uid://cnkxajlq1vds6"
+
+[sub_resource type="Resource" id="Resource_ab1i5"]
+script = ExtResource("5_qpnc1")
+id = "junko"
+dialogue = "TJ_GENP_8"
+metadata/_custom_type_script = "uid://cnkxajlq1vds6"
+
+[resource]
+script = ExtResource("9_yqmjk")
+dialogue_events = Array[ExtResource("1_21lc2")]([SubResource("Resource_dkh7e"), SubResource("Resource_fdwyg"), SubResource("Resource_xhdje"), SubResource("Resource_36h07"), SubResource("Resource_l8cve"), SubResource("Resource_21lc2"), SubResource("Resource_n04it"), SubResource("Resource_ab1i5")])
+metadata/_custom_type_script = "uid://8sos5xgum73s"
