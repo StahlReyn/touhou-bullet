@@ -31,7 +31,7 @@ func petal(rotation: float):
 			else:
 				bullet_angle -= j * angle_per_bullet
 			var direction := Vector2.from_angle(bullet_angle)
-			var speed = speed_min + speed_max * (1 - float(j)/petal_size)
+			var speed = speed_min + (speed_max - speed_min) * (1 - float(j)/petal_size)
 
 			ComponentVelocity.add_to_entity(bullet, direction * speed)
 			GameVariables.game_area.add_bullet(bullet, position)

@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://bpb0hj6d3fd1a" path="res://assets/graphics/system/hpbar_marker.png" id="4_di5l1"]
 
 [node name="HealthBar" type="TextureProgressBar"]
+z_index = 10
 offset_left = -128.0
 offset_top = -128.0
 offset_right = 128.0

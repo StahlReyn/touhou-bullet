@@ -1,0 +1,38 @@
+[gd_scene load_steps=7 format=3 uid="uid://dhsk5engkps4m"]
+
+[ext_resource type="Script" uid="uid://y12juub2fcyj" path="res://scripts/entities/enemy.gd" id="1_sr5mu"]
+[ext_resource type="Texture2D" uid="uid://1hko843uag35" path="res://assets/graphics/enemies/dream_sunflower_fairy.png" id="2_t4v0j"]
+[ext_resource type="Script" uid="uid://dkw4x03mmanq4" path="res://data/enemies/sprite_enemy_simple.gd" id="3_aq38p"]
+[ext_resource type="PackedScene" uid="uid://w54qs2iq7b0n" path="res://display/gameplay/health_bar.tscn" id="4_aq38p"]
+[ext_resource type="PackedScene" uid="uid://da324g1kunmvo" path="res://data/enemies/bosses/boss_aura.tscn" id="5_y33ie"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_m0pp0"]
+radius = 32.0
+
+[node name="FairySunflowerDream" type="Area2D" node_paths=PackedStringArray("health_bar")]
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("1_sr5mu")
+health_bar = NodePath("HealthBar")
+mhp = 800
+collision_damage = 100
+metadata/_custom_type_script = "uid://y12juub2fcyj"
+
+[node name="SpriteEnemySimple" type="Sprite2D" parent="."]
+position = Vector2(0, -10)
+scale = Vector2(2, 2)
+texture = ExtResource("2_t4v0j")
+hframes = 9
+script = ExtResource("3_aq38p")
+metadata/_custom_type_script = "uid://dkw4x03mmanq4"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_m0pp0")
+
+[node name="HealthBar" parent="." node_paths=PackedStringArray("character") instance=ExtResource("4_aq38p")]
+character = NodePath("..")
+
+[node name="BossAura" parent="." instance=ExtResource("5_y33ie")]
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="setted_type" from="." to="SpriteEnemySimple" method="set_type"]

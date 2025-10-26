@@ -10,11 +10,10 @@ size = Vector2(25, 78)
 size = Vector2(40, 25)
 
 [node name="Shield" type="Area2D"]
+z_index = 5
 collision_layer = 2
 collision_mask = 0
 script = ExtResource("1_1b7ck")
-mhp = 5000
-collision_damage = 100
 damage_taken_mult = 0.0
 metadata/_custom_type_script = "uid://y12juub2fcyj"
 
