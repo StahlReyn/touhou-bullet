@@ -1,0 +1,78 @@
+[gd_scene load_steps=9 format=3 uid="uid://vu10bswwddpv"]
+
+[ext_resource type="Script" uid="uid://dr2hem1dowlou" path="res://scripts/dialogues/portrait.gd" id="1_1b7c6"]
+[ext_resource type="Texture2D" uid="uid://b4l65ynsbvp83" path="res://assets/graphics/portraits/toyohime.png" id="2_1b7c6"]
+[ext_resource type="Texture2D" uid="uid://bj4uo4x1oa2ax" path="res://assets/graphics/portraits/seija/face_angry.tres" id="3_u6wi7"]
+[ext_resource type="Texture2D" uid="uid://ddakfw8epwfyw" path="res://assets/graphics/portraits/seija/face_default.tres" id="4_kyetx"]
+[ext_resource type="Texture2D" uid="uid://r405cieu0s6i" path="res://assets/graphics/portraits/seija/face_smug.tres" id="5_6055m"]
+[ext_resource type="Texture2D" uid="uid://b4oq16rt0l0ee" path="res://assets/graphics/portraits/seija/face_surprised.tres" id="6_hn3gf"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_u2khd"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_1b7c6")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jxkc8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_u6wi7")
+}],
+"loop": true,
+"name": &"angry",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_kyetx")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_6055m")
+}],
+"loop": true,
+"name": &"smug",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_hn3gf")
+}],
+"loop": true,
+"name": &"surprised",
+"speed": 5.0
+}]
+
+[node name="Portrait" type="Node2D" node_paths=PackedStringArray("body_sprite", "face_sprite", "speech_node")]
+script = ExtResource("1_1b7c6")
+id = "seija"
+body_sprite = NodePath("Body")
+face_sprite = NodePath("Face")
+speech_node = NodePath("Speech")
+metadata/_custom_type_script = "uid://dr2hem1dowlou"
+metadata/_edit_lock_ = true
+
+[node name="Body" type="AnimatedSprite2D" parent="."]
+position = Vector2(-350, 84)
+sprite_frames = SubResource("SpriteFrames_u2khd")
+centered = false
+
+[node name="Face" type="AnimatedSprite2D" parent="."]
+visible = false
+position = Vector2(70, 150)
+sprite_frames = SubResource("SpriteFrames_jxkc8")
+centered = false
+metadata/_edit_lock_ = true
+
+[node name="Speech" type="Node2D" parent="."]
+position = Vector2(-198, 373)
