@@ -28,7 +28,10 @@ func set_mhp(value : int, restore : bool = true) -> void:
 
 @warning_ignore_start("narrowing_conversion")
 func take_damage(dmg : int):
-	hp -= dmg * damage_taken_mult
+	var final_dmg = dmg * damage_taken_mult
+	if final_dmg <= 0:
+		AudioManager.play_block()
+	hp -= final_dmg
 	if hp <= 0 and not is_dead:
 		die()
 

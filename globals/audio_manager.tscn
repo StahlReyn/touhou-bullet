@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://bha74p3x1608r"]
+[gd_scene load_steps=9 format=3 uid="uid://bha74p3x1608r"]
 
 [ext_resource type="Script" uid="uid://cmfy7ty1b3q6h" path="res://globals/audio_manager.gd" id="1_exsf0"]
 [ext_resource type="AudioStream" uid="uid://10k7dva83t2e" path="res://assets/audio/sfx/item_get.wav" id="2_hilj8"]
@@ -7,6 +7,7 @@
 [ext_resource type="AudioStream" uid="uid://cdcqm4htide61" path="res://assets/audio/sfx/click_collect.wav" id="5_8ak76"]
 [ext_resource type="AudioStream" uid="uid://c7r4fudpm8xph" path="res://assets/audio/sfx/bullet_hit.mp3" id="6_8ak76"]
 [ext_resource type="AudioStream" uid="uid://cx5hwic4ykb8r" path="res://assets/audio/sfx/shoot_soft.mp3" id="7_nvroi"]
+[ext_resource type="AudioStream" uid="uid://ddfpm2fja7kpl" path="res://assets/audio/sfx/metal_hit.mp3" id="8_ay5dq"]
 
 [node name="AudioManager" type="Node"]
 script = ExtResource("1_exsf0")
@@ -15,7 +16,6 @@ script = ExtResource("1_exsf0")
 stream = ExtResource("6_8ak76")
 volume_db = -30.0
 pitch_scale = 0.4
-autoplay = true
 max_polyphony = 3
 
 [node name="Graze" type="AudioStreamPlayer" parent="."]
@@ -57,3 +57,8 @@ bus = &"SFX"
 stream = ExtResource("5_8ak76")
 volume_db = -10.0
 bus = &"SFX"
+
+[node name="Block" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_ay5dq")
+volume_db = -25.0
+max_polyphony = 3

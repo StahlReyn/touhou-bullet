@@ -8,6 +8,7 @@ extends PatternFactory
 @export var speed: float = 100
 @export var acceleration: float = 0
 
+@export var rotate_spawn: bool = true
 @export var arc_angle: float = TAU
 @export var offset: Vector2
 @export var bullet_scene: PackedScene
@@ -25,5 +26,7 @@ func create() -> Array[Bullet]:
 		GameVariables.game_area.add_bullet(bullet, position)
 		if offset:
 			bullet.position += offset.rotated(angle)
+		if rotate_spawn:
+			bullet.rotation = angle
 		spawned_bullets.push_back(bullet)
 	return spawned_bullets

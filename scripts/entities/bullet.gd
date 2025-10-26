@@ -37,6 +37,7 @@ func sprite_frame_x(index: int):
 @warning_ignore_start("narrowing_conversion")
 func damage_target(character: Character) -> void:
 	character.take_damage(damage)
+	GameVariables.add_score(damage * 100)
 	damage *= damage_retention
 	if damage <= 0:
 		despawn()

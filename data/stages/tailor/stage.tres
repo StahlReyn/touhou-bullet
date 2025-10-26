@@ -11,5 +11,5 @@
 
 [resource]
 script = ExtResource("1_k0wto")
-sections = Array[ExtResource("2_mqmux")]([ExtResource("3_mqmux"), ExtResource("4_ir5rw"), ExtResource("3_4kc7s"), ExtResource("3_r68sv"), ExtResource("7_iini8"), ExtResource("8_qpi7q")])
+sections = Array[ExtResource("2_mqmux")]([ExtResource("8_qpi7q"), ExtResource("3_mqmux"), ExtResource("4_ir5rw"), ExtResource("3_4kc7s"), ExtResource("3_r68sv"), ExtResource("7_iini8")])
 metadata/_custom_type_script = "uid://bpbubir7dstld"

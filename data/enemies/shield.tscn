@@ -1,0 +1,41 @@
+[gd_scene load_steps=5 format=3 uid="uid://2i47q2x2svai"]
+
+[ext_resource type="Script" uid="uid://y12juub2fcyj" path="res://scripts/entities/enemy.gd" id="1_1b7ck"]
+[ext_resource type="Texture2D" uid="uid://mjx5eidgg70f" path="res://assets/graphics/enemies/shield.png" id="2_htlfb"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jt2r0"]
+size = Vector2(25, 78)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_os560"]
+size = Vector2(40, 25)
+
+[node name="Shield" type="Area2D"]
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("1_1b7ck")
+mhp = 5000
+collision_damage = 100
+damage_taken_mult = 0.0
+metadata/_custom_type_script = "uid://y12juub2fcyj"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+rotation = -1.5707964
+scale = Vector2(2, 2)
+texture = ExtResource("2_htlfb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(53.5, 0)
+shape = SubResource("RectangleShape2D_jt2r0")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2(35.000004, 47.000004)
+rotation = -0.7853982
+shape = SubResource("RectangleShape2D_os560")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="."]
+position = Vector2(31.974873, -43.974873)
+rotation = 0.7853982
+scale = Vector2(0.99999994, 0.99999994)
+shape = SubResource("RectangleShape2D_os560")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

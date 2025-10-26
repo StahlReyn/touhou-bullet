@@ -5,7 +5,7 @@ extends EntityComponent
 @export var speed: float = 1.0
 
 static func add_to_entity(entity_owner: Entity, position: Vector2 = Vector2.ZERO, speed: float = 1.0) -> ComponentLerpPosition:
-	var comp := ComponentLerpPosition.new()
+	var comp := new()
 	comp.entity = entity_owner
 	comp.position = position
 	comp.speed = speed
