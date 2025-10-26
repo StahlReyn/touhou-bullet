@@ -145,7 +145,7 @@ func end_chapter() -> void:
 	call_deferred("remove_enemy_entities")
 
 func end_script() -> void:
-	stage_data_script.run_next_script()
+	stage_data_script.call_deferred("run_next_script")
 	call_deferred("queue_free")
 
 ## This skips the entire section. Not for usual gameplay.
@@ -155,11 +155,11 @@ func end_section() -> void:
 
 func start_spellcard(time: float) -> void:
 	controller.start_spellcard(time)
-	controller.spellcard_displayer.timeout.connect(_on_spellcard_timeout)
+	controller.spellcard_timeout.connect(_on_spellcard_timeout)
 
 func start_nonspellcard(time: float) -> void:
 	controller.start_nonspellcard(time)
-	controller.spellcard_displayer.timeout.connect(_on_spellcard_timeout)
+	controller.spellcard_timeout.connect(_on_spellcard_timeout)
 
 ## Runs on spellcard finishing. Ends the section by default
 func _on_spellcard_timeout() -> void:

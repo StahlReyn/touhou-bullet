@@ -42,6 +42,7 @@ func _ready() -> void:
 	
 	for i in range(60):
 		var book: Enemy = add_enemy(SCENE_BOOK)
+		book.set_mhp(500)
 		books.push_back(book)
 		book.create_tween().tween_property(
 			book, "position", Vector2(
@@ -107,7 +108,7 @@ func _on_timer_end() -> void:
 		bouncers.push_back(bouncer)
 	
 	timer_count += 1
-	if timer_count > 12:
+	if timer_count > 8:
 		timer.start(1.0)
 	else:
 		timer.start(2.0)

@@ -14,10 +14,10 @@
 [ext_resource type="AudioStream" uid="uid://dq30caahnggrl" path="res://assets/audio/sfx/pichuun_processed.wav" id="14_4kqyr"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_xrwn8"]
-radius = 5.0
+radius = 4.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_l4vi3"]
-radius = 44.0
+radius = 50.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4c6l5"]
 atlas = ExtResource("3_7iww8")
@@ -106,6 +106,7 @@ script = ExtResource("1_7iww8")
 metadata/_custom_type_script = "uid://4uk2a50v5es0"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+z_index = 20
 shape = SubResource("CircleShape2D_xrwn8")
 metadata/_edit_lock_ = true
 

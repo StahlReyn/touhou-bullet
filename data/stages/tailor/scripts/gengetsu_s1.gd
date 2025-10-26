@@ -12,6 +12,7 @@ var cleaning: bool = false
 var pat_aim: PatternFlower
 
 func _ready() -> void:
+	GameVariables.cur_spellcard_bonus = 4000000
 	pat_aim = PatternFlower.new()
 	pat_aim.petal_count = 1
 	pat_aim.petal_size = 4

@@ -44,11 +44,10 @@ script = ExtResource("1_ahrb4")
 metadata/_custom_type_script = "uid://egelp2iwlkw7"
 metadata/_edit_lock_ = true
 
-[node name="StageController" type="Node" parent="." node_paths=PackedStringArray("game_area", "dialogue_view", "spellcard_displayer", "game_background")]
+[node name="StageController" type="Node" parent="." node_paths=PackedStringArray("game_area", "dialogue_view", "game_background")]
 script = ExtResource("2_cgls0")
 game_area = NodePath("../GameView/GameArea")
 dialogue_view = NodePath("../GameOverlay/DialogueView")
-spellcard_displayer = NodePath("../GameOverlay/SpellcardDisplayer")
 game_background = NodePath("../GameView/GameBackground")
 stage_data = ExtResource("3_rfj8o")
 metadata/_custom_type_script = "uid://cf4coa3e55q1b"
@@ -149,7 +148,10 @@ parameters/looping = true
 [connection signal="stage_started" from="." to="StageController" method="_on_game_main_stage_started"]
 [connection signal="stage_started" from="." to="GameOverlay/AreaCollection" method="_on_game_main_stage_started"]
 [connection signal="chapter_ended" from="StageController" to="GameOverlay/ChapterPopup" method="_on_stage_controller_chapter_ended"]
-[connection signal="spellcard_started" from="StageController" to="GameOverlay/SpellcardDisplayer" method="_on_stage_controller_spellcard_started"]
+[connection signal="nonspellcard_started" from="StageController" to="GameOverlay/SpellcardDisplayer" method="start_nonspellcard"]
+[connection signal="spellcard_ended" from="StageController" to="GameOverlay/SpellcardDisplayer" method="end_spellcard"]
+[connection signal="spellcard_started" from="StageController" to="GameOverlay/SpellcardDisplayer" method="start_spellcard"]
 [connection signal="stage_ended" from="StageController" to="." method="_on_stage_controller_stage_ended"]
 [connection signal="quit" from="GameOverlay/PauseMenu" to="GameOverlay/ScreenWipe" method="close"]
 [connection signal="retry" from="GameOverlay/PauseMenu" to="GameOverlay/ScreenWipe" method="close"]
+[connection signal="timeout" from="GameOverlay/SpellcardDisplayer" to="StageController" method="timeout_spellcard"]

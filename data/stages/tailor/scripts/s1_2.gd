@@ -7,7 +7,6 @@ var ending: bool = false
 var path: Path2D = Path2D.new()
 
 func _ready() -> void:
-	
 	timer.timeout.connect(_on_timer_end)
 	add_child(timer)
 	timer.start(1.0)

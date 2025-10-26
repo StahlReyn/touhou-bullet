@@ -4,12 +4,14 @@ extends Node
 signal stage_ended
 signal section_ended
 signal chapter_ended ## Specific type of section that displays LOLK style chapter
-signal spellcard_started
+signal spellcard_started(time: float)
+signal nonspellcard_started(time: float)
+signal spellcard_ended
+signal spellcard_timeout
 
 @export_category("Managers")
 @export var game_area: GameArea
 @export var dialogue_view: DialogueView
-@export var spellcard_displayer: SpellcardDisplayer
 @export var game_background: GameBackground
 @export_category("Data")
 @export var stage_data: StageData
@@ -52,16 +54,18 @@ func end_section() -> void:
 		stage_ended.emit()
 
 func end_chapter() -> void:
-	spellcard_displayer.end_spellcard()
+	spellcard_ended.emit()
 	chapter_ended.emit()
 
 func start_spellcard(time: float) -> void:
-	spellcard_displayer.start_spellcard(time)
-	spellcard_started.emit()
+	GameVariables.is_spellcard_section = true
+	spellcard_started.emit(time)
 
 func start_nonspellcard(time: float) -> void:
-	spellcard_displayer.start_nonspellcard(time)
-	spellcard_started.emit()
+	nonspellcard_started.emit(time)
+
+func timeout_spellcard() -> void:
+	spellcard_timeout.emit()
 
 func transition_stage_scene(scene: PackedScene) -> void:
 	game_background.transition_stage_scene(scene)

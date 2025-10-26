@@ -17,6 +17,7 @@ var cleaning: bool = false
 var total_time: float = 0.0
 
 func _ready() -> void:
+	GameVariables.cur_spellcard_bonus = 2000000
 	add_child(timer)
 	timer.timeout.connect(_on_timer_end)
 	timer.start(2)

@@ -1,13 +1,13 @@
 class_name ChapterStats
 
-var graze: int
-var shoot_ratio: float
-var retries: int
+var graze: int = 0
+var shoot_ratio: float = 0.0
+var retries: int = 0
 
-func _init() -> void:
-	graze = 0
-	shoot_ratio = 0.0
-	retries = 0
+var is_spellcard_section: bool = false
+var spellcard_bonus: int = 0
+var game_time: float = 0.0
+var actual_time: float = 0.0
 
 func get_chapter_bonus() -> int:
 	return ceil(graze * shoot_ratio * 5000)

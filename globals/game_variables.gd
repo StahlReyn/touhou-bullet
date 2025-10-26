@@ -40,8 +40,11 @@ var prev_deaths: int = 0
 var prev_graze: int = 0
 var prev_enemy_spawned: int = 0
 var prev_shoot_down: int = 0
+var prev_game_time: float = 0
+var prev_time_msec: int = 0
 
 # Might change when proper spellcard database comes
+var is_spellcard_section: bool = false
 var cur_spellcard_bonus: int = 1000000
 var cur_spellcard_name: String = ""
 var cur_chapter_stats: ChapterStats
@@ -70,9 +73,6 @@ func reset_variables() -> void:
 # ================================================================
 #                       GETTER / SETTERS
 # ================================================================
-func add_spellcard_bonus() -> void:
-	add_score(cur_spellcard_bonus)
-
 func add_score(value: int) -> void:
 	score += value
 
@@ -134,51 +134,39 @@ func update_chapter_stats() -> void:
 	else:
 		cur_chapter_stats.shoot_ratio = float(shoot_down - prev_shoot_down) / float(enemy_spawned - prev_enemy_spawned)
 	
+	var cur_msec := Time.get_ticks_msec()
+	cur_chapter_stats.is_spellcard_section = is_spellcard_section
+	cur_chapter_stats.spellcard_bonus = cur_spellcard_bonus
+	cur_chapter_stats.game_time = game_time - prev_game_time
+	cur_chapter_stats.actual_time = float(cur_msec - prev_time_msec) / 1000
+
+func reset_chapter_stats() -> void:
+	var cur_msec := Time.get_ticks_msec()
+	is_spellcard_section = false
 	prev_deaths = deaths
 	prev_graze = graze
 	prev_enemy_spawned = enemy_spawned
 	prev_shoot_down = shoot_down
+	prev_time_msec = cur_msec
+	prev_game_time = game_time
 	
 # ================================================================
 #                            DISPLAY
 # ================================================================
 func get_score_display():
-	return thousands_sep(score)
+	return MathUtils.thousands_sep(score)
 
 func get_power_display():
-	return two_decimal_int(power) + "/" + two_decimal_int(power_max)
+	return MathUtils.two_decimal_int(power) + "/" + MathUtils.two_decimal_int(power_max)
 
 func get_point_value_display():
-	return thousands_sep(point_value)
+	return MathUtils.thousands_sep(point_value)
 
 func get_graze_display():
-	return thousands_sep(graze)
+	return MathUtils.thousands_sep(graze)
 
 func get_life_piece_display():
 	return "(" + str(life_pieces) + "/" + str(life_pieces_max) + ")"
 
 func get_bomb_piece_display():
 	return "(" + str(bomb_pieces) + "/" + str(bomb_pieces_max) + ")"
-
-static func two_decimal_int(number: int) -> String:
-	return "%.2f" % (float(number) / 100)
-
-static func percentage_display(number: float) -> String:
-	return "%.1f" % (float(number) * 100) + "%"
-
-static func thousands_sep(number, prefix = '') -> String:
-	number = int(number)
-	var neg = false
-	if number < 0:
-		number = -number
-		neg = true
-	var string = str(number)
-	var mod = string.length() % 3
-	var res = ""
-	for i in range(0, string.length()):
-		if i != 0 && i % 3 == mod:
-			res += ","
-		res += string[i]
-	if neg: res = '-'+prefix+res
-	else: res = prefix+res
-	return res

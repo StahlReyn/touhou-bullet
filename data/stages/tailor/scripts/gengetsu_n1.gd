@@ -13,6 +13,7 @@ var pat_circ1: PatternCircle
 var pat_circ2: PatternCircle
 
 func _ready() -> void:
+	GameVariables.reset_chapter_stats()
 	pat_circ1 = PatternCircle.new()
 	pat_circ1.amount = 16
 	pat_circ1.speed = 400

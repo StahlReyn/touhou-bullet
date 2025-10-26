@@ -11,6 +11,7 @@ var cleaning: bool = false
 var pattern_circle: PatternCircle
 
 func _ready() -> void:
+	GameVariables.reset_chapter_stats()
 	timer.timeout.connect(_on_timer_end)
 	add_child(timer)
 	timer.start(1)
