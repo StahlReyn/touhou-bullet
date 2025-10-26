@@ -24,13 +24,13 @@ func _ready() -> void:
 	pat_circ2.bullet_scene = BULLET_CIRCLE_BORDERED
 	
 	gengetsu = get_boss("gengetsu", SCENE_GENGETSU, Vector2(100, -40))
-	gengetsu.set_mhp(4000)
-	gengetsu.add_hp_marker(1500)
+	gengetsu.set_mhp(6000)
+	gengetsu.add_hp_marker(2000)
 	gengetsu.damage_taken_mult = 1.0
 	
 	mugetsu = get_boss("mugetsu", SCENE_MUGETSU, Vector2(100, -40))
-	mugetsu.set_mhp(4000)
-	mugetsu.add_hp_marker(1500)
+	mugetsu.set_mhp(6000)
+	mugetsu.add_hp_marker(2000)
 	mugetsu.damage_taken_mult = 1.0
 	
 	start_nonspellcard(40.0)
@@ -65,11 +65,11 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	if is_instance_valid(gengetsu):
-		if not cleaning and gengetsu.hp <= 1500:
+		if not cleaning and gengetsu.hp <= 2500:
 			add_item_bulk(ITEM_POWER, 40, gengetsu.global_position)
 			clean_up()
 	if is_instance_valid(mugetsu):
-		if not cleaning and mugetsu.hp <= 1500:
+		if not cleaning and mugetsu.hp <= 2500:
 			add_item_bulk(ITEM_POWER, 40, mugetsu.global_position)
 			clean_up()
 

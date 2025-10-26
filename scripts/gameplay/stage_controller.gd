@@ -52,6 +52,7 @@ func end_section() -> void:
 		stage_ended.emit()
 
 func end_chapter() -> void:
+	spellcard_displayer.end_spellcard()
 	chapter_ended.emit()
 
 func start_spellcard(time: float) -> void:

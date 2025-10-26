@@ -58,15 +58,22 @@ static func spawn_shielded_fairy():
 	shield.position = enemy.position
 	ComponentLerpFollow.add_to_entity(shield, enemy, 30.0)
 	ComponentRotateFollow.add_to_entity(shield, GameVariables.player)
-	enemy.died.connect(shield_died.bind(shield))
+	enemy.died.connect(shield_owner_died.bind(shield))
+	enemy.despawned.connect(shield_owner_despawned.bind(shield))
 
-static func shield_died(entity: Entity):
-	if not is_instance_valid(entity):
+static func shield_owner_died(shield: Entity):
+	if not is_instance_valid(shield):
 		return
-	entity.clear_components()
-	var dir := Vector2.from_angle(entity.rotation)
-	accel(entity, dir * 800)
-
+	shield.clear_components()
+	ComponentDespawnEdge.add_to_entity(shield)
+	var dir := Vector2.from_angle(shield.rotation)
+	accel(shield, dir * 800)
+	
+static func shield_owner_despawned(shield: Entity):
+	if not is_instance_valid(shield):
+		return
+	shield.despawn()
+	
 static func shoot_trail(entity: Entity):
 	AudioManager.play_shoot1()
 	var dir := direction_to_player(entity)

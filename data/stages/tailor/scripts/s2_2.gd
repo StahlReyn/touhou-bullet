@@ -26,7 +26,7 @@ func _ready() -> void:
 	pat_circ2.bullet_scene = BULLET_CIRCLE_BORDERED
 	
 	boss = get_boss("mugetsu", SCENE_MUGETSU)
-	boss.set_mhp(2000)
+	boss.set_mhp(2500)
 	boss.position = Vector2(-40, -40)
 	
 	start_nonspellcard(30.0)

@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://bhxpmmfn0rxv"]
 
-[ext_resource type="Script" uid="uid://cpsjx4jvlmn6h" path="res://display/gameplay/section_clear_popup.gd" id="1_wwv67"]
+[ext_resource type="Script" uid="uid://cpsjx4jvlmn6h" path="res://display/gameplay/chapter_popup.gd" id="1_wwv67"]
 [ext_resource type="LabelSettings" uid="uid://cnrsir06e6mff" path="res://assets/resources/label_settings/label_bonus_get.tres" id="2_dpj1r"]
 [ext_resource type="LabelSettings" uid="uid://bkay61kan2hfv" path="res://assets/resources/label_settings/label_score.tres" id="3_tou5v"]
 [ext_resource type="LabelSettings" uid="uid://nnehbdowh1ax" path="res://assets/resources/label_settings/label_chapter.tres" id="4_p7neo"]
@@ -163,12 +163,11 @@ text = "123456789"
 label_settings = ExtResource("4_p7neo")
 horizontal_alignment = 2
 
-[node name="ScoreAdd" type="MarginContainer" parent="Center/VBox/FullList/Chapter"]
-visible = false
+[node name="ValueAdd" type="MarginContainer" parent="Center/VBox/FullList/Chapter"]
 layout_mode = 2
 theme_override_constants/margin_top = -20
 
-[node name="Num" type="Label" parent="Center/VBox/FullList/Chapter/ScoreAdd"]
+[node name="Num" type="Label" parent="Center/VBox/FullList/Chapter/ValueAdd"]
 modulate = Color(0.314843, 0.617653, 1, 1)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -177,7 +176,6 @@ label_settings = ExtResource("4_p7neo")
 horizontal_alignment = 2
 
 [node name="PieceGet" type="CenterContainer" parent="Center/VBox/FullList/Chapter"]
-visible = false
 layout_mode = 2
 
 [node name="Label" type="Label" parent="Center/VBox/FullList/Chapter/PieceGet"]

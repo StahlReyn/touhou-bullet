@@ -34,7 +34,7 @@ func _on_timer_end() -> void:
 		enemy.set_mhp(300)
 		enemy.set_type("green")
 		timer_once(enemy, flower.bind(enemy), 4.0)
-		drop(enemy, 25, 0)
+		drop(enemy, 20, 0)
 	else:
 		enemy = add_enemy(ENEMY_FAIRY)
 		enemy.set_mhp(30)

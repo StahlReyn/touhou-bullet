@@ -22,7 +22,7 @@ func _ready() -> void:
 	pattern_circle.offset = Vector2(-150, 200)
 	
 	eirin = get_boss("eirin", EIRIN_SCENE, Vector2(100, -40))
-	eirin.set_mhp(4000)
+	eirin.set_mhp(5000)
 	eirin.add_hp_marker(1500)
 	eirin.damage_taken_mult = 1.0
 	

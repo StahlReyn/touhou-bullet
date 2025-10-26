@@ -15,6 +15,7 @@ func run() -> void:
 	var tween: Tween = enemy.create_tween()
 	tween.tween_property(enemy, "position", target_position, 1.0).set_trans(trans)
 	enemy.hp = 0
+	enemy.damage_taken_mult = 0.0
 	
 	if wait_for_input:
 		await tween.finished

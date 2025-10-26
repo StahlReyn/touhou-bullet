@@ -5,13 +5,13 @@ extends Entity
 signal died
 signal mhp_changed
 
-@export var mhp : int = 10
-@export var collision_damage : int = 10
-@export var despawn_on_death: bool = true ## Whether to remove on death. Useful for bosses persisting when disabled
+@export var mhp: float = 10
+@export var collision_damage: float = 10
+@export var free_on_death: bool = true ## Whether to remove on death. Useful for bosses persisting when disabled
 @export var damage_taken_mult: float = 1.0
 
-var hp : int
-var is_dead : bool = false
+var hp: float
+var is_dead: bool = false
 	
 func _ready() -> void:
 	super()
@@ -26,11 +26,11 @@ func set_mhp(value : int, restore : bool = true) -> void:
 		reset_hp()
 	mhp_changed.emit()
 
-@warning_ignore_start("narrowing_conversion")
-func take_damage(dmg : int):
-	var final_dmg = dmg * damage_taken_mult
-	if final_dmg <= 0:
+func take_damage(dmg: int):
+	if damage_taken_mult <= 0:
 		AudioManager.play_block()
+		return
+	var final_dmg = dmg * damage_taken_mult
 	hp -= final_dmg
 	if hp <= 0 and not is_dead:
 		die()
@@ -38,8 +38,9 @@ func take_damage(dmg : int):
 func die() -> void:
 	is_dead = true
 	died.emit()
-	if despawn_on_death:
-		despawn()
+	if free_on_death:
+		freed.emit()
+		call_deferred("queue_free")
 
 ## This is used in spellcard where boss persists
 func revive() -> void:

@@ -21,11 +21,11 @@ func _ready() -> void:
 	pat_aim.bullet_scene = BULLET_ARROW
 	
 	gengetsu = get_boss("gengetsu", SCENE_GENGETSU, Vector2(100, -40))
-	gengetsu.hp = 1500
+	gengetsu.hp = 2000
 	gengetsu.damage_taken_mult = 0.2
 	
 	mugetsu = get_boss("mugetsu", SCENE_MUGETSU, Vector2(100, -40))
-	mugetsu.hp = 1500
+	mugetsu.hp = 2000
 	mugetsu.damage_taken_mult = 0.2
 	
 	GameVariables.cur_spellcard_name = "Dreamweaver \"Hidden Backstitch\""
@@ -33,7 +33,7 @@ func _ready() -> void:
 	
 	gengetsu_tween = gengetsu.create_tween()
 	gengetsu_tween.tween_property(
-		gengetsu, "global_position", Vector2(500, 220), 1.0
+		gengetsu, "global_position", Vector2(450, 220), 1.0
 	).set_trans(Tween.TRANS_QUAD)
 	
 	mugetsu_tween = mugetsu.create_tween()
@@ -75,12 +75,23 @@ func _on_spellcard_timeout() -> void:
 func clean_up() -> void:
 	cleaning = true
 	end_chapter()
+	gengetsu.clear_hp_markers()
+	mugetsu.clear_hp_markers()
+	
 	if gengetsu_tween:
 		gengetsu_tween.kill()
 	if mugetsu_tween:
 		mugetsu_tween.kill()
-	gengetsu.clear_hp_markers()
-	mugetsu.clear_hp_markers()
+			
+	gengetsu_tween = gengetsu.create_tween()
+	gengetsu_tween.tween_property(
+		gengetsu, "global_position", Vector2(500, -250), 1.0
+	).set_trans(Tween.TRANS_QUAD)
+	
+	mugetsu_tween = mugetsu.create_tween()
+	mugetsu_tween.tween_property(
+		mugetsu, "global_position", Vector2(150, -250), 1.0
+	).set_trans(Tween.TRANS_QUAD)
 	end_script()
 
 func shoot_line(node: Node2D) -> void:

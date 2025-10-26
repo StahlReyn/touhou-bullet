@@ -15,7 +15,7 @@ func process_shoot_unfocused() -> void:
 
 func process_shoot_focused() -> void:
 	var bullet: Bullet
-	for i in range(3):
+	for i in range(4):
 		bullet = FOCUS_SCENE.instantiate()
 		bullet.do_spawn_effect = false
 		cooldown = focus_cooldown

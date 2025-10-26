@@ -37,7 +37,7 @@ func _ready() -> void:
 	
 	eirin = get_boss("eirin", EIRIN_SCENE, Vector2(GameArea.size.x * 0.5, -40))
 	eirin.hp = 1500
-	eirin.damage_taken_mult = 0.25
+	eirin.damage_taken_mult = 0.2
 	
 	GameVariables.cur_spellcard_name = "Mind of God \"Mind your Business\""
 	start_spellcard(40.0)

@@ -34,7 +34,6 @@ var bomb_pieces: int = 0
 var deaths: int = 0
 var enemy_spawned: int = 0
 var shoot_down: int = 0
-var section_bonus: int = 0
 
 # For use in counting chapter
 var prev_deaths: int = 0
@@ -43,7 +42,9 @@ var prev_enemy_spawned: int = 0
 var prev_shoot_down: int = 0
 
 # Might change when proper spellcard database comes
-var cur_spellcard_name: String
+var cur_spellcard_bonus: int = 1000000
+var cur_spellcard_name: String = ""
+var cur_chapter_stats: ChapterStats
 
 func reset_variables() -> void:
 	print("==== RESET GAME VARIABLES ====")
@@ -52,20 +53,25 @@ func reset_variables() -> void:
 	graze = 0
 	lives = 3
 	bombs = 3
-	power = 200
+	power = 0
 	point_value = 10000
 	
-	section_bonus = 0
 	deaths = 0
 	enemy_spawned = 0
 	shoot_down = 0
 	
+	cur_spellcard_bonus = 1000000
+	cur_spellcard_name = ""
+	cur_chapter_stats = ChapterStats.new()
+	
 	boss_list.clear()
-	reset_chapter_variables()
+	update_chapter_stats()
 
 # ================================================================
 #                       GETTER / SETTERS
 # ================================================================
+func add_spellcard_bonus() -> void:
+	add_score(cur_spellcard_bonus)
 
 func add_score(value: int) -> void:
 	score += value
@@ -120,35 +126,18 @@ func lose_power(value: int = 1) -> void:
 # ================================================================
 #                          CHAPTER
 # ================================================================
-func reset_chapter_variables() -> void:
-	section_bonus = 0
+func update_chapter_stats() -> void:
+	cur_chapter_stats.graze = graze - prev_graze
+	cur_chapter_stats.retries = deaths - prev_deaths
+	if (enemy_spawned - prev_enemy_spawned) == 0:
+		cur_chapter_stats.shoot_ratio = 1.0
+	else:
+		cur_chapter_stats.shoot_ratio = float(shoot_down - prev_shoot_down) / float(enemy_spawned - prev_enemy_spawned)
+	
 	prev_deaths = deaths
 	prev_graze = graze
 	prev_enemy_spawned = enemy_spawned
 	prev_shoot_down = shoot_down
-
-func get_chapter_graze() -> int:
-	return graze - prev_graze
-
-func get_chapter_shoot_ratio() -> float:
-	if (enemy_spawned - prev_enemy_spawned) == 0:
-		return 0.0
-	return (
-		float(shoot_down - prev_shoot_down) / 
-		float(enemy_spawned - prev_enemy_spawned)
-	)
-
-func get_chapter_deaths() -> int:
-	return deaths - prev_deaths
-
-func get_chapter_shoot_display():
-	return percentage_display(get_chapter_shoot_ratio())
-
-func get_section_bonus_final() -> int:
-	return int(section_bonus * get_chapter_shoot_ratio())
-
-func add_section_bonus_to_score() -> void:
-	add_score(get_section_bonus_final())
 	
 # ================================================================
 #                            DISPLAY

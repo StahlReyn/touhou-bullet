@@ -4,6 +4,7 @@ extends Area2D
 signal hitted
 signal despawned
 signal removed
+signal freed
 
 func _ready() -> void:
 	pass
@@ -11,11 +12,13 @@ func _ready() -> void:
 ## Remove bullets, indicate it's force removed like board clear.
 func remove() -> void:
 	removed.emit()
-	despawn()
+	freed.emit()
+	call_deferred("queue_free")
 
 ## Despawns the entity, does queue free. For example on out of bound.
 func despawn() -> void:
 	despawned.emit()
+	freed.emit()
 	call_deferred("queue_free")
 
 func clear_components() -> void:

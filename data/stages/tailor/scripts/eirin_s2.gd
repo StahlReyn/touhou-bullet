@@ -31,7 +31,7 @@ func _ready() -> void:
 	
 	eirin = get_boss("eirin", EIRIN_SCENE, Vector2(GameArea.size.x * 0.5, -40))
 	eirin.hp = 1500
-	eirin.damage_taken_mult = 0.25
+	eirin.damage_taken_mult = 0.2
 	
 	GameVariables.cur_spellcard_name = "Esoterica \"Kaguya's Disorganized Room\""
 	start_spellcard(40.0)
@@ -40,7 +40,7 @@ func _ready() -> void:
 		eirin, "position", Vector2(GameArea.size.x * 0.5, 175), 1.0
 	).set_trans(Tween.TRANS_SINE).finished
 	
-	for i in range(50):
+	for i in range(60):
 		var book: Enemy = add_enemy(SCENE_BOOK)
 		books.push_back(book)
 		book.create_tween().tween_property(
@@ -64,7 +64,7 @@ func _physics_process(delta: float) -> void:
 		for book: Enemy in books:
 			if not is_instance_valid(book):
 				continue
-			if book.global_position.distance_squared_to(bouncer.global_position) < 2500:
+			if book.global_position.distance_squared_to(bouncer.global_position) < 3000:
 				var bul: Bullet = add_bullet(BULLET_OVAL, book.global_position)
 				bul.sprite_frame_x(BCOLOR_GREEN)
 				var angle: float = rng.randf_range(0, TAU)
@@ -89,22 +89,26 @@ func clean_up() -> void:
 	end_script()
 	
 func _on_timer_end() -> void:
+	AudioManager.play_shoot1()
 	pat_circ1.position = eirin.global_position
-	pat_circ1.rotation += PI / pat_circ1.amount
+	pat_circ1.rotation = angle_to_player(eirin)
 	pat_circ1.speed = 300
-	for i in range(2):
+	for i in range(3):
 		for bullet: Bullet in pat_circ1.create():
 			bullet.sprite_frame_x(BCOLOR_BLUE)
 			disp_rot(bullet)
-		pat_circ1.speed -= 50
+		pat_circ1.speed -= 30
 	
 	if timer_count % 2 == 1:
 		var bouncer: Bullet = add_bullet(BULLET_CIRCLE_BORDERED, eirin.global_position)
 		bouncer.sprite_frame_x(BCOLOR_RED)
-		bouncer.scale *= 3
-		vel(bouncer, direction_to_player(bouncer) * 250)
+		bouncer.scale *= 4
+		vel(bouncer, direction_to_player(bouncer) * 300)
 		bouncers.push_back(bouncer)
 	
 	timer_count += 1
-	timer.start(2.0)
+	if timer_count > 12:
+		timer.start(1.0)
+	else:
+		timer.start(2.0)
 	
