@@ -52,7 +52,7 @@ func reset_variables() -> void:
 	graze = 0
 	lives = 3
 	bombs = 3
-	power = 0
+	power = 200
 	point_value = 10000
 	
 	section_bonus = 0

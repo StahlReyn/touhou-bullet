@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="StageDataScript" load_steps=4 format=3 uid="uid://cmv6mu20g7p24"]
+
+[ext_resource type="Script" uid="uid://7j5ebxd7k1rm" path="res://scripts/gameplay/stage_data_script.gd" id="1_4m3fh"]
+[ext_resource type="Script" uid="uid://duft3ngum1vo8" path="res://data/stages/tailor/scripts/gengetsu_n1.gd" id="2_260n8"]
+[ext_resource type="Script" uid="uid://bmptn8ape5xpt" path="res://data/stages/tailor/scripts/gengetsu_s1.gd" id="3_ivflb"]
+
+[resource]
+script = ExtResource("1_4m3fh")
+section_script = Array[GDScript]([ExtResource("2_260n8"), ExtResource("3_ivflb")])
+metadata/_custom_type_script = "uid://7j5ebxd7k1rm"
