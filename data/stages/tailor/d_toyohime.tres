@@ -1,0 +1,119 @@
+[gd_resource type="Resource" script_class="StageDataDialogue" load_steps=25 format=3 uid="uid://c4lfexn114i7y"]
+
+[ext_resource type="Script" uid="uid://cn6e6yd4p2nkw" path="res://scripts/dialogues/dialogue_event.gd" id="1_gqf7w"]
+[ext_resource type="PackedScene" uid="uid://s7kdo7tw5ntf" path="res://data/enemies/bosses/toyohime.tscn" id="2_gqf7w"]
+[ext_resource type="Script" uid="uid://bv06oqqitslh1" path="res://scripts/dialogues/dialogue_spawn_boss.gd" id="3_u3rub"]
+[ext_resource type="PackedScene" uid="uid://vu10bswwddpv" path="res://data/portraits/toyohime.tscn" id="4_faqus"]
+[ext_resource type="PackedScene" uid="uid://dnf0sww73j8n5" path="res://data/portraits/junko.tscn" id="4_sy36c"]
+[ext_resource type="Script" uid="uid://cnkxajlq1vds6" path="res://scripts/dialogues/dialogue_line.gd" id="5_n5qfw"]
+[ext_resource type="Script" uid="uid://8sos5xgum73s" path="res://scripts/gameplay/stage_data_dialogue.gd" id="7_wnmc8"]
+
+[sub_resource type="Resource" id="Resource_131h5"]
+script = ExtResource("3_u3rub")
+id = "toyohime"
+enemy_scene = ExtResource("2_gqf7w")
+metadata/_custom_type_script = "uid://bv06oqqitslh1"
+
+[sub_resource type="Resource" id="Resource_gsphd"]
+script = ExtResource("5_n5qfw")
+id = "toyohime"
+dialogue = "TJ_TOY_1"
+portrait_scene = ExtResource("4_faqus")
+portrait_position = 1
+metadata/_custom_type_script = "uid://cnkxajlq1vds6"
+
+[sub_resource type="Resource" id="Resource_faqus"]
+script = ExtResource("5_n5qfw")
+id = "toyohime"
+dialogue = "TJ_TOY_2"
+metadata/_custom_type_script = "uid://cnkxajlq1vds6"
+
+[sub_resource type="Resource" id="Resource_gqf7w"]
+script = ExtResource("5_n5qfw")
+id = "junko"
+dialogue = "TJ_TOY_3"
+portrait_scene = ExtResource("4_sy36c")
+metadata/_custom_type_script = "uid://cnkxajlq1vds6"
+
+[sub_resource type="Resource" id="Resource_2kdms"]
+script = ExtResource("5_n5qfw")
+id = "junko"
+dialogue = "TJ_TOY_4"
+metadata/_custom_type_script = "uid://cnkxajlq1vds6"
+
+[sub_resource type="Resource" id="Resource_u3rub"]
+script = ExtResource("5_n5qfw")
+id = "junko"
+dialogue = "TJ_TOY_5"
+metadata/_custom_type_script = "uid://cnkxajlq1vds6"
+
+[sub_resource type="Resource" id="Resource_sy36c"]
+script = ExtResource("5_n5qfw")
+id = "toyohime"
+dialogue = "TJ_TOY_6"
+metadata/_custom_type_script = "uid://cnkxajlq1vds6"
+
+[sub_resource type="Resource" id="Resource_n5qfw"]
+script = ExtResource("5_n5qfw")
+id = "junko"
+dialogue = "TJ_TOY_7"
+metadata/_custom_type_script = "uid://cnkxajlq1vds6"
+
+[sub_resource type="Resource" id="Resource_0wfs6"]
+script = ExtResource("5_n5qfw")
+id = "toyohime"
+dialogue = "TJ_TOY_8"
+metadata/_custom_type_script = "uid://cnkxajlq1vds6"
+
+[sub_resource type="Resource" id="Resource_wnmc8"]
+script = ExtResource("5_n5qfw")
+id = "toyohime"
+dialogue = "TJ_TOY_9"
+metadata/_custom_type_script = "uid://cnkxajlq1vds6"
+
+[sub_resource type="Resource" id="Resource_3cgp4"]
+script = ExtResource("5_n5qfw")
+id = "junko"
+dialogue = "TJ_TOY_10"
+metadata/_custom_type_script = "uid://cnkxajlq1vds6"
+
+[sub_resource type="Resource" id="Resource_gxofh"]
+script = ExtResource("5_n5qfw")
+id = "toyohime"
+dialogue = "TJ_TOY_11"
+metadata/_custom_type_script = "uid://cnkxajlq1vds6"
+
+[sub_resource type="Resource" id="Resource_73buh"]
+script = ExtResource("5_n5qfw")
+id = "toyohime"
+dialogue = "TJ_TOY_12"
+metadata/_custom_type_script = "uid://cnkxajlq1vds6"
+
+[sub_resource type="Resource" id="Resource_6wyjf"]
+script = ExtResource("5_n5qfw")
+id = "toyohime"
+dialogue = "TJ_TOY_13"
+metadata/_custom_type_script = "uid://cnkxajlq1vds6"
+
+[sub_resource type="Resource" id="Resource_bapci"]
+script = ExtResource("5_n5qfw")
+id = "junko"
+dialogue = "TJ_TOY_14"
+metadata/_custom_type_script = "uid://cnkxajlq1vds6"
+
+[sub_resource type="Resource" id="Resource_f2rbk"]
+script = ExtResource("5_n5qfw")
+id = "toyohime"
+dialogue = "TJ_TOY_15"
+metadata/_custom_type_script = "uid://cnkxajlq1vds6"
+
+[sub_resource type="Resource" id="Resource_c45ub"]
+script = ExtResource("5_n5qfw")
+id = "toyohime"
+dialogue = "TJ_TOY_16"
+metadata/_custom_type_script = "uid://cnkxajlq1vds6"
+
+[resource]
+script = ExtResource("7_wnmc8")
+dialogue_events = Array[ExtResource("1_gqf7w")]([SubResource("Resource_131h5"), SubResource("Resource_gsphd"), SubResource("Resource_faqus"), SubResource("Resource_gqf7w"), SubResource("Resource_2kdms"), SubResource("Resource_u3rub"), SubResource("Resource_sy36c"), SubResource("Resource_n5qfw"), SubResource("Resource_0wfs6"), SubResource("Resource_wnmc8"), SubResource("Resource_3cgp4"), SubResource("Resource_gxofh"), SubResource("Resource_73buh"), SubResource("Resource_6wyjf"), SubResource("Resource_bapci"), SubResource("Resource_f2rbk"), SubResource("Resource_c45ub")])
+metadata/_custom_type_script = "uid://8sos5xgum73s"

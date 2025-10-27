@@ -1,0 +1,153 @@
+[gd_resource type="Resource" script_class="StageDataDialogue" load_steps=29 format=3 uid="uid://de28el7lp33qe"]
+
+[ext_resource type="Script" uid="uid://cn6e6yd4p2nkw" path="res://scripts/dialogues/dialogue_event.gd" id="1_s0aqb"]
+[ext_resource type="Script" uid="uid://8sos5xgum73s" path="res://scripts/gameplay/stage_data_dialogue.gd" id="2_2mmif"]
+[ext_resource type="PackedScene" uid="uid://dnf0sww73j8n5" path="res://data/portraits/junko.tscn" id="2_qiamp"]
+[ext_resource type="Script" uid="uid://cnkxajlq1vds6" path="res://scripts/dialogues/dialogue_line.gd" id="3_o1k85"]
+[ext_resource type="PackedScene" uid="uid://vu10bswwddpv" path="res://data/portraits/toyohime.tscn" id="4_o1k85"]
+
+[sub_resource type="Resource" id="Resource_in4mj"]
+script = ExtResource("3_o1k85")
+id = "junko"
+dialogue = "TJ_TOYP_1"
+portrait_scene = ExtResource("2_qiamp")
+metadata/_custom_type_script = "uid://cnkxajlq1vds6"
+
+[sub_resource type="Resource" id="Resource_ehfjn"]
+script = ExtResource("3_o1k85")
+id = "junko"
+dialogue = "TJ_TOYP_2"
+metadata/_custom_type_script = "uid://cnkxajlq1vds6"
+
+[sub_resource type="Resource" id="Resource_abau8"]
+script = ExtResource("3_o1k85")
+id = "toyohime"
+dialogue = "TJ_TOYP_3"
+portrait_scene = ExtResource("4_o1k85")
+portrait_position = 1
+metadata/_custom_type_script = "uid://cnkxajlq1vds6"
+
+[sub_resource type="Resource" id="Resource_5ni05"]
+script = ExtResource("3_o1k85")
+id = "junko"
+dialogue = "TJ_TOYP_4"
+metadata/_custom_type_script = "uid://cnkxajlq1vds6"
+
+[sub_resource type="Resource" id="Resource_o1k85"]
+script = ExtResource("3_o1k85")
+id = "junko"
+dialogue = "TJ_TOYP_5"
+metadata/_custom_type_script = "uid://cnkxajlq1vds6"
+
+[sub_resource type="Resource" id="Resource_d7q43"]
+script = ExtResource("3_o1k85")
+id = "toyohime"
+dialogue = "TJ_TOYP_6"
+metadata/_custom_type_script = "uid://cnkxajlq1vds6"
+
+[sub_resource type="Resource" id="Resource_rx2j7"]
+script = ExtResource("3_o1k85")
+id = "toyohime"
+dialogue = "TJ_TOYP_7"
+metadata/_custom_type_script = "uid://cnkxajlq1vds6"
+
+[sub_resource type="Resource" id="Resource_3tbx6"]
+script = ExtResource("3_o1k85")
+id = "junko"
+dialogue = "TJ_TOYP_8"
+metadata/_custom_type_script = "uid://cnkxajlq1vds6"
+
+[sub_resource type="Resource" id="Resource_guo2v"]
+script = ExtResource("3_o1k85")
+id = "toyohime"
+dialogue = "TJ_TOYP_9"
+metadata/_custom_type_script = "uid://cnkxajlq1vds6"
+
+[sub_resource type="Resource" id="Resource_jwkkv"]
+script = ExtResource("3_o1k85")
+id = "junko"
+dialogue = "TJ_TOYP_10"
+metadata/_custom_type_script = "uid://cnkxajlq1vds6"
+
+[sub_resource type="Resource" id="Resource_fspb4"]
+script = ExtResource("3_o1k85")
+id = "junko"
+dialogue = "TJ_TOYP_11"
+metadata/_custom_type_script = "uid://cnkxajlq1vds6"
+
+[sub_resource type="Resource" id="Resource_b4qo5"]
+script = ExtResource("3_o1k85")
+id = "junko"
+dialogue = "TJ_TOYP_12"
+metadata/_custom_type_script = "uid://cnkxajlq1vds6"
+
+[sub_resource type="Resource" id="Resource_ele5l"]
+script = ExtResource("3_o1k85")
+id = "toyohime"
+dialogue = "TJ_TOYP_13"
+metadata/_custom_type_script = "uid://cnkxajlq1vds6"
+
+[sub_resource type="Resource" id="Resource_yym2u"]
+script = ExtResource("3_o1k85")
+id = "junko"
+dialogue = "TJ_TOYP_14"
+metadata/_custom_type_script = "uid://cnkxajlq1vds6"
+
+[sub_resource type="Resource" id="Resource_dfrce"]
+script = ExtResource("3_o1k85")
+id = "junko"
+dialogue = "TJ_TOYP_15"
+metadata/_custom_type_script = "uid://cnkxajlq1vds6"
+
+[sub_resource type="Resource" id="Resource_dgvv1"]
+script = ExtResource("3_o1k85")
+id = "toyohime"
+dialogue = "TJ_TOYP_16"
+metadata/_custom_type_script = "uid://cnkxajlq1vds6"
+
+[sub_resource type="Resource" id="Resource_7smff"]
+script = ExtResource("3_o1k85")
+id = "junko"
+dialogue = "TJ_TOYP_17"
+metadata/_custom_type_script = "uid://cnkxajlq1vds6"
+
+[sub_resource type="Resource" id="Resource_bq4qf"]
+script = ExtResource("3_o1k85")
+id = "junko"
+dialogue = "TJ_TOYP_18"
+metadata/_custom_type_script = "uid://cnkxajlq1vds6"
+
+[sub_resource type="Resource" id="Resource_pyqbh"]
+script = ExtResource("3_o1k85")
+id = "toyohime"
+dialogue = "TJ_TOYP_19"
+metadata/_custom_type_script = "uid://cnkxajlq1vds6"
+
+[sub_resource type="Resource" id="Resource_2dsj5"]
+script = ExtResource("3_o1k85")
+id = "toyohime"
+dialogue = "TJ_TOYP_20"
+metadata/_custom_type_script = "uid://cnkxajlq1vds6"
+
+[sub_resource type="Resource" id="Resource_i28jk"]
+script = ExtResource("3_o1k85")
+id = "junko"
+dialogue = "TJ_TOYP_21"
+metadata/_custom_type_script = "uid://cnkxajlq1vds6"
+
+[sub_resource type="Resource" id="Resource_655d7"]
+script = ExtResource("3_o1k85")
+id = "junko"
+dialogue = "TJ_TOYP_22"
+metadata/_custom_type_script = "uid://cnkxajlq1vds6"
+
+[sub_resource type="Resource" id="Resource_377jp"]
+script = ExtResource("3_o1k85")
+id = "junko"
+dialogue = "TJ_TOYP_23"
+metadata/_custom_type_script = "uid://cnkxajlq1vds6"
+
+[resource]
+script = ExtResource("2_2mmif")
+dialogue_events = Array[ExtResource("1_s0aqb")]([SubResource("Resource_in4mj"), SubResource("Resource_ehfjn"), SubResource("Resource_abau8"), SubResource("Resource_5ni05"), SubResource("Resource_o1k85"), SubResource("Resource_d7q43"), SubResource("Resource_rx2j7"), SubResource("Resource_3tbx6"), SubResource("Resource_guo2v"), SubResource("Resource_jwkkv"), SubResource("Resource_fspb4"), SubResource("Resource_b4qo5"), SubResource("Resource_ele5l"), SubResource("Resource_yym2u"), SubResource("Resource_dfrce"), SubResource("Resource_dgvv1"), SubResource("Resource_7smff"), SubResource("Resource_bq4qf"), SubResource("Resource_pyqbh"), SubResource("Resource_2dsj5"), SubResource("Resource_i28jk"), SubResource("Resource_655d7"), SubResource("Resource_377jp")])
+metadata/_custom_type_script = "uid://8sos5xgum73s"

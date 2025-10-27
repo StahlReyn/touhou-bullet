@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="StageData" load_steps=13 format=3 uid="uid://dg4b7luxhb4bk"]
+[gd_resource type="Resource" script_class="StageData" load_steps=15 format=3 uid="uid://dg4b7luxhb4bk"]
 
 [ext_resource type="Script" uid="uid://bpbubir7dstld" path="res://scripts/gameplay/stage_data.gd" id="1_k0wto"]
 [ext_resource type="Script" uid="uid://dmb82id2jgc4u" path="res://scripts/gameplay/stage_data_section.gd" id="2_mqmux"]
@@ -12,9 +12,11 @@
 [ext_resource type="Resource" uid="uid://bymqn82p4n3fg" path="res://data/stages/tailor/s_2.tres" id="8_qpi7q"]
 [ext_resource type="Resource" uid="uid://cmv6mu20g7p24" path="res://data/stages/tailor/s_gengetsu.tres" id="10_16n1y"]
 [ext_resource type="Resource" uid="uid://bl52n1lr4l4wh" path="res://data/stages/tailor/s_3.tres" id="12_2lm2p"]
+[ext_resource type="Resource" uid="uid://c4lfexn114i7y" path="res://data/stages/tailor/d_toyohime.tres" id="13_fyjl1"]
+[ext_resource type="Resource" uid="uid://de28el7lp33qe" path="res://data/stages/tailor/d_toyohime_post.tres" id="14_2rjve"]
 
 [resource]
 script = ExtResource("1_k0wto")
-start_index = 9
-sections = Array[ExtResource("2_mqmux")]([ExtResource("3_mqmux"), ExtResource("4_ir5rw"), ExtResource("3_4kc7s"), ExtResource("3_r68sv"), ExtResource("7_iini8"), ExtResource("8_qpi7q"), ExtResource("3_qpi7q"), ExtResource("10_16n1y"), ExtResource("3_iq31a"), ExtResource("12_2lm2p")])
+start_index = 10
+sections = Array[ExtResource("2_mqmux")]([ExtResource("3_mqmux"), ExtResource("4_ir5rw"), ExtResource("3_4kc7s"), ExtResource("3_r68sv"), ExtResource("7_iini8"), ExtResource("8_qpi7q"), ExtResource("3_qpi7q"), ExtResource("10_16n1y"), ExtResource("3_iq31a"), ExtResource("12_2lm2p"), ExtResource("13_fyjl1"), ExtResource("14_2rjve")])
 metadata/_custom_type_script = "uid://bpbubir7dstld"
