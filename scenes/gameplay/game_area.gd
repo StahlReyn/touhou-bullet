@@ -6,6 +6,7 @@ static var size: Vector2 = Vector2(768,896) # Half is Vector2(384,448)
 enum Collision {
 	PLAYER = 1,
 	ENEMY = 2,
+	PLAYER_AND_ENEMY = 3,
 	BULLET_PLAYER = 4,
 	BULLET_ENEMY = 8,
 	ITEM = 16

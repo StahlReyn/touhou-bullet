@@ -20,3 +20,6 @@ func get_lives_bonus() -> int:
 	if get_chapter_bonus() >= 5000000:
 		return 1
 	return 0
+
+func is_spellcard_bonus() -> bool:
+	return retries <= 0

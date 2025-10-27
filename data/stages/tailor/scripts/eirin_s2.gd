@@ -40,7 +40,7 @@ func _ready() -> void:
 		eirin, "position", Vector2(GameArea.size.x * 0.5, 175), 1.0
 	).set_trans(Tween.TRANS_SINE).finished
 	
-	for i in range(60):
+	for i in range(50):
 		var book: Enemy = add_enemy(SCENE_BOOK)
 		book.set_mhp(500)
 		books.push_back(book)
@@ -65,7 +65,7 @@ func _physics_process(delta: float) -> void:
 		for book: Enemy in books:
 			if not is_instance_valid(book):
 				continue
-			if book.global_position.distance_squared_to(bouncer.global_position) < 3000:
+			if book.global_position.distance_squared_to(bouncer.global_position) < 2800:
 				var bul: Bullet = add_bullet(BULLET_OVAL, book.global_position)
 				bul.sprite_frame_x(BCOLOR_GREEN)
 				var angle: float = rng.randf_range(0, TAU)

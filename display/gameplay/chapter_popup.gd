@@ -49,22 +49,25 @@ func display_chapter() -> void:
 	
 	
 	var tween: Tween = create_tween()
-	tween.tween_property(control_chapter, "modulate", Color.WHITE, 0.5)
-	tween.tween_interval(3.0)
-	tween.tween_property(control_chapter, "modulate", Color.TRANSPARENT, 0.5)
+	tween.tween_property(control_chapter, "modulate", Color.WHITE, 0.3)
+	tween.tween_interval(2.0)
+	tween.tween_property(control_chapter, "modulate", Color.TRANSPARENT, 0.3)
 
 	if stats.is_spellcard_section:
-		label_sc_bonus.text = MathUtils.thousands_sep(stats.spellcard_bonus)
 		label_clear_time.text = "%.2f" % stats.game_time + "s"
 		label_actual_time.text =  "%.2f" % stats.actual_time + "s"
-		GameVariables.add_score(stats.spellcard_bonus)
+		var time_tween: Tween = create_tween()
+		time_tween.tween_property(control_timer, "modulate", Color.WHITE, 0.5)
+		time_tween.tween_interval(2.0)
+		time_tween.tween_property(control_timer, "modulate", Color.TRANSPARENT, 0.5)
 		
-		var bonus_tween: Tween = create_tween()
-		bonus_tween.tween_property(control_bonus, "modulate", Color.WHITE, 0.5)
-		bonus_tween.tween_property(control_timer, "modulate", Color.WHITE, 0.5)
-		bonus_tween.tween_interval(3.0)
-		bonus_tween.tween_property(control_bonus, "modulate", Color.TRANSPARENT, 0.5)
-		bonus_tween.tween_property(control_timer, "modulate", Color.TRANSPARENT, 0.5)
+		if stats.is_spellcard_bonus():
+			label_sc_bonus.text = MathUtils.thousands_sep(stats.spellcard_bonus)
+			GameVariables.add_score(stats.spellcard_bonus)
+			var bonus_tween: Tween = create_tween()
+			bonus_tween.tween_property(control_bonus, "modulate", Color.WHITE, 0.5)
+			bonus_tween.tween_interval(3.0)
+			bonus_tween.tween_property(control_bonus, "modulate", Color.TRANSPARENT, 0.5)
 	
 	GameVariables.reset_chapter_stats()
 

@@ -64,7 +64,9 @@ func get_closest_target() -> Entity:
 	var closest_entity: Entity = entity_list[0]
 	var closest_dist: float = 1000000.0
 	var new_dist: float
-	for en: Entity in GameUtils.get_enemy_list():
+	for en: Enemy in GameUtils.get_enemy_list():
+		if en.damage_taken_mult <= 0: # don't target 0 damage
+			continue
 		new_dist = en.global_position.distance_squared_to(entity.global_position)
 		if new_dist < closest_dist:
 			closest_dist = new_dist

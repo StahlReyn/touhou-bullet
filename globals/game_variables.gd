@@ -120,7 +120,7 @@ func add_power(value: int = 1) -> void:
 	power = clamp(power, 0, power_max)
 
 func lose_power(value: int = 1) -> void:
-	power += value
+	power -= value
 	power = clamp(power, 0, power_max)
 
 # ================================================================
