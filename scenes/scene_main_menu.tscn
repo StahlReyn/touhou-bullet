@@ -5,7 +5,7 @@
 [ext_resource type="Script" uid="uid://b07g83nipmyho" path="res://scenes/scene_main_menu.gd" id="3_6k25j"]
 [ext_resource type="Script" uid="uid://ckj2h5bkfubbw" path="res://display/common/selection_list.gd" id="4_l67cq"]
 [ext_resource type="LabelSettings" uid="uid://cri81cp1to0ux" path="res://assets/resources/label_settings/label_pause_options.tres" id="5_toqhm"]
-[ext_resource type="Texture2D" uid="uid://cabqi3fnd3m0x" path="res://assets/graphics/system/placeholder_menu.png" id="6_kuy75"]
+[ext_resource type="Texture2D" uid="uid://ybgpj657yxjo" path="res://assets/graphics/system/title_tailor.png" id="6_3re45"]
 [ext_resource type="FontFile" uid="uid://cgat1phnbct83" path="res://assets/fonts/Seagull-Bold.otf" id="7_uprx0"]
 [ext_resource type="AudioStream" uid="uid://c2a1nbhne0osk" path="res://assets/audio/bgm/reflection_jam_seija.mp3" id="8_3re45"]
 
@@ -85,37 +85,23 @@ label_settings = ExtResource("5_toqhm")
 
 [node name="PlaceholderMenu" type="Sprite2D" parent="."]
 z_index = -20
-texture = ExtResource("6_kuy75")
+texture = ExtResource("6_3re45")
 centered = false
 
 [node name="Label" type="Label" parent="."]
-offset_left = 487.0
-offset_top = 457.0
-offset_right = 782.0
-offset_bottom = 752.0
-text = "Z - Confirm
+offset_left = 419.0
+offset_top = 681.0
+offset_right = 714.0
+offset_bottom = 902.0
+text = "Z - Shoot / Confirm
 X - Back
-Ctrl - Skip Dialouge
-Shift - Volume x10
-
-Z (Hold) - Charge
-Z (Release) - Hit
 Arrow Keys - Move
 
-No control options currently.
-Still working on Framework :("
-label_settings = SubResource("LabelSettings_73ojy")
+No Bombs or Lives currently.
+Deaths does -0.10 Power instead.
 
-[node name="Label2" type="Label" parent="."]
-modulate = Color(1, 1, 0.505882, 1)
-offset_left = 439.0
-offset_top = 787.0
-offset_right = 781.0
-offset_bottom = 839.0
-text = "Reflection Direction is same as Pong!!!
-(Relative position to Player)"
+Still Refactoring from old Jam :("
 label_settings = SubResource("LabelSettings_73ojy")
-horizontal_alignment = 1
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("8_3re45")

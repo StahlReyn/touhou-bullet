@@ -92,8 +92,8 @@ static func shoot_flower(entity: Entity):
 	flower.rotation = rotation
 	flower.petal_count = 6
 	flower.petal_size = 8
-	flower.speed_max = 450
-	flower.speed_min = 300
+	flower.speed_max = 500
+	flower.speed_min = 250
 	flower.bullet_scene = BULLET_CIRCLE_BORDERED
 	
 	for bullet: Bullet in flower.create():

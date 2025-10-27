@@ -75,7 +75,7 @@ func shoot_spiral(node: Node2D) -> void:
 			return
 		AudioManager.play_shoot1()
 		center_pos = node.global_position
-		for j in range(3):
+		for j in range(2):
 			shoot_angle += 0.77
 			bullet = add_bullet(BULLET_CIRCLE_BORDERED)
 			if shoot_count % 2 == 0:

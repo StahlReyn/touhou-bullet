@@ -34,13 +34,13 @@ func _on_timer_end() -> void:
 
 func spawn_back_fairy():
 	var enemy: Enemy = add_enemy(ENEMY_FAIRY)
-	enemy.set_mhp(50)
+	enemy.set_mhp(60)
 	enemy.position = Vector2(-40, -40)
 	drop(enemy, 0, 5)
 	enemy.set_type("red")
 	
 	var sh_tween: Tween = enemy.create_tween().set_loops()
-	sh_tween.tween_interval(3.0)
+	sh_tween.tween_interval(2.0)
 	sh_tween.tween_callback(shoot_trail.bind(enemy))
 	
 	var tween: Tween = enemy.create_tween()

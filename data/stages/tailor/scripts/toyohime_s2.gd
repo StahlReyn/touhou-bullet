@@ -22,12 +22,12 @@ func _ready() -> void:
 	
 	pat_circ1 = PatternCircle.new()
 	pat_circ1.amount = 16
-	pat_circ1.speed = 300
+	pat_circ1.speed = 250
 	pat_circ1.bullet_scene = SCENE_WATER
 	
 	pat_circ2 = PatternCircle.new()
-	pat_circ2.amount = 20
-	pat_circ2.speed = 400
+	pat_circ2.amount = 16
+	pat_circ2.speed = 350
 	pat_circ2.bullet_scene = BULLET_CRYSTAL
 	
 	GameVariables.cur_spellcard_bonus = 8000000
