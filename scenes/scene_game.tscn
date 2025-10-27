@@ -57,6 +57,7 @@ script = ExtResource("4_axbol")
 metadata/_custom_type_script = "uid://khhk7jxvmdbr"
 
 [node name="DebugLabel" type="Label" parent="GameOverlay"]
+visible = false
 z_index = 20
 offset_left = 75.0
 offset_top = 36.0

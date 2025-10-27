@@ -3,10 +3,11 @@ class_name StageDataScript
 extends StageDataSection
 
 @export var section_script: Array[GDScript] ## Must be extending SectionScript
-var script_queue: Array[GDScript]
+var script_queue: Array[SectionScript]
 
 func run() -> void:
-	script_queue = section_script.duplicate_deep()
+	for script: GDScript in section_script:
+		script_queue.push_back(script.new() as SectionScript)
 	run_next_script()
 
 func run_next_script():
@@ -16,7 +17,7 @@ func run_next_script():
 		controller.end_section()
 		return
 	# Trying to assign value of type '' Error means Wrong script type
-	var node: SectionScript = script_queue.pop_front().new()
+	var node: SectionScript = script_queue.pop_front()
 	node.stage_data_script = self
 	node.controller = controller
 	controller.add_child(node)
