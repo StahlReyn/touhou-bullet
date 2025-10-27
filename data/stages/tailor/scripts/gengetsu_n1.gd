@@ -66,11 +66,11 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	if is_instance_valid(gengetsu):
-		if not cleaning and gengetsu.hp <= 2500:
+		if not cleaning and gengetsu.hp <= 2000:
 			add_item_bulk(ITEM_POWER, 40, gengetsu.global_position)
 			clean_up()
 	if is_instance_valid(mugetsu):
-		if not cleaning and mugetsu.hp <= 2500:
+		if not cleaning and mugetsu.hp <= 2000:
 			add_item_bulk(ITEM_POWER, 40, mugetsu.global_position)
 			clean_up()
 

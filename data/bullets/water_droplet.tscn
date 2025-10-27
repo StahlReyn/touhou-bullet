@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://ldgydp2nkvas"]
+
+[ext_resource type="Script" uid="uid://iecthdath73v" path="res://scripts/entities/bullet.gd" id="1_j5nfu"]
+[ext_resource type="Texture2D" uid="uid://nkq45kdcmva2" path="res://assets/graphics/enemies/water_droplet.png" id="2_8gjy8"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xsori"]
+radius = 32.0
+
+[node name="WaterDroplet" type="Area2D" node_paths=PackedStringArray("main_sprite")]
+z_index = 5
+collision_layer = 8
+script = ExtResource("1_j5nfu")
+damage = 50
+main_sprite = NodePath("Sprite2D")
+metadata/_custom_type_script = "uid://iecthdath73v"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+use_parent_material = true
+rotation = -1.5707964
+scale = Vector2(2, 2)
+texture = ExtResource("2_8gjy8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_xsori")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

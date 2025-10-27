@@ -12,7 +12,6 @@ var cleaning: bool = false
 var pat_aim: PatternFlower
 
 func _ready() -> void:
-	GameVariables.cur_spellcard_bonus = 4000000
 	pat_aim = PatternFlower.new()
 	pat_aim.petal_count = 1
 	pat_aim.petal_size = 4
@@ -29,6 +28,7 @@ func _ready() -> void:
 	mugetsu.hp = 2000
 	mugetsu.damage_taken_mult = 0.2
 	
+	GameVariables.cur_spellcard_bonus = 4000000
 	GameVariables.cur_spellcard_name = "Dreamweaver \"Hidden Backstitch\""
 	start_spellcard(40.0)
 	

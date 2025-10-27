@@ -140,7 +140,7 @@ fade_curve = SubResource("Curve_cqmd0")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("18_3tsxn")
-volume_db = -3.0
+volume_db = -5.0
 autoplay = true
 bus = &"BGM"
 parameters/looping = true
